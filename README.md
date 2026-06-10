@@ -12,6 +12,12 @@ Two focused skills for generating self-contained HTML deliverables with a strong
 - `html-diagram`: architecture, stack, and systems understanding rendered as full-screen HTML diagrams with high-quality SVG
 - `html-plan`: HTML plan pages in the effective HTML style
 
+<p align="center">
+  <a href="https://github.com/backnotprop/plannotator">
+    <img src="./star-plannotator.svg" width="340" alt="like this? star Plannotator">
+  </a>
+</p>
+
 ## Install
 
 ```bash
@@ -41,11 +47,3 @@ npx skills add plannotator/effective-html --skill html-plan
 Skills live under `skills/<skill-name>/SKILL.md`. Each skill also bundles a copy of the `html-effectiveness` example corpus under `references/html-effectiveness/` so the examples stay local to the skill.
 
 Credit: this repo bundles and uses the `html-effectiveness` examples by Thariq Shihipar: https://thariqs.github.io/html-effectiveness
-
----
-
-<p align="center">
-  <a href="https://github.com/backnotprop/plannotator">
-    <img src="./star-plannotator.svg" width="440" alt="like this? star Plannotator">
-  </a>
-</p>

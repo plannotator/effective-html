@@ -1,0 +1,22 @@
+{
+  "name": "effective-html",
+  "owner": {
+    "name": "plannotator"
+  },
+  "description": "Agent skills for elegant, self-contained HTML plans, diagrams, and artifacts.",
+  "plugins": [
+    {
+      "name": "plannotator-effective-html",
+      "source": {
+        "source": "github",
+        "repo": "plannotator/effective-html"
+      },
+      "description": "HTML skills for pragmatic visual artifacts — html, html-diagram, and html-plan.",
+      "homepage": "https://github.com/plannotator/effective-html",
+      "repository": "https://github.com/plannotator/effective-html",
+      "license": "MIT",
+      "keywords": ["html", "diagram", "plan", "svg", "artifacts", "skills"],
+      "category": "productivity"
+    }
+  ]
+}

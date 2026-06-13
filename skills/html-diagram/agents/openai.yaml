@@ -1,0 +1,7 @@
+interface:
+  display_name: "HTML Diagram"
+  short_description: "Create effective standalone HTML diagrams"
+  default_prompt: "Use $html-diagram to create a polished architecture diagram."
+
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,7 @@
+interface:
+  display_name: "HTML Plan"
+  short_description: "Create pragmatic visual HTML plans"
+  default_prompt: "Use $html-plan to create a pragmatic HTML plan."
+
+policy:
+  allow_implicit_invocation: false

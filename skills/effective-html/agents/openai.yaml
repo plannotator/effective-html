@@ -1,7 +1,7 @@
 interface:
-  display_name: "HTML"
-  short_description: "Create effective standalone HTML artifacts"
-  default_prompt: "Use $html to create a polished standalone HTML artifact."
+  display_name: "Effective HTML"
+  short_description: "Create effective standalone HTML artifacts, diagrams, and plans"
+  default_prompt: "Use $effective-html to create a polished standalone HTML artifact, diagram, or plan."
 
 policy:
-  allow_implicit_invocation: false
+  allow_implicit_invocation: true

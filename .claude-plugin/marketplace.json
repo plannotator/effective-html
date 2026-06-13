@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "effective-html",
+  "description": "Skills for generating self-contained HTML artifacts — html, html-diagram, html-plan — in the effective-HTML style with dark mode support.",
+  "owner": {
+    "name": "Andrey Zagreev",
+    "url": "https://github.com/azagreev"
+  },
+  "plugins": [
+    {
+      "name": "effective-html",
+      "source": ".",
+      "description": "Skills for generating self-contained HTML artifacts — html, html-diagram, html-plan — in the effective-HTML style with dark mode support.",
+      "category": "design"
+    }
+  ]
+}

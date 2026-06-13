@@ -21,3 +21,17 @@ If it makes sense, make the diagram interactive and able to visualize and animat
 Also review `references/architecture-example.html` — a finished example of this skill done well (full-screen SVG stage, clickable nodes, flow chips that light up and animate request paths).
 
 Always include dark mode: hand-rolled CSS variables on `:root` / `html.dark`, a small theme toggle button, `localStorage` persistence, and an apply-before-paint script in `<head>` (default to `prefers-color-scheme`). Style the SVG through CSS classes using those variables — never hard-coded hex inside the SVG — so the diagram follows the theme.
+
+The canonical exemplar to match is `references/architecture-example.html`.
+
+## Quality contract
+
+Every artifact must satisfy all of these — `references/architecture-example.html` shows each one in place:
+
+- **Dark mode** — hand-rolled CSS variables on `:root` and `html.dark`, a small theme toggle button, `localStorage` persistence of the choice, and an apply-before-paint inline script in `<head>` that reads `localStorage` else `prefers-color-scheme` and sets the class before first paint (no flash). Style the SVG through those variables, never hard-coded hex.
+- **`@media (prefers-reduced-motion: reduce)`** that disables or limits transitions and animations.
+- **Visible `:focus-visible`** rings on every interactive element.
+- **`aria-label`** on any icon-only control (e.g. the theme toggle) and on the diagram `<svg>` itself.
+- **`<html lang="…">`** and a `<meta name="viewport">`.
+- **No emoji as structural icons** — use inline SVG or text.
+- **Body and heading contrast ≥ 4.5:1 in both themes.**

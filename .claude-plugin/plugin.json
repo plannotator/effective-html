@@ -1,5 +1,23 @@
 {
-  "name": "plannotator-effective-html",
+  "name": "effective-html",
+  "version": "0.1.0",
+  "description": "Skills for generating self-contained HTML artifacts — html, html-diagram, html-plan — in the effective-HTML style with dark mode support.",
+  "author": {
+    "name": "Andrey Zagreev",
+    "url": "https://github.com/azagreev"
+  },
+  "keywords": [
+    "html",
+    "diagram",
+    "plan",
+    "dark-mode",
+    "artifacts",
+    "visualization",
+    "svg"
+  ],
+  "homepage": "https://github.com/azagreev/effective-html",
+  "repository": "https://github.com/azagreev/effective-html",
+  "license": "MIT",
   "skills": [
     "./skills/html",
     "./skills/html-diagram",

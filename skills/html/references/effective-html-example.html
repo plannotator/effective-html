@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Acme Sync — Q3 Status</title>
+<script>
+  /* apply theme before first paint — no flash */
+  (function () {
+    try {
+      const saved = localStorage.getItem('theme');
+      const dark = saved ? saved === 'dark'
+                         : matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.classList.toggle('dark', dark);
+    } catch (e) {}
+  })();
+</script>
+<style>
+  :root {
+    --ivory: #FAF9F5;
+    --surface: #FFFFFF;
+    --surface2: #F0EEE6;
+    --ink: #141413;
+    --body: #3D3D3A;
+    --muted: #6E6D67;
+    --line: #D1CFC5;
+    --line-soft: #E6E3DA;
+    --clay: #C25E3C;
+    --clay-soft: rgba(194, 94, 60, 0.10);
+    --olive: #5E7142;
+    --olive-soft: rgba(94, 113, 66, 0.14);
+    --rust: #A8412F;
+    --gold: #9A6B1F;
+
+    --serif: ui-serif, Georgia, 'Times New Roman', serif;
+    --sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+    --radius-panel: 12px;
+    --radius-row: 8px;
+  }
+  html.dark {
+    --ivory: #141413;
+    --surface: #1F1F1D;
+    --surface2: #2A2A28;
+    --ink: #FAF9F5;
+    --body: #D7D5CC;
+    --muted: #9C9B93;
+    --line: #3D3D3A;
+    --line-soft: #2A2A28;
+    --clay: #E89274;
+    --clay-soft: rgba(232, 146, 116, 0.16);
+    --olive: #A6BC82;
+    --olive-soft: rgba(166, 188, 130, 0.18);
+    --rust: #E89080;
+    --gold: #D7B36C;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--ivory);
+    color: var(--body);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.6;
+    padding: 40px 24px 120px;
+    -webkit-font-smoothing: antialiased;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .page { max-width: 880px; margin: 0 auto; }
+
+  /* ---------- top bar ---------- */
+  .topbar {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 36px;
+  }
+  .topbar .spacer { flex: 1; }
+  .auto-pill {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    background: var(--surface2);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 5px 11px;
+    white-space: nowrap;
+  }
+  #themeToggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-row);
+    background: var(--surface);
+    color: var(--body);
+    cursor: pointer;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  #themeToggle:hover { border-color: var(--muted); color: var(--ink); }
+  #themeToggle svg { width: 17px; height: 17px; display: block; }
+  #themeToggle .moon { display: none; }
+  html.dark #themeToggle .sun { display: none; }
+  html.dark #themeToggle .moon { display: block; }
+
+  /* ---------- header ---------- */
+  header.intro { margin-bottom: 44px; }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .lede {
+    font-size: 16.5px;
+    color: var(--body);
+    max-width: 640px;
+  }
+  .lede strong { color: var(--ink); font-weight: 600; }
+
+  /* ---------- summary band ---------- */
+  .summary-band {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 60px;
+  }
+  @media (max-width: 720px) { .summary-band { grid-template-columns: repeat(2, 1fr); } }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-panel);
+    padding: 20px 22px 18px;
+  }
+  .stat-card.warn { border-left: 4px solid var(--clay); padding-left: 19px; }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 42px;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .stat-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+  }
+  .stat-delta { font-family: var(--mono); font-size: 11px; margin-top: 6px; }
+  .stat-delta.up { color: var(--olive); }
+  .stat-delta.flat { color: var(--muted); }
+
+  /* ---------- sections ---------- */
+  section { margin-bottom: 56px; }
+  h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 26px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  hr.rule { border: none; border-top: 1px solid var(--line); margin: 0 0 24px; }
+  .sec-intro { font-size: 14.5px; color: var(--muted); max-width: 660px; margin-bottom: 24px; }
+
+  /* ---------- highlights ---------- */
+  .highlights { list-style: none; }
+  .highlights li {
+    position: relative;
+    padding: 0 0 14px 26px;
+    font-size: 15px;
+    color: var(--body);
+  }
+  .highlights li::before {
+    content: "";
+    position: absolute;
+    left: 6px; top: 9px;
+    width: 7px; height: 7px;
+    border-radius: 2px;
+    background: var(--clay);
+  }
+  .highlights li strong { color: var(--ink); font-weight: 600; }
+
+  /* ---------- comparison table ---------- */
+  .compare {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-panel);
+    overflow: hidden;
+  }
+  .compare thead th {
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    background: var(--surface2);
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  .compare thead th.ours { color: var(--clay); }
+  .compare tbody td {
+    padding: 13px 16px;
+    border-bottom: 1px solid var(--line-soft);
+    font-size: 14px;
+    vertical-align: middle;
+  }
+  .compare tbody tr:last-child td { border-bottom: none; }
+  .compare tbody tr:hover { background: var(--surface2); }
+  .compare .feat { color: var(--ink); font-weight: 500; }
+  .compare td.ours { font-weight: 600; color: var(--ink); }
+  .mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    color: var(--body);
+  }
+  .mark svg { width: 15px; height: 15px; flex-shrink: 0; }
+  .mark.yes svg { color: var(--olive); }
+  .mark.no svg { color: var(--muted); }
+  .mark.partial svg { color: var(--gold); }
+
+  /* ---------- adoption chart ---------- */
+  .chart-panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-panel);
+    padding: 24px 28px 18px;
+  }
+  .chart-panel svg { display: block; width: 100%; height: auto; }
+  .chart-caption { font-size: 12.5px; color: var(--muted); margin-top: 14px; }
+  .grid-line { stroke: var(--line-soft); stroke-width: 1; }
+  .grid-base { stroke: var(--line); stroke-width: 1.5; }
+  .axis-lbl { font-family: var(--sans); font-size: 11px; fill: var(--muted); }
+  .bar { fill: var(--surface2); }
+  .bar.peak { fill: var(--clay); }
+  .bar-val { font-family: var(--sans); font-size: 11px; fill: var(--muted); }
+  .bar-val.peak { fill: var(--ink); font-weight: 600; }
+
+  /* ---------- callout ---------- */
+  .callout {
+    background: var(--clay-soft);
+    border-radius: var(--radius-panel);
+    padding: 22px 24px;
+    border-left: 4px solid var(--clay);
+  }
+  .callout h3 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 19px;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .callout p { font-size: 14.5px; color: var(--body); }
+  .callout code {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--clay);
+  }
+
+  /* ---------- footer ---------- */
+  footer {
+    margin-top: 64px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ---------- focus + motion ---------- */
+  a, button, [tabindex] { outline: none; }
+  :focus-visible {
+    outline: 2px solid var(--clay);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      transition: none !important;
+      animation: none !important;
+      scroll-behavior: auto !important;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <div class="topbar">
+      <span class="auto-pill">status report</span>
+      <div class="spacer"></div>
+      <button id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle theme">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+        </svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </div>
+
+    <header class="intro">
+      <div class="eyebrow">Acme Sync · product status · Q3 2025</div>
+      <h1>Real-time sync left beta on schedule</h1>
+      <p class="lede">
+        The new conflict-free sync engine shipped to <strong>100% of workspaces</strong>
+        on Aug 14, three days ahead of plan. This is the quarter recap: what landed,
+        how we now compare to the field, and the one risk we're still carrying.
+      </p>
+    </header>
+
+    <section>
+      <div class="summary-band">
+        <div class="stat-card">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Rollout reached</div>
+          <div class="stat-delta up">from 12% in July</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">38%</div>
+          <div class="stat-label">Sync p95 cut</div>
+          <div class="stat-delta up">410ms &rarr; 255ms</div>
+        </div>
+        <div class="stat-card warn">
+          <div class="stat-num">1</div>
+          <div class="stat-label">Open risk</div>
+          <div class="stat-delta flat">offline replay</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">0</div>
+          <div class="stat-label">Rollback events</div>
+          <div class="stat-delta flat">clean ramp</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>What landed</h2>
+      <hr class="rule">
+      <ul class="highlights">
+        <li>
+          <strong>Conflict-free merge by default.</strong> Edits from multiple
+          devices now reconcile through a CRDT log instead of last-write-wins, so
+          two people editing the same record no longer clobber each other.
+        </li>
+        <li>
+          <strong>Sync p95 down 38%.</strong> Replacing per-record auth checks with
+          one scoped batch lookup cut the hot path from 410ms to 255ms on the
+          staging load test.
+        </li>
+        <li>
+          <strong>Presence indicators shipped.</strong> Open a shared record and you
+          see who else is in it, live &mdash; the most-requested item from the spring
+          customer council.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>How we compare</h2>
+      <hr class="rule">
+      <p class="sec-intro">
+        Against the two products customers most often evaluate us next to.
+        Fictional positioning for this reference &mdash; not a benchmark.
+      </p>
+      <table class="compare">
+        <thead>
+          <tr>
+            <th style="width: 42%;">Capability</th>
+            <th class="ours">Acme Sync</th>
+            <th>Northwind</th>
+            <th>Globex</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="feat">Conflict-free merge</td>
+            <td class="ours"><span class="mark yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Yes</span></td>
+            <td><span class="mark partial"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg>Last-write</span></td>
+            <td><span class="mark no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>No</span></td>
+          </tr>
+          <tr>
+            <td class="feat">Live presence</td>
+            <td class="ours"><span class="mark yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Yes</span></td>
+            <td><span class="mark yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Yes</span></td>
+            <td><span class="mark no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>No</span></td>
+          </tr>
+          <tr>
+            <td class="feat">Offline replay</td>
+            <td class="ours"><span class="mark partial"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg>Beta</span></td>
+            <td><span class="mark no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>No</span></td>
+            <td><span class="mark yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Yes</span></td>
+          </tr>
+          <tr>
+            <td class="feat">Self-host option</td>
+            <td class="ours"><span class="mark yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Yes</span></td>
+            <td><span class="mark no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>No</span></td>
+            <td><span class="mark yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Yes</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Adoption ramp</h2>
+      <hr class="rule">
+      <div class="chart-panel">
+        <svg viewBox="0 0 640 200" role="img" aria-label="Percent of workspaces on the new sync engine, by week">
+          <line class="grid-line" x1="48" y1="20"  x2="620" y2="20"/>
+          <line class="grid-line" x1="48" y1="62"  x2="620" y2="62"/>
+          <line class="grid-line" x1="48" y1="104" x2="620" y2="104"/>
+          <line class="grid-base" x1="48" y1="146" x2="620" y2="146"/>
+
+          <text class="axis-lbl" x="40" y="150" text-anchor="end">0</text>
+          <text class="axis-lbl" x="40" y="108" text-anchor="end">33</text>
+          <text class="axis-lbl" x="40" y="66"  text-anchor="end">66</text>
+          <text class="axis-lbl" x="40" y="24"  text-anchor="end">100</text>
+
+          <!-- baseline y=146, 126px tall = 100%. values 12,28,55,82,100 -->
+          <rect class="bar"      x="72"  y="131" width="64" height="15"  rx="5"/>
+          <rect class="bar"      x="180" y="111" width="64" height="35"  rx="5"/>
+          <rect class="bar"      x="288" y="77"  width="64" height="69"  rx="5"/>
+          <rect class="bar"      x="396" y="43"  width="64" height="103" rx="5"/>
+          <rect class="bar peak" x="504" y="20"  width="64" height="126" rx="5"/>
+
+          <text class="bar-val"      x="104" y="124" text-anchor="middle">12%</text>
+          <text class="bar-val"      x="212" y="104" text-anchor="middle">28%</text>
+          <text class="bar-val"      x="320" y="70"  text-anchor="middle">55%</text>
+          <text class="bar-val"      x="428" y="36"  text-anchor="middle">82%</text>
+          <text class="bar-val peak" x="536" y="13"  text-anchor="middle">100%</text>
+
+          <text class="axis-lbl" x="104" y="166" text-anchor="middle">Wk 1</text>
+          <text class="axis-lbl" x="212" y="166" text-anchor="middle">Wk 2</text>
+          <text class="axis-lbl" x="320" y="166" text-anchor="middle">Wk 3</text>
+          <text class="axis-lbl" x="428" y="166" text-anchor="middle">Wk 4</text>
+          <text class="axis-lbl" x="536" y="166" text-anchor="middle">Wk 5</text>
+        </svg>
+        <div class="chart-caption">
+          Share of workspaces on the new engine. We held at 82% for two extra days to
+          watch error rates before the final push to everyone.
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>The risk we're carrying</h2>
+      <hr class="rule">
+      <div class="callout">
+        <h3>Offline replay is still beta-gated</h3>
+        <p>
+          A client that's offline for more than 24 hours can build a replay log
+          large enough to stall the merge on reconnect. It's behind the
+          <code>offline_replay_v2</code> flag for now. Fix is scoped for early Q4:
+          chunk the replay and apply it incrementally so the UI never blocks.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      Sources: rollout dashboard &middot; staging load test &middot; customer council notes
+      &nbsp;&mdash;&nbsp; compiled Aug 18 2025
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById('themeToggle').addEventListener('click', function () {
+      const dark = !document.documentElement.classList.contains('dark');
+      document.documentElement.classList.toggle('dark', dark);
+      try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+    });
+  </script>
+</body>
+</html>

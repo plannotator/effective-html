@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Acme — Self-serve onboarding plan</title>
+<script>
+  /* apply theme before first paint — no flash */
+  (function () {
+    try {
+      const saved = localStorage.getItem('theme');
+      const dark = saved ? saved === 'dark'
+                         : matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.classList.toggle('dark', dark);
+    } catch (e) {}
+  })();
+</script>
+<style>
+  :root {
+    --ivory: #FAF9F5;
+    --surface: #FFFFFF;
+    --surface2: #F0EEE6;
+    --oat: #E3DACC;
+    --ink: #141413;
+    --body: #3D3D3A;
+    --muted: #6E6D67;
+    --line: #D1CFC5;
+    --line-soft: #E6E3DA;
+    --clay: #C25E3C;
+    --clay-soft: rgba(194, 94, 60, 0.10);
+    --olive: #5E7142;
+    --olive-soft: rgba(94, 113, 66, 0.16);
+    --gold: #9A6B1F;
+
+    --serif: ui-serif, Georgia, 'Times New Roman', serif;
+    --sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+    --radius-panel: 12px;
+    --radius-row: 8px;
+  }
+  html.dark {
+    --ivory: #141413;
+    --surface: #1F1F1D;
+    --surface2: #2A2A28;
+    --oat: #34322C;
+    --ink: #FAF9F5;
+    --body: #D7D5CC;
+    --muted: #9C9B93;
+    --line: #3D3D3A;
+    --line-soft: #2A2A28;
+    --clay: #E89274;
+    --clay-soft: rgba(232, 146, 116, 0.16);
+    --olive: #A6BC82;
+    --olive-soft: rgba(166, 188, 130, 0.18);
+    --gold: #D7B36C;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--ivory);
+    color: var(--body);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.55;
+    padding: 40px 28px 120px;
+    -webkit-font-smoothing: antialiased;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .page { max-width: 980px; margin: 0 auto; }
+
+  /* ---------- top bar ---------- */
+  .topbar { display: flex; align-items: center; gap: 14px; margin-bottom: 34px; }
+  .topbar .spacer { flex: 1; }
+  .auto-pill {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    background: var(--surface2);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 5px 11px;
+  }
+  #themeToggle {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 34px; height: 34px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-row);
+    background: var(--surface);
+    color: var(--body);
+    cursor: pointer;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  #themeToggle:hover { border-color: var(--muted); color: var(--ink); }
+  #themeToggle svg { width: 17px; height: 17px; display: block; }
+  #themeToggle .moon { display: none; }
+  html.dark #themeToggle .sun { display: none; }
+  html.dark #themeToggle .moon { display: block; }
+
+  /* ---------- header ---------- */
+  header.page-head { margin-bottom: 44px; max-width: 760px; }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 38px;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+  .goal-box {
+    background: var(--surface2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-panel);
+    padding: 16px 20px;
+    font-size: 14.5px;
+    color: var(--body);
+  }
+  .goal-box .label {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  /* ---------- summary strip ---------- */
+  .summary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 56px;
+  }
+  @media (max-width: 760px) { .summary { grid-template-columns: repeat(2, 1fr); } }
+  .summary .cell {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-panel);
+    padding: 18px 20px;
+  }
+  .summary .k {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .summary .v { font-size: 17px; color: var(--ink); font-weight: 600; }
+  .summary .v.accent { color: var(--clay); }
+
+  /* ---------- sections ---------- */
+  section { margin-bottom: 56px; }
+  .sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px; }
+  .sec-head .num {
+    font-family: var(--mono);
+    font-size: 12px;
+    background: var(--oat);
+    color: var(--ink);
+    padding: 3px 9px;
+    border-radius: var(--radius-row);
+  }
+  .sec-head h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 26px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .sec-intro { font-size: 14.5px; color: var(--muted); max-width: 700px; margin-bottom: 26px; }
+
+  /* ---------- phases ---------- */
+  .phase {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-panel);
+    margin-bottom: 18px;
+    overflow: hidden;
+  }
+  .phase-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--line-soft);
+    background: var(--surface2);
+  }
+  .phase-head .when {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+  .phase-head h3 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--ink);
+    flex: 1;
+    min-width: 0;
+  }
+
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 4px 10px;
+    border-radius: 999px;
+    flex-shrink: 0;
+  }
+  .status .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .status.done   { background: var(--olive-soft); color: var(--olive); }
+  .status.done .dot   { background: var(--olive); }
+  .status.active { background: var(--clay-soft); color: var(--clay); }
+  .status.active .dot { background: var(--clay); }
+  .status.next   { background: var(--surface2); color: var(--muted); border: 1px solid var(--line); }
+  .status.next .dot   { background: var(--muted); }
+
+  /* task table inside a phase */
+  table.tasks { width: 100%; border-collapse: separate; border-spacing: 0; }
+  table.tasks td {
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--line-soft);
+    font-size: 14px;
+    vertical-align: middle;
+  }
+  table.tasks tr:last-child td { border-bottom: none; }
+  table.tasks tr:hover td { background: var(--surface2); }
+  td.task-name { color: var(--ink); }
+  td.task-name code { font-family: var(--mono); font-size: 12.5px; color: var(--clay); }
+  td.owner {
+    width: 130px;
+    font-size: 13px;
+    color: var(--muted);
+    text-align: right;
+    white-space: nowrap;
+  }
+  td.owner .who { color: var(--body); }
+  td.tstate { width: 96px; }
+  .tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 6px;
+  }
+  .tag.done   { background: var(--olive-soft); color: var(--olive); }
+  .tag.wip    { background: var(--clay-soft); color: var(--clay); }
+  .tag.todo   { background: var(--surface2); color: var(--muted); border: 1px solid var(--line); }
+
+  /* ---------- risks ---------- */
+  .risks {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-panel);
+    overflow: hidden;
+    background: var(--surface);
+  }
+  .risks .row { display: grid; grid-template-columns: 1.6fr 80px 1.6fr; }
+  @media (max-width: 780px) { .risks .row { grid-template-columns: 1fr; } }
+  .risks .row + .row { border-top: 1px solid var(--line); }
+  .risks .cell { padding: 14px 18px; font-size: 13.5px; color: var(--body); }
+  .risks .cell + .cell { border-left: 1px solid var(--line); }
+  @media (max-width: 780px) {
+    .risks .cell + .cell { border-left: none; border-top: 1px dashed var(--line); }
+  }
+  .risks .head {
+    background: var(--surface2);
+    font-weight: 600;
+    color: var(--ink);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .sev {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+  }
+  .sev.high { background: var(--clay-soft); color: var(--clay); }
+  .sev.med  { background: var(--oat); color: var(--ink); }
+  .sev.low  { background: var(--olive-soft); color: var(--olive); }
+
+  /* ---------- open questions ---------- */
+  .open-q { display: flex; flex-direction: column; gap: 14px; max-width: 820px; }
+  .q {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--clay);
+    border-radius: var(--radius-row);
+    padding: 16px 20px;
+  }
+  .q .qt { font-weight: 600; font-size: 15px; color: var(--ink); margin-bottom: 4px; }
+  .q .qd { font-size: 13.5px; color: var(--muted); }
+  .q .who { font-family: var(--mono); font-size: 11.5px; color: var(--muted); margin-top: 8px; }
+
+  /* ---------- footer ---------- */
+  footer {
+    margin-top: 64px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ---------- focus + motion ---------- */
+  a, button, [tabindex] { outline: none; }
+  :focus-visible {
+    outline: 2px solid var(--clay);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      transition: none !important;
+      animation: none !important;
+      scroll-behavior: auto !important;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <div class="topbar">
+      <span class="auto-pill">implementation plan</span>
+      <div class="spacer"></div>
+      <button id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle theme">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+        </svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </div>
+
+    <header class="page-head">
+      <div class="eyebrow">Plan · Acme growth squad</div>
+      <h1>Self-serve onboarding without a sales call</h1>
+      <div class="goal-box">
+        <span class="label">Goal</span>
+        Let a new team go from signup to first shared workspace in under five
+        minutes, with no human in the loop. Ship in four phases, each behind the
+        <code>self_serve_v1</code> flag, nothing user-visible until phase&nbsp;4.
+      </div>
+    </header>
+
+    <div class="summary">
+      <div class="cell"><div class="k">Duration</div><div class="v accent">~3 weeks</div></div>
+      <div class="cell"><div class="k">Squad</div><div class="v">4 people</div></div>
+      <div class="cell"><div class="k">Surfaces</div><div class="v">3 services</div></div>
+      <div class="cell"><div class="k">Flag</div><div class="v">self_serve_v1</div></div>
+    </div>
+
+    <section>
+      <div class="sec-head"><span class="num">01</span><h2>Phases</h2></div>
+      <p class="sec-intro">
+        Each phase is independently reviewable and shippable behind the flag.
+        Owners are accountable, not solely assigned &mdash; pair where it helps.
+      </p>
+
+      <div class="phase">
+        <div class="phase-head">
+          <span class="when">Week&nbsp;1</span>
+          <h3>Phase 1 &middot; Passwordless signup</h3>
+          <span class="status done"><span class="dot"></span>Done</span>
+        </div>
+        <table class="tasks">
+          <tr>
+            <td class="task-name">Email magic-link flow with rate limiting</td>
+            <td class="owner"><span class="who">Priya</span></td>
+            <td class="tstate"><span class="tag done">done</span></td>
+          </tr>
+          <tr>
+            <td class="task-name">Provision a starter workspace on first login</td>
+            <td class="owner"><span class="who">Devon</span></td>
+            <td class="tstate"><span class="tag done">done</span></td>
+          </tr>
+          <tr>
+            <td class="task-name">Audit-log the new signup path</td>
+            <td class="owner"><span class="who">Sam</span></td>
+            <td class="tstate"><span class="tag done">done</span></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="phase">
+        <div class="phase-head">
+          <span class="when">Week&nbsp;1&ndash;2</span>
+          <h3>Phase 2 &middot; Guided first-run checklist</h3>
+          <span class="status active"><span class="dot"></span>In progress</span>
+        </div>
+        <table class="tasks">
+          <tr>
+            <td class="task-name">Checklist component &amp; <code>onboarding_state</code> table</td>
+            <td class="owner"><span class="who">Mira</span></td>
+            <td class="tstate"><span class="tag done">done</span></td>
+          </tr>
+          <tr>
+            <td class="task-name">Wire the three first-run steps to real events</td>
+            <td class="owner"><span class="who">Mira</span></td>
+            <td class="tstate"><span class="tag wip">wip</span></td>
+          </tr>
+          <tr>
+            <td class="task-name">Empty-state copy &amp; illustrations</td>
+            <td class="owner"><span class="who">Priya</span></td>
+            <td class="tstate"><span class="tag wip">wip</span></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="phase">
+        <div class="phase-head">
+          <span class="when">Week&nbsp;2</span>
+          <h3>Phase 3 &middot; Invite teammates inline</h3>
+          <span class="status next"><span class="dot"></span>Next</span>
+        </div>
+        <table class="tasks">
+          <tr>
+            <td class="task-name">Bulk invite by email, pending-seat model</td>
+            <td class="owner"><span class="who">Devon</span></td>
+            <td class="tstate"><span class="tag todo">todo</span></td>
+          </tr>
+          <tr>
+            <td class="task-name">Invite-accept deep link into the workspace</td>
+            <td class="owner"><span class="who">Sam</span></td>
+            <td class="tstate"><span class="tag todo">todo</span></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="phase">
+        <div class="phase-head">
+          <span class="when">Week&nbsp;3</span>
+          <h3>Phase 4 &middot; Flag ramp &amp; instrumentation</h3>
+          <span class="status next"><span class="dot"></span>Next</span>
+        </div>
+        <table class="tasks">
+          <tr>
+            <td class="task-name">Funnel events: signup &rarr; first-share, with drop-off</td>
+            <td class="owner"><span class="who">Mira</span></td>
+            <td class="tstate"><span class="tag todo">todo</span></td>
+          </tr>
+          <tr>
+            <td class="task-name">Ramp <code>self_serve_v1</code>: internal &rarr; 10% &rarr; 100%</td>
+            <td class="owner"><span class="who">Devon</span></td>
+            <td class="tstate"><span class="tag todo">todo</span></td>
+          </tr>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><span class="num">02</span><h2>Risks &amp; mitigations</h2></div>
+      <div class="risks">
+        <div class="row">
+          <div class="cell head">Risk</div>
+          <div class="cell head">Sev</div>
+          <div class="cell head">Mitigation</div>
+        </div>
+        <div class="row">
+          <div class="cell">Magic-link emails land in spam, so signup silently dead-ends.</div>
+          <div class="cell"><span class="sev high">High</span></div>
+          <div class="cell">Warm a dedicated sending domain, monitor deliverability, and fall back to a code-entry path.</div>
+        </div>
+        <div class="row">
+          <div class="cell">Auto-provisioned workspaces pile up from drive-by signups.</div>
+          <div class="cell"><span class="sev med">Med</span></div>
+          <div class="cell">Reap empty workspaces after 14 days of zero activity; exclude any with an accepted invite.</div>
+        </div>
+        <div class="row">
+          <div class="cell">Checklist feels naggy and users dismiss it before the aha moment.</div>
+          <div class="cell"><span class="sev low">Low</span></div>
+          <div class="cell">Collapse after the first completed step; never re-surface once dismissed.</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><span class="num">03</span><h2>Open questions</h2></div>
+      <div class="open-q">
+        <div class="q">
+          <div class="qt">Do we gate invites behind a verified email?</div>
+          <div class="qd">Verifying first is safer but adds a step before the social moment. Leaning toward letting invites go out immediately and verifying the inviter lazily.</div>
+          <div class="who">Decide with · security, before phase 3</div>
+        </div>
+        <div class="q">
+          <div class="qt">What's the starter workspace seeded with?</div>
+          <div class="qd">An empty workspace is a cold start. Proposal: one sample project plus a "delete this when you're ready" banner, so the first screen isn't blank.</div>
+          <div class="who">Decide with · design, before phase 2 ends</div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Owner: growth squad &middot; flag self_serve_v1 &middot; review weekly
+      &nbsp;&mdash;&nbsp; last updated Sep 02 2025
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById('themeToggle').addEventListener('click', function () {
+      const dark = !document.documentElement.classList.contains('dark');
+      document.documentElement.classList.toggle('dark', dark);
+      try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+    });
+  </script>
+</body>
+</html>

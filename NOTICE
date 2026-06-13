@@ -1,0 +1,19 @@
+effective-html
+Copyright (c) 2026 Andrey Zagreev
+Licensed under the MIT License (see LICENSE).
+
+------------------------------------------------------------------------
+Upstream attributions
+------------------------------------------------------------------------
+
+Fork origin — backnotprop/plannotator
+  This repository is forked from https://github.com/backnotprop/plannotator,
+  which provides the skills layout and structure this project builds on.
+
+Bundled example corpus — thariqs/html-effectiveness
+  The html-effectiveness example corpus by Thariq Shihipar is bundled under
+  each skill's references/html-effectiveness/ directory.
+  Source: https://thariqs.github.io/html-effectiveness
+          https://github.com/thariqs/html-effectiveness
+  Licensed under the Apache License, Version 2.0 (see the LICENSE file
+  inside those reference folders).

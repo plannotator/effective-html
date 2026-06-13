@@ -1,0 +1,11 @@
+# Normalize line endings: store and check out LF everywhere.
+# Prevents Windows CRLF normalization from dirtying marketplace clones,
+# which can block in-place git pulls / updates.
+* text=auto eol=lf
+
+*.md   text eol=lf
+*.json text eol=lf
+*.js   text eol=lf
+*.yml  text eol=lf
+*.yaml text eol=lf
+*.sh   text eol=lf

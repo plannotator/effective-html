@@ -25,23 +25,34 @@ Render and annotate your HTML with Plannotator (optional): https://github.com/ba
 
 --- 
 
-## Install
+## Install via Claude Code marketplace
 
 ```bash
-npx skills add plannotator/effective-html
+/plugin marketplace add azagreev/effective-html
+/plugin install effective-html@effective-html
+```
+
+In Cowork: **Customize → Browse plugins → Personal → + → Add marketplace from GitHub → `azagreev/effective-html`**, then install the **effective-html** plugin.
+
+See [docs/installation.md](docs/installation.md) for all install channels (Claude Code / Cowork, skills.sh, and manual copy), plus verify and uninstall steps.
+
+## Install via skills.sh
+
+```bash
+npx skills add azagreev/effective-html
 ```
 
 List available skills first:
 
 ```bash
-npx skills add plannotator/effective-html --list
+npx skills add azagreev/effective-html --list
 ```
 
 Install a specific skill:
 
 ```bash
-npx skills add plannotator/effective-html --skill html-diagram
-npx skills add plannotator/effective-html --skill html-plan
+npx skills add azagreev/effective-html --skill html-diagram
+npx skills add azagreev/effective-html --skill html-plan
 ```
 
 ## Skills
@@ -54,4 +65,7 @@ npx skills add plannotator/effective-html --skill html-plan
 
 Skills live under `skills/<skill-name>/SKILL.md`. Each skill also bundles a copy of the `html-effectiveness` example corpus under `references/html-effectiveness/` so the examples stay local to the skill.
 
-Credit: this repo bundles and uses the `html-effectiveness` examples by Thariq Shihipar: https://thariqs.github.io/html-effectiveness
+## Attribution
+
+- Fork origin: [backnotprop/plannotator](https://github.com/backnotprop/plannotator).
+- Bundled example corpus: this repo bundles and uses the `html-effectiveness` examples by Thariq Shihipar — https://thariqs.github.io/html-effectiveness ([thariqs/html-effectiveness](https://github.com/thariqs/html-effectiveness)).

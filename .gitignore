@@ -1,0 +1,26 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+*~
+.vscode/
+.idea/
+
+# Logs / temp
+*.log
+*.tmp
+
+# Secrets / local env
+.env
+.env.local
+*.key
+
+# Python (engine/)
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Node (if tooling is added later)
+node_modules/
+npm-debug.log*

@@ -53,6 +53,13 @@ This repo is also a [plugin marketplace](https://code.claude.com/docs/en/plugin-
 /plugin install plannotator-effective-html@effective-html
 ```
 
+### As a Codex plugin
+
+```bash
+codex plugin marketplace add plannotator/effective-html
+codex plugin add plannotator-effective-html@effective-html
+```
+
 ## Skills
 
 - `html` - Create an HTML file for whatever the user is describing, matching the effective HTML references.

@@ -1,7 +1,6 @@
 ---
 name: html-diagram
 description: Create a self-contained HTML file for visualizing architecture and understanding the stack with a high-quality SVG diagram. Use when the user wants a full-screen diagram, wants the output to be light on prose, or wants an HTML artifact that is mostly there to make the architecture click fast.
-disable-model-invocation: true
 ---
 
 # HTML Diagram

@@ -1,0 +1,20 @@
+{
+  "name": "effective-html",
+  "interface": {
+    "displayName": "Effective HTML"
+  },
+  "plugins": [
+    {
+      "name": "plannotator-effective-html",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/plannotator/effective-html.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

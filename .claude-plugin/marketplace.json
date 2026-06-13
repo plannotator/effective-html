@@ -11,7 +11,7 @@
         "source": "github",
         "repo": "plannotator/effective-html"
       },
-      "description": "HTML skills for pragmatic visual artifacts — html, html-diagram, and html-plan.",
+      "description": "One effective-html skill that routes between artifact, diagram, and plan modes for pragmatic, self-contained HTML.",
       "homepage": "https://github.com/plannotator/effective-html",
       "repository": "https://github.com/plannotator/effective-html",
       "license": "MIT",

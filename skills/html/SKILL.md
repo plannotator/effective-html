@@ -1,6 +1,7 @@
 ---
 name: html
 description: Create a self-contained HTML file for whatever the user is describing, in the effective HTML style. Use when the user wants an HTML artifact that isn't specifically a diagram or a plan — a report, explainer, comparison, deck, prototype, or anything else best delivered as one HTML file.
+disable-model-invocation: true
 ---
 
 # HTML

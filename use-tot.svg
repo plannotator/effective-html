@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="104" viewBox="0 0 440 104" role="img" aria-label="Want to share your HTML files? Use tot">
+  <!-- offset sticker shadow -->
+  <rect x="14" y="16" width="416" height="82" rx="18" fill="#E48A6E" opacity="0.35"/>
+  <!-- button body -->
+  <rect x="8" y="8" width="416" height="82" rx="18" fill="#1F1F1D" stroke="#E48A6E" stroke-width="2.5"/>
+  <!-- hand-drawn second border, slightly off -->
+  <rect x="12.5" y="12.5" width="407" height="73" rx="14" fill="none" stroke="#3D3D3A" stroke-width="1.5" stroke-dasharray="7 5" transform="rotate(-0.4 216 49)"/>
+  <!-- share-node icon -->
+  <g transform="translate(50,49) rotate(-8)">
+    <!-- connectors -->
+    <path d="M-14,0 L13,-13 M-14,0 L13,13" fill="none" stroke="#FAF9F5" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- nodes -->
+    <circle cx="-18" cy="0" r="7" fill="#D4B36F" stroke="#FAF9F5" stroke-width="2"/>
+    <circle cx="16" cy="-14" r="7" fill="#D4B36F" stroke="#FAF9F5" stroke-width="2"/>
+    <circle cx="16" cy="14" r="7" fill="#D4B36F" stroke="#FAF9F5" stroke-width="2"/>
+  </g>
+  <!-- text -->
+  <text x="96" y="46" font-family="'Comic Sans MS','Comic Neue','Chalkboard SE',cursive" font-size="21" fill="#FAF9F5">
+    share your HTML? use <tspan fill="#E48A6E" font-weight="bold">tot</tspan>
+  </text>
+  <text x="96" y="72" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12.5" fill="#87867F">
+    github.com/plannotator/tot
+  </text>
+  <!-- little arrow doodle -->
+  <path d="M388,38 C 399,42 401,53 392,62" fill="none" stroke="#9DB07C" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M392,62 L390,53 M392,62 L399,57" fill="none" stroke="#9DB07C" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

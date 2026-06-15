@@ -8,11 +8,11 @@ _**Note:** The diagram was made by `Fable 5`, I will create more fable 5 artifac
 [example demo](https://x.com/backnotprop/status/2065479594023829619?s=20)
 
 
-Focused skills for generating self-contained HTML deliverables with a strong visual bias:
+One skill for generating self-contained HTML deliverables with a strong visual bias. It routes to the mode that fits the request:
 
-- `html`: an HTML file for whatever you're describing, in the effective HTML style
-- `html-diagram`: architecture, stack, and systems understanding rendered as full-screen HTML diagrams with high-quality SVG
-- `html-plan`: HTML plan pages in the effective HTML style
+- **Artifact**: an HTML file for whatever you're describing, in the effective HTML style
+- **Diagram**: architecture, stack, and systems understanding rendered as a full-screen HTML diagram with high-quality SVG
+- **Plan**: an HTML plan page in the effective HTML style, kept close to what you wrote
 
 <p align="center">
   <a href="https://github.com/backnotprop/plannotator">
@@ -47,11 +47,10 @@ List available skills first:
 npx skills add plannotator/effective-html --list
 ```
 
-Install a specific skill:
+Install the skill by name:
 
 ```bash
-npx skills add plannotator/effective-html --skill html-diagram
-npx skills add plannotator/effective-html --skill html-plan
+npx skills add plannotator/effective-html --skill effective-html
 ```
 
 ### As a Claude Code plugin
@@ -70,14 +69,16 @@ codex plugin marketplace add plannotator/effective-html
 codex plugin add plannotator-effective-html@effective-html
 ```
 
-## Skills
+## Skill
 
-- `html` - Create an HTML file for whatever the user is describing, matching the effective HTML references.
-- `html-diagram` - Build full-screen HTML architecture and stack diagrams with SVG-first presentation and minimal prose.
-- `html-plan` - HTML plan pages in the effective HTML style.
+`effective-html` reads the request and picks a mode:
+
+- **Artifact** - an HTML file for whatever the user is describing, matching the effective HTML references.
+- **Diagram** - a full-screen HTML architecture or stack diagram, SVG-first, minimal prose. Also draws on `references/architecture-example.html`.
+- **Plan** - an HTML plan page in the effective HTML style.
 
 ## Repository Shape
 
-Skills live under `skills/<skill-name>/SKILL.md`. Each skill also bundles a copy of the `html-effectiveness` example corpus under `references/html-effectiveness/` so the examples stay local to the skill.
+The skill lives at `skills/effective-html/SKILL.md` and bundles the `html-effectiveness` example corpus under `references/html-effectiveness/`, so the examples stay local to the skill.
 
 Credit: this repo bundles and uses the `html-effectiveness` examples by Thariq Shihipar: https://thariqs.github.io/html-effectiveness

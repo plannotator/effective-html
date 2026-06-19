@@ -22,17 +22,6 @@ Focused skills for generating self-contained HTML deliverables with a strong vis
 <p align="center">
 Render and annotate your HTML with Plannotator (optional): https://github.com/backnotprop/plannotator
 </p>
-<br/>
-<p align="center">
-  <a href="https://github.com/plannotator/tot">
-    <img src="./use-tot.svg" width="300" alt="share your HTML? use tot">
-  </a>
-</p>
-
-<p align="center">
-Create instant share links for your HTML files (optional): https://github.com/plannotator/tot<br/> HTML from video: https://tot.page/0CW7xV96XMxnalrzwRl4eQ
-</p>
-
 
 
 ## Install
@@ -69,6 +58,17 @@ This repo is also a [plugin marketplace](https://code.claude.com/docs/en/plugin-
 codex plugin marketplace add plannotator/effective-html
 codex plugin add plannotator-effective-html@effective-html
 ```
+
+<br/>
+<p align="center">
+  <a href="https://github.com/plannotator/tot">
+    <img src="./use-tot.svg" width="300" alt="share your HTML? use tot">
+  </a>
+</p>
+
+<p align="center">
+Create instant share links for your HTML files (optional): https://github.com/plannotator/tot<br/> HTML from video: https://tot.page/0CW7xV96XMxnalrzwRl4eQ
+</p>
 
 ## Skills
 

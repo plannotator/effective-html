@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Workspaces — Architecture</title>
+<script>
+  (function () {
+    const saved = localStorage.getItem('theme');
+    const dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.classList.toggle('dark', dark);
+  })();
+</script>
+<style>
+  :root {
+    --bg: #FAF9F5; --surface: #FFFFFF; --surface2: #F0EEE6;
+    --ink: #141413; --body: #3D3D3A; --muted: #87867F;
+    --line: #D1CFC5; --line-soft: #E6E3DA;
+    --clay: #D97757; --clay-soft: rgba(217,119,87,0.10);
+    --olive: #788C5D; --olive-soft: rgba(120,140,93,0.12);
+    --gold: #C9A45C; --blue: #5B7E96;
+    --zone: rgba(20,20,19,0.025); --zone-line: #D1CFC5;
+    --serif: ui-serif, Georgia, "Times New Roman", serif;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  html.dark {
+    --bg: #141413; --surface: #1F1F1D; --surface2: #2A2A28;
+    --ink: #FAF9F5; --body: #D1CFC5; --muted: #87867F;
+    --line: #3D3D3A; --line-soft: #2A2A28;
+    --clay: #E48A6E; --clay-soft: rgba(228,138,110,0.14);
+    --olive: #9DB07C; --olive-soft: rgba(157,176,124,0.16);
+    --gold: #D4B36F; --blue: #7FA3BC;
+    --zone: rgba(250,249,245,0.03); --zone-line: #3D3D3A;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--bg); color: var(--body); font-family: var(--sans);
+    -webkit-font-smoothing: antialiased; display: flex; flex-direction: column; overflow: hidden;
+  }
+
+  /* ── top bar ─────────────────────────────── */
+  .bar {
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+    padding: 12px 20px; border-bottom: 1px solid var(--line-soft); flex: none;
+  }
+  .bar h1 { font-family: var(--serif); font-weight: 500; font-size: 19px; color: var(--ink); letter-spacing: -0.01em; }
+  .bar .sub { font-family: var(--mono); font-size: 10.5px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+  .spacer { flex: 1; }
+  .chips { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em;
+    padding: 5px 11px; border: 1px solid var(--line); border-radius: 999px;
+    background: transparent; color: var(--muted); cursor: pointer; transition: all .15s ease;
+  }
+  .chip:hover { color: var(--ink); border-color: var(--muted); }
+  .chip.on { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+  #themeToggle {
+    font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.08em;
+    padding: 5px 10px; border: 1px solid var(--line); border-radius: 6px;
+    background: transparent; color: var(--muted); cursor: pointer;
+  }
+  #themeToggle:hover { color: var(--ink); border-color: var(--muted); }
+
+  /* ── stage ───────────────────────────────── */
+  .stage { flex: 1; position: relative; min-height: 0; }
+  .stage svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+  /* zones */
+  .zone rect { fill: var(--zone); stroke: var(--zone-line); stroke-width: 1; stroke-dasharray: 5 5; rx: 16; }
+  .zone .ztitle { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; fill: var(--muted); }
+  .zone .zsub { font-family: var(--mono); font-size: 10.5px; fill: var(--muted); opacity: 0.75; }
+
+  /* nodes */
+  .node { cursor: pointer; }
+  .node rect { fill: var(--surface); stroke: var(--line); stroke-width: 1.5; rx: 10; transition: stroke .15s ease, filter .15s ease; }
+  .node:hover rect { stroke: var(--muted); }
+  .node:focus { outline: none; }
+  .node:focus-visible rect { stroke: var(--blue); stroke-width: 3; }
+  .node.sel rect { stroke: var(--clay) !important; stroke-width: 2; }
+  .node .t  { font-family: var(--sans); font-size: 14.5px; font-weight: 600; fill: var(--ink); pointer-events: none; }
+  .node .m  { font-family: var(--mono); font-size: 11px; fill: var(--muted); pointer-events: none; }
+  .node .k  { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; fill: var(--clay); pointer-events: none; }
+  .node.gate rect { fill: var(--clay-soft); stroke: var(--clay); }
+  .node.store rect { fill: var(--surface2); }
+  .node.do rect { fill: var(--olive-soft); stroke: var(--olive); }
+  .node.ext rect { stroke-dasharray: 6 3; }
+
+  /* edges */
+  .edge { stroke: var(--muted); stroke-width: 1.6; fill: none; marker-end: url(#a-mut); transition: opacity .2s ease, stroke .2s ease; }
+  .edge.dash { stroke-dasharray: 5 4; }
+  .edge.ws { stroke-width: 2; }
+  .elbl { font-family: var(--mono); font-size: 10.5px; fill: var(--muted); transition: opacity .2s ease; }
+
+  /* flow highlighting */
+  .stage.flowing .edge { opacity: 0.13; }
+  .stage.flowing .elbl { opacity: 0.13; }
+  .stage.flowing .node { opacity: 0.30; }
+  .stage.flowing .zone { opacity: 0.45; }
+  .stage.flowing .edge.lit {
+    opacity: 1; stroke: var(--clay); marker-end: url(#a-clay);
+    stroke-dasharray: 7 5; animation: march 0.9s linear infinite;
+  }
+  .stage.flowing .elbl.lit { opacity: 1; fill: var(--clay); }
+  .stage.flowing .node.lit { opacity: 1; }
+  .stage.flowing .node:focus { opacity: 1; }
+  .stage.flowing .node.lit rect { stroke: var(--clay); }
+  @keyframes march { to { stroke-dashoffset: -12; } }
+  @media (prefers-reduced-motion: reduce) { .stage.flowing .edge.lit { animation: none; } }
+
+  .badge { font-family: var(--mono); font-size: 11px; font-weight: 700; }
+  .badge circle { fill: var(--clay); }
+  .badge text { fill: var(--bg); }
+  .stage:not(.flowing) .badge { display: none; }
+
+  /* ── floating cards ──────────────────────── */
+  .card {
+    position: absolute; max-width: 360px;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    padding: 14px 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+  }
+  #detail { right: 16px; bottom: 16px; width: 340px; }
+  #detail h3 { font-family: var(--serif); font-weight: 500; font-size: 17px; color: var(--ink); margin-bottom: 2px; }
+  #detail .meta { font-family: var(--mono); font-size: 10.5px; color: var(--muted); margin-bottom: 8px; }
+  #detail p { font-size: 12.5px; line-height: 1.55; }
+  #detail p code, #flowcap code { font-family: var(--mono); font-size: 11px; color: var(--clay); }
+  #flowcap { left: 16px; bottom: 16px; max-width: 460px; display: none; }
+  #flowcap.show { display: block; }
+  #flowcap .fname { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--clay); margin-bottom: 6px; }
+  #flowcap ol { margin-left: 18px; }
+  #flowcap li { font-size: 12.5px; line-height: 1.55; }
+  .src { position: absolute; top: 10px; right: 16px; font-family: var(--mono); font-size: 10px; color: var(--muted); opacity: 0.8; }
+  @media (max-width: 880px) {
+    body { overflow: auto; }
+    .stage { min-height: 70vh; }
+    #detail { position: static; width: auto; margin: 10px 16px; }
+    #flowcap { position: static; margin: 0 16px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div>
+    <h1>Workspaces — the stack</h1>
+    <div class="sub">two workers · four backends · one access gate</div>
+  </div>
+  <div class="spacer"></div>
+  <div class="chips" id="chips">
+    <button class="chip on" data-flow="all" aria-pressed="true">Everything</button>
+    <button class="chip" data-flow="create" aria-pressed="false">Create</button>
+    <button class="chip" data-flow="live" aria-pressed="false">Live edit</button>
+    <button class="chip" data-flow="agent" aria-pressed="false">Agent edit</button>
+    <button class="chip" data-flow="read" aria-pressed="false">Public read</button>
+    <button class="chip" data-flow="login" aria-pressed="false">Login</button>
+    <button class="chip" data-flow="render" aria-pressed="false">HTML render</button>
+  </div>
+  <button id="themeToggle">Theme</button>
+</div>
+
+<div class="stage" id="stage">
+<svg viewBox="0 0 1560 980" preserveAspectRatio="xMidYMid meet" role="group" aria-label="Interactive Workspaces platform architecture diagram">
+  <defs>
+    <marker id="a-mut" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" style="fill: var(--muted)"/>
+    </marker>
+    <marker id="a-clay" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" style="fill: var(--clay)"/>
+    </marker>
+  </defs>
+  <!-- ── zones ─────────────────────────────── -->
+  <g class="zone" id="z-clients">
+    <rect x="40" y="120" width="250" height="600"/>
+    <text class="ztitle" x="60" y="150">Clients</text>
+    <text class="zsub" x="60" y="168">same API for all three</text>
+  </g>
+  <g class="zone" id="z-app">
+    <rect x="330" y="120" width="470" height="640"/>
+    <text class="ztitle" x="350" y="150">App Worker</text>
+    <text class="zsub" x="350" y="168">workspaces.plannotator.ai · Hono · one deploy</text>
+  </g>
+  <g class="zone" id="z-do">
+    <rect x="840" y="400" width="260" height="350"/>
+    <text class="ztitle" x="860" y="428">Durable Objects</text>
+  </g>
+  <g class="zone" id="z-back">
+    <rect x="1140" y="120" width="380" height="640"/>
+    <text class="ztitle" x="1160" y="150">Backends</text>
+    <text class="zsub" x="1160" y="168">one source of truth per data type</text>
+  </g>
+
+  <!-- ── edges ─────────────────────────────── -->
+  <path class="edge" id="e-spa"      d="M265,206 C 310,204 322,212 355,212"/>
+  <path class="edge" id="e-createB"  d="M265,240 C 312,248 318,290 355,296"/>
+  <path class="edge" id="e-createA"  d="M265,372 C 315,362 318,310 355,308"/>
+  <path class="edge ws" id="e-ws"    d="M265,258 C 308,296 308,470 355,515"/>
+  <path class="edge" id="e-authres"  d="M555,300 L575,300"/>
+  <path class="edge" id="e-reshand"  d="M675,335 L675,385"/>
+  <path class="edge" id="e-handd1"   d="M775,415 C 950,415 1040,335 1165,330"/>
+  <path class="edge" id="e-handbr"   d="M675,455 L675,505"/>
+  <path class="edge" id="e-brdo"     d="M775,537 L865,537"/>
+  <path class="edge" id="e-pardo"    d="M455,569 C 455,600 770,602 812,588 C 845,576 852,568 865,562"/>
+  <path class="edge" id="e-docoord"  d="M970,575 L970,620"/>
+  <path class="edge" id="e-coordart" d="M1075,650 C 1115,650 1135,500 1165,478"/>
+  <path class="edge" id="e-coordd1"  d="M1075,690 C 1135,690 1148,392 1165,350"/>
+  <path class="edge" id="e-viss"     d="M265,542 C 310,548 315,630 355,650"/>
+  <path class="edge" id="e-skv"      d="M775,672 C 950,800 1110,790 1165,640"/>
+  <path class="edge dash" id="e-kvart" d="M1330,560 L1330,520"/>
+  <path class="edge" id="e-authwos"  d="M775,205 C 950,186 1040,186 1165,196"/>
+  <path class="edge dash" id="e-jwks" d="M455,265 C 480,247 900,242 1165,228"/>
+  <path class="edge dash" id="e-iframe" d="M115,273 C 75,420 70,852 355,852"/>
+  <path class="edge" id="e-ucart"    d="M775,845 C 1020,845 1130,690 1165,505"/>
+  <path class="edge" id="e-handr2"   d="M775,450 C 900,450 940,597 1000,597 C 1060,597 1130,700 1165,705"/>
+  <path class="edge" id="e-ucr2"     d="M775,868 C 1000,905 1130,815 1165,735"/>
+
+  <!-- edge labels -->
+  <text class="elbl" data-e="e-spa" x="296" y="192">loads the app</text>
+  <text class="elbl" data-e="e-createA" x="280" y="396">Bearer wsk_live_…</text>
+  <text class="elbl" data-e="e-ws" x="320" y="444">WebSocket · Yjs</text>
+  <text class="elbl" data-e="e-handd1" x="935" y="380" text-anchor="middle">metadata reads / writes</text>
+  <text class="elbl" data-e="e-brdo" x="820" y="526" text-anchor="middle">init-safe</text>
+  <text class="elbl" data-e="e-pardo" x="640" y="592" text-anchor="middle">upgrade → same DO</text>
+  <text class="elbl" data-e="e-docoord" x="958" y="604" text-anchor="end">checkpoint · 2–10s debounce</text>
+  <text class="elbl" data-e="e-coordart" x="1155" y="466" text-anchor="end">git push</text>
+  <text class="elbl" data-e="e-coordd1" x="1152" y="372" text-anchor="end">commits → D1</text>
+  <text class="elbl" data-e="e-skv" x="965" y="795" text-anchor="middle">pointer check + cached body</text>
+  <text class="elbl" data-e="e-kvart" x="1342" y="545">cold miss · readAt(sha)</text>
+  <text class="elbl" data-e="e-authwos" x="960" y="176" text-anchor="middle">hosted login redirect</text>
+  <text class="elbl" data-e="e-jwks" x="920" y="226" text-anchor="middle">JWKS · verified at the edge</text>
+  <text class="elbl" data-e="e-iframe" x="150" y="838">sandboxed iframe</text>
+  <text class="elbl" data-e="e-ucart" x="980" y="838" text-anchor="middle">reads blobs @sha</text>
+  <text class="elbl" data-e="e-handr2" x="940" y="588" text-anchor="middle">image upload / read</text>
+  <text class="elbl" data-e="e-ucr2" x="1000" y="912" text-anchor="middle">image bytes (hash-pinned)</text>
+  <!-- ── nodes: clients ────────────────────── -->
+  <g class="node" data-k="browser">
+    <rect x="65" y="178" width="200" height="95"/>
+    <text class="t" x="85" y="208">Browser</text>
+    <text class="m" x="85" y="230">Vite + React SPA</text>
+    <text class="m" x="85" y="248">session cookie · WebSocket</text>
+  </g>
+  <g class="node" data-k="agent">
+    <rect x="65" y="330" width="200" height="95"/>
+    <text class="t" x="85" y="360">Agent / CLI</text>
+    <text class="m" x="85" y="382">curl + API key</text>
+    <text class="m" x="85" y="400">same /v1 surface, HTTP only</text>
+  </g>
+  <g class="node" data-k="visitor">
+    <rect x="65" y="500" width="200" height="85"/>
+    <text class="t" x="85" y="530">Anyone with a link</text>
+    <text class="m" x="85" y="552">no account · no cookie</text>
+    <text class="m" x="85" y="570">the link is the keys</text>
+  </g>
+
+  <!-- ── nodes: app worker ─────────────────── -->
+  <g class="node" data-k="spa">
+    <rect x="355" y="185" width="200" height="60"/>
+    <text class="t" x="375" y="210">Static assets</text>
+    <text class="m" x="375" y="230">SPA shell · edge-cached</text>
+  </g>
+  <g class="node" data-k="authroutes">
+    <rect x="575" y="185" width="200" height="60"/>
+    <text class="t" x="595" y="210">/auth/*</text>
+    <text class="m" x="595" y="230">login · callback · logout</text>
+  </g>
+  <g class="node" data-k="authenticate">
+    <rect x="355" y="265" width="200" height="70"/>
+    <text class="t" x="375" y="292">authenticate</text>
+    <text class="m" x="375" y="312">session | api key | anon</text>
+    <text class="m" x="375" y="326">→ one Identity</text>
+  </g>
+  <g class="node gate" data-k="resolve">
+    <rect x="575" y="265" width="200" height="70"/>
+    <text class="t" x="595" y="292">resolveAccess()</text>
+    <text class="k" x="595" y="312">the one gate</text>
+    <text class="m" x="595" y="326">open·public·private·org</text>
+  </g>
+  <g class="node" data-k="handlers">
+    <rect x="355" y="385" width="420" height="70"/>
+    <text class="t" x="375" y="412">/v1 route handlers</text>
+    <text class="m" x="375" y="434">documents · workspaces · comments · versions · keys · me</text>
+  </g>
+  <g class="node" data-k="parties">
+    <rect x="355" y="505" width="200" height="64"/>
+    <text class="t" x="375" y="530">/parties/* WS door</text>
+    <text class="m" x="375" y="552">onBeforeConnect → gate</text>
+  </g>
+  <g class="node" data-k="bridge">
+    <rect x="575" y="505" width="200" height="64"/>
+    <text class="t" x="595" y="530">agent edit bridge</text>
+    <text class="m" x="595" y="552">applyAgentEdit() RPC</text>
+  </g>
+  <g class="node" data-k="spub">
+    <rect x="355" y="625" width="420" height="64"/>
+    <text class="t" x="375" y="650">/s/* public reads</text>
+    <text class="m" x="375" y="672">cookieless · cacheable · never mounts authenticate</text>
+  </g>
+
+  <!-- ── nodes: durable objects ────────────── -->
+  <g class="node do" data-k="docdo">
+    <rect x="865" y="445" width="210" height="130"/>
+    <text class="t" x="885" y="475">Document DO</text>
+    <text class="m" x="885" y="497">one per document</text>
+    <text class="m" x="885" y="515">Yjs merge · live fan-out</text>
+    <text class="m" x="885" y="533">SQLite hot tier</text>
+    <text class="m" x="885" y="555">humans + agents, one writer</text>
+  </g>
+  <g class="node do" data-k="coorddo">
+    <rect x="865" y="620" width="210" height="110"/>
+    <text class="t" x="885" y="650">Workspace coordinator</text>
+    <text class="m" x="885" y="672">one per workspace · lazy</text>
+    <text class="m" x="885" y="690">sole pusher to the repo</text>
+    <text class="m" x="885" y="708">expiry alarm</text>
+  </g>
+
+  <!-- ── nodes: backends ───────────────────── -->
+  <g class="node ext" data-k="workos">
+    <rect x="1165" y="178" width="330" height="80"/>
+    <text class="t" x="1185" y="208">WorkOS</text>
+    <text class="m" x="1185" y="230">identity · hosted AuthKit · orgs</text>
+    <text class="m" x="1185" y="246">we store only IDs</text>
+  </g>
+  <g class="node store" data-k="d1">
+    <rect x="1165" y="280" width="330" height="100"/>
+    <text class="t" x="1185" y="310">D1</text>
+    <text class="m" x="1185" y="332">metadata source of truth</text>
+    <text class="m" x="1185" y="350">workspaces · documents · annotations</text>
+    <text class="m" x="1185" y="366">api_keys · commits projection</text>
+  </g>
+  <g class="node store" data-k="artifacts">
+    <rect x="1165" y="420" width="330" height="100"/>
+    <text class="t" x="1185" y="450">Cloudflare Artifacts</text>
+    <text class="m" x="1185" y="472">content + version history</text>
+    <text class="m" x="1185" y="490">one git repo per workspace</text>
+    <text class="m" x="1185" y="506">docs as files · version = blob SHA</text>
+  </g>
+  <g class="node store" data-k="kv">
+    <rect x="1165" y="560" width="330" height="100"/>
+    <text class="t" x="1185" y="590">KV + Cache API</text>
+    <text class="m" x="1185" y="612">visibility pointer (fail-closed)</text>
+    <text class="m" x="1185" y="630">public body cache · JWKS cache</text>
+    <text class="m" x="1185" y="646">reconstructible only — never truth</text>
+  </g>
+  <g class="node store" data-k="r2">
+    <rect x="1165" y="680" width="330" height="70"/>
+    <text class="t" x="1185" y="706">R2</text>
+    <text class="m" x="1185" y="728">image/asset bytes · per-workspace prefix</text>
+    <text class="m" x="1185" y="744">content-hash keys · written once, never mutated</text>
+  </g>
+
+  <!-- ── usercontent worker ────────────────── -->
+  <g class="node ext" data-k="usercontent">
+    <rect x="355" y="810" width="420" height="80"/>
+    <text class="t" x="375" y="838">usercontent Worker</text>
+    <text class="m" x="375" y="858">separate domain · cookieless</text>
+    <text class="m" x="375" y="874">untrusted HTML can never touch a login</text>
+  </g>
+</svg>
+
+  <div class="src">research/ARCHITECTURE.md v2 · spec.yaml 0.13.0</div>
+
+  <div class="card" id="flowcap" role="status" aria-live="polite" aria-atomic="true">
+    <div class="fname" id="f-name"></div>
+    <ol id="f-steps"></ol>
+  </div>
+
+  <div class="card" id="detail" role="region" aria-labelledby="d-title" aria-live="polite" aria-atomic="true">
+    <h3 id="d-title">Click anything</h3>
+    <div class="meta" id="d-meta">node detail</div>
+    <p id="d-body">Every box is clickable. The chips up top light up the request paths — Create, Live edit, Agent edit, Public read, Login, HTML render.</p>
+  </div>
+</div>
+<script>
+const DETAIL = {
+  browser:   { t:"Browser", m:"client · session cookie", b:"The Vite+React SPA, served by the same Worker as the API. Logged-in or anonymous, it's <b>one app</b> — login only unlocks features. Live editing rides a WebSocket per open document." },
+  agent:     { t:"Agent / CLI", m:"client · Bearer wsk_live_…", b:"Claude Code, curl, scripts. <b>Same endpoints, same gate, same documents</b> as the UI — an agent edits over HTTP and its change merges live into the same Yjs doc humans are typing in." },
+  visitor:   { t:"Anyone with a link", m:"client · no credential", b:"The growth engine. An <code>open</code> workspace's link grants view+edit with no account; <code>public</code> grants view. No tokens, no claim — the link is the keys." },
+  spa:       { t:"Static assets", m:"app worker · edge-cached", b:"The SPA shell. <code>run_worker_first</code> pins <code>/v1 /s /auth /parties</code> to the Worker so API calls never fall through to <code>index.html</code>." },
+  authroutes:{ t:"/auth/*", m:"app worker · browser-only", b:"Thin redirects to WorkOS hosted login; the callback seals an encrypted session cookie. Scripts never come here — they use API keys." },
+  authenticate:{ t:"authenticate", m:"middleware · one identity", b:"Normalizes session cookie / bearer key / nothing into <b>one Identity</b>. Sessions verify against a cached JWKS (zero WorkOS calls per request); keys are one indexed D1 hash lookup." },
+  resolve:   { t:"resolveAccess()", m:"the ONE authorization gate", b:"A pure function — workspace row + identity → view / edit / no (and 404 hides existence). HTTP routes, the WebSocket door, and the agent bridge all call <b>this same function</b>. Nothing else decides access." },
+  handlers:  { t:"/v1 route handlers", m:"Hono · JSON + markdown", b:"The whole product surface: documents, folder-tree workspaces, comments, version history & restore, duplicate, API keys, <code>/v1/me</code>. Everything the UI can do, an agent can do here." },
+  parties:   { t:"/parties/* WS door", m:"WebSocket upgrade", b:"Humans connect here for live editing. <code>onBeforeConnect</code> resolves doc → workspace, runs the same gate, then hands the socket to that document's DO. Cookie-session only by design (agents use HTTP)." },
+  bridge:    { t:"Agent edit bridge", m:"getServerByName().applyAgentEdit()", b:"After the gate passes, an agent's PUT/PATCH bridges into the <b>same Document DO</b> via init-safe RPC. The edit merges through Yjs and broadcasts to live editors instantly — one writer, no second path." },
+  spub:      { t:"/s/* public reads", m:"cookieless · cacheable", b:"The hot path. Never mounts authenticate, never wakes a DO: a KV visibility pointer gates (fail-closed), then the body serves from edge cache. Checkpoint-fresh (~10s), like Google Docs published links." },
+  docdo:     { t:"Document DO", m:"durable object · one per document", b:"The live document. Browsers sync over WebSocket, agents write over RPC — <b>all merge in one Yjs doc</b>. SQLite hot tier makes edits durable between checkpoints; debounced checkpoints flow to the coordinator." },
+  coorddo:   { t:"Workspace coordinator", m:"durable object · one per workspace", b:"Born lazily at the first save. The <b>only thing that pushes to the workspace's git repo</b> (structural single-writer), updates the D1 commits projection inline, and owns the expiry alarm. Cold during browsing." },
+  workos:    { t:"WorkOS", m:"external · identity", b:"Hosted login (email, Google, GitHub), users, organizations. We mirror nothing but IDs; membership and org come from the verified JWT. SSO/SCIM are a config flip later, not a rewrite." },
+  d1:        { t:"D1", m:"SQL · metadata source of truth", b:"One database: workspaces (ownership + visibility), documents (paths), annotations, hashed API keys, and the commits projection (history keyed by <b>document id</b>, so renames never lose it)." },
+  artifacts: { t:"Cloudflare Artifacts", m:"git · content source of truth", b:"One repo per workspace; each document is a file. Every save-point is a commit; the API's <code>version</code> is the file's content fingerprint (blob SHA). History, restore, and <code>?version=</code> reads all come from here." },
+  kv:        { t:"KV + Cache API", m:"cache · reconstructible only", b:"The visibility pointer (checked before any cached body — switch-to-private fails closed), the public body cache, and the JWKS cache. Nothing here is ever a source of truth." },
+  r2:        { t:"R2", m:"object storage · asset bytes (slice 7)", b:"Images live here — keyed <code>{workspace}/{content-hash}</code>, written once, never mutated; delete the workspace, delete the prefix. Chosen over git for bytes on cost (Artifacts is 33× on storage and ops, and git history never frees a byte). Served hash-pinned through the usercontent worker — immutable, edge-cached forever." },
+  usercontent:{ t:"usercontent Worker", m:"separate registrable domain", b:"Serves rendered/authored HTML from a cookieless second origin, embedded in the app as a sandboxed iframe. Untrusted HTML runs code — origin isolation means it can never reach anyone's session. Non-retrofittable, so it ships day one." },
+};
+
+const FLOWS = {
+  create: {
+    name: "Create — no signup wall",
+    edges: ["e-createA","e-authres","e-reshand","e-handd1"],
+    nodes: ["agent","browser","authenticate","resolve","handlers","d1"],
+    steps: ["<code>POST /v1/documents</code> — anonymous or with a key","One D1 batch insert: workspace + document rows","<code>201</code> with the share link. No DO, no repo yet — <code>version: null</code> until the first save"]
+  },
+  live: {
+    name: "Live edit — human in the browser",
+    edges: ["e-spa","e-ws","e-pardo","e-docoord","e-coordart","e-coordd1"],
+    nodes: ["browser","spa","parties","docdo","coorddo","artifacts","d1"],
+    steps: ["SPA opens a WebSocket per document","The door runs the same gate, hands the socket to the Document DO","Keystrokes merge via Yjs; SQLite makes them durable","Every 2–10s the coordinator commits a save-point to git"]
+  },
+  agent: {
+    name: "Agent edit — curl as a collaborator",
+    edges: ["e-createA","e-authres","e-reshand","e-handbr","e-brdo","e-docoord","e-coordart","e-coordd1"],
+    nodes: ["agent","authenticate","resolve","handlers","bridge","docdo","coorddo","artifacts","d1"],
+    steps: ["<code>PUT /v1/…/documents/{id}</code> with a bearer key","Same gate as everyone, then an init-safe RPC into the document's DO","The edit Yjs-merges and broadcasts to live humans instantly","<code>If-Match</code> compares against the live content — no polling, honest <code>412</code>s"]
+  },
+  read: {
+    name: "Public read — the growth engine",
+    edges: ["e-viss","e-skv","e-kvart"],
+    nodes: ["visitor","spub","kv","artifacts"],
+    steps: ["<code>GET /s/{slug}</code> — no cookie, no auth, no DO","KV pointer says open/public (fail-closed on private)","Body serves from edge cache; cold miss reads the git blob once"]
+  },
+  login: {
+    name: "Login — hosted, sealed, edge-verified",
+    edges: ["e-createB","e-authwos","e-jwks"],
+    nodes: ["browser","authroutes","authenticate","workos"],
+    steps: ["<code>/auth/login</code> redirects to WorkOS hosted sign-in","Callback seals an encrypted session cookie","Every later request verifies the JWT against a cached JWKS — zero WorkOS calls on the hot path"]
+  },
+  render: {
+    name: "HTML render — untrusted code, isolated",
+    edges: ["e-iframe","e-ucart","e-ucr2"],
+    nodes: ["browser","usercontent","artifacts","r2"],
+    steps: ["The app embeds <code>rendered_url</code> as a sandboxed iframe","A cookieless Worker on a separate domain serves the HTML","Cross-origin + sandbox: the document's code can never touch a login"]
+  }
+};
+
+const stage = document.getElementById('stage');
+const nodes = document.querySelectorAll('.node');
+const edges = document.querySelectorAll('.edge');
+const elbls = document.querySelectorAll('.elbl');
+const chips = document.querySelectorAll('.chip');
+const fcap = document.getElementById('flowcap');
+
+function setFlow(key) {
+  chips.forEach(c => {
+    const selected = c.dataset.flow === key;
+    c.classList.toggle('on', selected);
+    c.setAttribute('aria-pressed', String(selected));
+  });
+  edges.forEach(e => e.classList.remove('lit'));
+  elbls.forEach(l => l.classList.remove('lit'));
+  nodes.forEach(n => n.classList.remove('lit'));
+  if (key === 'all') { stage.classList.remove('flowing'); fcap.classList.remove('show'); return; }
+  const f = FLOWS[key];
+  stage.classList.add('flowing');
+  f.edges.forEach(id => document.getElementById(id)?.classList.add('lit'));
+  elbls.forEach(l => { if (f.edges.includes(l.dataset.e)) l.classList.add('lit'); });
+  f.nodes.forEach(k => document.querySelector(`.node[data-k="${k}"]`)?.classList.add('lit'));
+  document.getElementById('f-name').textContent = f.name;
+  document.getElementById('f-steps').innerHTML = f.steps.map(s => `<li>${s}</li>`).join('');
+  fcap.classList.add('show');
+}
+chips.forEach(c => c.addEventListener('click', () => setFlow(c.dataset.flow)));
+
+function selectNode(n) {
+  nodes.forEach(x => x.classList.remove('sel'));
+  n.classList.add('sel');
+  const d = DETAIL[n.dataset.k];
+  if (!d) return;
+  document.getElementById('d-title').textContent = d.t;
+  document.getElementById('d-meta').textContent = d.m;
+  document.getElementById('d-body').innerHTML = d.b;
+}
+
+nodes.forEach(n => {
+  const d = DETAIL[n.dataset.k];
+  if (d) {
+    n.setAttribute('tabindex', '0');
+    n.setAttribute('role', 'button');
+    n.setAttribute('aria-label', `${d.t}. ${d.m}`);
+  }
+  n.addEventListener('click', () => selectNode(n));
+  n.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      selectNode(n);
+    }
+  });
+});
+
+document.getElementById('themeToggle').addEventListener('click', () => {
+  const dark = !document.documentElement.classList.contains('dark');
+  document.documentElement.classList.toggle('dark', dark);
+  localStorage.setItem('theme', dark ? 'dark' : 'light');
+});
+</script>
+</body>
+</html>

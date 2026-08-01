@@ -1,0 +1,6 @@
+{
+  "name": "Field Guide Spread",
+  "mode": "built-in image_gen",
+  "promptFile": "landing-field-guide-spread.prompt.txt",
+  "approved": false
+}

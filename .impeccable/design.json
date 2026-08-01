@@ -1,0 +1,514 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-31T15:55:19Z",
+  "title": "Design System: Effective HTML — Working Atlas",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "neutral",
+        "displayName": "Working Ink",
+        "canonical": "#141413",
+        "tonalRamp": [
+          "oklch(15% 0.002 106.6)",
+          "oklch(27% 0.002 106.6)",
+          "oklch(39% 0.002 106.6)",
+          "oklch(51% 0.002 106.6)",
+          "oklch(63% 0.002 106.6)",
+          "oklch(75% 0.002 106.6)",
+          "oklch(87% 0.002 106.6)",
+          "oklch(95% 0.002 106.6)"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Soft Ink",
+        "canonical": "#2A2926",
+        "tonalRamp": [
+          "oklch(15% 0.006 91.6)",
+          "oklch(27% 0.006 91.6)",
+          "oklch(39% 0.006 91.6)",
+          "oklch(51% 0.006 91.6)",
+          "oklch(63% 0.006 91.6)",
+          "oklch(75% 0.006 91.6)",
+          "oklch(87% 0.006 91.6)",
+          "oklch(95% 0.006 91.6)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Warm Paper",
+        "canonical": "#F3E6D2",
+        "tonalRamp": [
+          "oklch(15% 0.030 78.8)",
+          "oklch(27% 0.030 78.8)",
+          "oklch(39% 0.030 78.8)",
+          "oklch(51% 0.030 78.8)",
+          "oklch(63% 0.030 78.8)",
+          "oklch(75% 0.030 78.8)",
+          "oklch(87% 0.030 78.8)",
+          "oklch(95% 0.030 78.8)"
+        ]
+      },
+      "paper-bright": {
+        "role": "neutral",
+        "displayName": "Bright Paper",
+        "canonical": "#FFF9EF",
+        "tonalRamp": [
+          "oklch(15% 0.015 80.7)",
+          "oklch(27% 0.015 80.7)",
+          "oklch(39% 0.015 80.7)",
+          "oklch(51% 0.015 80.7)",
+          "oklch(63% 0.015 80.7)",
+          "oklch(75% 0.015 80.7)",
+          "oklch(87% 0.015 80.7)",
+          "oklch(95% 0.015 80.7)"
+        ]
+      },
+      "paper-muted": {
+        "role": "neutral",
+        "displayName": "Muted Paper",
+        "canonical": "#DED1BE",
+        "tonalRamp": [
+          "oklch(15% 0.029 77.5)",
+          "oklch(27% 0.029 77.5)",
+          "oklch(39% 0.029 77.5)",
+          "oklch(51% 0.029 77.5)",
+          "oklch(63% 0.029 77.5)",
+          "oklch(75% 0.029 77.5)",
+          "oklch(87% 0.029 77.5)",
+          "oklch(95% 0.029 77.5)"
+        ]
+      },
+      "paper-edge": {
+        "role": "neutral",
+        "displayName": "Paper Edge",
+        "canonical": "#D6B995",
+        "tonalRamp": [
+          "oklch(15% 0.059 72.8)",
+          "oklch(27% 0.059 72.8)",
+          "oklch(39% 0.059 72.8)",
+          "oklch(51% 0.059 72.8)",
+          "oklch(63% 0.059 72.8)",
+          "oklch(75% 0.059 72.8)",
+          "oklch(87% 0.059 72.8)",
+          "oklch(95% 0.059 72.8)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Line",
+        "canonical": "#B9AE9D",
+        "tonalRamp": [
+          "oklch(15% 0.027 78.9)",
+          "oklch(27% 0.027 78.9)",
+          "oklch(39% 0.027 78.9)",
+          "oklch(51% 0.027 78.9)",
+          "oklch(63% 0.027 78.9)",
+          "oklch(75% 0.027 78.9)",
+          "oklch(87% 0.027 78.9)",
+          "oklch(95% 0.027 78.9)"
+        ]
+      },
+      "text-muted": {
+        "role": "neutral",
+        "displayName": "Muted Text",
+        "canonical": "#6E675E",
+        "tonalRamp": [
+          "oklch(15% 0.016 74.3)",
+          "oklch(27% 0.016 74.3)",
+          "oklch(39% 0.016 74.3)",
+          "oklch(51% 0.016 74.3)",
+          "oklch(63% 0.016 74.3)",
+          "oklch(75% 0.016 74.3)",
+          "oklch(87% 0.016 74.3)",
+          "oklch(95% 0.016 74.3)"
+        ]
+      },
+      "cobalt": {
+        "role": "primary",
+        "displayName": "Structural Cobalt",
+        "canonical": "#1649D8",
+        "tonalRamp": [
+          "oklch(15% 0.224 264.1)",
+          "oklch(27% 0.224 264.1)",
+          "oklch(39% 0.224 264.1)",
+          "oklch(51% 0.224 264.1)",
+          "oklch(63% 0.224 264.1)",
+          "oklch(75% 0.224 264.1)",
+          "oklch(87% 0.224 264.1)",
+          "oklch(95% 0.224 264.1)"
+        ]
+      },
+      "lilac": {
+        "role": "secondary",
+        "displayName": "Exploratory Lilac",
+        "canonical": "#A884E8",
+        "tonalRamp": [
+          "oklch(15% 0.147 299.1)",
+          "oklch(27% 0.147 299.1)",
+          "oklch(39% 0.147 299.1)",
+          "oklch(51% 0.147 299.1)",
+          "oklch(63% 0.147 299.1)",
+          "oklch(75% 0.147 299.1)",
+          "oklch(87% 0.147 299.1)",
+          "oklch(95% 0.147 299.1)"
+        ]
+      },
+      "green": {
+        "role": "primary",
+        "displayName": "Action Green",
+        "canonical": "#1BAE61",
+        "tonalRamp": [
+          "oklch(15% 0.162 153.4)",
+          "oklch(27% 0.162 153.4)",
+          "oklch(39% 0.162 153.4)",
+          "oklch(51% 0.162 153.4)",
+          "oklch(63% 0.162 153.4)",
+          "oklch(75% 0.162 153.4)",
+          "oklch(87% 0.162 153.4)",
+          "oklch(95% 0.162 153.4)"
+        ]
+      },
+      "green-hover": {
+        "role": "primary",
+        "displayName": "Action Green Hover",
+        "canonical": "#3AC579",
+        "tonalRamp": [
+          "oklch(15% 0.161 154.6)",
+          "oklch(27% 0.161 154.6)",
+          "oklch(39% 0.161 154.6)",
+          "oklch(51% 0.161 154.6)",
+          "oklch(63% 0.161 154.6)",
+          "oklch(75% 0.161 154.6)",
+          "oklch(87% 0.161 154.6)",
+          "oklch(95% 0.161 154.6)"
+        ]
+      },
+      "pink": {
+        "role": "secondary",
+        "displayName": "Human Pink",
+        "canonical": "#F09AA8",
+        "tonalRamp": [
+          "oklch(15% 0.104 9.2)",
+          "oklch(27% 0.104 9.2)",
+          "oklch(39% 0.104 9.2)",
+          "oklch(51% 0.104 9.2)",
+          "oklch(63% 0.104 9.2)",
+          "oklch(75% 0.104 9.2)",
+          "oklch(87% 0.104 9.2)",
+          "oklch(95% 0.104 9.2)"
+        ]
+      },
+      "coral": {
+        "role": "tertiary",
+        "displayName": "Registry Coral",
+        "canonical": "#E8744F",
+        "tonalRamp": [
+          "oklch(15% 0.153 38.3)",
+          "oklch(27% 0.153 38.3)",
+          "oklch(39% 0.153 38.3)",
+          "oklch(51% 0.153 38.3)",
+          "oklch(63% 0.153 38.3)",
+          "oklch(75% 0.153 38.3)",
+          "oklch(87% 0.153 38.3)",
+          "oklch(95% 0.153 38.3)"
+        ]
+      },
+      "tape": {
+        "role": "neutral",
+        "displayName": "Studio Tape",
+        "canonical": "rgba(169, 155, 134, 0.72)",
+        "tonalRamp": [
+          "oklch(15% 0.034 78.0)",
+          "oklch(27% 0.034 78.0)",
+          "oklch(39% 0.034 78.0)",
+          "oklch(51% 0.034 78.0)",
+          "oklch(63% 0.034 78.0)",
+          "oklch(75% 0.034 78.0)",
+          "oklch(87% 0.034 78.0)",
+          "oklch(95% 0.034 78.0)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Stacked product title and short, authored hero statements."
+      },
+      "headline": {
+        "displayName": "Editorial Headline",
+        "purpose": "Oversized section theses across Ink and Paper fields and short category names on printed catalog bands."
+      },
+      "title": {
+        "displayName": "Artifact Title",
+        "purpose": "Artifact names and compact section entries."
+      },
+      "body": {
+        "displayName": "Reading Body",
+        "purpose": "Explanations, captions, interface copy, and long-form guide prose."
+      },
+      "label": {
+        "displayName": "Control Label",
+        "purpose": "Buttons, navigation, text links, and compact metadata."
+      }
+    },
+    "shadows": [
+      {
+        "name": "specimen-lift",
+        "value": "0 18px 38px rgba(0, 0, 0, 0.34)",
+        "purpose": "Physical separation for layered specimens on the Catalog Ink field."
+      },
+      {
+        "name": "menu-lift",
+        "value": "0 18px 36px rgba(0, 0, 0, 0.34)",
+        "purpose": "The compact mobile navigation panel."
+      },
+      {
+        "name": "paper-sheet",
+        "value": "0 18px 32px rgba(20, 20, 19, 0.20)",
+        "purpose": "Constructed artifact surfaces over warm paper."
+      },
+      {
+        "name": "example-frame",
+        "value": "0 18px 34px rgba(20, 20, 19, 0.20)",
+        "purpose": "Inspectable screenshots and embedded examples."
+      },
+      {
+        "name": "catalog-specimen-hover",
+        "value": "0 24px 38px rgba(20, 20, 19, 0.25)",
+        "purpose": "The small upward response of a Bright Paper catalog sheet."
+      },
+      {
+        "name": "catalog-native-frame",
+        "value": "0 18px 34px rgba(0, 0, 0, 0.34)",
+        "purpose": "Same-origin worked examples on the Catalog Ink section."
+      }
+    ],
+    "motion": [
+      {
+        "name": "state-fast",
+        "value": "160ms ease-out",
+        "purpose": "Button color changes and directional icon movement."
+      },
+      {
+        "name": "nav-underline",
+        "value": "180ms ease-out",
+        "purpose": "Left-origin navigation underline reveal."
+      },
+      {
+        "name": "specimen-entrance",
+        "value": "680ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "One authored opacity, blur, translation, and scale entrance for the hero specimen stack."
+      },
+      {
+        "name": "catalog-folio-settle",
+        "value": "640ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Clip, blur, and translation entrance for the real SVG folio sheets."
+      },
+      {
+        "name": "catalog-specimen-hover",
+        "value": "180ms ease-out",
+        "purpose": "Small vertical lift and shadow response for category specimens."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "landing-compressed",
+        "value": "1120px"
+      },
+      {
+        "name": "landing-stacked",
+        "value": "900px"
+      },
+      {
+        "name": "landing-mobile",
+        "value": "640px"
+      },
+      {
+        "name": "catalog-compressed",
+        "value": "1180px"
+      },
+      {
+        "name": "catalog-stacked",
+        "value": "820px"
+      },
+      {
+        "name": "catalog-mobile",
+        "value": "540px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The Action Green path into the Guide.",
+      "html": "<a class=\"ds-button ds-button-primary\" href=\"#\">Read the guide<svg aria-hidden=\"true\" viewBox=\"0 0 24 24\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a>",
+      "css": ".ds-button { display:inline-flex; align-items:center; justify-content:center; gap:.65rem; min-height:3rem; padding:.85rem 1.05rem; border:1px solid transparent; border-radius:.38rem; font-family:\"Inter Tight Variable\",sans-serif; font-size:.84rem; font-weight:720; text-decoration:none; transition:background-color 160ms ease-out,color 160ms ease-out,border-color 160ms ease-out; } .ds-button svg { width:1rem; height:1rem; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; transition:transform 160ms ease-out; } .ds-button:hover svg { transform:translate(.14rem,-.14rem); } .ds-button:focus-visible { outline:3px solid var(--lilac,#A884E8); outline-offset:4px; } .ds-button-primary { background:var(--green,#1BAE61); color:var(--ink,#141413); } .ds-button-primary:hover { background:#3AC579; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "The bordered companion path from an Ink field to real examples.",
+      "html": "<a class=\"ds-button ds-button-secondary\" href=\"#\">Explore examples<svg aria-hidden=\"true\" viewBox=\"0 0 24 24\"><path d=\"M7 17L17 7M7 7h10v10\"/></svg></a>",
+      "css": ".ds-button { display:inline-flex; align-items:center; justify-content:center; gap:.65rem; min-height:3rem; padding:.85rem 1.05rem; border:1px solid transparent; border-radius:.38rem; font-family:\"Inter Tight Variable\",sans-serif; font-size:.84rem; font-weight:720; text-decoration:none; transition:background-color 160ms ease-out,color 160ms ease-out,border-color 160ms ease-out; } .ds-button svg { width:1rem; height:1rem; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; transition:transform 160ms ease-out; } .ds-button:hover svg { transform:translate(.14rem,-.14rem); } .ds-button:focus-visible { outline:3px solid var(--lilac,#A884E8); outline-offset:4px; } .ds-button-secondary { border-color:rgba(243,230,210,.48); background:transparent; color:var(--paper-bright,#FFF9EF); } .ds-button-secondary:hover { border-color:var(--paper,#F3E6D2); background:rgba(243,230,210,.1); }"
+    },
+    {
+      "name": "Ink Button",
+      "kind": "button",
+      "refersTo": "button-ink",
+      "description": "A dark action used on warm Paper sections.",
+      "html": "<a class=\"ds-button ds-button-ink\" href=\"#\">Open the examples<svg aria-hidden=\"true\" viewBox=\"0 0 24 24\"><path d=\"M7 17L17 7M7 7h10v10\"/></svg></a>",
+      "css": ".ds-button { display:inline-flex; align-items:center; justify-content:center; gap:.65rem; min-height:3rem; padding:.85rem 1.05rem; border:1px solid transparent; border-radius:.38rem; font-family:\"Inter Tight Variable\",sans-serif; font-size:.84rem; font-weight:720; text-decoration:none; transition:background-color 160ms ease-out,color 160ms ease-out,border-color 160ms ease-out; } .ds-button svg { width:1rem; height:1rem; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; transition:transform 160ms ease-out; } .ds-button:hover svg { transform:translate(.14rem,-.14rem); } .ds-button:focus-visible { outline:3px solid var(--lilac,#A884E8); outline-offset:4px; } .ds-button-ink { background:var(--ink,#141413); color:var(--paper-bright,#FFF9EF); } .ds-button-ink:hover { background:var(--cobalt,#1649D8); }"
+    },
+    {
+      "name": "Catalog Navigation",
+      "kind": "nav",
+      "refersTo": "catalog-shell",
+      "description": "The thin Ink rail with geometric wordmark and Green authored underlines.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Primary navigation\"><a class=\"ds-wordmark\" href=\"#\"><span class=\"ds-wordmark-mark\" aria-hidden=\"true\"><i></i><i></i><i></i></span>Effective HTML</a><span class=\"ds-nav-links\"><a href=\"#\">Guide</a><a href=\"#\">Examples</a><a href=\"#\">Choose fidelity</a></span></nav>",
+      "css": ".ds-nav { display:flex; align-items:center; justify-content:space-between; min-height:5rem; padding:0 1rem; border-bottom:1px solid rgba(243,230,210,.22); background:var(--ink,#141413); color:var(--paper-bright,#FFF9EF); font-family:\"Inter Variable\",Inter,sans-serif; } .ds-wordmark { display:inline-flex; align-items:center; gap:.7rem; color:inherit; font-family:\"Inter Tight Variable\",sans-serif; font-size:1rem; font-weight:760; letter-spacing:-.025em; text-decoration:none; } .ds-wordmark-mark { display:grid; grid-template-columns:repeat(2,.55rem); grid-template-rows:repeat(2,.38rem); gap:.14rem; width:1.24rem; height:.9rem; } .ds-wordmark-mark i { display:block; background:var(--paper,#F3E6D2); } .ds-wordmark-mark i:first-child { grid-row:1/3; } .ds-wordmark-mark i:nth-child(3) { background:var(--green,#1BAE61); } .ds-nav-links { display:flex; gap:1.65rem; color:#D9CDBD; font-size:.78rem; font-weight:620; } .ds-nav-links a { position:relative; padding:.45rem 0; color:inherit; text-decoration:none; } .ds-nav-links a::after { position:absolute; right:0; bottom:0; left:0; height:1px; background:var(--green,#1BAE61); content:\"\"; transform:scaleX(0); transform-origin:left; transition:transform 180ms ease-out; } .ds-nav-links a:hover { color:var(--paper-bright,#FFF9EF); } .ds-nav-links a:hover::after { transform:scaleX(1); } .ds-nav a:focus-visible { outline:3px solid var(--lilac,#A884E8); outline-offset:4px; }"
+    },
+    {
+      "name": "Artifact Link",
+      "kind": "card",
+      "refersTo": "artifact-link",
+      "description": "A ruled catalog row that names an artifact and the decision it supports.",
+      "html": "<a class=\"ds-artifact-link\" href=\"#\"><span class=\"ds-artifact-icon\"><svg aria-hidden=\"true\" viewBox=\"0 0 24 24\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"16\" rx=\"1\"/><path d=\"M3 9h18M8 9v11\"/></svg></span><span><strong>Wireframes</strong><small>Test hierarchy, content, navigation, and responsive structure.</small></span><svg class=\"ds-artifact-arrow\" aria-hidden=\"true\" viewBox=\"0 0 24 24\"><path d=\"M7 17L17 7M7 7h10v10\"/></svg></a>",
+      "css": ".ds-artifact-link { display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:1.15rem; align-items:center; padding:1.5rem 0; border-top:1px solid rgba(20,20,19,.38); border-bottom:1px solid rgba(20,20,19,.38); color:var(--ink,#141413); font-family:\"Inter Variable\",Inter,sans-serif; text-decoration:none; } .ds-artifact-icon { display:inline-flex; align-items:center; justify-content:center; width:2.65rem; height:2.65rem; border-radius:50%; background:var(--cobalt,#1649D8); color:var(--paper-bright,#FFF9EF); } .ds-artifact-link svg { width:1.1rem; height:1.1rem; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; } .ds-artifact-link strong,.ds-artifact-link small { display:block; } .ds-artifact-link strong { font-family:\"Inter Tight Variable\",sans-serif; font-size:1.45rem; font-weight:740; letter-spacing:-.025em; } .ds-artifact-link small { max-width:38rem; margin-top:.3rem; color:#5A534B; font-size:.9rem; line-height:1.45; } .ds-artifact-arrow { transition:transform 160ms ease-out; } .ds-artifact-link:hover strong { color:var(--cobalt,#1649D8); } .ds-artifact-link:hover .ds-artifact-arrow { transform:translate(.14rem,-.14rem); } .ds-artifact-link:focus-visible { outline:3px solid var(--lilac,#A884E8); outline-offset:4px; }"
+    },
+    {
+      "name": "Primary Browser Specimen",
+      "kind": "custom",
+      "refersTo": "specimen-browser",
+      "description": "The dominant colorful browser sheet inside the landing Open Specimen composition.",
+      "html": "<div class=\"ds-specimen-browser\" role=\"img\" aria-label=\"Abstract colorful browser specimen\"><div class=\"ds-browser-chrome\"><span class=\"ds-browser-dots\"><i></i><i></i><i></i></span><i class=\"ds-browser-address\"></i></div><div class=\"ds-browser-visual\"><i class=\"ds-mountain ds-mountain-a\"></i><i class=\"ds-mountain ds-mountain-b\"></i><i class=\"ds-sun\"></i></div><div class=\"ds-browser-content\"><span class=\"ds-browser-copy\"><i class=\"ds-heading\"></i><i class=\"ds-line\"></i><i class=\"ds-line ds-line-short\"></i><i class=\"ds-action\"></i></span><i class=\"ds-placeholder\"></i></div><div class=\"ds-browser-features\"><span><i class=\"ds-circle\"></i><b></b><b></b></span><span><i class=\"ds-square\"></i><b></b><b></b></span><span><i class=\"ds-triangle\"></i><b></b><b></b></span></div></div>",
+      "css": ".ds-specimen-browser { position:relative; overflow:hidden; width:min(100%,22rem); height:17rem; border:1px solid #CBB59A; border-radius:.42rem; background:var(--paper,#F3E6D2); color:var(--ink,#141413); box-shadow:0 18px 38px rgba(0,0,0,.34); } .ds-browser-chrome { position:relative; height:2.35rem; border-bottom:1px solid var(--ink,#141413); } .ds-browser-dots { display:flex; position:absolute; top:.88rem; left:1rem; gap:.36rem; } .ds-browser-dots i { width:.56rem; height:.56rem; border-radius:50%; background:var(--ink,#141413); } .ds-browser-address { position:absolute; top:.9rem; right:1rem; width:3.2rem; height:.56rem; background:var(--ink,#141413); } .ds-browser-visual { display:block; position:relative; overflow:hidden; height:5rem; background:var(--cobalt,#1649D8); } .ds-mountain { position:absolute; bottom:-1px; background:var(--lilac,#A884E8); clip-path:polygon(50% 0,100% 100%,0 100%); } .ds-mountain-a { left:-4%; width:58%; height:67%; } .ds-mountain-b { left:32%; width:50%; height:55%; } .ds-sun { position:absolute; top:14%; right:10%; width:2rem; aspect-ratio:1; border-radius:50%; background:var(--pink,#F09AA8); } .ds-browser-content { display:grid; grid-template-columns:1.3fr .7fr; gap:1rem; height:4.4rem; padding:.8rem; background:var(--ink,#141413); color:var(--paper,#F3E6D2); } .ds-browser-copy { display:flex; flex-direction:column; gap:.35rem; } .ds-heading { width:48%; height:.55rem; background:currentColor; } .ds-line { width:72%; height:.18rem; background:currentColor; } .ds-line-short { width:52%; } .ds-action { width:3rem; height:.48rem; margin-top:auto; border-radius:999px; background:var(--cobalt,#1649D8); } .ds-placeholder { border:1px solid var(--lilac,#A884E8); background:#7E5FB2; } .ds-browser-features { display:grid; grid-template-columns:repeat(3,1fr); height:5.25rem; background:var(--green,#1BAE61); } .ds-browser-features span { display:flex; align-items:center; justify-content:center; flex-direction:column; gap:.4rem; border-right:1px solid rgba(20,20,19,.75); } .ds-browser-features span:last-child { border-right:0; } .ds-browser-features b { width:52%; height:.16rem; background:var(--ink,#141413); } .ds-circle,.ds-square,.ds-triangle { width:1.1rem; height:1.1rem; } .ds-circle { border-radius:50%; background:var(--cobalt,#1649D8); } .ds-square { background:var(--pink,#F09AA8); } .ds-triangle { background:var(--paper,#F3E6D2); clip-path:polygon(50% 0,100% 100%,0 100%); }"
+    },
+    {
+      "name": "Catalog Filter Rail",
+      "kind": "input",
+      "refersTo": "catalog-search",
+      "description": "The persistent Ink utility rail for search, collection, subject, and result context.",
+      "html": "<div class=\"ds-catalog-filters\"><label class=\"ds-catalog-search\"><svg aria-hidden=\"true\" viewBox=\"0 0 24 24\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"m20 20-4-4\"/></svg><span>Search the catalog</span></label><div class=\"ds-catalog-segments\" role=\"group\" aria-label=\"Collection\"><button type=\"button\" aria-pressed=\"true\">Everything <small>27</small></button><button type=\"button\">HTML + SVG <small>20</small></button><button type=\"button\">Native <small>2</small></button></div></div>",
+      "css": ".ds-catalog-filters { display:grid; grid-template-columns:minmax(14rem,1fr) minmax(24rem,2fr); gap:1rem; padding:.8rem; background:var(--ink,#141413); color:var(--paper-bright,#FFF9EF); font-family:\"Inter Variable\",Inter,sans-serif; } .ds-catalog-search { display:flex; align-items:center; gap:.65rem; min-height:3rem; padding:0 .9rem; border:1px solid rgba(243,230,210,.34); border-radius:.38rem; background:var(--ink-soft,#2A2926); font-size:.84rem; } .ds-catalog-search svg { width:1.05rem; fill:none; stroke:var(--paper,#F3E6D2); stroke-width:2; } .ds-catalog-segments { display:grid; grid-template-columns:repeat(3,1fr); overflow:hidden; border:1px solid rgba(243,230,210,.28); border-radius:.38rem; } .ds-catalog-segments button { display:flex; align-items:center; justify-content:space-between; min-height:3rem; padding:.65rem .8rem; border:0; border-right:1px solid rgba(243,230,210,.22); background:transparent; color:#CFC2B2; font-family:\"Inter Tight Variable\",sans-serif; font-size:.76rem; font-weight:680; } .ds-catalog-segments button:last-child { border-right:0; } .ds-catalog-segments button[aria-pressed=true] { background:var(--green,#1BAE61); color:var(--ink,#141413); } .ds-catalog-segments button:focus-visible { position:relative; z-index:1; outline:2px solid var(--paper-bright,#FFF9EF); outline-offset:-3px; } .ds-catalog-segments button[aria-pressed=true]:focus-visible { outline-color:var(--ink,#141413); } .ds-catalog-segments small { font-variant-numeric:tabular-nums; opacity:.74; }"
+    },
+    {
+      "name": "Catalog Artifact Specimen",
+      "kind": "custom",
+      "refersTo": "catalog-specimen",
+      "description": "A Bright Paper sheet pairing an attributed original HTML source with local static and animated SVG states.",
+      "html": "<article class=\"ds-catalog-specimen\"><header><span>07</span><span>Reference by Thariq Shihipar</span></header><div class=\"ds-catalog-preview\" role=\"img\" aria-label=\"Abstract SVG artifact preview\"><svg aria-hidden=\"true\" viewBox=\"0 0 160 120\"><rect width=\"160\" height=\"120\" fill=\"#1649D8\"/><path d=\"M12 94 52 38l29 34 23-26 44 48Z\" fill=\"#A884E8\"/><circle cx=\"132\" cy=\"28\" r=\"11\" fill=\"#F09AA8\"/></svg></div><div class=\"ds-catalog-copy\"><strong>Animation sandbox</strong><p>Tune motion against the artifact itself.</p></div><footer><div class=\"ds-preview-switch\" role=\"group\" aria-label=\"SVG preview mode\"><button type=\"button\" aria-pressed=\"true\">Static</button><button type=\"button\">Animated</button></div><span class=\"ds-catalog-actions\"><a href=\"#\">HTML</a><a href=\"#\">SVG</a></span></footer></article>",
+      "css": ".ds-catalog-specimen { overflow:hidden; width:min(100%,24rem); border:1px solid rgba(20,20,19,.78); border-radius:.42rem; background:var(--paper-bright,#FFF9EF); color:var(--ink,#141413); box-shadow:0 18px 32px rgba(20,20,19,.2); font-family:\"Inter Variable\",Inter,sans-serif; transition:translate 180ms ease-out,box-shadow 180ms ease-out; } .ds-catalog-specimen:hover { translate:0 -.28rem; box-shadow:0 24px 38px rgba(20,20,19,.25); } .ds-catalog-specimen header { display:flex; justify-content:space-between; padding:.65rem .8rem; border-bottom:1px solid rgba(20,20,19,.24); font-size:.6rem; font-weight:670; } .ds-catalog-preview { display:grid; place-items:center; min-height:13rem; padding:1.5rem; border-bottom:1px solid rgba(20,20,19,.28); background:var(--paper,#F3E6D2); } .ds-catalog-preview svg { width:8.5rem; filter:drop-shadow(0 8px 8px rgba(20,20,19,.16)); } .ds-catalog-copy { padding:1rem; } .ds-catalog-copy strong { font-family:\"Inter Tight Variable\",sans-serif; font-size:1.35rem; font-weight:760; letter-spacing:-.03em; } .ds-catalog-copy p { margin:.6rem 0 0; color:#575149; font-size:.76rem; } .ds-catalog-specimen footer { display:flex; justify-content:space-between; gap:.7rem; align-items:center; padding:.75rem 1rem; border-top:1px solid rgba(20,20,19,.18); } .ds-preview-switch { display:inline-flex; overflow:hidden; border:1px solid rgba(20,20,19,.34); border-radius:.34rem; } .ds-preview-switch button { min-height:2.1rem; padding:.4rem .55rem; border:0; border-right:1px solid rgba(20,20,19,.3); background:transparent; color:var(--ink,#141413); font-size:.64rem; font-weight:680; } .ds-preview-switch button:last-child { border-right:0; } .ds-preview-switch button[aria-pressed=true] { background:var(--ink,#141413); color:var(--paper-bright,#FFF9EF); } .ds-preview-switch button:focus-visible { position:relative; z-index:1; outline:2px solid var(--cobalt,#1649D8); outline-offset:-3px; } .ds-preview-switch button[aria-pressed=true]:focus-visible { outline-color:var(--paper-bright,#FFF9EF); } .ds-catalog-actions { display:flex; gap:.65rem; } .ds-catalog-actions a { color:inherit; font-size:.64rem; font-weight:740; text-decoration:none; } .ds-catalog-actions a:hover { color:var(--cobalt,#1649D8); }"
+    },
+    {
+      "name": "Native Worked Example",
+      "kind": "card",
+      "refersTo": "native-example",
+      "description": "A same-origin screenshot frame paired with its live HTML and Guide paths.",
+      "html": "<article class=\"ds-native-example\"><div class=\"ds-native-preview\" role=\"img\" aria-label=\"Abstract worked-example screenshot\"><i></i><i></i><i></i></div><div class=\"ds-native-copy\"><span>BEHAVIOR</span><strong>Release readiness prototype</strong><p>A working blocked-to-ready flow with validation and recovery.</p><div><a href=\"#\">Open live HTML</a><a href=\"#\">Read the guide</a></div></div></article>",
+      "css": ".ds-native-example { overflow:hidden; width:min(100%,28rem); border-radius:.55rem; background:var(--paper-bright,#FFF9EF); color:var(--ink,#141413); box-shadow:0 18px 34px rgba(0,0,0,.34); font-family:\"Inter Variable\",Inter,sans-serif; } .ds-native-preview { display:grid; grid-template-columns:1fr 1.5fr; gap:.7rem; min-height:11rem; padding:1rem; border-bottom:1px solid var(--ink,#141413); background:var(--paper,#F3E6D2); } .ds-native-preview i { display:block; border:1px solid var(--ink,#141413); background:var(--lilac,#A884E8); } .ds-native-preview i:first-child { grid-row:1/3; background:var(--ink,#141413); } .ds-native-preview i:last-child { background:var(--green,#1BAE61); } .ds-native-copy { padding:1.5rem; } .ds-native-copy>span { color:var(--cobalt,#1649D8); font-size:.7rem; font-weight:760; } .ds-native-copy>strong { display:block; margin-top:.65rem; font-family:\"Inter Tight Variable\",sans-serif; font-size:1.8rem; font-weight:770; letter-spacing:-.035em; } .ds-native-copy p { color:#575149; line-height:1.55; } .ds-native-copy div { display:flex; gap:1rem; align-items:center; } .ds-native-copy a { min-height:2.75rem; color:inherit; font-size:.76rem; font-weight:730; line-height:2.75rem; text-decoration:none; } .ds-native-copy a:first-child { padding:0 .9rem; border-radius:.35rem; background:var(--ink,#141413); color:var(--paper-bright,#FFF9EF); } .ds-native-copy a:focus-visible { outline:3px solid var(--lilac,#A884E8); outline-offset:4px; }"
+    },
+    {
+      "name": "Skill Ledger Row",
+      "kind": "card",
+      "refersTo": "artifact-link",
+      "description": "A ruled method entry with a geometric ink mark and explicit Guide and Source paths.",
+      "html": "<article class=\"ds-skill-row\"><span class=\"ds-skill-mark\" aria-hidden=\"true\"></span><div><strong>HTML prototype</strong><p>Working flows with the states needed for a real decision.</p></div><nav><a href=\"#\">Guide</a><a href=\"#\">Source</a></nav></article>",
+      "css": ".ds-skill-row { display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:2rem; align-items:center; padding:1.6rem 0; border-top:1px solid var(--ink,#141413); border-bottom:1px solid rgba(20,20,19,.48); background:var(--paper,#F3E6D2); color:var(--ink,#141413); font-family:\"Inter Variable\",Inter,sans-serif; } .ds-skill-mark { width:1.4rem; height:1.4rem; border-radius:.1rem; background:var(--green,#1BAE61); } .ds-skill-row strong { font-family:\"Inter Tight Variable\",sans-serif; font-size:1.8rem; font-weight:760; letter-spacing:-.03em; } .ds-skill-row p { max-width:42rem; margin:.45rem 0 0; color:#6E675E; font-size:.88rem; line-height:1.5; } .ds-skill-row nav { display:flex; gap:1rem; } .ds-skill-row a { color:inherit; font-size:.76rem; font-weight:730; text-decoration:none; } .ds-skill-row a:hover { color:var(--cobalt,#1649D8); } .ds-skill-row a:focus-visible { outline:3px solid var(--lilac,#A884E8); outline-offset:4px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Working Atlas",
+    "overview": "Working Atlas makes Effective HTML feel like an open practitioner’s folio: tactile, graphic, technically calm, and generous with inspectable work. Its approved specimen expressions put the artifact itself in the foreground, so the interface proves the value of HTML instead of describing it through generic documentation cards.\n\nThe system has two coordinated registers. The Catalog opens as a compact Ink folio, then becomes a run of vivid category fields carrying staggered Bright Paper evidence; the Guide is a broad Paper Bright reading surface that preserves familiar Fumadocs navigation, search, table-of-contents, and prose behavior. Ink, warm paper, exact grotesk typography, fine rules, and specimen geometry make the registers one visual world.\n\nImperfection is controlled and material, never careless. Paper tooth, slight sheet rotation, tape, overlap, and offset depth live around artifact surfaces, while text, controls, navigation, and diagrams stay crisp. The resulting character is editorial rather than institutional, playful inside the examples, and restrained in the surrounding chrome.\n\nCatalog utility stays practical inside that expression. Search, collection, and subject controls remain persistent and compact; original HTML sources stay visibly paired with local static and animated SVG interpretations; and native examples and skill-ledger rows expose the work and methods without a marketplace layer.",
+    "keyCharacteristics": [
+      "The artifact is the proof; previews are real evidence, not decoration.",
+      "A quiet field opposes one dense, readable specimen mass.",
+      "Full-width printed category bands turn the collection itself into the visual rhythm.",
+      "Warm paper, dark stock, and saturated printed fields remain materially distinct.",
+      "Variable grotesk type carries both the bold thesis and practical reading experience.",
+      "The Catalog may be expressive, while the Guide remains familiar enough for sustained reading."
+    ],
+    "rules": [
+      {
+        "name": "The Specimen Ink Rule",
+        "body": "Surrounding chrome uses Ink and Paper; saturated inks belong inside artifacts or as the single full-width field owned by a catalog category, never as generic wrapper chrome.",
+        "section": "colors"
+      },
+      {
+        "name": "The Authored Theme Rule",
+        "body": "The Guide’s dark mode is composed from Ink, Soft Ink, Bright Paper, and Lilac; it is not a mechanical inversion of the light register.",
+        "section": "colors"
+      },
+      {
+        "name": "The Exact Grotesk Rule",
+        "body": "Inter Tight Variable carries the thesis and decisive controls; Inter Variable carries reading and interface copy. Do not add a serif merely to make the system look editorial.",
+        "section": "typography"
+      },
+      {
+        "name": "The Short Heavy Rule",
+        "body": "Display weights belong to short statements with authored line breaks, never to paragraphs or dense navigation.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Anchor Rule",
+        "body": "Keep one quiet field opposite one dense specimen mass; never distribute the hero artifacts as a row of equally important cards.",
+        "section": "layout"
+      },
+      {
+        "name": "The Band Is the Category Rule",
+        "body": "Let category color own the full viewport-width field and vary sheet width and offset inside it; do not reduce the collection to equal cards on a neutral canvas.",
+        "section": "layout"
+      },
+      {
+        "name": "The Useful Familiarity Rule",
+        "body": "Preserve familiar documentation behavior even when the surrounding materials and typography carry the Working Atlas identity.",
+        "section": "layout"
+      },
+      {
+        "name": "The Physical Separation Rule",
+        "body": "Add depth only where one authored sheet visibly sits over another; flat controls and guide surfaces stay flat.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Bounded Imperfection Rule",
+        "body": "Rotation, tape, and paper tooth belong at the perimeter of authored artifacts, never on reading text, navigation, or ordinary controls.",
+        "section": "shapes"
+      },
+      {
+        "name": "The No Soft SaaS Rule",
+        "body": "Use the shipped small-corner vocabulary; do not turn sections into large, interchangeable rounded containers.",
+        "section": "shapes"
+      },
+      {
+        "name": "The Evidence Rule",
+        "body": "A specimen must reveal a real artifact, the decision it supports, and a direct path to inspect it; decorative card furniture is not a substitute.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "Do make real artifacts the visual proof of major claims.",
+      "Do preserve quiet space around one dense, intentionally composed specimen cluster.",
+      "Do use the full accent palette inside specimens and full-width category fields, while keeping generic site chrome to Ink and Paper.",
+      "Do keep the five-to-seven first-viewport split and the Guide action in the left thesis field on desktop.",
+      "Do open the Catalog with a compact title, real SVG folio, and ruled source index before the collection takes over.",
+      "Do pair every catalog reference with its original HTML and local static and animated SVG controls.",
+      "Do keep search, collection, subject, and result count together in the persistent rail through desktop and tablet, then return it to document flow at 540px.",
+      "Do carry Ink, warm Paper, flat color, fine rules, and specimen geometry into the Guide while preserving familiar reading behavior.",
+      "Do keep all controls keyboard reachable, visibly focused, and complete without motion.",
+      "Do stack or crop authored specimen layers at narrow widths instead of uniformly shrinking them."
+    ],
+    "donts": [
+      "Don't turn the landing page into a dashboard, template marketplace, or uniform card catalog.",
+      "Don't collapse catalog category bands into an equal card grid or detach them from their category ink.",
+      "Don't replace the warm paper surfaces with generic white or gray cards.",
+      "Don't introduce a serif, glass effect, glow, gradient, or neutral SaaS component library.",
+      "Don't use robots, brains, code rain, glowing networks, or other generic AI shorthand.",
+      "Don't let tape, rotation, texture, or overlap reduce the precision of text and controls.",
+      "Don't imply that higher fidelity is always better or that HTML should replace Markdown everywhere.",
+      "Don't let visual customization erase Fumadocs’ useful search, navigation, table-of-contents, and reading conventions."
+    ]
+  }
+}

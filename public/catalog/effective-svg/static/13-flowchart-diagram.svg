@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 202" width="165" height="202" role="img" aria-label="Abstract vertical flowchart of a deploy pipeline with stacked node cards, two diamond decision gates, and branching connectors">
+  <style>
+    svg{stroke-linejoin:round}
+    .bg{fill:#F0EEE6}
+    .frame{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .wh{fill:#FFFFFF;stroke:#9C9B93;stroke-width:1.4}
+    .whh{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .oa{fill:#E3DACC;stroke:#B7AE9D;stroke-width:1.2}
+    .sl{fill:#141413}
+    .cl{fill:#D97757}
+    .ol{fill:#788C5D}
+    .fl{fill:#D1CFC5}
+    .fll{fill:#E6E3DA}
+    .st{fill:none;stroke:#87867F;stroke-width:1.4}
+    .stt{fill:none;stroke:#6F6E68;stroke-width:2}
+    .hl{fill:none;stroke:#D1CFC5;stroke-width:1}
+    .ln{fill:none;stroke:#9C9B93;stroke-width:1.3;stroke-linecap:round}
+    .lnf{fill:none;stroke:#CFCDC3;stroke-width:1.1;stroke-linecap:round}
+    .lc{fill:none;stroke:#D97757;stroke-width:1.5;stroke-linecap:round}
+    .da{stroke-dasharray:3 3}
+  </style>
+  <rect x="0" y="0" width="165" height="202" class="bg"/>
+
+<!-- vertical spine connectors -->
+<line x1="62" y1="32" x2="62" y2="40" class="hl"/>
+<line x1="62" y1="60" x2="62" y2="68" class="hl"/>
+<line x1="62" y1="88" x2="62" y2="98" class="hl"/>
+<line x1="62" y1="120" x2="62" y2="138" class="hl"/>
+<line x1="62" y1="158" x2="62" y2="172" class="lc"/>
+
+<!-- gate failure off-ramp (dashed) to side box -->
+<path d="M51 109 L25 109 L25 66" class="hl da"/>
+<!-- gate branch off-ramp (dashed) to rollback box -->
+<path d="M73 148 L120 148 L120 170" class="hl da"/>
+
+<!-- terminal start (pill) -->
+<rect x="38" y="16" width="48" height="16" rx="8" class="oa"/>
+<line x1="46" y1="22" x2="70" y2="22" class="lnf"/>
+<line x1="46" y1="26.5" x2="62" y2="26.5" class="lnf"/>
+
+<!-- process card 1 -->
+<rect x="34" y="40" width="56" height="20" rx="4" class="wh"/>
+<circle cx="40" cy="46.5" r="1.1" class="sl"/>
+<line x1="45" y1="46.5" x2="84" y2="46.5" class="ln"/>
+<line x1="45" y1="51" x2="76" y2="51" class="lnf"/>
+<line x1="45" y1="55" x2="68" y2="55" class="lnf"/>
+
+<!-- process card 2 -->
+<rect x="34" y="68" width="56" height="20" rx="4" class="wh"/>
+<circle cx="40" cy="74.5" r="1.1" class="sl"/>
+<line x1="45" y1="74.5" x2="84" y2="74.5" class="ln"/>
+<line x1="45" y1="79" x2="72" y2="79" class="lnf"/>
+<line x1="45" y1="83" x2="80" y2="83" class="lnf"/>
+
+<!-- side failure box (branch off gate) -->
+<rect x="9" y="46" width="34" height="20" rx="3.5" class="whh"/>
+<rect x="14" y="51" width="6" height="6" rx="1.5" class="fll"/>
+<line x1="23" y1="54" x2="38" y2="54" class="lnf"/>
+<line x1="23" y1="58" x2="34" y2="58" class="lnf"/>
+
+<!-- decision gate (diamond) -->
+<rect x="51.5" y="98.5" width="21" height="21" rx="3" class="wh" transform="rotate(45 62 109)"/>
+<line x1="58" y1="109" x2="66" y2="109" class="lnf"/>
+
+<!-- process card 3 -->
+<rect x="34" y="138" width="56" height="20" rx="4" class="wh"/>
+<circle cx="40" cy="144.5" r="1.1" class="sl"/>
+<line x1="45" y1="144.5" x2="84" y2="144.5" class="ln"/>
+<line x1="45" y1="149" x2="74" y2="149" class="lnf"/>
+<line x1="45" y1="153" x2="82" y2="153" class="lnf"/>
+
+<!-- rollback box (clay accent failure) -->
+<rect x="103" y="170" width="47" height="20" rx="4" class="whh"/>
+<rect x="108" y="175" width="7" height="7" rx="1.5" class="cl"/>
+<line x1="119" y1="177.5" x2="145" y2="177.5" class="lnf"/>
+<line x1="119" y1="181.5" x2="139" y2="181.5" class="lnf"/>
+
+<!-- terminal end (olive success) -->
+<rect x="38" y="172" width="48" height="16" rx="8" class="oa"/>
+<circle cx="46" cy="180" r="2.6" class="ol"/>
+<line x1="52" y1="178.5" x2="78" y2="178.5" class="lnf"/>
+<line x1="52" y1="182.5" x2="70" y2="182.5" class="lnf"/>
+</svg>

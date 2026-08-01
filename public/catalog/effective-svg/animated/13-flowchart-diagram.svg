@@ -1,0 +1,172 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 202" width="165" height="202" role="img" aria-label="Animated abstract vertical flowchart of a deploy pipeline with stacked node cards, two diamond decision gates, and branching connectors">
+  <style>
+    svg{stroke-linejoin:round}
+    .bg{fill:#F0EEE6}
+    .frame{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .wh{fill:#FFFFFF;stroke:#9C9B93;stroke-width:1.4}
+    .whh{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .oa{fill:#E3DACC;stroke:#B7AE9D;stroke-width:1.2}
+    .sl{fill:#141413}
+    .cl{fill:#D97757}
+    .ol{fill:#788C5D}
+    .fl{fill:#D1CFC5}
+    .fll{fill:#E6E3DA}
+    .st{fill:none;stroke:#87867F;stroke-width:1.4}
+    .stt{fill:none;stroke:#6F6E68;stroke-width:2}
+    .hl{fill:none;stroke:#D1CFC5;stroke-width:1}
+    .ln{fill:none;stroke:#9C9B93;stroke-width:1.3;stroke-linecap:round}
+    .lnf{fill:none;stroke:#CFCDC3;stroke-width:1.1;stroke-linecap:round}
+    .lc{fill:none;stroke:#D97757;stroke-width:1.5;stroke-linecap:round}
+    .da{stroke-dasharray:3 3}
+  </style>
+  <style>
+    @keyframes a-token{
+  0%   {transform:translateY(0);opacity:0}
+  4%   {opacity:1}
+  8%   {transform:translateY(16px)}
+  24%  {transform:translateY(40px)}
+  40%  {transform:translateY(74px)}
+  56%  {transform:translateY(112px)}
+  76%  {transform:translateY(140px)}
+  92%  {transform:translateY(156px);opacity:1}
+  97%  {opacity:0}
+  100% {transform:translateY(156px);opacity:0}
+}
+.a-token{transform-box:fill-box;transform-origin:50% 50%;animation:a-token 5.5s cubic-bezier(.5,0,.5,1) infinite}
+
+/* node light-up: brief lift to clay accent as flow arrives, then settle */
+@keyframes a-lit{
+  0%,100%{opacity:0}
+  8%{opacity:0}
+  14%{opacity:.95}
+  30%{opacity:.25}
+  45%{opacity:0}
+}
+.a-glow{fill:none;stroke:#D97757;stroke-width:2.2;opacity:0}
+.a-g1{animation:a-lit 5.5s ease-in-out infinite;animation-delay:.05s}
+.a-g2{animation:a-lit 5.5s ease-in-out infinite;animation-delay:.85s}
+.a-g3{animation:a-lit 5.5s ease-in-out infinite;animation-delay:2.6s}
+.a-gstart{animation:a-lit 5.5s ease-in-out infinite;animation-delay:-.3s}
+.a-gend{animation:a-lit 5.5s ease-in-out infinite;animation-delay:3.6s}
+
+/* diamond gate pulse */
+@keyframes a-pulse{
+  0%,38%,100%{transform:scale(1);opacity:.85}
+  46%{transform:scale(1.14);opacity:1}
+  54%{transform:scale(1);opacity:.85}
+}
+.a-diamond{transform-box:fill-box;transform-origin:50% 50%;animation:a-pulse 5.5s ease-in-out infinite}
+@keyframes a-ring{
+  0%,40%{transform:scale(.6);opacity:0}
+  48%{opacity:.7}
+  62%{transform:scale(1.5);opacity:0}
+  100%{transform:scale(1.5);opacity:0}
+}
+.a-gatering{fill:none;stroke:#D97757;stroke-width:1.6;transform-box:fill-box;transform-origin:50% 50%;opacity:0;animation:a-ring 5.5s ease-out infinite}
+
+/* main spine connectors: flow pulse traveling along clay segment */
+@keyframes a-flow{
+  0%{stroke-dashoffset:60}
+  100%{stroke-dashoffset:0}
+}
+.a-spineflow{stroke:#D97757;stroke-width:2;stroke-linecap:round;fill:none;stroke-dasharray:5 55;animation:a-flow 5.5s linear infinite;opacity:.9}
+
+/* dashed branch off-ramps draw and flow */
+@keyframes a-branchA{
+  0%,40%{stroke-dashoffset:90}
+  52%{stroke-dashoffset:0}
+  88%{stroke-dashoffset:0}
+  100%{stroke-dashoffset:90}
+}
+@keyframes a-branchB{
+  0%,58%{stroke-dashoffset:90}
+  70%{stroke-dashoffset:0}
+  92%{stroke-dashoffset:0}
+  100%{stroke-dashoffset:90}
+}
+.a-branchdraw{fill:none;stroke:#D97757;stroke-width:1.4;stroke-dasharray:90;opacity:.75}
+.a-branchA{animation:a-branchA 5.5s ease-in-out infinite}
+.a-branchB{animation:a-branchB 5.5s ease-in-out infinite}
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none!important;transition:none!important}
+      [class*="a-"],[id*="a-"]{opacity:1!important;transform:none!important;stroke-dashoffset:0!important;stroke-dasharray:none!important}
+    }
+  </style>
+  <rect x="0" y="0" width="165" height="202" class="bg"/>
+
+<!-- vertical spine connectors -->
+<line x1="62" y1="32" x2="62" y2="40" class="hl"/>
+<line x1="62" y1="60" x2="62" y2="68" class="hl"/>
+<line x1="62" y1="88" x2="62" y2="98" class="hl"/>
+<line x1="62" y1="120" x2="62" y2="138" class="hl"/>
+<line x1="62" y1="158" x2="62" y2="172" class="lc"/>
+
+<!-- animated flow pulse along full spine -->
+<path d="M62 32 L62 40 M62 60 L62 68 M62 88 L62 98 M62 120 L62 138 M62 158 L62 172" class="a-spineflow"/>
+
+<!-- gate failure off-ramp (dashed) to side box -->
+<path d="M51 109 L25 109 L25 66" class="hl da"/>
+<path d="M51 109 L25 109 L25 66" class="a-branchdraw a-branchA"/>
+<!-- gate branch off-ramp (dashed) to rollback box -->
+<path d="M73 148 L120 148 L120 170" class="hl da"/>
+<path d="M73 148 L120 148 L120 170" class="a-branchdraw a-branchB"/>
+
+<!-- terminal start (pill) -->
+<rect x="38" y="16" width="48" height="16" rx="8" class="oa"/>
+<line x1="46" y1="22" x2="70" y2="22" class="lnf"/>
+<line x1="46" y1="26.5" x2="62" y2="26.5" class="lnf"/>
+<rect x="38" y="16" width="48" height="16" rx="8" class="a-glow a-gstart"/>
+
+<!-- process card 1 -->
+<rect x="34" y="40" width="56" height="20" rx="4" class="wh"/>
+<circle cx="40" cy="46.5" r="1.1" class="sl"/>
+<line x1="45" y1="46.5" x2="84" y2="46.5" class="ln"/>
+<line x1="45" y1="51" x2="76" y2="51" class="lnf"/>
+<line x1="45" y1="55" x2="68" y2="55" class="lnf"/>
+<rect x="34" y="40" width="56" height="20" rx="4" class="a-glow a-g1"/>
+
+<!-- process card 2 -->
+<rect x="34" y="68" width="56" height="20" rx="4" class="wh"/>
+<circle cx="40" cy="74.5" r="1.1" class="sl"/>
+<line x1="45" y1="74.5" x2="84" y2="74.5" class="ln"/>
+<line x1="45" y1="79" x2="72" y2="79" class="lnf"/>
+<line x1="45" y1="83" x2="80" y2="83" class="lnf"/>
+<rect x="34" y="68" width="56" height="20" rx="4" class="a-glow a-g2"/>
+
+<!-- side failure box (branch off gate) -->
+<rect x="9" y="46" width="34" height="20" rx="3.5" class="whh"/>
+<rect x="14" y="51" width="6" height="6" rx="1.5" class="fll"/>
+<line x1="23" y1="54" x2="38" y2="54" class="lnf"/>
+<line x1="23" y1="58" x2="34" y2="58" class="lnf"/>
+
+<!-- decision gate (diamond) -->
+<g class="a-diamond">
+<rect x="51.5" y="98.5" width="21" height="21" rx="3" class="wh" transform="rotate(45 62 109)"/>
+<line x1="58" y1="109" x2="66" y2="109" class="lnf"/>
+</g>
+<rect x="51.5" y="98.5" width="21" height="21" rx="3" class="a-gatering" transform="rotate(45 62 109)"/>
+
+<!-- process card 3 -->
+<rect x="34" y="138" width="56" height="20" rx="4" class="wh"/>
+<circle cx="40" cy="144.5" r="1.1" class="sl"/>
+<line x1="45" y1="144.5" x2="84" y2="144.5" class="ln"/>
+<line x1="45" y1="149" x2="74" y2="149" class="lnf"/>
+<line x1="45" y1="153" x2="82" y2="153" class="lnf"/>
+<rect x="34" y="138" width="56" height="20" rx="4" class="a-glow a-g3"/>
+
+<!-- rollback box (clay accent failure) -->
+<rect x="103" y="170" width="47" height="20" rx="4" class="whh"/>
+<rect x="108" y="175" width="7" height="7" rx="1.5" class="cl"/>
+<line x1="119" y1="177.5" x2="145" y2="177.5" class="lnf"/>
+<line x1="119" y1="181.5" x2="139" y2="181.5" class="lnf"/>
+
+<!-- terminal end (olive success) -->
+<rect x="38" y="172" width="48" height="16" rx="8" class="oa"/>
+<circle cx="46" cy="180" r="2.6" class="ol"/>
+<line x1="52" y1="178.5" x2="78" y2="178.5" class="lnf"/>
+<line x1="52" y1="182.5" x2="70" y2="182.5" class="lnf"/>
+<rect x="38" y="172" width="48" height="16" rx="8" class="a-glow a-gend"/>
+
+<!-- traveling flow token -->
+<circle cx="62" cy="24" r="3.4" class="a-token cl"/>
+</svg>

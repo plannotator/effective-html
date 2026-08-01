@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Linear issue workspace — interface study</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #111114;
+        --sidebar: #151518;
+        --panel: #19191d;
+        --panel-raised: #1f1f24;
+        --line: #2b2b31;
+        --line-strong: #3b3b43;
+        --text: #f0f0f2;
+        --muted: #92929d;
+        --faint: #90909b;
+        --violet: #7c6cf2;
+        --violet-soft: #2a2744;
+        --blue: #5e8df6;
+        --green: #4bb78f;
+        --amber: #d9a441;
+        --red: #df6d78;
+        --focus: #a99cff;
+      }
+
+      * { box-sizing: border-box; }
+      html { min-width: 320px; background: var(--bg); }
+      body {
+        min-height: 100vh;
+        margin: 0;
+        overflow-x: hidden;
+        background: var(--bg);
+        color: var(--text);
+        font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 14px;
+        line-height: 1.45;
+      }
+      button, input { font: inherit; }
+      button { color: inherit; }
+      button:focus-visible, input:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 2px;
+      }
+      svg { display: block; }
+      .icon { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.7; }
+      .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+      .shell {
+        display: grid;
+        grid-template-columns: 232px minmax(0, 1fr);
+        min-height: 100vh;
+      }
+
+      .sidebar {
+        position: sticky;
+        top: 0;
+        display: flex;
+        height: 100vh;
+        flex-direction: column;
+        padding: 10px 8px;
+        border-right: 1px solid #222227;
+        background: var(--sidebar);
+      }
+
+      .workspace-switcher {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        min-height: 38px;
+        padding: 0 8px;
+        border: 0;
+        border-radius: 7px;
+        background: transparent;
+        text-align: left;
+        cursor: pointer;
+      }
+      .workspace-switcher { cursor: default; }
+      .workspace-mark { display: grid; width: 22px; height: 22px; place-items: center; border-radius: 6px; background: #6657e8; font-size: 11px; font-weight: 800; }
+      .workspace-copy { display: grid; min-width: 0; flex: 1; }
+      .workspace-copy strong { overflow: hidden; font-size: 13px; text-overflow: ellipsis; white-space: nowrap; }
+      .workspace-copy span { color: var(--faint); font-size: 11px; }
+
+      .new-issue {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 34px;
+        margin: 10px 4px 14px;
+        padding: 0 10px;
+        border: 1px solid #3d394e;
+        border-radius: 7px;
+        background: #25232f;
+        color: #ded9ff;
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .new-issue:hover { border-color: #5c537e; background: #2d2a3a; }
+      .new-issue kbd { margin-left: auto; color: #8d879e; font-family: inherit; font-size: 10px; }
+
+      .nav-group { margin: 0 0 14px; }
+      .nav-label { padding: 5px 10px; color: #8b8b95; font-size: 10px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+      .nav-item {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        width: 100%;
+        min-height: 31px;
+        padding: 0 10px;
+        border: 0;
+        border-radius: 6px;
+        background: transparent;
+        color: #a8a8b1;
+        cursor: default;
+        text-align: left;
+        font-size: 12px;
+      }
+      .nav-item[aria-current="page"] { background: #222228; color: #f4f4f5; }
+      .nav-item .count { margin-left: auto; color: #92929d; font-size: 10px; font-variant-numeric: tabular-nums; }
+      .sidebar-footer { margin-top: auto; padding: 12px 10px 5px; border-top: 1px solid #242429; color: #9898a2; font-size: 10px; line-height: 1.5; }
+
+      .main { min-width: 0; }
+      .app-header {
+        position: sticky;
+        z-index: 10;
+        top: 0;
+        display: flex;
+        min-height: 50px;
+        align-items: center;
+        gap: 10px;
+        padding: 0 18px;
+        border-bottom: 1px solid var(--line);
+        background: rgba(17, 17, 20, .96);
+      }
+      .breadcrumbs { display: flex; min-width: 0; align-items: center; gap: 8px; color: var(--faint); font-size: 12px; }
+      .breadcrumbs strong { overflow: hidden; color: #d8d8dd; font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
+      .header-actions { display: flex; align-items: center; gap: 5px; margin-left: auto; }
+      .icon-button { display: grid; width: 30px; height: 30px; place-items: center; border: 0; border-radius: 6px; background: transparent; color: #85858f; cursor: pointer; }
+      .icon-button:hover { background: #202025; color: #ededf0; }
+      .study-label { margin-left: 7px; padding: 4px 7px; border: 1px solid #4a4a54; border-radius: 5px; color: #a3a3ad; font-size: 9px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+      .mobile-study-note { display: none; }
+      .passive { cursor: default; }
+      .icon-button.passive:hover { background: transparent; color: #85858f; }
+
+      .content-header { padding: 28px 28px 0; }
+      .title-row { display: flex; align-items: center; gap: 12px; }
+      .team-icon { display: grid; width: 30px; height: 30px; place-items: center; border-radius: 8px; background: #2b2848; color: #b6adff; font-size: 12px; font-weight: 800; }
+      h1 { margin: 0; font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
+      .title-row .quiet-action { margin-left: auto; }
+      .quiet-action { display: inline-flex; min-height: 30px; align-items: center; gap: 7px; padding: 0 9px; border: 1px solid var(--line); border-radius: 6px; background: #18181c; color: #9898a2; cursor: pointer; font-size: 11px; }
+      .quiet-action:hover { border-color: var(--line-strong); color: #e0e0e4; }
+      .summary { max-width: 700px; margin: 8px 0 22px 42px; color: var(--muted); font-size: 12px; }
+
+      .tabs { display: flex; align-items: center; gap: 2px; border-bottom: 1px solid var(--line); }
+      .tab { position: relative; min-height: 36px; padding: 0 11px; border: 0; background: transparent; color: #7f7f89; cursor: pointer; font-size: 12px; }
+      .tab:hover { color: #d6d6da; }
+      .tab[aria-selected="true"] { color: #ededf0; }
+      .tab[aria-selected="true"]::after { position: absolute; right: 9px; bottom: -1px; left: 9px; height: 1px; background: #8d7ff3; content: ""; }
+      .tab-count { margin-left: 5px; color: #92929c; font-size: 10px; }
+
+      .workspace-area { display: grid; grid-template-columns: minmax(0, 1fr) 360px; min-height: calc(100vh - 138px); }
+      .issue-pane { min-width: 0; border-right: 1px solid var(--line); }
+      .list-toolbar { display: flex; min-height: 45px; align-items: center; gap: 7px; padding: 0 18px; border-bottom: 1px solid var(--line); }
+      .toolbar-label { color: #777780; font-size: 11px; }
+      .filter-chip { display: inline-flex; min-height: 26px; align-items: center; gap: 5px; padding: 0 8px; border: 1px solid var(--line); border-radius: 5px; background: transparent; color: #a0a0aa; font-size: 10px; }
+      .list-toolbar .spacer { flex: 1; }
+      .list-toolbar strong { color: #94949e; font-size: 10px; font-weight: 500; }
+
+      .issue-group-header { display: flex; min-height: 38px; align-items: center; gap: 8px; padding: 0 18px; border-bottom: 1px solid var(--line); background: #151518; color: #8c8c96; font-size: 11px; font-weight: 600; }
+      .status-dot { width: 10px; height: 10px; border: 2px solid #6f7080; border-radius: 50%; }
+      .status-dot.active { border-color: var(--amber); border-top-color: transparent; }
+      .issue-group-header span:last-child { margin-left: auto; color: #92929c; font-weight: 400; }
+
+      .issue-row {
+        display: grid;
+        grid-template-columns: 22px 70px minmax(190px, 1fr) 90px 88px 30px;
+        gap: 8px;
+        width: 100%;
+        min-height: 43px;
+        align-items: center;
+        padding: 0 14px 0 18px;
+        border: 0;
+        border-bottom: 1px solid #242429;
+        background: transparent;
+        color: #c8c8ce;
+        cursor: pointer;
+        text-align: left;
+      }
+      .issue-row:hover { background: #18181c; }
+      .issue-row[aria-selected="true"] { background: #202026; }
+      .issue-row[hidden] { display: none; }
+      .issue-status { width: 12px; height: 12px; border: 1.7px solid #676772; border-radius: 50%; }
+      .issue-status.progress { border-color: var(--amber); border-top-color: transparent; }
+      .issue-status.todo { border-style: dashed; }
+      .issue-key { color: #94949e; font-size: 11px; font-variant-numeric: tabular-nums; }
+      .issue-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; }
+      .issue-tag { width: fit-content; max-width: 86px; overflow: hidden; padding: 2px 6px; border-radius: 4px; background: #23232a; color: #8d8d98; font-size: 9px; text-overflow: ellipsis; white-space: nowrap; }
+      .priority { color: #90909a; font-size: 10px; }
+      .priority.high { color: var(--red); }
+      .avatar-mini { display: grid; width: 21px; height: 21px; place-items: center; justify-self: end; border-radius: 50%; background: #303039; color: #b9b9c2; font-size: 8px; font-weight: 700; }
+
+      .detail-pane { min-width: 0; background: #17171a; }
+      .detail-head { display: flex; min-height: 45px; align-items: center; gap: 7px; padding: 0 14px; border-bottom: 1px solid var(--line); color: #767680; font-size: 10px; }
+      .detail-head .icon-button { margin-left: auto; }
+      .detail-body { padding: 24px; }
+      .detail-key { color: #74747e; font-size: 11px; }
+      .detail-body h2 { margin: 9px 0 0; font-size: 21px; font-weight: 620; letter-spacing: -.025em; line-height: 1.25; }
+      .detail-body > p { margin: 14px 0 0; color: #9c9ca6; font-size: 12px; line-height: 1.65; }
+      .property-list { display: grid; gap: 10px; margin: 24px 0; padding: 16px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+      .property { display: grid; grid-template-columns: 86px 1fr; gap: 12px; align-items: center; font-size: 11px; }
+      .property dt { color: #92929c; }
+      .property dd { display: flex; align-items: center; gap: 7px; margin: 0; color: #bdbdc5; }
+      .property .pill { padding: 2px 6px; border-radius: 4px; background: var(--violet-soft); color: #bdb4ff; }
+      .activity-title { margin: 0 0 12px; color: #777780; font-size: 10px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+      .activity { display: grid; grid-template-columns: 22px 1fr; gap: 10px; margin-top: 12px; color: #888892; font-size: 11px; }
+      .activity .avatar-mini { justify-self: start; }
+      .activity strong { color: #c4c4ca; font-weight: 600; }
+
+      .toast { position: fixed; z-index: 30; right: 18px; bottom: 18px; display: flex; min-height: 40px; align-items: center; gap: 8px; padding: 0 13px; border: 1px solid #454550; border-radius: 8px; background: #232329; color: #d9d9de; box-shadow: 0 16px 40px rgba(0,0,0,.34); opacity: 0; pointer-events: none; transform: translateY(8px); transition: opacity 180ms ease-out, transform 180ms ease-out; }
+      .toast.is-visible { opacity: 1; transform: translateY(0); }
+      body.details-closed .workspace-area { grid-template-columns: minmax(0, 1fr); }
+      body.details-closed .detail-pane { display: none; }
+
+      @media (max-width: 980px) {
+        .shell { grid-template-columns: 190px minmax(0, 1fr); }
+        .workspace-area { grid-template-columns: minmax(0, 1fr) 310px; }
+        .issue-row { grid-template-columns: 20px 62px minmax(160px, 1fr) 78px 26px; }
+        .issue-row .priority { display: none; }
+      }
+
+      @media (max-width: 760px) {
+        .shell { display: block; }
+        .sidebar { display: none; }
+        .study-label { display: none; }
+        .mobile-study-note { display: block; margin: 0; padding: 8px 16px; border-bottom: 1px solid var(--line); color: #a3a3ad; font-size: 10px; line-height: 1.45; }
+        .app-header { padding: 0 10px; }
+        .content-header { padding: 22px 16px 0; }
+        .summary { margin-left: 0; }
+        .tabs { overflow-x: auto; }
+        .workspace-area { display: block; min-height: 0; }
+        .issue-pane { border-right: 0; }
+        .list-toolbar { padding: 0 12px; }
+        .issue-row { grid-template-columns: 18px 58px minmax(150px, 1fr) 24px; min-height: 48px; padding: 0 12px; }
+        .issue-row .issue-tag, .issue-row .priority { display: none; }
+        .detail-pane { position: fixed; z-index: 24; inset: 0; overflow-y: auto; transform: translateX(100%); transition: transform 220ms cubic-bezier(.16,1,.3,1); }
+        body.details-open .detail-pane { transform: translateX(0); }
+        .detail-head { position: sticky; top: 0; z-index: 2; background: #17171a; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .detail-pane, .toast { transition: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <!--
+      THESIS: A calm, dense issue list makes product work scannable; it refuses the generic dashboard-card grid.
+      OWN-WORLD: Dim charcoal navigation, hairline structure, compact rows, violet focus, and restrained status color.
+      STORY: A developer filters active work, selects an issue, and inspects its context without leaving the list.
+      FIRST VIEWPORT: Dim sidebar, active-issues header, dense issue table, and an open detail rail with synthetic project data.
+      FORM: Familiar Linear-like issue workspace, user-pinned competitor study. FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md.
+    -->
+    <svg class="visually-hidden" aria-hidden="true">
+      <symbol id="i-inbox" viewBox="0 0 24 24"><path d="M4 5h16v14H4zM4 14h4l2 3h4l2-3h4"/></symbol>
+      <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></symbol>
+      <symbol id="i-cycle" viewBox="0 0 24 24"><path d="M18 8a7 7 0 1 0 1 7M18 4v4h-4"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+      <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></symbol>
+      <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+      <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 7 5 5-5 5"/></symbol>
+    </svg>
+
+    <div class="shell">
+      <aside class="sidebar" aria-label="Workspace navigation">
+        <div class="workspace-switcher">
+          <span class="workspace-mark">A</span>
+          <span class="workspace-copy"><strong>Atlas product</strong><span>Core team</span></span>
+          <svg class="icon"><use href="#i-chevron"/></svg>
+        </div>
+        <button class="new-issue" type="button" id="new-issue"><svg class="icon"><use href="#i-plus"/></svg>New issue<kbd>C</kbd></button>
+        <nav>
+          <div class="nav-group">
+            <div class="nav-item"><svg class="icon"><use href="#i-inbox"/></svg>Inbox<span class="count">4</span></div>
+            <div class="nav-item"><svg class="icon"><use href="#i-list"/></svg>My issues</div>
+          </div>
+          <div class="nav-group">
+            <div class="nav-label">Workspace</div>
+            <div class="nav-item" aria-current="page"><svg class="icon"><use href="#i-cycle"/></svg>Active issues<span class="count">12</span></div>
+            <div class="nav-item"><svg class="icon"><use href="#i-list"/></svg>Backlog<span class="count">31</span></div>
+            <div class="nav-item"><svg class="icon"><use href="#i-cycle"/></svg>Cycles</div>
+          </div>
+          <div class="nav-group">
+            <div class="nav-label">Projects</div>
+            <div class="nav-item"><span class="status-dot active"></span>Launch quality</div>
+            <div class="nav-item"><span class="status-dot"></span>Mobile polish</div>
+          </div>
+        </nav>
+        <div class="sidebar-footer">Interface study with synthetic project data.<br>Unaffiliated with Linear.</div>
+      </aside>
+
+      <main class="main">
+        <header class="app-header">
+          <div class="breadcrumbs"><span>Atlas product</span><svg class="icon"><use href="#i-chevron"/></svg><strong>Active issues</strong></div>
+          <div class="header-actions">
+            <span class="icon-button passive" aria-hidden="true"><svg class="icon"><use href="#i-filter"/></svg></span>
+            <span class="icon-button passive" aria-hidden="true"><svg class="icon"><use href="#i-more"/></svg></span>
+            <span class="study-label">HTML interface study</span>
+          </div>
+        </header>
+        <p class="mobile-study-note">Interface study with synthetic project data. Unaffiliated with Linear.</p>
+
+        <section class="content-header">
+          <div class="title-row">
+            <span class="team-icon">AP</span>
+            <h1>Active issues</h1>
+            <button class="quiet-action" type="button"><svg class="icon"><use href="#i-plus"/></svg>Add issue</button>
+          </div>
+          <p class="summary">Focused work for the current cycle, grouped by workflow state and ordered by priority.</p>
+          <div class="tabs" role="tablist" aria-label="Issue views">
+            <button class="tab" id="tab-all" type="button" role="tab" aria-controls="issue-panel" aria-selected="true" tabindex="0" data-filter="all">All issues<span class="tab-count">12</span></button>
+            <button class="tab" id="tab-active" type="button" role="tab" aria-controls="issue-panel" aria-selected="false" tabindex="-1" data-filter="active">Active<span class="tab-count">7</span></button>
+            <button class="tab" id="tab-backlog" type="button" role="tab" aria-controls="issue-panel" aria-selected="false" tabindex="-1" data-filter="backlog">Backlog<span class="tab-count">5</span></button>
+          </div>
+        </section>
+
+        <div class="workspace-area">
+          <section class="issue-pane" id="issue-panel" role="tabpanel" aria-labelledby="tab-all">
+            <div class="list-toolbar"><span class="toolbar-label">Cycle 42</span><span class="filter-chip"><svg class="icon"><use href="#i-filter"/></svg>Display</span><span class="spacer"></span><strong id="result-count">6 visible</strong></div>
+            <div class="issue-group-header"><span class="status-dot active"></span>In progress<span>3 issues</span></div>
+            <button class="issue-row" type="button" aria-selected="true" data-group="active" data-issue="AP-482">
+              <span class="issue-status progress"></span><span class="issue-key">AP-482</span><span class="issue-title">Resolve keyboard focus after command menu close</span><span class="issue-tag">Accessibility</span><span class="priority high">Urgent</span><span class="avatar-mini">MR</span>
+            </button>
+            <button class="issue-row" type="button" aria-selected="false" data-group="active" data-issue="AP-477">
+              <span class="issue-status progress"></span><span class="issue-key">AP-477</span><span class="issue-title">Tune transition between issue and project views</span><span class="issue-tag">Motion</span><span class="priority">High</span><span class="avatar-mini">SK</span>
+            </button>
+            <button class="issue-row" type="button" aria-selected="false" data-group="active" data-issue="AP-469">
+              <span class="issue-status progress"></span><span class="issue-key">AP-469</span><span class="issue-title">Consolidate empty states for saved views</span><span class="issue-tag">UI polish</span><span class="priority">Medium</span><span class="avatar-mini">JL</span>
+            </button>
+            <div class="issue-group-header"><span class="status-dot"></span>Todo<span>3 issues</span></div>
+            <button class="issue-row" type="button" aria-selected="false" data-group="backlog" data-issue="AP-461">
+              <span class="issue-status todo"></span><span class="issue-key">AP-461</span><span class="issue-title">Add bulk assignment to triage view</span><span class="issue-tag">Workflow</span><span class="priority">High</span><span class="avatar-mini">AK</span>
+            </button>
+            <button class="issue-row" type="button" aria-selected="false" data-group="backlog" data-issue="AP-455">
+              <span class="issue-status todo"></span><span class="issue-key">AP-455</span><span class="issue-title">Persist display density per workspace</span><span class="issue-tag">Settings</span><span class="priority">Medium</span><span class="avatar-mini">TN</span>
+            </button>
+            <button class="issue-row" type="button" aria-selected="false" data-group="backlog" data-issue="AP-451">
+              <span class="issue-status todo"></span><span class="issue-key">AP-451</span><span class="issue-title">Clarify archived project navigation</span><span class="issue-tag">Navigation</span><span class="priority">Low</span><span class="avatar-mini">IP</span>
+            </button>
+          </section>
+
+          <aside class="detail-pane" aria-label="Selected issue details">
+            <div class="detail-head"><span id="detail-breadcrumb">AP-482</span><button class="icon-button" id="close-detail" type="button" aria-label="Close issue details"><svg class="icon"><use href="#i-close"/></svg></button></div>
+            <div class="detail-body">
+              <span class="detail-key" id="detail-key">AP-482</span>
+              <h2 id="detail-title" aria-live="polite">Resolve keyboard focus after command menu close</h2>
+              <p id="detail-description">Focus currently returns to the document body. Restore it to the control that opened the command menu and preserve the active row.</p>
+              <dl class="property-list">
+                <div class="property"><dt>Status</dt><dd><span class="status-dot active"></span><span id="detail-status">In progress</span></dd></div>
+                <div class="property"><dt>Priority</dt><dd id="detail-priority">Urgent</dd></div>
+                <div class="property"><dt>Project</dt><dd><span class="pill">Launch quality</span></dd></div>
+                <div class="property"><dt>Assignee</dt><dd><span class="avatar-mini" id="detail-avatar">MR</span><span id="detail-assignee">Maya R.</span></dd></div>
+              </dl>
+              <h3 class="activity-title">Activity</h3>
+              <div class="activity"><span class="avatar-mini">SK</span><div><strong>Soren K.</strong> linked the focus restoration test.<br><span>18 minutes ago</span></div></div>
+              <div class="activity"><span class="avatar-mini">MR</span><div><strong>Maya R.</strong> moved the issue to In progress.<br><span>Yesterday</span></div></div>
+            </div>
+          </aside>
+        </div>
+      </main>
+    </div>
+    <div class="toast" role="status" aria-live="polite" id="toast"><svg class="icon"><use href="#i-plus"/></svg><span>New issue draft ready</span></div>
+
+    <script>
+      const issueData = {
+        "AP-482": ["Resolve keyboard focus after command menu close", "Focus currently returns to the document body. Restore it to the control that opened the command menu and preserve the active row.", "In progress", "Urgent", "MR", "Maya R."],
+        "AP-477": ["Tune transition between issue and project views", "Reduce visual travel while keeping project context visible during the view change.", "In progress", "High", "SK", "Soren K."],
+        "AP-469": ["Consolidate empty states for saved views", "Use one compact empty-state system for shared, personal, and filtered views.", "In progress", "Medium", "JL", "Jordan L."],
+        "AP-461": ["Add bulk assignment to triage view", "Allow a reviewer to assign selected issues without opening each issue individually.", "Todo", "High", "AK", "Ari K."],
+        "AP-455": ["Persist display density per workspace", "Remember compact or comfortable row density independently for each workspace.", "Todo", "Medium", "TN", "Tess N."],
+        "AP-451": ["Clarify archived project navigation", "Keep archived projects discoverable without letting them compete with active work.", "Todo", "Low", "IP", "Inez P."]
+      };
+
+      const rows = [...document.querySelectorAll(".issue-row")];
+      const tabs = [...document.querySelectorAll(".tab")];
+      const resultCount = document.querySelector("#result-count");
+
+      function selectIssue(row) {
+        document.body.classList.remove("details-closed");
+        rows.forEach((item) => item.setAttribute("aria-selected", String(item === row)));
+        const key = row.dataset.issue;
+        const [title, description, status, priority, initials, assignee] = issueData[key];
+        document.querySelector("#detail-breadcrumb").textContent = key;
+        document.querySelector("#detail-key").textContent = key;
+        document.querySelector("#detail-title").textContent = title;
+        document.querySelector("#detail-description").textContent = description;
+        document.querySelector("#detail-status").textContent = status;
+        document.querySelector("#detail-priority").textContent = priority;
+        document.querySelector("#detail-avatar").textContent = initials;
+        document.querySelector("#detail-assignee").textContent = assignee;
+        document.body.classList.add("details-open");
+      }
+
+      rows.forEach((row) => row.addEventListener("click", () => selectIssue(row)));
+      tabs.forEach((tab) => tab.addEventListener("click", () => {
+        tabs.forEach((item) => {
+          item.setAttribute("aria-selected", String(item === tab));
+          item.tabIndex = item === tab ? 0 : -1;
+        });
+        document.querySelector("#issue-panel").setAttribute("aria-labelledby", tab.id);
+        const filter = tab.dataset.filter;
+        let visible = 0;
+        rows.forEach((row) => {
+          const show = filter === "all" || row.dataset.group === filter;
+          row.hidden = !show;
+          if (show) visible += 1;
+        });
+        resultCount.textContent = `${visible} visible`;
+      }));
+
+      document.querySelector(".tabs").addEventListener("keydown", (event) => {
+        const current = tabs.indexOf(document.activeElement);
+        if (current < 0) return;
+        let next = current;
+        if (event.key === "ArrowRight") next = (current + 1) % tabs.length;
+        else if (event.key === "ArrowLeft") next = (current - 1 + tabs.length) % tabs.length;
+        else if (event.key === "Home") next = 0;
+        else if (event.key === "End") next = tabs.length - 1;
+        else return;
+        event.preventDefault();
+        tabs[next].focus();
+        tabs[next].click();
+      });
+
+      document.querySelector("#close-detail").addEventListener("click", () => {
+        if (window.matchMedia("(max-width: 760px)").matches) document.body.classList.remove("details-open");
+        else document.body.classList.add("details-closed");
+      });
+      document.querySelectorAll("#new-issue, .quiet-action").forEach((button) => button.addEventListener("click", () => {
+        const toast = document.querySelector("#toast");
+        toast.classList.add("is-visible");
+        window.setTimeout(() => toast.classList.remove("is-visible"), 1800);
+      }));
+    </script>
+  </body>
+</html>

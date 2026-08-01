@@ -1,0 +1,198 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 202" width="165" height="202" role="img" aria-label="Animated abstract pull-request write-up: a header with plus and minus change counts, a before-after split, and stacked file-change cards">
+  <style>
+    svg{stroke-linejoin:round}
+    .bg{fill:#F0EEE6}
+    .frame{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .wh{fill:#FFFFFF;stroke:#9C9B93;stroke-width:1.4}
+    .whh{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .oa{fill:#E3DACC;stroke:#B7AE9D;stroke-width:1.2}
+    .sl{fill:#141413}
+    .cl{fill:#D97757}
+    .ol{fill:#788C5D}
+    .fl{fill:#D1CFC5}
+    .fll{fill:#E6E3DA}
+    .st{fill:none;stroke:#87867F;stroke-width:1.4}
+    .stt{fill:none;stroke:#6F6E68;stroke-width:2}
+    .hl{fill:none;stroke:#D1CFC5;stroke-width:1}
+    .ln{fill:none;stroke:#9C9B93;stroke-width:1.3;stroke-linecap:round}
+    .lnf{fill:none;stroke:#CFCDC3;stroke-width:1.1;stroke-linecap:round}
+    .lc{fill:none;stroke:#D97757;stroke-width:1.5;stroke-linecap:round}
+    .da{stroke-dasharray:3 3}
+  </style>
+  <style>
+    /* PR WRITE-UP: lines write in left-to-right in sequence, sections rise in order,
+   the clay diff line lands last, and a clay caret blinks while authoring.
+   Each rule line is a draw-on (dash length >= its run). Static frame = fully written. */
+
+@media (prefers-reduced-motion: no-preference){
+
+  /* ---- generic draw-on: line hidden then drawn left->right, then held ---- */
+  .a-w{ stroke-dasharray: 160; stroke-dashoffset: 160; }
+
+  /* ---- section panels rise + fade in, then settle ---- */
+  .a-sec{ transform-box: fill-box; transform-origin: 50% 50%; }
+
+  /* group timing offsets via animation-delay; one master 9s loop */
+  /* HEADER block */
+  .a-secH{ animation: a-rise 9s ease-in-out infinite; }
+  .a-h1{ animation: a-draw 9s ease-in-out infinite .25s; }
+  .a-h2{ animation: a-draw 9s ease-in-out infinite .45s; }
+  .a-h3{ animation: a-draw 9s ease-in-out infinite .60s; }
+  .a-hc1{ animation: a-draw 9s ease-in-out infinite .75s; }
+  .a-hc2{ animation: a-draw 9s ease-in-out infinite .90s; }
+
+  /* TL;DR */
+  .a-secT{ animation: a-rise 9s ease-in-out infinite .55s; }
+  .a-t1{ animation: a-draw 9s ease-in-out infinite 1.05s; }
+  .a-t2{ animation: a-draw 9s ease-in-out infinite 1.25s; }
+
+  /* BEFORE / AFTER split */
+  .a-secB{ animation: a-rise 9s ease-in-out infinite .95s; }
+  .a-b0{ animation: a-draw 9s ease-in-out infinite 1.45s; }
+  .a-b1{ animation: a-draw 9s ease-in-out infinite 1.58s; }
+  .a-b2{ animation: a-draw 9s ease-in-out infinite 1.70s; }
+  .a-b3{ animation: a-draw 9s ease-in-out infinite 1.82s; }
+  .a-secA{ animation: a-rise 9s ease-in-out infinite 1.30s; }
+  .a-a0{ animation: a-draw 9s ease-in-out infinite 1.95s; } /* clay before/after marker */
+  .a-a1{ animation: a-draw 9s ease-in-out infinite 2.08s; }
+  .a-a2{ animation: a-draw 9s ease-in-out infinite 2.20s; }
+  .a-a3{ animation: a-draw 9s ease-in-out infinite 2.32s; }
+
+  /* FILE CARDS cascade */
+  .a-secF1{ animation: a-rise 9s ease-in-out infinite 1.85s; }
+  .a-f1{ animation: a-draw 9s ease-in-out infinite 2.50s; }
+  .a-secF2{ animation: a-rise 9s ease-in-out infinite 2.15s; }
+  .a-f2{ animation: a-draw 9s ease-in-out infinite 2.80s; }
+  .a-f2b{ animation: a-draw 9s ease-in-out infinite 2.95s; }
+  .a-secF3{ animation: a-rise 9s ease-in-out infinite 2.45s; }
+  .a-f3{ animation: a-draw 9s ease-in-out infinite 3.10s; }
+
+  /* the CLAY diff line LANDS last with a soft pop (transform/opacity-led) */
+  .a-clayland{
+    transform-box: fill-box; transform-origin: 0% 50%;
+    animation: a-pop 9s ease-in-out infinite 3.35s;
+  }
+
+  /* caret travels down the page following the write-head, then blinks */
+  .a-caret{
+    transform-box: fill-box; transform-origin: 50% 50%;
+    animation: a-caretmove 9s ease-in-out infinite, a-blink .9s steps(1,end) infinite;
+  }
+}
+
+/* draw a line on, hold it drawn for the rest of the loop */
+@keyframes a-draw{
+  0%   { stroke-dashoffset: 160; }
+  6%   { stroke-dashoffset: 160; }
+  14%  { stroke-dashoffset: 0; }
+  92%  { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 160; }
+}
+
+/* panel rise: starts low+faded, settles, holds, resets at loop end */
+@keyframes a-rise{
+  0%   { opacity:0; transform: translateY(6px) scale(.985); }
+  4%   { opacity:0; transform: translateY(6px) scale(.985); }
+  12%  { opacity:1; transform: translateY(0) scale(1); }
+  93%  { opacity:1; transform: translateY(0) scale(1); }
+  100% { opacity:0; transform: translateY(6px) scale(.985); }
+}
+
+/* clay diff line lands with a brief overshoot, then holds, resets at loop end */
+@keyframes a-pop{
+  0%,40%   { transform: scaleX(.4) translateY(2px); opacity:0; }
+  42%      { transform: scaleX(.4) translateY(2px); opacity:1; }
+  46%      { transform: scaleX(1.06) translateY(0); opacity:1; }
+  52%      { transform: scaleX(1) translateY(0); opacity:1; }
+  93%      { transform: scaleX(1) translateY(0); opacity:1; }
+  100%     { transform: scaleX(.4) translateY(2px); opacity:0; }
+}
+
+/* caret hops from header -> tldr -> split -> files, then idles */
+@keyframes a-caretmove{
+  0%   { transform: translate(0,0); opacity:1; }
+  8%   { transform: translate(0,0); }
+  14%  { transform: translate(0,30px); }
+  22%  { transform: translate(0,30px); }
+  26%  { transform: translate(0,68px); }
+  34%  { transform: translate(0,68px); }
+  40%  { transform: translate(0,102px); }
+  92%  { transform: translate(0,102px); opacity:1; }
+  100% { transform: translate(0,0); opacity:1; }
+}
+
+@keyframes a-blink{
+  0%,49%  { opacity:1; }
+  50%,100%{ opacity:.15; }
+}
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none!important;transition:none!important}
+      [class*="a-"],[id*="a-"]{opacity:1!important;transform:none!important;stroke-dashoffset:0!important;stroke-dasharray:none!important}
+    }
+  </style>
+  <rect class="bg" x="0" y="0" width="165" height="202"/>
+
+<!-- header: PR title + meta stats -->
+<g class="a-sec a-secH">
+<rect class="wh" x="12" y="12" width="141" height="32" rx="5"/>
+<circle class="cl" cx="20.5" cy="20.5" r="2"/>
+<line class="ln a-w a-h1" x1="27" y1="20.5" x2="73" y2="20.5"/>
+<line class="lnf a-w a-h2" x1="20" y1="28" x2="91" y2="28"/>
+<line class="lnf a-w a-h3" x1="20" y1="34" x2="64" y2="34"/>
+<!-- add / del stat chips -->
+<rect class="oa" x="105" y="17" width="7" height="7" rx="2"/>
+<line class="lnf a-w a-hc1" x1="116" y1="20.5" x2="145" y2="20.5"/>
+<rect class="fll" x="105" y="31" width="7" height="7" rx="2"/>
+<line class="lnf a-w a-hc2" x1="116" y1="34.5" x2="138" y2="34.5"/>
+</g>
+
+<!-- TL;DR callout with clay accent edge -->
+<g class="a-sec a-secT">
+<rect class="whh" x="12" y="50" width="141" height="22" rx="4"/>
+<rect class="cl" x="12" y="50" width="3" height="22" rx="1.5"/>
+<line class="ln a-w a-t1" x1="23" y1="58" x2="117" y2="58"/>
+<line class="lnf a-w a-t2" x1="23" y1="65" x2="93" y2="65"/>
+</g>
+
+<!-- before / after split -->
+<g class="a-sec a-secB">
+<rect class="whh" x="12" y="78" width="67" height="36" rx="4.5"/>
+<line class="fl a-w a-b0" x1="18" y1="87" x2="39" y2="87"/>
+<line class="lnf a-w a-b1" x1="18" y1="95" x2="72" y2="95"/>
+<line class="lnf a-w a-b2" x1="18" y1="101" x2="62" y2="101"/>
+<line class="lnf a-w a-b3" x1="18" y1="107" x2="68" y2="107"/>
+</g>
+
+<g class="a-sec a-secA">
+<rect class="whh" x="86" y="78" width="67" height="36" rx="4.5"/>
+<line class="lc a-w a-a0" x1="92" y1="87" x2="113" y2="87"/>
+<line class="lnf a-w a-a1" x1="92" y1="95" x2="146" y2="95"/>
+<line class="lnf a-w a-a2" x1="92" y1="101" x2="137" y2="101"/>
+<line class="lnf a-w a-a3" x1="92" y1="107" x2="142" y2="107"/>
+</g>
+
+<!-- file-by-file: stacked file-change cards (steady rhythm: h20, gap6) -->
+<g class="a-sec a-secF1">
+<rect class="wh" x="12" y="120" width="141" height="20" rx="4"/>
+<rect class="oa" x="18" y="125.5" width="9" height="9" rx="2.5"/>
+<line class="ln a-w a-f1" x1="33" y1="130" x2="97" y2="130"/>
+<rect class="fll" x="128" y="126.5" width="19" height="7" rx="2"/>
+</g>
+
+<g class="a-sec a-secF2">
+<rect class="wh" x="12" y="146" width="141" height="20" rx="4"/>
+<rect class="oa" x="18" y="151.5" width="9" height="9" rx="2.5"/>
+<line class="ln a-w a-f2" x1="33" y1="156" x2="89" y2="156"/>
+<line class="lnf a-w a-f2b" x1="124" y1="156" x2="147" y2="156"/>
+</g>
+
+<g class="a-sec a-secF3">
+<rect class="wh" x="12" y="172" width="141" height="20" rx="4"/>
+<rect class="oa" x="18" y="177.5" width="9" height="9" rx="2.5"/>
+<line class="ln a-w a-f3" x1="33" y1="182" x2="99" y2="182"/>
+<line class="lc a-clayland" x1="131" y1="182" x2="147" y2="182"/>
+</g>
+
+<!-- authoring caret: clay write-head that travels then blinks -->
+<rect class="cl a-caret" x="72" y="16" width="1.8" height="9" rx="0.9"/>
+</svg>

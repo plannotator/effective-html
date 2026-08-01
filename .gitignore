@@ -1,0 +1,27 @@
+# dependencies
+/node_modules
+
+# Next.js
+/.next
+/out
+
+# Fumadocs
+/.source
+
+# production
+/build
+
+# local
+.DS_Store
+*.pem
+.env*
+
+# Vercel
+.vercel
+
+# local visual review material
+/art/banner-candidates/
+/.impeccable/screenshots/
+
+# TypeScript
+*.tsbuildinfo

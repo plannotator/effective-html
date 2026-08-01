@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 202" width="165" height="202" role="img" aria-label="Animated abstract design system reference: a swatch grid, a stacked type scale, and a component shelf">
+  <style>
+    svg{stroke-linejoin:round}
+    .bg{fill:#F0EEE6}
+    .frame{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .wh{fill:#FFFFFF;stroke:#9C9B93;stroke-width:1.4}
+    .whh{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .oa{fill:#E3DACC;stroke:#B7AE9D;stroke-width:1.2}
+    .sl{fill:#141413}
+    .cl{fill:#D97757}
+    .ol{fill:#788C5D}
+    .fl{fill:#D1CFC5}
+    .fll{fill:#E6E3DA}
+    .st{fill:none;stroke:#87867F;stroke-width:1.4}
+    .stt{fill:none;stroke:#6F6E68;stroke-width:2}
+    .hl{fill:none;stroke:#D1CFC5;stroke-width:1}
+    .ln{fill:none;stroke:#9C9B93;stroke-width:1.3;stroke-linecap:round}
+    .lnf{fill:none;stroke:#CFCDC3;stroke-width:1.1;stroke-linecap:round}
+    .lc{fill:none;stroke:#D97757;stroke-width:1.5;stroke-linecap:round}
+    .da{stroke-dasharray:3 3}
+  </style>
+  <style>
+    /* Swatches pop in on a stagger */
+@keyframes a-pop{
+  0%{opacity:0;transform:scale(.4)}
+  8%{opacity:1;transform:scale(1.12)}
+  14%,100%{opacity:1;transform:scale(1)}
+}
+.a-sw{transform-box:fill-box;transform-origin:center;animation:a-pop 5s ease-in-out infinite}
+.a-sw1{animation-delay:0s}
+.a-sw2{animation-delay:.18s}
+.a-sw3{animation-delay:.36s}
+.a-sw4{animation-delay:.54s}
+.a-sw5{animation-delay:.72s}
+
+/* Clay focus ring hops swatch to swatch */
+@keyframes a-hop{
+  0%{transform:translateX(0) scale(1)}
+  14%{transform:translateX(0) scale(1)}
+  18%{transform:translateX(13.25px) scale(1.1)}
+  22%{transform:translateX(26.5px) scale(1)}
+  36%{transform:translateX(26.5px) scale(1)}
+  40%{transform:translateX(39.75px) scale(1.1)}
+  44%{transform:translateX(53px) scale(1)}
+  58%{transform:translateX(53px) scale(1)}
+  61%{transform:translateX(66.25px) scale(1.1)}
+  64%{transform:translateX(79.5px) scale(1)}
+  78%{transform:translateX(79.5px) scale(1)}
+  81%{transform:translateX(92.75px) scale(1.1)}
+  84%{transform:translateX(106px) scale(1)}
+  94%{transform:translateX(106px) scale(1)}
+  100%{transform:translateX(0) scale(1)}
+}
+.a-ring{
+  transform-box:fill-box;transform-origin:center;
+  animation:a-hop 5s cubic-bezier(.5,1.5,.4,1) infinite;
+}
+@keyframes a-ringpulse{
+  0%,14%,22%,36%,44%,58%,64%,78%,84%,94%,100%{opacity:1}
+  18%,40%,61%,81%{opacity:.45}
+}
+.a-ringfade{animation:a-ringpulse 5s ease-in-out infinite}
+
+/* Type caret blink */
+@keyframes a-blink{
+  0%,42%{opacity:1}
+  50%,92%{opacity:0}
+  100%{opacity:1}
+}
+.a-caret{animation:a-blink 1.05s steps(1,end) infinite}
+
+@media (prefers-reduced-motion: reduce){
+  .a-sw,.a-ring,.a-ringfade,.a-caret{animation:none}
+}
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none!important;transition:none!important}
+      [class*="a-"],[id*="a-"]{opacity:1!important;transform:none!important;stroke-dashoffset:0!important;stroke-dasharray:none!important}
+    }
+  </style>
+  <rect x="12" y="12" width="141" height="178" rx="5" class="bg"/>
+
+<!-- Color: swatch grid -->
+<rect x="20" y="21" width="22" height="2.5" rx="1.25" class="fll"/>
+<rect x="20" y="29" width="21" height="21" rx="3.5" class="cl a-sw a-sw1"/>
+<rect x="46.5" y="29" width="21" height="21" rx="3.5" class="oa a-sw a-sw2"/>
+<rect x="73" y="29" width="21" height="21" rx="3.5" class="whh a-sw a-sw3"/>
+<rect x="99.5" y="29" width="21" height="21" rx="3.5" class="ol a-sw a-sw4"/>
+<rect x="126" y="29" width="21" height="21" rx="3.5" class="wh a-sw a-sw5"/>
+<rect x="73" y="33" width="6" height="6" rx="1.5" class="fll"/>
+<rect x="130" y="33" width="3" height="3" rx="1" class="sl"/>
+<line x1="20.5" y1="54.5" x2="32" y2="54.5" class="lnf"/>
+<line x1="47" y1="54.5" x2="58.5" y2="54.5" class="lnf"/>
+<line x1="73.5" y1="54.5" x2="83" y2="54.5" class="lnf"/>
+<line x1="100" y1="54.5" x2="111.5" y2="54.5" class="lnf"/>
+<line x1="126.5" y1="54.5" x2="136" y2="54.5" class="lnf"/>
+
+<!-- Clay focus ring (helper, animated) -->
+<g class="a-ring">
+<rect x="17.5" y="26.5" width="26" height="26" rx="5" class="lc a-ringfade"/>
+</g>
+
+<!-- Typography: type scale ladder -->
+<rect x="20" y="64" width="127" height="44" rx="4.5" class="wh"/>
+<rect x="27" y="71" width="56" height="4.5" rx="2" class="fl"/>
+<rect x="85.5" y="70.5" width="1.6" height="5.5" rx="0.8" class="cl a-caret"/>
+<rect x="27" y="81.5" width="40" height="3" rx="1.5" class="fll"/>
+<line x1="27" y1="92" x2="96" y2="92" class="ln"/>
+<line x1="27" y1="99.5" x2="81" y2="99.5" class="lnf"/>
+<line x1="124" y1="73.5" x2="140" y2="73.5" class="hl da"/>
+<line x1="124" y1="92" x2="140" y2="92" class="hl da"/>
+<circle cx="122" cy="73.5" r="1" class="sl"/>
+<circle cx="122" cy="92" r="1" class="sl"/>
+
+<!-- Spacing ruler: graduated bars -->
+<rect x="20" y="114" width="127" height="26" rx="4.5" class="whh"/>
+<line x1="27" y1="135.5" x2="140" y2="135.5" class="hl"/>
+<rect x="28" y="131.5" width="2.5" height="4" rx="1" class="fll"/>
+<rect x="40" y="128.5" width="2.5" height="7" rx="1" class="fll"/>
+<rect x="52" y="124.5" width="2.5" height="11" rx="1" class="fl"/>
+<rect x="64" y="120.5" width="2.5" height="15" rx="1" class="cl"/>
+<rect x="76" y="124.5" width="2.5" height="11" rx="1" class="fl"/>
+<rect x="88" y="128.5" width="2.5" height="7" rx="1" class="fll"/>
+<rect x="100" y="131.5" width="2.5" height="4" rx="1" class="fll"/>
+<line x1="118" y1="128" x2="140" y2="128" class="lnf"/>
+
+<!-- Components: button/badge shelf -->
+<rect x="20" y="146" width="127" height="32" rx="4.5" class="wh"/>
+<rect x="27" y="155.5" width="26" height="13" rx="4" class="cl"/>
+<rect x="58" y="155.5" width="24" height="13" rx="4" class="oa"/>
+<rect x="88" y="159" width="16" height="6" rx="3" class="st"/>
+<rect x="110" y="157.5" width="13" height="9" rx="2.5" class="whh"/>
+<rect x="128" y="157.5" width="13" height="9" rx="2.5" class="whh"/>
+<circle cx="116.5" cy="162" r="1.25" class="sl"/>
+<line x1="131" y1="162" x2="138" y2="162" class="lnf"/>
+</svg>

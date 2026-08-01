@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 202" width="165" height="202" role="img" aria-label="Animated abstract implementation plan: summary metric tiles above a vertical milestone timeline of phase cards with checklist steps">
+  <style>
+    svg{stroke-linejoin:round}
+    .bg{fill:#F0EEE6}
+    .frame{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .wh{fill:#FFFFFF;stroke:#9C9B93;stroke-width:1.4}
+    .whh{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .oa{fill:#E3DACC;stroke:#B7AE9D;stroke-width:1.2}
+    .sl{fill:#141413}
+    .cl{fill:#D97757}
+    .ol{fill:#788C5D}
+    .fl{fill:#D1CFC5}
+    .fll{fill:#E6E3DA}
+    .st{fill:none;stroke:#87867F;stroke-width:1.4}
+    .stt{fill:none;stroke:#6F6E68;stroke-width:2}
+    .hl{fill:none;stroke:#D1CFC5;stroke-width:1}
+    .ln{fill:none;stroke:#9C9B93;stroke-width:1.3;stroke-linecap:round}
+    .lnf{fill:none;stroke:#CFCDC3;stroke-width:1.1;stroke-linecap:round}
+    .lc{fill:none;stroke:#D97757;stroke-width:1.5;stroke-linecap:round}
+    .da{stroke-dasharray:3 3}
+  </style>
+  <style>
+    @keyframes a-rail-fill{0%{transform:scaleY(0)}8%{transform:scaleY(0)}82%{transform:scaleY(1)}100%{transform:scaleY(1)}}
+.a-rail{transform-box:fill-box;transform-origin:50% 0;animation:a-rail-fill 6s cubic-bezier(.55,.1,.3,1) infinite}
+
+@keyframes a-draw1{0%{stroke-dashoffset:9}12%{stroke-dashoffset:9}20%{stroke-dashoffset:0}92%{stroke-dashoffset:0}97%{stroke-dashoffset:9}100%{stroke-dashoffset:9}}
+@keyframes a-draw2{0%{stroke-dashoffset:9}22%{stroke-dashoffset:9}30%{stroke-dashoffset:0}92%{stroke-dashoffset:0}97%{stroke-dashoffset:9}100%{stroke-dashoffset:9}}
+@keyframes a-draw3{0%{stroke-dashoffset:9}50%{stroke-dashoffset:9}58%{stroke-dashoffset:0}92%{stroke-dashoffset:0}97%{stroke-dashoffset:9}100%{stroke-dashoffset:9}}
+@keyframes a-draw4{0%{stroke-dashoffset:9}60%{stroke-dashoffset:9}68%{stroke-dashoffset:0}92%{stroke-dashoffset:0}97%{stroke-dashoffset:9}100%{stroke-dashoffset:9}}
+
+.a-c1{stroke-dasharray:9 9;animation:a-draw1 6s ease-in-out infinite}
+.a-c2{stroke-dasharray:9 9;animation:a-draw2 6s ease-in-out infinite}
+.a-c3{stroke-dasharray:9 9;animation:a-draw3 6s ease-in-out infinite}
+.a-c4{stroke-dasharray:9 9;animation:a-draw4 6s ease-in-out infinite}
+
+@keyframes a-badgeloop{0%{transform:scale(.2);opacity:0}5%{transform:scale(.2);opacity:0}12%{transform:scale(1.3);opacity:1}18%{transform:scale(.95)}24%{transform:scale(1)}90%{transform:scale(1);opacity:1}96%{transform:scale(.2);opacity:0}100%{transform:scale(.2);opacity:0}}
+.a-badge{transform-box:fill-box;transform-origin:50% 50%;animation:a-badgeloop 6s ease-in-out infinite}
+
+@keyframes a-dotloop{0%{transform:scale(1)}38%{transform:scale(1)}44%{transform:scale(1.6)}52%{transform:scale(1)}100%{transform:scale(1)}}
+.a-dot1{transform-box:fill-box;transform-origin:24px 96px;animation:a-dotloop 6s ease-in-out infinite}
+
+@keyframes a-dotloop3{0%{transform:scale(1)}54%{transform:scale(1)}60%{transform:scale(1.6)}68%{transform:scale(1)}100%{transform:scale(1)}}
+.a-dot2{transform-box:fill-box;transform-origin:24px 138px;animation:a-dotloop3 6s ease-in-out infinite}
+
+@keyframes a-r-wake{0%{opacity:.55}100%{opacity:1}}
+.a-row3{animation:a-r-wake 6s ease-in-out infinite}
+.a-row3b{animation:a-r-wake 6s ease-in-out infinite;animation-delay:-.9s}
+
+@media (prefers-reduced-motion:reduce){
+.a-rail,.a-c1,.a-c2,.a-c3,.a-c4,.a-badge,.a-dot1,.a-dot2,.a-row3,.a-row3b{animation:none}
+.a-rail{transform:scaleY(1)}
+.a-c1,.a-c2,.a-c3,.a-c4{stroke-dashoffset:0}
+.a-badge{opacity:1;transform:none}
+.a-row3,.a-row3b{opacity:1}
+}
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none!important;transition:none!important}
+      [class*="a-"],[id*="a-"]{opacity:1!important;transform:none!important;stroke-dashoffset:0!important;stroke-dasharray:none!important}
+    }
+  </style>
+  <rect x="0" y="0" width="165" height="202" class="bg"/>
+
+<!-- summary metric tiles row: four 33px tiles, equal 3px gutters, 12px edges -->
+<rect x="12" y="12" width="33" height="24" rx="4" class="wh"/>
+<line x1="17" y1="19.5" x2="28" y2="19.5" class="ln"/>
+<rect x="17" y="26" width="22" height="3" rx="1.5" class="fll"/>
+<rect x="17" y="31" width="12" height="2.5" rx="1.25" class="fll"/>
+
+<rect x="48" y="12" width="33" height="24" rx="4" class="whh"/>
+<line x1="53" y1="19.5" x2="64" y2="19.5" class="lnf"/>
+<rect x="53" y="26" width="20" height="3" rx="1.5" class="fll"/>
+<rect x="53" y="31" width="9" height="2.5" rx="1.25" class="cl"/>
+
+<rect x="84" y="12" width="33" height="24" rx="4" class="oa"/>
+<line x1="89" y1="19.5" x2="100" y2="19.5" class="lnf"/>
+<rect x="89" y="26" width="17" height="3" rx="1.5" class="fll"/>
+<rect x="89" y="31" width="11" height="2.5" rx="1.25" class="fll"/>
+
+<rect x="120" y="12" width="33" height="24" rx="4" class="whh"/>
+<line x1="125" y1="19.5" x2="136" y2="19.5" class="lnf"/>
+<rect x="125" y="26" width="18" height="3" rx="1.5" class="fll"/>
+<rect x="125" y="31" width="10" height="2.5" rx="1.25" class="fll"/>
+
+<!-- vertical timeline spine -->
+<line x1="24" y1="54" x2="24" y2="184" class="hl"/>
+<!-- clay progress rail filling down the spine -->
+<line x1="24" y1="54" x2="24" y2="184" class="lc a-rail"/>
+
+<!-- milestone 1 (done) -->
+<circle cx="24" cy="58" r="3.5" class="whh"/>
+<circle cx="24" cy="58" r="1.5" class="ol"/>
+<rect x="38" y="48" width="115" height="29" rx="4.5" class="wh"/>
+<rect x="44" y="54" width="38" height="3.5" rx="1.75" class="fl"/>
+<rect x="138" y="53.5" width="9" height="5" rx="2.5" class="whh"/>
+<path d="M140 56.1 L141.4 57.5 L145 54.4" class="lc a-badge"/>
+<line x1="44" y1="64.5" x2="117" y2="64.5" class="lnf"/>
+<line x1="44" y1="70.5" x2="100" y2="70.5" class="lnf"/>
+
+<!-- milestone 2 (active, clay) — single focal point -->
+<g class="a-dot1">
+<circle cx="24" cy="96" r="3.8" class="frame"/>
+<circle cx="24" cy="96" r="3.8" class="lc"/>
+<circle cx="24" cy="96" r="1.5" class="cl"/>
+</g>
+<rect x="38" y="84" width="115" height="36" rx="4.5" class="wh"/>
+<rect x="44" y="90" width="36" height="3.5" rx="1.75" class="fl"/>
+<rect x="44" y="100" width="4.5" height="4.5" rx="1.5" class="st"/>
+<path d="M44.9 102.4 L45.9 103.4 L47.7 101.1" class="lc a-c1"/>
+<line x1="53" y1="102.5" x2="117" y2="102.5" class="ln"/>
+<rect x="44" y="108.5" width="4.5" height="4.5" rx="1.5" class="st"/>
+<path d="M44.9 110.9 L45.9 111.9 L47.7 109.6" class="lc a-c2"/>
+<line x1="53" y1="111" x2="105" y2="111" class="ln"/>
+
+<!-- milestone 3 -->
+<g class="a-dot2">
+<circle cx="24" cy="138" r="3.5" class="whh"/>
+<circle cx="24" cy="138" r="1.5" class="cl"/>
+</g>
+<rect x="38" y="126" width="115" height="36" rx="4.5" class="whh"/>
+<rect x="44" y="132" width="33" height="3.5" rx="1.75" class="fll"/>
+<g class="a-row3">
+<rect x="44" y="142" width="4.5" height="4.5" rx="1.5" class="st"/>
+<path d="M44.9 144.4 L45.9 145.4 L47.7 143.1" class="lc a-c3"/>
+<line x1="53" y1="144.5" x2="114" y2="144.5" class="lnf"/>
+</g>
+<g class="a-row3b">
+<rect x="44" y="150.5" width="4.5" height="4.5" rx="1.5" class="st"/>
+<path d="M44.9 152.9 L45.9 153.9 L47.7 151.6" class="lc a-c4"/>
+<line x1="53" y1="153" x2="97" y2="153" class="lnf"/>
+</g>
+
+<!-- milestone 4 -->
+<circle cx="24" cy="180" r="3.5" class="whh"/>
+<rect x="38" y="168" width="115" height="27" rx="4.5" class="oa"/>
+<rect x="44" y="174" width="35" height="3.5" rx="1.75" class="fll"/>
+<line x1="44" y1="184" x2="116" y2="184" class="lnf"/>
+<line x1="44" y1="190" x2="94" y2="190" class="lnf"/>
+</svg>

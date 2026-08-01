@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 202" width="165" height="202" role="img" aria-label="Abstract status report: header, four metric tiles, a bar chart with one highlighted peak, and stacked list rows">
+  <style>
+    svg{stroke-linejoin:round}
+    .bg{fill:#F0EEE6}
+    .frame{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .wh{fill:#FFFFFF;stroke:#9C9B93;stroke-width:1.4}
+    .whh{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .oa{fill:#E3DACC;stroke:#B7AE9D;stroke-width:1.2}
+    .sl{fill:#141413}
+    .cl{fill:#D97757}
+    .ol{fill:#788C5D}
+    .fl{fill:#D1CFC5}
+    .fll{fill:#E6E3DA}
+    .st{fill:none;stroke:#87867F;stroke-width:1.4}
+    .stt{fill:none;stroke:#6F6E68;stroke-width:2}
+    .hl{fill:none;stroke:#D1CFC5;stroke-width:1}
+    .ln{fill:none;stroke:#9C9B93;stroke-width:1.3;stroke-linecap:round}
+    .lnf{fill:none;stroke:#CFCDC3;stroke-width:1.1;stroke-linecap:round}
+    .lc{fill:none;stroke:#D97757;stroke-width:1.5;stroke-linecap:round}
+    .da{stroke-dasharray:3 3}
+  </style>
+  <rect x="0" y="0" width="165" height="202" class="bg"/>
+
+<!-- Header: title rules + auto-pill + status dot -->
+<rect x="12" y="13" width="44" height="4" rx="2" class="fl"/>
+<rect x="12" y="20" width="26" height="3" rx="1.5" class="fll"/>
+<rect x="125" y="12.5" width="28" height="9" rx="4" class="wh"/>
+<circle cx="131" cy="17" r="1.5" class="cl"/>
+<rect x="135" y="15.5" width="14" height="3" rx="1.5" class="fll"/>
+<line x1="12" y1="29" x2="153" y2="29" class="hl"/>
+
+<!-- Summary band: 4 metric tiles (2x2) -->
+<rect x="12" y="35" width="68" height="29" rx="4" class="wh"/>
+<rect x="18" y="41" width="9" height="9" rx="2.5" class="whh"/>
+<rect x="20" y="44.5" width="5" height="2" rx="1" class="fll"/>
+<rect x="18" y="54" width="40" height="3" rx="1.5" class="fl"/>
+<rect x="18" y="59" width="24" height="2.5" rx="1.25" class="fll"/>
+
+<rect x="85" y="35" width="68" height="29" rx="4" class="wh"/>
+<rect x="91" y="41" width="9" height="9" rx="2.5" class="whh"/>
+<rect x="93" y="44.5" width="5" height="2" rx="1" class="fll"/>
+<rect x="91" y="54" width="40" height="3" rx="1.5" class="fl"/>
+<rect x="91" y="59" width="20" height="2.5" rx="1.25" class="fll"/>
+
+<!-- warn tile w/ clay accent tab -->
+<rect x="12" y="68" width="68" height="29" rx="4" class="wh"/>
+<rect x="12" y="80" width="3" height="5" rx="1.5" class="cl"/>
+<rect x="20" y="74" width="9" height="9" rx="2.5" class="whh"/>
+<rect x="22" y="77.5" width="5" height="2" rx="1" class="fll"/>
+<rect x="20" y="87" width="40" height="3" rx="1.5" class="fl"/>
+<rect x="20" y="92" width="28" height="2.5" rx="1.25" class="fll"/>
+
+<rect x="85" y="68" width="68" height="29" rx="4" class="wh"/>
+<rect x="91" y="74" width="9" height="9" rx="2.5" class="whh"/>
+<rect x="93" y="77.5" width="5" height="2" rx="1" class="fll"/>
+<rect x="91" y="87" width="40" height="3" rx="1.5" class="fl"/>
+<rect x="91" y="92" width="22" height="2.5" rx="1.25" class="fll"/>
+
+<!-- Velocity chart panel -->
+<rect x="12" y="101" width="141" height="50" rx="5" class="wh"/>
+<rect x="18" y="107" width="22" height="2.5" rx="1.25" class="fll"/>
+<line x1="18" y1="143" x2="147" y2="143" class="hl"/>
+<line x1="18" y1="134" x2="147" y2="134" class="hl da"/>
+<line x1="18" y1="125" x2="147" y2="125" class="hl da"/>
+<rect x="26" y="129" width="10" height="14" rx="1.5" class="oa"/>
+<rect x="43" y="122" width="10" height="21" rx="1.5" class="oa"/>
+<rect x="60" y="134" width="10" height="9" rx="1.5" class="oa"/>
+<rect x="77" y="115" width="10" height="28" rx="1.5" class="cl"/>
+<rect x="94" y="129" width="10" height="14" rx="1.5" class="oa"/>
+<rect x="111" y="134" width="10" height="9" rx="1.5" class="oa"/>
+<rect x="128" y="131" width="10" height="12" rx="1.5" class="oa"/>
+
+<!-- Carryover list panel: rows with tag chips -->
+<rect x="12" y="155" width="141" height="35" rx="5" class="whh"/>
+<rect x="18" y="161" width="16" height="6" rx="2.5" class="oa"/>
+<line x1="39" y1="162.5" x2="118" y2="162.5" class="ln"/>
+<line x1="39" y1="166" x2="96" y2="166" class="lnf"/>
+<line x1="18" y1="172" x2="147" y2="172" class="hl"/>
+<rect x="18" y="175" width="16" height="6" rx="2.5" class="oa"/>
+<line x1="39" y1="176.5" x2="110" y2="176.5" class="ln"/>
+<line x1="39" y1="180" x2="84" y2="180" class="lnf"/>
+<circle cx="146" cy="164" r="1.4" class="ol"/>
+</svg>

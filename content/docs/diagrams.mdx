@@ -1,0 +1,52 @@
+---
+title: Diagrams
+description: Choose a visual model that matches the relationship being explained.
+---
+
+Diagrams are strongest when their geometry carries an exact relationship.
+
+<GuideChapterEvidence chapter="diagrams" />
+
+## Begin with the relationship
+
+- Use a **sequence** when order and handoff matter.
+- Use a **state model** when transitions and conditions matter.
+- Use a **hierarchy** when ownership or nesting matters.
+- Use a **flow** when material or information moves through a system.
+- Use an **architecture view** when boundaries and dependencies matter.
+- Use a **timeline** when change over time matters.
+
+Do not force every subject into a generic left-to-right process.
+
+## Keep the visual grammar small
+
+Define what shapes, lines, color, and annotations mean, then reuse that grammar
+consistently. If a visual distinction does not encode information, remove it.
+
+## Make labels do real work
+
+Use short, concrete labels. Keep explanatory prose outside the dense part of
+the diagram. A reader should be able to identify the system boundary, the
+important relationship, and the exceptional path without decoding a legend of
+decorations.
+
+## Verify the rendered result
+
+Inspect the diagram at its intended size. Check line crossings, label
+collisions, small text, contrast, and the reading order at narrow widths.
+
+<GuideHandoff
+  artifactHref="/catalog/featured/workspaces-architecture.html"
+  artifactLabel="Open the request-path explorer"
+  artifactDescription="Select flows and inspect how the full architecture responds."
+  sourceHref="https://github.com/plannotator/effective-html/blob/main/public/catalog/featured/workspaces-architecture.html"
+  skillHref="https://github.com/plannotator/effective-html/blob/main/skills/html-diagram/SKILL.md"
+  skillLabel="Use the diagram skill"
+  skillDescription="Match the visual model to the relationship being explained."
+/>
+
+<GuideNext
+  href="/docs/plans"
+  title="Keep the sequence source-grounded"
+  description="Use HTML for a plan only when spatial or interactive structure adds leverage."
+/>

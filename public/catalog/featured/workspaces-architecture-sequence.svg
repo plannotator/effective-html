@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title description">
+  <title id="title">Animated architecture sequence diagram preview</title>
+  <desc id="description">A compact preview of a large interactive HTML architecture map. Four request paths animate in turn across clients, an application worker, durable objects, and backends: create, live edit, agent edit, and HTML render.</desc>
+  <style>
+    :root{--ink:#141413;--soft:#242320;--paper:#f3e6d2;--bone:#fff9ef;--muted:#a99c8c;--line:#5b554d;--cobalt:#1649d8;--lilac:#a884e8;--green:#1bae61;--coral:#e8744f;--pink:#f09aa8}
+    .zone{fill:#1d1c1a;stroke:#4b463f;stroke-width:1;stroke-dasharray:6 6}
+    .zone-title{font:700 12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;fill:var(--muted)}
+    .node{fill:#2a2926;stroke:#615b52;stroke-width:1.2}
+    .node-accent{fill:#242320;stroke:var(--paper);stroke-width:1.4}
+    .node-title{font:700 15px system-ui,sans-serif;fill:var(--bone)}
+    .node-meta{font:500 10px ui-monospace,SFMono-Regular,Menlo,monospace;fill:var(--muted)}
+    .base{fill:none;stroke:#71695f;stroke-width:1.6;opacity:.38}
+    .chip{fill:#211f1d;stroke:#575149;stroke-width:1}
+    .chip-text{font:650 11px system-ui,sans-serif;fill:var(--muted)}
+    .sequence{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:11 8;opacity:0;animation:dash .8s linear infinite}
+    .sequence-node{fill:none;stroke-width:3;opacity:0}
+    .active-chip{opacity:0}
+    .caption{font:760 17px system-ui,sans-serif;fill:var(--bone);opacity:0}
+    .caption-sub{font:500 11px ui-monospace,SFMono-Regular,Menlo,monospace;fill:var(--muted);opacity:0}
+    .a{animation:phase-a 12s linear infinite}.b{animation:phase-b 12s linear infinite}.c{animation:phase-c 12s linear infinite}.d{animation:phase-d 12s linear infinite}
+    @keyframes dash{to{stroke-dashoffset:-19}}
+    @keyframes phase-a{0%,21%{opacity:1}24%,100%{opacity:0}}
+    @keyframes phase-b{0%,24%{opacity:0}27%,46%{opacity:1}49%,100%{opacity:0}}
+    @keyframes phase-c{0%,49%{opacity:0}52%,71%{opacity:1}74%,100%{opacity:0}}
+    @keyframes phase-d{0%,74%{opacity:0}77%,96%{opacity:1}99%,100%{opacity:0}}
+    @media (prefers-reduced-motion:reduce){.sequence{animation:none;opacity:.68;stroke-dasharray:none}.sequence-node{animation:none;opacity:.78}.active-chip,.caption,.caption-sub{animation:none;opacity:0}}
+  </style>
+
+  <rect width="960" height="540" rx="18" fill="#141413"/>
+  <text x="32" y="41" font-family="system-ui,sans-serif" font-size="21" font-weight="780" fill="#fff9ef">Workspaces — the stack</text>
+  <text x="32" y="61" class="node-meta">SELECT A REQUEST PATH · WATCH CAUSE CROSS THE SYSTEM</text>
+
+  <g transform="translate(510 24)">
+    <rect class="chip" width="82" height="34" rx="17"/><text class="chip-text" x="41" y="22" text-anchor="middle">Create</text>
+    <rect class="active-chip a" width="82" height="34" rx="17" fill="#e8744f"/><text class="chip-text a" x="41" y="22" text-anchor="middle" fill="#141413">Create</text>
+  </g>
+  <g transform="translate(600 24)">
+    <rect class="chip" width="92" height="34" rx="17"/><text class="chip-text" x="46" y="22" text-anchor="middle">Live edit</text>
+    <rect class="active-chip b" width="92" height="34" rx="17" fill="#1bae61"/><text class="chip-text b" x="46" y="22" text-anchor="middle" fill="#141413">Live edit</text>
+  </g>
+  <g transform="translate(700 24)">
+    <rect class="chip" width="96" height="34" rx="17"/><text class="chip-text" x="48" y="22" text-anchor="middle">Agent edit</text>
+    <rect class="active-chip c" width="96" height="34" rx="17" fill="#a884e8"/><text class="chip-text c" x="48" y="22" text-anchor="middle" fill="#141413">Agent edit</text>
+  </g>
+  <g transform="translate(804 24)">
+    <rect class="chip" width="124" height="34" rx="17"/><text class="chip-text" x="62" y="22" text-anchor="middle">HTML render</text>
+    <rect class="active-chip d" width="124" height="34" rx="17" fill="#f09aa8"/><text class="chip-text d" x="62" y="22" text-anchor="middle" fill="#141413">HTML render</text>
+  </g>
+
+  <rect class="zone" x="28" y="92" width="170" height="336" rx="14"/>
+  <rect class="zone" x="218" y="92" width="330" height="336" rx="14"/>
+  <rect class="zone" x="568" y="206" width="166" height="222" rx="14"/>
+  <rect class="zone" x="754" y="92" width="178" height="336" rx="14"/>
+  <text class="zone-title" x="44" y="116">CLIENTS</text>
+  <text class="zone-title" x="234" y="116">APP WORKER</text>
+  <text class="zone-title" x="584" y="230">DURABLE OBJECTS</text>
+  <text class="zone-title" x="770" y="116">BACKENDS</text>
+
+  <g id="browser"><rect class="node" x="46" y="140" width="134" height="70" rx="9"/><text class="node-title" x="61" y="166">Browser</text><text class="node-meta" x="61" y="186">SPA · session</text></g>
+  <g id="agent"><rect class="node" x="46" y="230" width="134" height="70" rx="9"/><text class="node-title" x="61" y="256">Agent / CLI</text><text class="node-meta" x="61" y="276">HTTP · API key</text></g>
+  <g id="visitor"><rect class="node" x="46" y="320" width="134" height="70" rx="9"/><text class="node-title" x="61" y="346">Shared link</text><text class="node-meta" x="61" y="366">no account</text></g>
+
+  <g id="auth"><rect class="node" x="242" y="140" width="126" height="58" rx="9"/><text class="node-title" x="257" y="164">authenticate</text><text class="node-meta" x="257" y="183">identity</text></g>
+  <g id="gate"><rect class="node-accent" x="390" y="140" width="134" height="58" rx="9"/><text class="node-title" x="405" y="164">resolveAccess</text><text class="node-meta" x="405" y="183">one gate</text></g>
+  <g id="routes"><rect class="node" x="242" y="224" width="282" height="62" rx="9"/><text class="node-title" x="257" y="250">/v1 route handlers</text><text class="node-meta" x="257" y="270">documents · workspaces · keys</text></g>
+  <g id="ws"><rect class="node" x="242" y="310" width="126" height="62" rx="9"/><text class="node-title" x="257" y="336">WS door</text><text class="node-meta" x="257" y="356">live sync</text></g>
+  <g id="bridge"><rect class="node" x="390" y="310" width="134" height="62" rx="9"/><text class="node-title" x="405" y="336">Agent bridge</text><text class="node-meta" x="405" y="356">same writer</text></g>
+
+  <g id="document"><rect class="node-accent" x="590" y="252" width="122" height="68" rx="9"/><text class="node-title" x="605" y="278">Document DO</text><text class="node-meta" x="605" y="299">Yjs · live</text></g>
+  <g id="coordinator"><rect class="node" x="590" y="340" width="122" height="66" rx="9"/><text class="node-title" x="605" y="365">Coordinator</text><text class="node-meta" x="605" y="386">checkpoint</text></g>
+
+  <g id="d1"><rect class="node" x="776" y="140" width="134" height="58" rx="9"/><text class="node-title" x="791" y="164">D1</text><text class="node-meta" x="791" y="183">metadata</text></g>
+  <g id="artifacts"><rect class="node" x="776" y="224" width="134" height="62" rx="9"/><text class="node-title" x="791" y="250">Artifacts</text><text class="node-meta" x="791" y="270">git history</text></g>
+  <g id="cache"><rect class="node" x="776" y="310" width="134" height="62" rx="9"/><text class="node-title" x="791" y="336">KV + Cache</text><text class="node-meta" x="791" y="356">public reads</text></g>
+  <g id="usercontent"><rect class="node" x="776" y="388" width="134" height="58" rx="9"/><text class="node-title" x="791" y="412">HTML worker</text><text class="node-meta" x="791" y="431">isolated origin</text></g>
+
+  <path class="base" d="M180 175C210 175 214 169 242 169M368 169H390M457 198V224M524 255C600 255 700 169 776 169"/>
+  <path class="base" d="M180 175C220 205 212 341 242 341M368 341C450 341 515 286 590 286M651 320V340M712 373C742 350 752 270 776 255"/>
+  <path class="base" d="M180 265C210 248 218 169 242 169M368 169H390M457 198V224M383 286V310M524 341C550 341 566 286 590 286"/>
+  <path class="base" d="M180 355C310 430 620 472 776 417M843 388V286"/>
+
+  <g stroke="#e8744f"><path class="sequence a" d="M180 175C210 175 214 169 242 169M368 169H390M457 198V224M524 255C600 255 700 169 776 169"/><rect class="sequence-node a" x="42" y="136" width="142" height="78" rx="11"/><rect class="sequence-node a" x="238" y="136" width="134" height="66" rx="11"/><rect class="sequence-node a" x="386" y="136" width="142" height="66" rx="11"/><rect class="sequence-node a" x="238" y="220" width="290" height="70" rx="11"/><rect class="sequence-node a" x="772" y="136" width="142" height="66" rx="11"/></g>
+  <g stroke="#1bae61"><path class="sequence b" d="M180 175C220 205 212 341 242 341M368 341C450 341 515 286 590 286M651 320V340M712 373C742 350 752 270 776 255"/><rect class="sequence-node b" x="42" y="136" width="142" height="78" rx="11"/><rect class="sequence-node b" x="238" y="306" width="134" height="70" rx="11"/><rect class="sequence-node b" x="586" y="248" width="130" height="76" rx="11"/><rect class="sequence-node b" x="586" y="336" width="130" height="74" rx="11"/><rect class="sequence-node b" x="772" y="220" width="142" height="70" rx="11"/></g>
+  <g stroke="#a884e8"><path class="sequence c" d="M180 265C210 248 218 169 242 169M368 169H390M457 198V224M383 286V310M524 341C550 341 566 286 590 286"/><rect class="sequence-node c" x="42" y="226" width="142" height="78" rx="11"/><rect class="sequence-node c" x="238" y="136" width="134" height="66" rx="11"/><rect class="sequence-node c" x="386" y="136" width="142" height="66" rx="11"/><rect class="sequence-node c" x="386" y="306" width="142" height="70" rx="11"/><rect class="sequence-node c" x="586" y="248" width="130" height="76" rx="11"/></g>
+  <g stroke="#f09aa8"><path class="sequence d" d="M180 355C310 430 620 472 776 417M843 388V286"/><rect class="sequence-node d" x="42" y="316" width="142" height="78" rx="11"/><rect class="sequence-node d" x="772" y="384" width="142" height="66" rx="11"/><rect class="sequence-node d" x="772" y="220" width="142" height="70" rx="11"/></g>
+
+  <text class="caption a" x="32" y="480">Create crosses the one access gate.</text><text class="caption-sub a" x="32" y="501">CLIENT → AUTHENTICATE → RESOLVE ACCESS → ROUTE → D1</text>
+  <text class="caption b" x="32" y="480">Live edit stays on one durable writer.</text><text class="caption-sub b" x="32" y="501">BROWSER → WS DOOR → DOCUMENT DO → COORDINATOR → ARTIFACTS</text>
+  <text class="caption c" x="32" y="480">Agent edits merge into the same document.</text><text class="caption-sub c" x="32" y="501">AGENT → ONE GATE → AGENT BRIDGE → DOCUMENT DO</text>
+  <text class="caption d" x="32" y="480">HTML renders on an isolated origin.</text><text class="caption-sub d" x="32" y="501">SHARED LINK → HTML WORKER → HASH-PINNED ARTIFACT</text>
+  <text x="928" y="501" text-anchor="end" class="node-meta">INTERACTIVE HTML · 6 SELECTABLE PATHS</text>
+</svg>

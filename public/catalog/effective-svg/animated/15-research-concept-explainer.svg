@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 202" width="165" height="202" role="img" aria-label="Animated Abstract research explainer: a hash ring diagram with node dots over a header, glossary card, and comparison table">
+  <style>
+    svg{stroke-linejoin:round}
+    .bg{fill:#F0EEE6}
+    .frame{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .wh{fill:#FFFFFF;stroke:#9C9B93;stroke-width:1.4}
+    .whh{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .oa{fill:#E3DACC;stroke:#B7AE9D;stroke-width:1.2}
+    .sl{fill:#141413}
+    .cl{fill:#D97757}
+    .ol{fill:#788C5D}
+    .fl{fill:#D1CFC5}
+    .fll{fill:#E6E3DA}
+    .st{fill:none;stroke:#87867F;stroke-width:1.4}
+    .stt{fill:none;stroke:#6F6E68;stroke-width:2}
+    .hl{fill:none;stroke:#D1CFC5;stroke-width:1}
+    .ln{fill:none;stroke:#9C9B93;stroke-width:1.3;stroke-linecap:round}
+    .lnf{fill:none;stroke:#CFCDC3;stroke-width:1.1;stroke-linecap:round}
+    .lc{fill:none;stroke:#D97757;stroke-width:1.5;stroke-linecap:round}
+    .da{stroke-dasharray:3 3}
+  </style>
+  <style>
+    @keyframes a-orbit{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes a-orbit-rev{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}
+@keyframes a-arc-sweep{
+  0%{stroke-dashoffset:96}
+  18%{stroke-dashoffset:0}
+  82%{stroke-dashoffset:0}
+  100%{stroke-dashoffset:-96}
+}
+@keyframes a-pulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.35)}
+}
+.a-orbit-outer,.a-orbit-mid,.a-orbit-guide{
+  transform-box:view-box;
+}
+/* node dots orbit the central ring at different radii/speeds */
+.a-orbit-outer{
+  transform-origin:58px 100px;
+  animation:a-orbit 11s linear infinite;
+}
+.a-orbit-mid{
+  transform-origin:58px 100px;
+  animation:a-orbit 8s linear infinite;
+}
+/* inner guide ring counter-rotates slowly for parallax */
+.a-orbit-guide{
+  transform-origin:58px 100px;
+  animation:a-orbit-rev 18s linear infinite;
+}
+/* accent ownership arc draws on, holds, retreats — leads the eye */
+.a-arc{
+  stroke-dasharray:96;
+  animation:a-arc-sweep 11s ease-in-out infinite;
+}
+/* inner key dots gently pulse, staggered */
+.a-keypulse{transform-box:fill-box;animation:a-pulse 4.5s ease-in-out infinite}
+.a-kp1{animation-delay:0s}
+.a-kp2{animation-delay:.9s}
+.a-kp3{animation-delay:1.8s}
+.a-kp4{animation-delay:2.7s}
+.a-kp5{animation-delay:3.6s}
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none!important;transition:none!important}
+      [class*="a-"],[id*="a-"]{opacity:1!important;transform:none!important;stroke-dashoffset:0!important;stroke-dasharray:none!important}
+    }
+  </style>
+  <rect x="0" y="0" width="165" height="202" class="bg"/>
+
+<!-- header: eyebrow + serif title + lead -->
+<rect x="12" y="13" width="28" height="4" rx="2" class="cl"/>
+<rect x="12" y="22" width="92" height="6" rx="3" class="fll"/>
+<line x1="12" y1="35" x2="134" y2="35" class="ln"/>
+<line x1="12" y1="41" x2="110" y2="41" class="lnf"/>
+
+<!-- centerpiece: the hash ring -->
+<circle cx="58" cy="100" r="33" class="hl"/>
+<circle cx="58" cy="100" r="33" class="st"/>
+<!-- ownership arc in accent color -->
+<path d="M 58 67 A 33 33 0 0 1 89 89" class="lc a-arc"/>
+<!-- inner guide ring -->
+<g class="a-orbit-guide">
+<circle cx="58" cy="100" r="20" class="hl da"/>
+</g>
+<!-- key dots inside the ring -->
+<circle cx="62" cy="81" r="1.4" class="fll a-keypulse a-kp1"/>
+<circle cx="75" cy="98" r="1.4" class="fll a-keypulse a-kp2"/>
+<circle cx="68" cy="113" r="1.4" class="fll a-keypulse a-kp3"/>
+<circle cx="48" cy="115" r="1.4" class="fll a-keypulse a-kp4"/>
+<circle cx="45" cy="90" r="1.4" class="fll a-keypulse a-kp5"/>
+<!-- node dots on the ring: orbit the center at two radii/speeds -->
+<g class="a-orbit-outer">
+<circle cx="58" cy="67" r="3.5" class="cl"/>
+<circle cx="89" cy="89" r="3.5" class="ol"/>
+<circle cx="33" cy="110" r="3" class="wh"/>
+</g>
+<g class="a-orbit-mid">
+<circle cx="76" cy="126" r="3" class="wh"/>
+<circle cx="76" cy="126" r="1.2" class="sl"/>
+</g>
+
+<!-- glossary card (sidebar, definition list) -->
+<rect x="103" y="64" width="50" height="74" rx="4.5" class="wh"/>
+<circle cx="109" cy="71" r="1.4" class="cl"/>
+<rect x="114" y="69.5" width="20" height="3" rx="1.5" class="fl"/>
+<line x1="109" y1="79" x2="146" y2="79" class="lnf"/>
+<line x1="109" y1="84" x2="139" y2="84" class="lnf"/>
+<circle cx="109" cy="92" r="1.2" class="fl"/>
+<rect x="114" y="90.7" width="24" height="2.6" rx="1.3" class="fll"/>
+<line x1="109" y1="99" x2="147" y2="99" class="lnf"/>
+<line x1="109" y1="104" x2="136" y2="104" class="lnf"/>
+<circle cx="109" cy="112" r="1.2" class="fl"/>
+<rect x="114" y="110.7" width="22" height="2.6" rx="1.3" class="fll"/>
+<line x1="109" y1="119" x2="147" y2="119" class="lnf"/>
+<line x1="109" y1="124" x2="143" y2="124" class="lnf"/>
+<line x1="109" y1="129" x2="131" y2="129" class="lnf"/>
+
+<!-- compare table at bottom -->
+<rect x="12" y="150" width="141" height="40" rx="4.5" class="wh"/>
+<line x1="12" y1="161" x2="153" y2="161" class="hl"/>
+<line x1="59" y1="150" x2="59" y2="190" class="hl da"/>
+<line x1="106" y1="150" x2="106" y2="190" class="hl da"/>
+<rect x="18" y="154" width="26" height="2.8" rx="1.4" class="fl"/>
+<rect x="65" y="154" width="26" height="2.8" rx="1.4" class="fl"/>
+<rect x="112" y="154" width="26" height="2.8" rx="1.4" class="fl"/>
+<line x1="18" y1="168" x2="46" y2="168" class="lnf"/>
+<rect x="65" y="166.7" width="28" height="2.6" rx="1.3" class="cl"/>
+<line x1="112" y1="168" x2="142" y2="168" class="lnf"/>
+<line x1="18" y1="178" x2="44" y2="178" class="lnf"/>
+<line x1="65" y1="178" x2="87" y2="178" class="lnf"/>
+<line x1="112" y1="178" x2="140" y2="178" class="lnf"/>
+</svg>

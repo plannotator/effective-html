@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Notion project space — interface study</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #ffffff;
+        --sidebar: #f7f7f5;
+        --sidebar-hover: #efefec;
+        --text: #37352f;
+        --muted: #787774;
+        --faint: #74736f;
+        --line: #e8e7e4;
+        --line-strong: #d8d7d3;
+        --blue: #2383e2;
+        --blue-soft: #e7f3fb;
+        --green: #448361;
+        --green-soft: #dbeddb;
+        --yellow-soft: #fdecc8;
+        --red-soft: #ffe2dd;
+        --purple-soft: #e8deee;
+        --focus: #0b6fcc;
+      }
+
+      * { box-sizing: border-box; }
+      html { min-width: 320px; background: var(--bg); }
+      body {
+        min-height: 100vh;
+        margin: 0;
+        overflow-x: hidden;
+        background: var(--bg);
+        color: var(--text);
+        font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+      button, input { font: inherit; }
+      button { color: inherit; }
+      button:focus-visible, input:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+      svg { display: block; }
+      .icon { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.65; }
+      .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+      .shell { display: grid; grid-template-columns: 238px minmax(0, 1fr); min-height: 100vh; }
+      .sidebar { position: sticky; top: 0; display: flex; height: 100vh; flex-direction: column; padding: 8px; background: var(--sidebar); color: #5f5e5a; }
+      .workspace {
+        display: flex;
+        width: 100%;
+        min-height: 34px;
+        align-items: center;
+        gap: 8px;
+        padding: 0 7px;
+        border: 0;
+        border-radius: 5px;
+        background: transparent;
+        cursor: default;
+        text-align: left;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .workspace-mark { display: grid; width: 22px; height: 22px; place-items: center; border-radius: 4px; background: #37352f; color: #fff; font-family: Georgia, serif; font-size: 13px; }
+      .workspace .icon { margin-left: auto; width: 13px; }
+
+      .sidebar-action, .page-link {
+        display: flex;
+        width: 100%;
+        min-height: 30px;
+        align-items: center;
+        gap: 8px;
+        padding: 0 7px;
+        border: 0;
+        border-radius: 5px;
+        background: transparent;
+        color: #62615d;
+        cursor: default;
+        text-align: left;
+        font-size: 12px;
+      }
+      .sidebar-actions { margin: 8px 0 13px; }
+      .sidebar-label { padding: 8px 7px 4px; color: #74736f; font-size: 10px; font-weight: 600; letter-spacing: .02em; }
+      .page-link[aria-current="page"] { background: #ecece9; color: var(--text); }
+      .page-glyph { display: grid; width: 18px; height: 18px; place-items: center; border-radius: 3px; background: #e7e6e3; color: #777670; font-size: 10px; }
+      .page-link[aria-current="page"] .page-glyph { background: var(--yellow-soft); color: #7b6232; }
+      .sidebar-footer { margin-top: auto; padding: 10px 7px 4px; border-top: 1px solid #e7e6e2; color: #6e6d69; font-size: 10px; line-height: 1.45; }
+
+      .main { min-width: 0; }
+      .topbar {
+        position: sticky;
+        z-index: 10;
+        top: 0;
+        display: flex;
+        min-height: 46px;
+        align-items: center;
+        gap: 8px;
+        padding: 0 12px;
+        background: rgba(255,255,255,.95);
+      }
+      .crumbs { display: flex; min-width: 0; align-items: center; gap: 7px; color: #73726e; font-size: 12px; }
+      .crumbs strong { overflow: hidden; color: #5d5c58; font-weight: 500; text-overflow: ellipsis; white-space: nowrap; }
+      .top-actions { display: flex; align-items: center; gap: 3px; margin-left: auto; }
+      .top-button { display: inline-flex; min-height: 28px; align-items: center; gap: 6px; padding: 0 8px; border: 0; border-radius: 5px; background: transparent; color: #6f6e6a; cursor: pointer; font-size: 11px; }
+      .top-button:hover { background: #f1f1ef; color: var(--text); }
+      .study-label { margin-left: 5px; padding: 3px 6px; border: 1px solid var(--line-strong); border-radius: 4px; color: #686762; font-size: 9px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+      .mobile-study-note { display: none; }
+      .top-button.passive { cursor: default; }
+      .top-button.passive:hover { background: transparent; color: #6f6e6a; }
+
+      .document { width: min(940px, calc(100% - 48px)); margin: 70px auto 100px; }
+      .page-icon { display: grid; width: 68px; height: 68px; place-items: center; margin-bottom: 18px; border-radius: 14px; background: var(--yellow-soft); color: #7a6132; }
+      .page-icon .icon { width: 30px; height: 30px; stroke-width: 1.35; }
+      h1 { max-width: 760px; margin: 0; font-size: clamp(38px, 5vw, 54px); font-weight: 720; letter-spacing: -.035em; line-height: 1.05; }
+      .page-description { max-width: 720px; margin: 13px 0 26px; color: var(--muted); font-size: 15px; line-height: 1.6; }
+
+      .properties { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0 0 34px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+      .property { min-width: 0; padding: 14px 13px; border-right: 1px solid var(--line); }
+      .property:last-child { border-right: 0; }
+      .property dt { display: flex; align-items: center; gap: 6px; margin: 0 0 7px; color: #6f6e69; font-size: 10px; }
+      .property dd { min-width: 0; margin: 0; overflow: hidden; color: #5e5d59; font-size: 12px; text-overflow: ellipsis; white-space: nowrap; }
+      .tag { display: inline-flex; align-items: center; gap: 5px; padding: 2px 6px; border-radius: 4px; background: var(--green-soft); color: #376c4d; }
+      .avatar-stack { display: flex; align-items: center; }
+      .avatar { display: grid; width: 22px; height: 22px; place-items: center; margin-right: -4px; border: 2px solid #fff; border-radius: 50%; background: #e4e2de; color: #65645f; font-size: 8px; font-weight: 700; }
+
+      .view-tabs { display: flex; align-items: flex-end; gap: 2px; border-bottom: 1px solid var(--line-strong); }
+      .view-tab { position: relative; min-height: 38px; padding: 0 11px; border: 0; background: transparent; color: #6f6e69; cursor: pointer; font-size: 12px; }
+      .view-tab:hover { color: var(--text); }
+      .view-tab[aria-selected="true"] { color: var(--text); font-weight: 600; }
+      .view-tab[aria-selected="true"]::after { position: absolute; right: 10px; bottom: -1px; left: 10px; height: 2px; background: var(--text); content: ""; }
+      .view-toolbar { display: flex; min-height: 44px; align-items: center; gap: 5px; border-bottom: 1px solid var(--line); }
+      .view-toolbar .spacer { flex: 1; }
+      .tool { display: inline-flex; min-height: 28px; align-items: center; gap: 5px; padding: 0 8px; border: 0; border-radius: 5px; background: transparent; color: #6f6e69; font-size: 11px; }
+
+      .view-panel { padding: 34px 0 0; }
+      .view-panel[hidden] { display: none; }
+      .content-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(250px, .7fr); gap: 48px; }
+      h2 { margin: 0 0 11px; font-size: 22px; font-weight: 650; letter-spacing: -.02em; }
+      h3 { margin: 30px 0 9px; font-size: 17px; font-weight: 640; letter-spacing: -.015em; }
+      .prose p { max-width: 68ch; margin: 0 0 15px; color: #5f5e59; line-height: 1.72; }
+      .callout { display: grid; grid-template-columns: auto 1fr; gap: 12px; margin: 22px 0; padding: 16px; border-radius: 5px; background: var(--blue-soft); color: #315f7d; font-size: 13px; }
+      .callout .icon { margin-top: 2px; color: var(--blue); }
+      .decision-list { margin: 8px 0 0; padding: 0; list-style: none; }
+      .decision-list li { display: grid; grid-template-columns: 18px 1fr; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--line); color: #5e5d58; font-size: 13px; }
+      .decision-list .icon { width: 14px; color: var(--green); }
+
+      .side-note { padding: 18px; border: 1px solid var(--line); border-radius: 8px; background: #fbfbfa; }
+      .side-note h3 { margin: 0 0 12px; font-size: 14px; }
+      .progress-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; color: var(--muted); font-size: 11px; }
+      .progress-track { height: 7px; margin: 9px 0 20px; overflow: hidden; border-radius: 99px; background: #ebeae7; }
+      .progress-fill { width: 100%; height: 100%; border-radius: inherit; background: var(--green); transform: scaleX(.62); transform-origin: left center; transition: transform 220ms ease-out; }
+      .side-link { display: flex; align-items: center; gap: 7px; min-height: 34px; padding: 0 7px; border-top: 1px solid var(--line); color: #666560; font-size: 12px; }
+      .side-link:first-of-type { border-top: 0; }
+
+      .task-table { border-top: 1px solid var(--line-strong); }
+      .task-head, .task-row { display: grid; grid-template-columns: minmax(240px, 1.6fr) 130px 120px 110px; align-items: center; }
+      .task-head { min-height: 34px; border-bottom: 1px solid var(--line); color: #6f6e69; font-size: 10px; }
+      .task-head span, .task-row > * { padding: 0 10px; border-right: 1px solid var(--line); }
+      .task-head span:last-child, .task-row > *:last-child { border-right: 0; }
+      .task-row { min-height: 44px; border-bottom: 1px solid var(--line); color: #5e5d59; font-size: 12px; }
+      .task-title { display: flex; align-items: center; gap: 8px; min-width: 0; }
+      .task-title input { width: 15px; height: 15px; accent-color: var(--green); }
+      .task-title span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      .task-row.is-complete .task-title span { color: #aaa9a5; text-decoration: line-through; }
+      .status { width: fit-content; padding: 2px 6px; border-radius: 4px; background: var(--yellow-soft); color: #79602f; font-size: 10px; }
+      .status.done { background: var(--green-soft); color: #376c4d; }
+      .status.review { background: var(--purple-soft); color: #6d4e7c; }
+
+      .timeline { position: relative; padding-left: 21px; }
+      .timeline::before { position: absolute; top: 7px; bottom: 7px; left: 5px; width: 1px; background: var(--line-strong); content: ""; }
+      .milestone { position: relative; display: grid; grid-template-columns: 130px 1fr; gap: 22px; padding: 0 0 28px; }
+      .milestone::before { position: absolute; top: 4px; left: -20px; width: 9px; height: 9px; border: 2px solid #fff; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 1px var(--blue); content: ""; }
+      .milestone time { color: #6f6e69; font-size: 11px; }
+      .milestone strong { display: block; margin-bottom: 5px; font-size: 13px; }
+      .milestone p { margin: 0; color: var(--muted); font-size: 12px; }
+
+      .toast { position: fixed; z-index: 30; right: 16px; bottom: 16px; min-height: 38px; padding: 9px 12px; border: 1px solid var(--line-strong); border-radius: 6px; background: #fff; box-shadow: 0 12px 30px rgba(55,53,47,.15); color: #5f5e59; opacity: 0; pointer-events: none; transform: translateY(7px); transition: opacity 160ms ease-out, transform 160ms ease-out; }
+      .toast.is-visible { opacity: 1; transform: translateY(0); }
+
+      @media (max-width: 900px) {
+        .shell { grid-template-columns: 190px minmax(0, 1fr); }
+        .document { width: min(760px, calc(100% - 32px)); margin-top: 48px; }
+        .properties { grid-template-columns: repeat(2, 1fr); }
+        .property:nth-child(2) { border-right: 0; }
+        .property:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+        .content-grid { grid-template-columns: 1fr; gap: 30px; }
+        .task-head, .task-row { grid-template-columns: minmax(220px, 1fr) 115px 100px; }
+        .task-head span:nth-child(4), .task-row > *:nth-child(4) { display: none; }
+      }
+
+      @media (max-width: 680px) {
+        .shell { display: block; }
+        .sidebar { display: none; }
+        .topbar { border-bottom: 1px solid var(--line); }
+        .study-label, .top-button.share-label { display: none; }
+        .mobile-study-note { display: block; margin: 0; padding: 8px 16px; border-bottom: 1px solid var(--line); color: #686762; font-size: 10px; line-height: 1.45; }
+        .document { width: calc(100% - 32px); margin: 34px auto 70px; }
+        .page-icon { width: 54px; height: 54px; border-radius: 11px; }
+        h1 { font-size: 38px; }
+        .properties { grid-template-columns: 1fr 1fr; }
+        .view-tabs, .view-toolbar { overflow-x: auto; }
+        .task-table { min-width: 620px; }
+        .table-scroll { overflow-x: auto; }
+        .milestone { grid-template-columns: 90px 1fr; gap: 14px; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .progress-fill, .toast { transition: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <!--
+      THESIS: A project page can hold strategy, properties, and execution in one navigable document; it refuses a detached project dashboard.
+      OWN-WORLD: Warm white canvas, dim utility sidebar, block-based spacing, hairline tables, soft property colors, and typographic hierarchy.
+      STORY: A product team reads the launch brief, checks connected tasks, and understands the milestone sequence without changing tools.
+      FIRST VIEWPORT: Familiar workspace sidebar, generous project title, compact properties, and a tabbed document/task surface using synthetic data.
+      FORM: Familiar Notion-like connected project page, user-pinned competitor study. FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md.
+    -->
+    <svg class="visually-hidden" aria-hidden="true">
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/></symbol>
+      <symbol id="i-home" viewBox="0 0 24 24"><path d="m4 10 8-6 8 6v9H4zM9 19v-6h6v6"/></symbol>
+      <symbol id="i-page" viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6zM15 3v4h4M9 11h6M9 15h6"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+      <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7h.01"/></symbol>
+      <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></symbol>
+      <symbol id="i-sort" viewBox="0 0 24 24"><path d="M8 6v12M5 15l3 3 3-3M16 18V6M13 9l3-3 3 3"/></symbol>
+      <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol>
+      <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 7 5 5-5 5"/></symbol>
+      <symbol id="i-flag" viewBox="0 0 24 24"><path d="M6 21V4M6 5h10l-2 4 2 4H6"/></symbol>
+      <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M4 6h16v14H4zM8 3v6M16 3v6M4 10h16"/></symbol>
+    </svg>
+
+    <div class="shell">
+      <aside class="sidebar" aria-label="Workspace navigation">
+        <div class="workspace"><span class="workspace-mark">A</span>Atlas studio<svg class="icon"><use href="#i-chevron"/></svg></div>
+        <div class="sidebar-actions">
+          <div class="sidebar-action"><svg class="icon"><use href="#i-search"/></svg>Search</div>
+          <div class="sidebar-action"><svg class="icon"><use href="#i-home"/></svg>Home</div>
+        </div>
+        <div class="sidebar-label">Teamspaces</div>
+        <nav>
+          <div class="page-link"><span class="page-glyph">P</span>Product</div>
+          <div class="page-link" aria-current="page"><span class="page-glyph">L</span>Launch quality program</div>
+          <div class="page-link"><span class="page-glyph">R</span>Research repository</div>
+          <div class="page-link"><span class="page-glyph">D</span>Design system</div>
+        </nav>
+        <div class="sidebar-label">Private</div>
+        <div class="page-link"><span class="page-glyph">N</span>Notes</div>
+        <div class="sidebar-footer">Interface study with synthetic workspace data.<br>Unaffiliated with Notion.</div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div class="crumbs"><span>Product</span><svg class="icon"><use href="#i-chevron"/></svg><strong>Launch quality program</strong></div>
+          <div class="top-actions">
+            <button class="top-button share-label" type="button" id="share-button">Share</button>
+            <span class="top-button passive">Updated now</span>
+            <span class="top-button passive" aria-hidden="true"><svg class="icon"><use href="#i-more"/></svg></span>
+            <span class="study-label">HTML interface study</span>
+          </div>
+        </header>
+        <p class="mobile-study-note">Interface study with synthetic workspace data. Unaffiliated with Notion.</p>
+
+        <article class="document">
+          <div class="page-icon"><svg class="icon"><use href="#i-flag"/></svg></div>
+          <h1>Launch quality program</h1>
+          <p class="page-description">A shared operating brief for the final two weeks before Atlas 4.8 ships. Decisions, owners, evidence, and the live task database stay connected here.</p>
+
+          <dl class="properties">
+            <div class="property"><dt><svg class="icon"><use href="#i-flag"/></svg>Status</dt><dd><span class="tag">On track</span></dd></div>
+            <div class="property"><dt><svg class="icon"><use href="#i-calendar"/></svg>Target</dt><dd>August 14, 2026</dd></div>
+            <div class="property"><dt>Owners</dt><dd><span class="avatar-stack"><span class="avatar">MR</span><span class="avatar">SK</span><span class="avatar">JL</span></span></dd></div>
+            <div class="property"><dt>Progress</dt><dd id="progress-copy">5 of 8 complete</dd></div>
+          </dl>
+
+          <div class="view-tabs" role="tablist" aria-label="Project views">
+            <button class="view-tab" id="tab-content" type="button" role="tab" aria-controls="panel-content" aria-selected="true" tabindex="0" data-view="content">Content</button>
+            <button class="view-tab" id="tab-tasks" type="button" role="tab" aria-controls="panel-tasks" aria-selected="false" tabindex="-1" data-view="tasks">Tasks</button>
+            <button class="view-tab" id="tab-timeline" type="button" role="tab" aria-controls="panel-timeline" aria-selected="false" tabindex="-1" data-view="timeline">Timeline</button>
+          </div>
+          <div class="view-toolbar">
+            <span class="tool"><svg class="icon"><use href="#i-filter"/></svg>Filter</span>
+            <span class="tool"><svg class="icon"><use href="#i-sort"/></svg>Sort</span>
+            <span class="spacer"></span>
+            <span class="tool" aria-hidden="true"><svg class="icon"><use href="#i-more"/></svg></span>
+          </div>
+
+          <section class="view-panel" id="panel-content" role="tabpanel" aria-labelledby="tab-content" data-panel="content">
+            <div class="content-grid">
+              <div class="prose">
+                <h2>What must be true at launch</h2>
+                <p>The release is ready when the highest-risk user journeys are verified on real devices, support has a clear escalation path, and owners can explain every remaining exception.</p>
+                <div class="callout"><svg class="icon"><use href="#i-info"/></svg><div><strong>Decision rule</strong><br>Unknown behavior blocks the release. A known limitation may ship only with an owner, user-facing language, and a dated follow-up.</div></div>
+                <h3>Decisions already made</h3>
+                <ul class="decision-list">
+                  <li><svg class="icon"><use href="#i-check"/></svg><span>Keep the rollout staged at 10%, 35%, then 100%.</span></li>
+                  <li><svg class="icon"><use href="#i-check"/></svg><span>Use the existing account recovery path; defer the redesigned flow.</span></li>
+                  <li><svg class="icon"><use href="#i-check"/></svg><span>Publish the migration guide before the production promotion.</span></li>
+                </ul>
+                <h3>Open question</h3>
+                <p>Can the Android keyboard regression be contained to the new compose surface, or does it affect the existing editor as well?</p>
+              </div>
+              <aside class="side-note">
+                <h3>Readiness</h3>
+                <div class="progress-row"><span>Complete</span><strong id="progress-value">62%</strong></div>
+                <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+                <div class="side-link"><svg class="icon"><use href="#i-page"/></svg>Release checklist</div>
+                <div class="side-link"><svg class="icon"><use href="#i-page"/></svg>Support handoff</div>
+                <div class="side-link"><svg class="icon"><use href="#i-page"/></svg>Migration guide</div>
+              </aside>
+            </div>
+          </section>
+
+          <section class="view-panel" id="panel-tasks" role="tabpanel" aria-labelledby="tab-tasks" data-panel="tasks" hidden>
+            <div class="table-scroll">
+              <div class="task-table" role="table" aria-label="Launch tasks">
+                <div class="task-head" role="row"><span>Task</span><span>Status</span><span>Owner</span><span>Due</span></div>
+                <div class="task-row is-complete" role="row"><label class="task-title"><input type="checkbox" checked><span>Verify account recovery on real devices</span></label><span><span class="status done">Done</span></span><span>Maya R.</span><span>Aug 7</span></div>
+                <div class="task-row is-complete" role="row"><label class="task-title"><input type="checkbox" checked><span>Prepare support escalation map</span></label><span><span class="status done">Done</span></span><span>Soren K.</span><span>Aug 8</span></div>
+                <div class="task-row" role="row"><label class="task-title"><input type="checkbox"><span>Close Android keyboard regression</span></label><span><span class="status review">Review</span></span><span>Jordan L.</span><span>Aug 10</span></div>
+                <div class="task-row" role="row"><label class="task-title"><input type="checkbox"><span>Publish migration guide</span></label><span><span class="status">In progress</span></span><span>Inez P.</span><span>Aug 11</span></div>
+                <div class="task-row is-complete" role="row"><label class="task-title"><input type="checkbox" checked><span>Approve staged rollout thresholds</span></label><span><span class="status done">Done</span></span><span>Ari K.</span><span>Aug 6</span></div>
+                <div class="task-row is-complete" role="row"><label class="task-title"><input type="checkbox" checked><span>Run payment failure drill</span></label><span><span class="status done">Done</span></span><span>Maya R.</span><span>Aug 6</span></div>
+                <div class="task-row is-complete" role="row"><label class="task-title"><input type="checkbox" checked><span>Capture baseline performance traces</span></label><span><span class="status done">Done</span></span><span>Soren K.</span><span>Aug 5</span></div>
+                <div class="task-row" role="row"><label class="task-title"><input type="checkbox"><span>Promote release candidate</span></label><span><span class="status">Queued</span></span><span>Jordan L.</span><span>Aug 14</span></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="view-panel" id="panel-timeline" role="tabpanel" aria-labelledby="tab-timeline" data-panel="timeline" hidden>
+            <div class="timeline">
+              <div class="milestone"><time>August 7</time><div><strong>Evidence freeze</strong><p>Every blocking check has a linked run, owner, and timestamp.</p></div></div>
+              <div class="milestone"><time>August 10</time><div><strong>Release candidate</strong><p>Final mobile build enters the staged rollout rehearsal.</p></div></div>
+              <div class="milestone"><time>August 12</time><div><strong>Go / no-go review</strong><p>Owners explain exceptions and confirm support coverage.</p></div></div>
+              <div class="milestone"><time>August 14</time><div><strong>Production promotion</strong><p>Begin at 10%, observe, then promote through the agreed thresholds.</p></div></div>
+            </div>
+          </section>
+        </article>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite">Share link copied for this interface study</div>
+
+    <script>
+      const tabs = [...document.querySelectorAll(".view-tab")];
+      const panels = [...document.querySelectorAll(".view-panel")];
+      tabs.forEach((tab) => tab.addEventListener("click", () => {
+        tabs.forEach((item) => {
+          item.setAttribute("aria-selected", String(item === tab));
+          item.tabIndex = item === tab ? 0 : -1;
+        });
+        panels.forEach((panel) => panel.hidden = panel.dataset.panel !== tab.dataset.view);
+      }));
+
+      document.querySelector(".view-tabs").addEventListener("keydown", (event) => {
+        const current = tabs.indexOf(document.activeElement);
+        if (current < 0) return;
+        let next = current;
+        if (event.key === "ArrowRight") next = (current + 1) % tabs.length;
+        else if (event.key === "ArrowLeft") next = (current - 1 + tabs.length) % tabs.length;
+        else if (event.key === "Home") next = 0;
+        else if (event.key === "End") next = tabs.length - 1;
+        else return;
+        event.preventDefault();
+        tabs[next].focus();
+        tabs[next].click();
+      });
+
+      const checks = [...document.querySelectorAll('.task-row input[type="checkbox"]')];
+      function updateProgress() {
+        const complete = checks.filter((input) => input.checked).length;
+        const percent = Math.round((complete / checks.length) * 100);
+        document.querySelector("#progress-copy").textContent = `${complete} of ${checks.length} complete`;
+        document.querySelector("#progress-value").textContent = `${percent}%`;
+        document.querySelector("#progress-fill").style.transform = `scaleX(${percent / 100})`;
+      }
+      checks.forEach((input) => input.addEventListener("change", () => {
+        input.closest(".task-row").classList.toggle("is-complete", input.checked);
+        updateProgress();
+      }));
+
+      document.querySelector("#share-button").addEventListener("click", () => {
+        const toast = document.querySelector("#toast");
+        toast.classList.add("is-visible");
+        window.setTimeout(() => toast.classList.remove("is-visible"), 1800);
+      });
+    </script>
+  </body>
+</html>

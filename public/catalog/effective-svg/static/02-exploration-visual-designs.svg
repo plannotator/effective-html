@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 202" width="165" height="202" role="img" aria-label="Four stacked design-exploration artboards, each previewing a distinct empty-state direction">
+  <style>
+    svg{stroke-linejoin:round}
+    .bg{fill:#F0EEE6}
+    .frame{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .wh{fill:#FFFFFF;stroke:#9C9B93;stroke-width:1.4}
+    .whh{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .oa{fill:#E3DACC;stroke:#B7AE9D;stroke-width:1.2}
+    .sl{fill:#141413}
+    .cl{fill:#D97757}
+    .ol{fill:#788C5D}
+    .fl{fill:#D1CFC5}
+    .fll{fill:#E6E3DA}
+    .st{fill:none;stroke:#87867F;stroke-width:1.4}
+    .stt{fill:none;stroke:#6F6E68;stroke-width:2}
+    .hl{fill:none;stroke:#D1CFC5;stroke-width:1}
+    .ln{fill:none;stroke:#9C9B93;stroke-width:1.3;stroke-linecap:round}
+    .lnf{fill:none;stroke:#CFCDC3;stroke-width:1.1;stroke-linecap:round}
+    .lc{fill:none;stroke:#D97757;stroke-width:1.5;stroke-linecap:round}
+    .da{stroke-dasharray:3 3}
+  </style>
+  <rect x="0" y="0" width="165" height="202" class="bg"/>
+
+<!-- header: prompt eyebrow + prompt bar -->
+<rect x="12" y="12" width="46" height="3" rx="1.5" class="fll"/>
+<rect x="12" y="18" width="9" height="3" rx="1.5" class="sl"/>
+<rect x="12" y="29" width="141" height="15" rx="4" class="oa"/>
+<line x1="17" y1="34" x2="92" y2="34" class="lnf"/>
+<line x1="17" y1="39" x2="66" y2="39" class="lnf"/>
+
+<!-- Artboard A — Minimal (typography + quiet button) -->
+<rect x="12" y="54" width="68" height="54" rx="5" class="wh"/>
+<rect x="17" y="59" width="20" height="5" rx="2.5" class="oa"/>
+<circle cx="76" cy="61.5" r="1" class="sl"/>
+<line x1="30" y1="76" x2="62" y2="76" class="ln"/>
+<line x1="35" y1="82" x2="56" y2="82" class="lnf"/>
+<rect x="36" y="90" width="20" height="9" rx="3" class="st"/>
+<line x1="41" y1="94.5" x2="51" y2="94.5" class="lnf"/>
+
+<!-- Artboard B — Illustrated (spot illustration + clay focal + clay button) -->
+<rect x="85" y="54" width="68" height="54" rx="5" class="wh"/>
+<rect x="90" y="59" width="20" height="5" rx="2.5" class="oa"/>
+<rect x="107" y="73" width="21" height="15" rx="3" class="whh"/>
+<rect x="113" y="69" width="21" height="15" rx="3" class="oa"/>
+<circle cx="135.5" cy="84.5" r="4.5" class="cl"/>
+<rect x="110" y="99" width="22" height="6" rx="3" class="cl"/>
+
+<!-- Artboard C — Playful (floating bobbing card stack) -->
+<rect x="12" y="114" width="68" height="54" rx="5" class="wh"/>
+<rect x="17" y="119" width="20" height="5" rx="2.5" class="oa"/>
+<rect x="38" y="132" width="16" height="13" rx="3" class="fll"/>
+<rect x="42" y="128" width="16" height="13" rx="3" class="whh"/>
+<rect x="46" y="124" width="16" height="13" rx="3" class="ol"/>
+<ellipse cx="50" cy="150" rx="10" ry="2" class="fll"/>
+<line x1="34" y1="159" x2="58" y2="159" class="lnf"/>
+
+<!-- Artboard D — Instructional (numbered steps) -->
+<rect x="85" y="114" width="68" height="54" rx="5" class="wh"/>
+<rect x="90" y="119" width="22" height="5" rx="2.5" class="oa"/>
+<rect x="90" y="130" width="58" height="9" rx="3" class="whh"/>
+<circle cx="95.5" cy="134.5" r="2.6" class="oa"/>
+<line x1="101" y1="134.5" x2="143" y2="134.5" class="lnf"/>
+<rect x="90" y="142" width="58" height="9" rx="3" class="whh"/>
+<circle cx="95.5" cy="146.5" r="2.6" class="oa"/>
+<line x1="101" y1="146.5" x2="137" y2="146.5" class="lnf"/>
+<rect x="90" y="154" width="58" height="9" rx="3" class="whh"/>
+<circle cx="95.5" cy="158.5" r="2.6" class="cl"/>
+<line x1="101" y1="158.5" x2="142" y2="158.5" class="lnf"/>
+
+<!-- rationale rule lines at base -->
+<line x1="12" y1="180" x2="80" y2="180" class="hl da"/>
+<line x1="85" y1="180" x2="153" y2="180" class="hl da"/>
+<line x1="12" y1="188" x2="64" y2="188" class="ln"/>
+<line x1="12" y1="193" x2="44" y2="193" class="lnf"/>
+<line x1="85" y1="188" x2="137" y2="188" class="ln"/>
+<line x1="85" y1="193" x2="116" y2="193" class="lnf"/>
+</svg>

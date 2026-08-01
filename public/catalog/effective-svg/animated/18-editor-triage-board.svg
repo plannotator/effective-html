@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 202" width="165" height="202" role="img" aria-label="Animated abstract triage kanban board with two columns of stacked ticket cards under a toolbar">
+  <style>
+    svg{stroke-linejoin:round}
+    .bg{fill:#F0EEE6}
+    .frame{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .wh{fill:#FFFFFF;stroke:#9C9B93;stroke-width:1.4}
+    .whh{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .oa{fill:#E3DACC;stroke:#B7AE9D;stroke-width:1.2}
+    .sl{fill:#141413}
+    .cl{fill:#D97757}
+    .ol{fill:#788C5D}
+    .fl{fill:#D1CFC5}
+    .fll{fill:#E6E3DA}
+    .st{fill:none;stroke:#87867F;stroke-width:1.4}
+    .stt{fill:none;stroke:#6F6E68;stroke-width:2}
+    .hl{fill:none;stroke:#D1CFC5;stroke-width:1}
+    .ln{fill:none;stroke:#9C9B93;stroke-width:1.3;stroke-linecap:round}
+    .lnf{fill:none;stroke:#CFCDC3;stroke-width:1.1;stroke-linecap:round}
+    .lc{fill:none;stroke:#D97757;stroke-width:1.5;stroke-linecap:round}
+    .da{stroke-dasharray:3 3}
+  </style>
+  <style>
+    /* Right-column destination highlight pulses as the card arrives */
+@keyframes a-colGlow{
+  0%,18%   {opacity:0}
+  40%,72%  {opacity:1}
+  92%,100% {opacity:0}
+}
+.a-colhl{
+  fill:#788C5D;opacity:0;
+  animation:a-colGlow 5s ease-in-out infinite;
+}
+
+/* Soft shadow that grows as the card lifts, shrinks as it settles */
+@keyframes a-shadow{
+  0%,8%    {opacity:0;transform:translate(0,0) scale(.9)}
+  30%,50%  {opacity:.22;transform:translate(72px,-4px) scale(1.05)}
+  72%      {opacity:.12;transform:translate(72px,0) scale(.95)}
+  88%,100% {opacity:0;transform:translate(0,0) scale(.9)}
+}
+.a-shadow{
+  fill:#141413;opacity:0;
+  transform-box:fill-box;transform-origin:center;
+  animation:a-shadow 5s cubic-bezier(.45,.05,.3,1) infinite;
+}
+
+/* HERO: left card 1 lifts, travels to the right column slot, settles */
+@keyframes a-travel{
+  0%,8%   {transform:translate(0,0) scale(1)}
+  26%     {transform:translate(2px,-7px) scale(1.05)}   /* lift */
+  52%     {transform:translate(74px,-7px) scale(1.05)}  /* glide across */
+  70%     {transform:translate(72px,1px) scale(1.0)}     /* drop + tiny overshoot */
+  76%     {transform:translate(72px,0) scale(1)}         /* settle */
+  88%,100%{transform:translate(0,0) scale(1)}            /* loop home */
+}
+.a-card{
+  transform-box:fill-box;transform-origin:50% 50%;
+  animation:a-travel 5s cubic-bezier(.5,0,.25,1) infinite;
+}
+
+/* the dashed placeholder slot fades while the real card occupies it */
+@keyframes a-slotFade{
+  0%,30%   {opacity:1}
+  52%,74%  {opacity:.15}
+  90%,100% {opacity:1}
+}
+.a-slot{animation:a-slotFade 5s ease-in-out infinite}
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none!important;transition:none!important}
+      [class*="a-"],[id*="a-"]{opacity:1!important;transform:none!important;stroke-dashoffset:0!important;stroke-dasharray:none!important}
+    }
+  </style>
+  <rect x="0" y="0" width="165" height="202" class="bg"/>
+
+<!-- header: small title tab + companion rule + two ragged subtitle lines -->
+<rect x="13" y="13" width="26" height="6" rx="2.5" class="sl"/>
+<line x1="43" y1="16" x2="118" y2="16" class="ln"/>
+<line x1="13" y1="27" x2="104" y2="27" class="lnf"/>
+<line x1="13" y1="32" x2="84" y2="32" class="lnf"/>
+
+<!-- toolbar -->
+<line x1="13" y1="41" x2="152" y2="41" class="hl"/>
+<rect x="13" y="46" width="28" height="8" rx="2.5" class="fll"/>
+<rect x="46" y="46" width="18" height="8" rx="2.5" class="fll"/>
+<rect x="115" y="45" width="16" height="10" rx="2.5" class="wh"/>
+<rect x="134" y="45" width="18" height="10" rx="2.5" class="oa"/>
+
+<!-- ===== left column (Now / clay accent) ===== -->
+<rect x="13" y="63" width="67" height="127" rx="5" class="wh"/>
+<rect x="13" y="63" width="67" height="3" rx="1.5" class="cl"/>
+<rect x="19" y="73" width="20" height="5" rx="2.5" class="fl"/>
+<circle cx="74" cy="75.5" r="2.5" class="whh"/>
+
+<!-- ===== right column (Next / olive accent) ===== -->
+<rect x="85" y="63" width="67" height="127" rx="5" class="wh"/>
+<!-- destination column highlight (helper, animated) -->
+<rect class="a-colhl" x="85" y="66" width="67" height="124" rx="5"/>
+<rect x="85" y="63" width="67" height="3" rx="1.5" class="ol"/>
+<rect x="91" y="73" width="20" height="5" rx="2.5" class="fl"/>
+<circle cx="146" cy="75.5" r="2.5" class="whh"/>
+
+<!-- card 1 destination slot (dashed placeholder, fades while occupied) -->
+<g class="a-slot">
+<rect x="90" y="85" width="57" height="28" rx="4" class="whh da"/>
+<rect x="95" y="90" width="12" height="4" rx="2" class="fll"/>
+<rect x="112" y="89.5" width="12" height="5" rx="2.5" class="fll"/>
+<rect x="137" y="89.5" width="6" height="5" rx="2" class="whh"/>
+<line x1="95" y1="100" x2="141" y2="100" class="lnf"/>
+<line x1="95" y1="104" x2="124" y2="104" class="lnf"/>
+<circle cx="98" cy="109" r="2" class="oa"/>
+</g>
+
+<!-- card 2 (right) -->
+<rect x="90" y="117" width="57" height="28" rx="4" class="frame"/>
+<rect x="95" y="122" width="12" height="4" rx="2" class="fl"/>
+<rect x="112" y="121.5" width="12" height="5" rx="2.5" class="fll"/>
+<rect x="137" y="121.5" width="6" height="5" rx="2" class="whh"/>
+<line x1="95" y1="132" x2="136" y2="132" class="lnf"/>
+<line x1="95" y1="136" x2="118" y2="136" class="lnf"/>
+<circle cx="98" cy="141" r="2" class="oa"/>
+
+<!-- card 3 (right) -->
+<rect x="90" y="149" width="57" height="28" rx="4" class="frame"/>
+<rect x="95" y="154" width="12" height="4" rx="2" class="fl"/>
+<rect x="112" y="153.5" width="12" height="5" rx="2.5" class="oa"/>
+<rect x="137" y="153.5" width="6" height="5" rx="2" class="whh"/>
+<line x1="95" y1="164" x2="139" y2="164" class="lnf"/>
+<line x1="95" y1="168" x2="121" y2="168" class="lnf"/>
+<circle cx="98" cy="173" r="2" class="oa"/>
+
+<!-- left card 2 -->
+<rect x="18" y="117" width="57" height="28" rx="4" class="frame"/>
+<rect x="23" y="122" width="12" height="4" rx="2" class="fl"/>
+<rect x="40" y="121.5" width="12" height="5" rx="2.5" class="fll"/>
+<rect x="65" y="121.5" width="6" height="5" rx="2" class="whh"/>
+<line x1="23" y1="132" x2="64" y2="132" class="lnf"/>
+<line x1="23" y1="136" x2="50" y2="136" class="lnf"/>
+<circle cx="26" cy="141" r="2" class="oa"/>
+
+<!-- left card 3 -->
+<rect x="18" y="149" width="57" height="28" rx="4" class="frame"/>
+<rect x="23" y="154" width="12" height="4" rx="2" class="fl"/>
+<rect x="40" y="153.5" width="12" height="5" rx="2.5" class="oa"/>
+<rect x="65" y="153.5" width="6" height="5" rx="2" class="whh"/>
+<line x1="23" y1="164" x2="69" y2="164" class="lnf"/>
+<line x1="23" y1="168" x2="53" y2="168" class="lnf"/>
+<circle cx="26" cy="173" r="2" class="oa"/>
+
+<!-- traveling shadow (helper, animated) sits under the hero card -->
+<rect class="a-shadow" x="18" y="85" width="57" height="28" rx="5"/>
+
+<!-- HERO: left card 1 — lifts and travels to the right column slot -->
+<g class="a-card">
+<rect x="18" y="85" width="57" height="28" rx="4" class="frame"/>
+<rect x="23" y="90" width="12" height="4" rx="2" class="fl"/>
+<rect x="40" y="89.5" width="12" height="5" rx="2.5" class="cl"/>
+<rect x="65" y="89.5" width="6" height="5" rx="2" class="whh"/>
+<line x1="23" y1="100" x2="69" y2="100" class="lnf"/>
+<line x1="23" y1="104" x2="56" y2="104" class="lnf"/>
+<circle cx="26" cy="109" r="2" class="oa"/>
+</g>
+</svg>

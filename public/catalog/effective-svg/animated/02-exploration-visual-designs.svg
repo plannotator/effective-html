@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 202" width="165" height="202" role="img" aria-label="Animated Four stacked design-exploration artboards, each previewing a distinct empty-state direction">
+  <style>
+    svg{stroke-linejoin:round}
+    .bg{fill:#F0EEE6}
+    .frame{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .wh{fill:#FFFFFF;stroke:#9C9B93;stroke-width:1.4}
+    .whh{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .oa{fill:#E3DACC;stroke:#B7AE9D;stroke-width:1.2}
+    .sl{fill:#141413}
+    .cl{fill:#D97757}
+    .ol{fill:#788C5D}
+    .fl{fill:#D1CFC5}
+    .fll{fill:#E6E3DA}
+    .st{fill:none;stroke:#87867F;stroke-width:1.4}
+    .stt{fill:none;stroke:#6F6E68;stroke-width:2}
+    .hl{fill:none;stroke:#D1CFC5;stroke-width:1}
+    .ln{fill:none;stroke:#9C9B93;stroke-width:1.3;stroke-linecap:round}
+    .lnf{fill:none;stroke:#CFCDC3;stroke-width:1.1;stroke-linecap:round}
+    .lc{fill:none;stroke:#D97757;stroke-width:1.5;stroke-linecap:round}
+    .da{stroke-dasharray:3 3}
+  </style>
+  <style>
+    /* A clay focus ring cross-fades around each artboard in turn (A,B,C,D),
+       like reviewing each design direction one by one. OPACITY ONLY — nothing
+       translates or scales, so nothing can ever leave its frame. The active
+       card's accent gently brightens in step. */
+.a-sel{opacity:0}
+.a-selA{animation:a-selA 8s ease-in-out infinite}
+.a-selB{animation:a-selB 8s ease-in-out infinite}
+.a-selC{animation:a-selC 8s ease-in-out infinite}
+.a-selD{animation:a-selD 8s ease-in-out infinite}
+@keyframes a-selA{0%,3%{opacity:1}22%,97%{opacity:0}100%{opacity:1}}
+@keyframes a-selB{0%,22%{opacity:0}28%,47%{opacity:1}53%,100%{opacity:0}}
+@keyframes a-selC{0%,47%{opacity:0}53%,72%{opacity:1}78%,100%{opacity:0}}
+@keyframes a-selD{0%,72%{opacity:0}78%,97%{opacity:1}100%{opacity:0}}
+
+/* the four artboards quietly dim when not the one being reviewed */
+.a-cA{animation:a-dimA 8s ease-in-out infinite}
+.a-cB{animation:a-dimB 8s ease-in-out infinite}
+.a-cC{animation:a-dimC 8s ease-in-out infinite}
+.a-cD{animation:a-dimD 8s ease-in-out infinite}
+@keyframes a-dimA{0%,3%{opacity:1}22%,97%{opacity:.6}100%{opacity:1}}
+@keyframes a-dimB{0%,22%{opacity:.6}28%,47%{opacity:1}53%,100%{opacity:.6}}
+@keyframes a-dimC{0%,47%{opacity:.6}53%,72%{opacity:1}78%,100%{opacity:.6}}
+@keyframes a-dimD{0%,72%{opacity:.6}78%,97%{opacity:1}100%{opacity:.6}}
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none!important;transition:none!important}
+      [class*="a-"],[id*="a-"]{opacity:1!important;transform:none!important;stroke-dashoffset:0!important;stroke-dasharray:none!important}
+    }
+  </style>
+  <rect x="0" y="0" width="165" height="202" class="bg"/>
+
+<!-- header: prompt eyebrow + prompt bar -->
+<g class="a-grp a-head">
+<rect x="12" y="12" width="46" height="3" rx="1.5" class="fll"/>
+<rect x="12" y="18" width="9" height="3" rx="1.5" class="sl"/>
+<rect x="12" y="29" width="141" height="15" rx="4" class="oa"/>
+<line x1="17" y1="34" x2="92" y2="34" class="lnf"/>
+<line x1="17" y1="39" x2="66" y2="39" class="lnf"/>
+</g>
+
+<!-- Artboard A — Minimal (typography + quiet button) -->
+<g class="a-grp a-card a-cA">
+<rect x="12" y="54" width="68" height="54" rx="5" class="wh"/>
+<g class="a-fill a-fA">
+<rect x="17" y="59" width="20" height="5" rx="2.5" class="oa"/>
+<circle cx="76" cy="61.5" r="1" class="sl"/>
+<line x1="30" y1="76" x2="62" y2="76" class="ln"/>
+<line x1="35" y1="82" x2="56" y2="82" class="lnf"/>
+<rect x="36" y="90" width="20" height="9" rx="3" class="st"/>
+<line x1="41" y1="94.5" x2="51" y2="94.5" class="lnf"/>
+</g>
+</g>
+
+<!-- Artboard B — Illustrated (spot illustration + clay focal + clay button) -->
+<g class="a-grp a-card a-cB">
+<rect x="85" y="54" width="68" height="54" rx="5" class="wh"/>
+<g class="a-fill a-fB">
+<rect x="90" y="59" width="20" height="5" rx="2.5" class="oa"/>
+<rect x="107" y="73" width="21" height="15" rx="3" class="whh"/>
+<rect x="113" y="69" width="21" height="15" rx="3" class="oa"/>
+<circle cx="135.5" cy="84.5" r="4.5" class="cl"/>
+<rect x="110" y="99" width="22" height="6" rx="3" class="cl"/>
+</g>
+</g>
+
+<!-- Artboard C — Playful (floating bobbing card stack) -->
+<g class="a-grp a-card a-cC">
+<rect x="12" y="114" width="68" height="54" rx="5" class="wh"/>
+<g class="a-fill a-fC">
+<rect x="17" y="119" width="20" height="5" rx="2.5" class="oa"/>
+<rect x="38" y="132" width="16" height="13" rx="3" class="fll"/>
+<rect x="42" y="128" width="16" height="13" rx="3" class="whh"/>
+<rect x="46" y="124" width="16" height="13" rx="3" class="ol"/>
+<ellipse cx="50" cy="150" rx="10" ry="2" class="fll"/>
+<line x1="34" y1="159" x2="58" y2="159" class="lnf"/>
+</g>
+</g>
+
+<!-- Artboard D — Instructional (numbered steps) -->
+<g class="a-grp a-card a-cD">
+<rect x="85" y="114" width="68" height="54" rx="5" class="wh"/>
+<g class="a-fill a-fD">
+<rect x="90" y="119" width="22" height="5" rx="2.5" class="oa"/>
+<rect x="90" y="130" width="58" height="9" rx="3" class="whh"/>
+<circle cx="95.5" cy="134.5" r="2.6" class="oa"/>
+<line x1="101" y1="134.5" x2="143" y2="134.5" class="lnf"/>
+<rect x="90" y="142" width="58" height="9" rx="3" class="whh"/>
+<circle cx="95.5" cy="146.5" r="2.6" class="oa"/>
+<line x1="101" y1="146.5" x2="137" y2="146.5" class="lnf"/>
+<rect x="90" y="154" width="58" height="9" rx="3" class="whh"/>
+<circle cx="95.5" cy="158.5" r="2.6" class="cl"/>
+<line x1="101" y1="158.5" x2="142" y2="158.5" class="lnf"/>
+</g>
+</g>
+
+<!-- clay focus ring: cross-fades around each artboard in turn (opacity only) -->
+<rect class="lc a-sel a-selA" x="9" y="51" width="74" height="60" rx="6"/>
+<rect class="lc a-sel a-selB" x="82" y="51" width="74" height="60" rx="6"/>
+<rect class="lc a-sel a-selC" x="9" y="111" width="74" height="60" rx="6"/>
+<rect class="lc a-sel a-selD" x="82" y="111" width="74" height="60" rx="6"/>
+
+<!-- rationale rule lines at base -->
+<line x1="12" y1="180" x2="80" y2="180" class="hl da a-base a-b1"/>
+<line x1="85" y1="180" x2="153" y2="180" class="hl da a-base a-b2"/>
+<line x1="12" y1="188" x2="64" y2="188" class="ln a-base a-b3"/>
+<line x1="12" y1="193" x2="44" y2="193" class="lnf a-base a-b3"/>
+<line x1="85" y1="188" x2="137" y2="188" class="ln a-base a-b4"/>
+<line x1="85" y1="193" x2="116" y2="193" class="lnf a-base a-b4"/>
+</svg>

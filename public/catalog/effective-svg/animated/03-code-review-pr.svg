@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 202" width="165" height="202" role="img" aria-label="Animated abstract illustration of a pull-request review: header with added and removed line counts, a row of risk chips, dark diff panels with plus and minus line marks, and a comment bubble">
+  <style>
+    svg{stroke-linejoin:round}
+    .bg{fill:#F0EEE6}
+    .frame{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .wh{fill:#FFFFFF;stroke:#9C9B93;stroke-width:1.4}
+    .whh{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .oa{fill:#E3DACC;stroke:#B7AE9D;stroke-width:1.2}
+    .sl{fill:#141413}
+    .cl{fill:#D97757}
+    .ol{fill:#788C5D}
+    .fl{fill:#D1CFC5}
+    .fll{fill:#E6E3DA}
+    .st{fill:none;stroke:#87867F;stroke-width:1.4}
+    .stt{fill:none;stroke:#6F6E68;stroke-width:2}
+    .hl{fill:none;stroke:#D1CFC5;stroke-width:1}
+    .ln{fill:none;stroke:#9C9B93;stroke-width:1.3;stroke-linecap:round}
+    .lnf{fill:none;stroke:#CFCDC3;stroke-width:1.1;stroke-linecap:round}
+    .lc{fill:none;stroke:#D97757;stroke-width:1.5;stroke-linecap:round}
+    .da{stroke-dasharray:3 3}
+  </style>
+  <style>
+    .a-line{stroke-dasharray:140;stroke-dashoffset:0;animation:a-write 5s cubic-bezier(.5,0,.2,1) infinite}
+.a-tick{transform-box:fill-box;transform-origin:center;animation:a-pop 5s ease-out infinite}
+.a-bar{transform-box:fill-box;transform-origin:left center;animation:a-grow 5s cubic-bezier(.5,0,.2,1) infinite}
+.a-d1{animation-delay:.2s}
+.a-d2{animation-delay:.7s}
+.a-d3{animation-delay:1.2s}
+.a-d4{animation-delay:1.7s}
+.a-d5{animation-delay:2.2s}
+.a-d6{animation-delay:2.7s}
+@keyframes a-write{0%{stroke-dashoffset:140}14%{stroke-dashoffset:0}88%{stroke-dashoffset:0}96%{stroke-dashoffset:140}100%{stroke-dashoffset:140}}
+@keyframes a-pop{0%{transform:scale(0)}6%{transform:scale(0)}11%{transform:scale(1.5)}16%{transform:scale(1)}88%{transform:scale(1)}95%{transform:scale(0)}100%{transform:scale(0)}}
+@keyframes a-grow{0%{transform:scaleX(0)}8%{transform:scaleX(0)}20%{transform:scaleX(1)}88%{transform:scaleX(1)}96%{transform:scaleX(0)}100%{transform:scaleX(0)}}
+.a-caret{transform-box:fill-box;transform-origin:center;animation:a-blink 1.1s steps(1) infinite}
+@keyframes a-blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none!important;transition:none!important}
+      [class*="a-"],[id*="a-"]{opacity:1!important;transform:none!important;stroke-dashoffset:0!important;stroke-dasharray:none!important}
+    }
+  </style>
+  <rect x="0" y="0" width="165" height="202" class="bg"/>
+
+<!-- Header card: repo dot + title + filename rule -->
+<rect x="12" y="12" width="141" height="30" rx="5" class="wh"/>
+<circle cx="20.5" cy="21" r="2.2" class="cl"/>
+<line x1="26" y1="21" x2="50" y2="21" class="lnf"/>
+<line x1="17" y1="30" x2="96" y2="30" class="ln a-line a-d1"/>
+<line x1="17" y1="36" x2="66" y2="36" class="lnf"/>
+<line x1="124" y1="36" x2="132" y2="36" class="ln"/>
+<line x1="136" y1="36" x2="148" y2="36" class="lnf"/>
+
+<!-- Risk map: row of chips, equal 32px with 6px gutters -->
+<rect x="12" y="50" width="32" height="11" rx="3" class="oa"/>
+<line x1="17" y1="55.5" x2="32" y2="55.5" class="hl"/>
+<rect x="50" y="50" width="32" height="11" rx="3" class="whh"/>
+<circle cx="56" cy="55.5" r="2" class="cl"/>
+<line x1="60.5" y1="55.5" x2="76" y2="55.5" class="hl"/>
+<rect x="88" y="50" width="32" height="11" rx="3" class="whh"/>
+<circle cx="94" cy="55.5" r="2" class="fl"/>
+<line x1="98.5" y1="55.5" x2="114" y2="55.5" class="hl"/>
+<rect x="126" y="50" width="27" height="11" rx="3" class="whh"/>
+<circle cx="132" cy="55.5" r="2" class="fl"/>
+<line x1="136.5" y1="55.5" x2="148" y2="55.5" class="hl"/>
+
+<!-- Diff panel 1: gutter + +/- line marks -->
+<rect x="12" y="68" width="141" height="46" rx="5" class="wh"/>
+<rect x="14.5" y="70.5" width="6" height="41" rx="1.5" class="fll"/>
+<line x1="23.5" y1="68" x2="23.5" y2="114" class="hl"/>
+<line x1="28" y1="77" x2="31" y2="77" class="lnf a-tick a-d1"/><line x1="35" y1="77" x2="92" y2="77" class="ln a-line a-d1"/>
+<rect x="26" y="83" width="120" height="5" rx="1.5" class="oa a-bar a-d2"/>
+<line x1="28" y1="92" x2="31" y2="92" class="lnf a-tick a-d3"/><line x1="35" y1="92" x2="104" y2="92" class="ln a-line a-d3"/>
+<rect x="26" y="98" width="120" height="5" rx="1.5" class="oa a-bar a-d4"/>
+<line x1="28" y1="107" x2="31" y2="107" class="lnf a-tick a-d5"/><line x1="35" y1="107" x2="84" y2="107" class="ln a-line a-d5"/>
+
+<!-- Comment bubble attached to diff 1 -->
+<rect x="28" y="121" width="118" height="26" rx="4" class="whh"/>
+<rect x="28" y="121" width="3" height="26" rx="1.5" class="cl"/>
+<path d="M28 127 L23.5 130 L28 133 Z" class="cl"/>
+<circle cx="37" cy="128" r="2.2" class="oa"/>
+<line x1="43" y1="128" x2="66" y2="128" class="lnf"/>
+<line x1="35" y1="135" x2="139" y2="135" class="ln a-line a-d5"/>
+<line x1="35" y1="141" x2="116" y2="141" class="lnf"/>
+<rect x="118" y="138" width="1.6" height="6.5" rx="0.8" class="cl a-caret"/>
+
+<!-- Diff panel 2: removed marks -->
+<rect x="12" y="154" width="141" height="24" rx="5" class="wh"/>
+<rect x="14.5" y="156.5" width="6" height="19" rx="1.5" class="fll"/>
+<line x1="23.5" y1="154" x2="23.5" y2="178" class="hl"/>
+<line x1="28" y1="162" x2="31" y2="162" class="lnf a-tick a-d4"/><line x1="35" y1="162" x2="96" y2="162" class="ln a-line a-d4"/>
+<line x1="28" y1="170" x2="31" y2="170" class="lnf a-tick a-d6"/><line x1="35" y1="170" x2="116" y2="170" class="ln a-line a-d6"/>
+
+<!-- Checklist footer -->
+<rect x="12" y="184" width="10" height="10" rx="2.5" class="whh"/>
+<path d="M14.5 189 L16.5 191 L19.5 187" class="lc"/>
+<line x1="28" y1="189" x2="108" y2="189" class="ln"/>
+<rect x="12" y="196" width="10" height="6" rx="2.5" class="whh"/>
+<line x1="28" y1="199" x2="90" y2="199" class="lnf"/>
+</svg>

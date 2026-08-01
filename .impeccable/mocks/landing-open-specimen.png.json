@@ -1,0 +1,6 @@
+{
+  "name": "Open Specimen",
+  "mode": "built-in image_gen",
+  "promptFile": "landing-open-specimen.prompt.txt",
+  "approved": true
+}

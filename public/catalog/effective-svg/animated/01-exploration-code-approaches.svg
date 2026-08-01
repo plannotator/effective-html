@@ -1,0 +1,182 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 202" width="165" height="202" role="img" aria-label="Animated abstract illustration of three side-by-side code approach cards with code panels and pro-con rows, above a clay-marked recommendation">
+  <style>
+    svg{stroke-linejoin:round}
+    .bg{fill:#F0EEE6}
+    .frame{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .wh{fill:#FFFFFF;stroke:#9C9B93;stroke-width:1.4}
+    .whh{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .oa{fill:#E3DACC;stroke:#B7AE9D;stroke-width:1.2}
+    .sl{fill:#141413}
+    .cl{fill:#D97757}
+    .ol{fill:#788C5D}
+    .fl{fill:#D1CFC5}
+    .fll{fill:#E6E3DA}
+    .st{fill:none;stroke:#87867F;stroke-width:1.4}
+    .stt{fill:none;stroke:#6F6E68;stroke-width:2}
+    .hl{fill:none;stroke:#D1CFC5;stroke-width:1}
+    .ln{fill:none;stroke:#9C9B93;stroke-width:1.3;stroke-linecap:round}
+    .lnf{fill:none;stroke:#CFCDC3;stroke-width:1.1;stroke-linecap:round}
+    .lc{fill:none;stroke:#D97757;stroke-width:1.5;stroke-linecap:round}
+    .da{stroke-dasharray:3 3}
+  </style>
+  <style>
+    /* code lines type in left-to-right, dashed from full length to 0 offset */
+.a-code{stroke-dasharray:42;stroke-dashoffset:42;animation:a-type 5.5s ease-in-out infinite}
+/* per-panel sequence: col1 first, col2 next, col3 (clay) last */
+.a-p1 .a-code{animation-delay:.1s}
+.a-p2 .a-code{animation-delay:1.0s}
+.a-p3 .a-code{animation-delay:1.9s}
+/* stagger lines within a panel (inherits --pd from panel group) */
+.a-l2{animation-delay:calc(var(--pd) + .18s) !important}
+.a-l3{animation-delay:calc(var(--pd) + .36s) !important}
+.a-l4{animation-delay:calc(var(--pd) + .54s) !important}
+.a-p1{--pd:.1s}.a-p2{--pd:1.0s}.a-p3{--pd:1.9s}
+
+@keyframes a-type{
+  0%{stroke-dashoffset:42}
+  14%,86%{stroke-dashoffset:0}
+  96%,100%{stroke-dashoffset:42}
+}
+
+/* pro/con dots pop after their panel's code lands */
+.a-dot{transform-box:fill-box;transform-origin:center;transform:scale(.001);animation:a-pop 5.5s cubic-bezier(.34,1.56,.64,1) infinite}
+.a-d1{animation-delay:.8s}
+.a-d2{animation-delay:1.7s}
+.a-d3{animation-delay:2.6s}
+@keyframes a-pop{
+  0%,8%{transform:scale(.001)}
+  16%{transform:scale(1.35)}
+  22%,88%{transform:scale(1)}
+  96%,100%{transform:scale(.001)}
+}
+
+/* clay column settles last with a gentle lift */
+.a-rec{transform-box:fill-box;transform-origin:center;animation:a-settle 5.5s cubic-bezier(.34,1.4,.5,1) infinite;animation-delay:2.4s}
+@keyframes a-settle{
+  0%,30%{transform:translateY(4px);opacity:.35}
+  46%,90%{transform:translateY(0);opacity:1}
+  98%,100%{transform:translateY(4px);opacity:.35}
+}
+
+/* clay recommendation underline draws across at the very end */
+.a-mark{stroke-dasharray:34;stroke-dashoffset:34;animation:a-draw 5.5s ease-in-out infinite;animation-delay:3.3s}
+@keyframes a-draw{
+  0%,8%{stroke-dashoffset:34}
+  24%,88%{stroke-dashoffset:0}
+  98%,100%{stroke-dashoffset:34}
+}
+/* clay edge bar grows up as the rec arrives */
+.a-edge{transform-box:fill-box;transform-origin:bottom;animation:a-edge 5.5s ease-in-out infinite;animation-delay:3.0s}
+@keyframes a-edge{
+  0%,20%{transform:scaleY(.2);opacity:.4}
+  34%,90%{transform:scaleY(1);opacity:1}
+  98%,100%{transform:scaleY(.2);opacity:.4}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .a-code,.a-mark{stroke-dasharray:none;stroke-dashoffset:0;animation:none}
+  .a-dot,.a-rec,.a-edge{transform:none;opacity:1;animation:none}
+}
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none!important;transition:none!important}
+      [class*="a-"],[id*="a-"]{opacity:1!important;transform:none!important;stroke-dashoffset:0!important;stroke-dasharray:none!important}
+    }
+  </style>
+  <rect x="0" y="0" width="165" height="202" class="bg"/>
+
+<!-- prompt box (header) -->
+<rect x="12" y="12" width="141" height="24" rx="4" class="oa"/>
+<rect x="18" y="17.5" width="16" height="3" rx="1.5" class="cl"/>
+<line x1="18" y1="26" x2="139" y2="26" class="lnf"/>
+<line x1="18" y1="31" x2="110" y2="31" class="lnf"/>
+
+<!-- column 1 -->
+<rect x="12" y="44" width="43" height="110" rx="4.5" class="wh"/>
+<rect x="17" y="50" width="11" height="5" rx="2" class="oa"/>
+<rect x="48" y="51" width="2" height="2" rx="1" class="sl"/>
+<!-- code panel -->
+<rect x="17" y="60" width="31" height="28" rx="3" class="whh"/>
+<circle cx="20.5" cy="64" r="1" class="sl"/>
+<circle cx="24" cy="64" r="1" class="fll"/>
+<circle cx="27.5" cy="64" r="1" class="fll"/>
+<g class="a-p1">
+<line x1="20.5" y1="70" x2="32" y2="70" class="hl a-code a-l1"/>
+<line x1="23" y1="74" x2="43" y2="74" class="hl a-code a-l2"/>
+<line x1="23" y1="78" x2="37" y2="78" class="hl a-code a-l3"/>
+<line x1="20.5" y1="82" x2="40" y2="82" class="hl a-code a-l4"/>
+</g>
+<!-- pro/con rows -->
+<circle cx="19" cy="95" r="1.3" class="fl a-dot a-d1"/>
+<line x1="23" y1="95" x2="47" y2="95" class="lnf"/>
+<circle cx="19" cy="101" r="1.3" class="fl a-dot a-d1"/>
+<line x1="23" y1="101" x2="43" y2="101" class="lnf"/>
+<!-- chip grid -->
+<rect x="17" y="110" width="13" height="6" rx="2.5" class="fll"/>
+<rect x="33" y="110" width="15" height="6" rx="2.5" class="fll"/>
+<rect x="17" y="119" width="13" height="6" rx="2.5" class="fll"/>
+<rect x="33" y="119" width="15" height="6" rx="2.5" class="fll"/>
+<line x1="17" y1="135" x2="48" y2="135" class="hl"/>
+<line x1="17" y1="140" x2="43" y2="140" class="hl"/>
+<line x1="17" y1="145" x2="39" y2="145" class="hl"/>
+
+<!-- column 2 -->
+<rect x="61" y="44" width="43" height="110" rx="4.5" class="wh"/>
+<rect x="66" y="50" width="11" height="5" rx="2" class="oa"/>
+<rect x="97" y="51" width="2" height="2" rx="1" class="sl"/>
+<rect x="66" y="60" width="31" height="28" rx="3" class="whh"/>
+<circle cx="69.5" cy="64" r="1" class="sl"/>
+<circle cx="73" cy="64" r="1" class="fll"/>
+<circle cx="76.5" cy="64" r="1" class="fll"/>
+<g class="a-p2">
+<line x1="69.5" y1="70" x2="81" y2="70" class="hl a-code a-l1"/>
+<line x1="72" y1="74" x2="92" y2="74" class="hl a-code a-l2"/>
+<line x1="72" y1="78" x2="86" y2="78" class="hl a-code a-l3"/>
+<line x1="69.5" y1="82" x2="89" y2="82" class="hl a-code a-l4"/>
+</g>
+<circle cx="68" cy="95" r="1.3" class="ol a-dot a-d2"/>
+<line x1="72" y1="95" x2="96" y2="95" class="lnf"/>
+<circle cx="68" cy="101" r="1.3" class="fl a-dot a-d2"/>
+<line x1="72" y1="101" x2="92" y2="101" class="lnf"/>
+<rect x="66" y="110" width="13" height="6" rx="2.5" class="fll"/>
+<rect x="82" y="110" width="15" height="6" rx="2.5" class="fll"/>
+<rect x="66" y="119" width="13" height="6" rx="2.5" class="fll"/>
+<rect x="82" y="119" width="15" height="6" rx="2.5" class="fll"/>
+<line x1="66" y1="135" x2="97" y2="135" class="hl"/>
+<line x1="66" y1="140" x2="92" y2="140" class="hl"/>
+<line x1="66" y1="145" x2="88" y2="145" class="hl"/>
+
+<!-- column 3 (recommended — clay tab) -->
+<g class="a-rec">
+<rect x="110" y="44" width="43" height="110" rx="4.5" class="wh"/>
+<rect x="115" y="50" width="11" height="5" rx="2" class="cl"/>
+<rect x="146" y="51" width="2" height="2" rx="1" class="sl"/>
+<rect x="115" y="60" width="31" height="28" rx="3" class="whh"/>
+<circle cx="118.5" cy="64" r="1" class="sl"/>
+<circle cx="122" cy="64" r="1" class="fll"/>
+<circle cx="125.5" cy="64" r="1" class="fll"/>
+<g class="a-p3">
+<line x1="118.5" y1="70" x2="130" y2="70" class="hl a-code a-l1"/>
+<line x1="121" y1="74" x2="141" y2="74" class="hl a-code a-l2"/>
+<line x1="121" y1="78" x2="135" y2="78" class="hl a-code a-l3"/>
+<line x1="118.5" y1="82" x2="138" y2="82" class="hl a-code a-l4"/>
+</g>
+<circle cx="117" cy="95" r="1.3" class="fl a-dot a-d3"/>
+<line x1="121" y1="95" x2="145" y2="95" class="lnf"/>
+<circle cx="117" cy="101" r="1.3" class="fl a-dot a-d3"/>
+<line x1="121" y1="101" x2="141" y2="101" class="lnf"/>
+<rect x="115" y="110" width="13" height="6" rx="2.5" class="fll"/>
+<rect x="131" y="110" width="15" height="6" rx="2.5" class="fll"/>
+<rect x="115" y="119" width="13" height="6" rx="2.5" class="fll"/>
+<rect x="131" y="119" width="15" height="6" rx="2.5" class="fll"/>
+<line x1="115" y1="135" x2="146" y2="135" class="hl"/>
+<line x1="115" y1="140" x2="141" y2="140" class="hl"/>
+<line x1="115" y1="145" x2="137" y2="145" class="hl"/>
+</g>
+
+<!-- recommendation block with clay left edge -->
+<rect x="12" y="164" width="141" height="26" rx="4.5" class="wh"/>
+<rect x="12" y="164" width="3.5" height="26" rx="1.75" class="cl a-edge"/>
+<line x1="22" y1="172" x2="56" y2="172" class="lc a-mark"/>
+<line x1="22" y1="179" x2="145" y2="179" class="lnf"/>
+<line x1="22" y1="184" x2="124" y2="184" class="lnf"/>
+</svg>

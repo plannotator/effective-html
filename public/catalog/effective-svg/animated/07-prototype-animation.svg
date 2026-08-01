@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 202" width="165" height="202" role="img" aria-label="Animated abstract illustration of an animation prototype bench: a stage with a checkbox row and confetti burst, an easing option panel, and a keyframe timeline.">
+  <style>
+    svg{stroke-linejoin:round}
+    .bg{fill:#F0EEE6}
+    .frame{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .wh{fill:#FFFFFF;stroke:#9C9B93;stroke-width:1.4}
+    .whh{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .oa{fill:#E3DACC;stroke:#B7AE9D;stroke-width:1.2}
+    .sl{fill:#141413}
+    .cl{fill:#D97757}
+    .ol{fill:#788C5D}
+    .fl{fill:#D1CFC5}
+    .fll{fill:#E6E3DA}
+    .st{fill:none;stroke:#87867F;stroke-width:1.4}
+    .stt{fill:none;stroke:#6F6E68;stroke-width:2}
+    .hl{fill:none;stroke:#D1CFC5;stroke-width:1}
+    .ln{fill:none;stroke:#9C9B93;stroke-width:1.3;stroke-linecap:round}
+    .lnf{fill:none;stroke:#CFCDC3;stroke-width:1.1;stroke-linecap:round}
+    .lc{fill:none;stroke:#D97757;stroke-width:1.5;stroke-linecap:round}
+    .da{stroke-dasharray:3 3}
+  </style>
+  <style>
+    @keyframes a-wave{0%,100%{transform:translateY(0) scaleY(1)}25%{transform:translateY(-3px) scaleY(1.28)}50%{transform:translateY(1px) scaleY(.82)}75%{transform:translateY(-2px) scaleY(1.12)}}
+@keyframes a-draw{0%{stroke-dashoffset:64}28%{stroke-dashoffset:0}100%{stroke-dashoffset:0}}
+@keyframes a-end{0%,18%{transform:scale(0)}30%{transform:scale(1.45)}40%,100%{transform:scale(1)}}
+@keyframes a-scrub{0%{transform:translateX(0)}45%{transform:translateX(105px)}50%{transform:translateX(105px)}95%{transform:translateX(0)}100%{transform:translateX(0)}}
+@keyframes a-conf1{0%,100%{transform:translateY(0) rotate(35deg)}50%{transform:translateY(-2.5px) rotate(53deg)}}
+@keyframes a-conf2{0%,100%{transform:translateY(0) rotate(-50deg)}50%{transform:translateY(-2.5px) rotate(-32deg)}}
+@keyframes a-conf3{0%,100%{transform:translateY(0) rotate(60deg)}50%{transform:translateY(-2.5px) rotate(78deg)}}
+@keyframes a-conf4{0%,100%{transform:translateY(0) rotate(-40deg)}50%{transform:translateY(-2.5px) rotate(-22deg)}}
+@keyframes a-light{0%,100%{opacity:.55}50%{opacity:1}}
+.a-wave{animation:a-wave 3.4s cubic-bezier(.45,.05,.55,.95) infinite;transform-box:fill-box;transform-origin:center bottom}
+.a-curve{stroke-dasharray:64;animation:a-draw 5s cubic-bezier(.65,0,.35,1) infinite}
+.a-end{animation:a-end 5s cubic-bezier(.34,1.56,.64,1) infinite;transform-box:fill-box;transform-origin:center}
+.a-head{animation:a-scrub 5s cubic-bezier(.45,.05,.55,.95) infinite;transform-box:fill-box;transform-origin:center}
+.a-c1{animation:a-conf1 3s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.a-c2{animation:a-conf2 3.4s ease-in-out .3s infinite;transform-box:fill-box;transform-origin:center}
+.a-c3{animation:a-conf3 3.2s ease-in-out .5s infinite;transform-box:fill-box;transform-origin:center}
+.a-c4{animation:a-conf4 3.6s ease-in-out .15s infinite;transform-box:fill-box;transform-origin:center}
+.a-kf1{animation:a-light 5s ease-in-out infinite}
+.a-kf2{animation:a-light 5s ease-in-out .8s infinite}
+.a-kf3{animation:a-light 5s ease-in-out 1.6s infinite}
+.a-kf4{animation:a-light 5s ease-in-out 2.4s infinite}
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none!important;transition:none!important}
+      [class*="a-"],[id*="a-"]{opacity:1!important;transform:none!important;stroke-dashoffset:0!important;stroke-dasharray:none!important}
+    }
+  </style>
+  <rect x="0" y="0" width="165" height="202" class="bg"/>
+  <rect x="12" y="12" width="141" height="92" rx="5" class="wh"/>
+<circle class="hl" cx="20.5" cy="20.5" r="1.5"/>
+<circle class="hl" cx="26.5" cy="20.5" r="1.5"/>
+<circle class="cl" cx="32.5" cy="20.5" r="1.5"/>
+<line class="hl" x1="12" y1="27" x2="153" y2="27"/>
+<rect class="oa" x="26" y="54" width="113" height="22" rx="4"/>
+<circle class="cl" cx="40" cy="65" r="6"/>
+<path class="frame" d="M37.2 65 L39.4 67.2 L43.4 62.4"/>
+<line class="ln" x1="51" y1="63" x2="92" y2="63"/>
+<line class="lnf" x1="51" y1="67.5" x2="76" y2="67.5"/>
+<rect class="whh" x="118" y="60.5" width="15" height="9" rx="2.5"/>
+<rect class="fll a-c1" x="50" y="38" width="4" height="4" rx="1.3"/>
+<rect class="cl a-c2" x="68" y="35" width="4" height="4" rx="1.3"/>
+<rect class="fll a-c3" x="86" y="37" width="3.5" height="3.5" rx="1.2"/>
+<rect class="fll a-c4" x="100" y="38" width="3.5" height="3.5" rx="1.2"/>
+<line class="hl da" x1="40" y1="94" x2="125" y2="94"/>
+<rect class="wh" x="12" y="110" width="84" height="56" rx="5"/>
+<rect class="fll" x="20" y="118" width="20" height="3.5" rx="1.75"/>
+<circle class="sl" cx="89" cy="119.5" r="1.5"/>
+<rect class="oa" x="20" y="128" width="68" height="9" rx="3"/>
+<line class="ln" x1="25" y1="132.5" x2="49" y2="132.5"/>
+<rect class="whh" x="20" y="141" width="68" height="9" rx="3"/>
+<line class="lnf" x1="25" y1="145.5" x2="44" y2="145.5"/>
+<rect class="whh" x="20" y="154" width="68" height="9" rx="3"/>
+<circle class="cl" cx="25.5" cy="158.5" r="2"/>
+<line class="lnf" x1="31" y1="158.5" x2="52" y2="158.5"/>
+<rect class="wh" x="102" y="110" width="51" height="56" rx="5"/>
+<rect class="fll" x="110" y="118" width="16" height="3.5" rx="1.75"/>
+<line class="hl" x1="110" y1="156" x2="145" y2="156"/>
+<line class="hl" x1="110" y1="143" x2="145" y2="143"/>
+<line class="hl" x1="110" y1="130" x2="145" y2="130"/>
+<g class="a-wave">
+<path class="lc a-curve" d="M110 156 C118 156 120.5 131 128 131 C137 131 139.5 143 145 143"/>
+</g>
+<circle class="sl" cx="110" cy="156" r="2"/>
+<circle class="cl a-end" cx="145" cy="143" r="2"/>
+<rect class="bg" x="12" y="174" width="141" height="20" rx="4"/>
+<line class="hl da" x1="22" y1="184" x2="143" y2="184"/>
+<circle class="sl a-head" cx="30" cy="184" r="2.5"/>
+<circle class="whh a-kf1" cx="52" cy="184" r="2.5"/>
+<circle class="whh a-kf2" cx="74" cy="184" r="2.5"/>
+<circle class="whh a-kf3" cx="100" cy="184" r="2.5"/>
+<circle class="ol a-kf4" cx="135" cy="184" r="2.5"/>
+</svg>

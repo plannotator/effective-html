@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 202" width="165" height="202" role="img" aria-label="Animated Abstract slide deck illustration: stacked offset presentation slides with a title, progress bars, and a trend line">
+  <style>
+    svg{stroke-linejoin:round}
+    .bg{fill:#F0EEE6}
+    .frame{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .wh{fill:#FFFFFF;stroke:#9C9B93;stroke-width:1.4}
+    .whh{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .oa{fill:#E3DACC;stroke:#B7AE9D;stroke-width:1.2}
+    .sl{fill:#141413}
+    .cl{fill:#D97757}
+    .ol{fill:#788C5D}
+    .fl{fill:#D1CFC5}
+    .fll{fill:#E6E3DA}
+    .st{fill:none;stroke:#87867F;stroke-width:1.4}
+    .stt{fill:none;stroke:#6F6E68;stroke-width:2}
+    .hl{fill:none;stroke:#D1CFC5;stroke-width:1}
+    .ln{fill:none;stroke:#9C9B93;stroke-width:1.3;stroke-linecap:round}
+    .lnf{fill:none;stroke:#CFCDC3;stroke-width:1.1;stroke-linecap:round}
+    .lc{fill:none;stroke:#D97757;stroke-width:1.5;stroke-linecap:round}
+    .da{stroke-dasharray:3 3}
+  </style>
+  <style>
+    @keyframes a-draw{0%{stroke-dashoffset:0}4%{stroke-dashoffset:120}32%{stroke-dashoffset:0}100%{stroke-dashoffset:0}}
+@keyframes a-endpop{0%{transform:scale(1);opacity:1}4%,22%{transform:scale(0);opacity:0}34%{transform:scale(1.5);opacity:1}44%,100%{transform:scale(1);opacity:1}}
+@keyframes a-bar{0%{transform:scaleX(1)}4%{transform:scaleX(0)}28%{transform:scaleX(1)}100%{transform:scaleX(1)}}
+@keyframes a-pager{0%{transform:translateX(0)}6%,14%{transform:translateX(0)}20%,30%{transform:translateX(12px)}36%,46%{transform:translateX(24px)}52%,62%{transform:translateX(36px)}68%,78%{transform:translateX(48px)}84%,90%{transform:translateX(60px)}100%{transform:translateX(0)}}
+@keyframes a-active{0%{transform:translateY(0)}8%{transform:translateY(0)}16%{transform:translateY(-2.5px)}26%{transform:translateY(0)}100%{transform:translateY(0)}}
+.a-line{stroke-dasharray:120;stroke-dashoffset:0;animation:a-draw 5s cubic-bezier(.45,.05,.35,1) infinite}
+.a-end{transform-box:fill-box;transform-origin:center;animation:a-endpop 5s cubic-bezier(.34,1.56,.64,1) infinite}
+.a-bar{transform-box:fill-box;transform-origin:left center;animation:a-bar 5s cubic-bezier(.45,.05,.35,1) infinite}
+.a-pager{transform-box:fill-box;transform-origin:center;animation:a-pager 5s cubic-bezier(.65,0,.35,1) infinite}
+.a-active{transform-box:fill-box;transform-origin:center;animation:a-active 5s ease-in-out infinite}
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none!important;transition:none!important}
+      [class*="a-"],[id*="a-"]{opacity:1!important;transform:none!important;stroke-dashoffset:0!important;stroke-dasharray:none!important}
+    }
+  </style>
+
+<!-- offset stacked slides behind (deck depth) -->
+<rect x="40" y="30" width="105" height="126" rx="5" class="oa"/>
+<rect x="35" y="35" width="105" height="126" rx="5" class="whh"/>
+
+<!-- active slide -->
+<g class="a-active">
+<rect x="22" y="40" width="111" height="126" rx="5" class="frame"/>
+<rect x="22" y="40" width="111" height="126" rx="5" class="st"/>
+
+<!-- eyebrow tick -->
+<rect x="32" y="52" width="15" height="3" rx="1.5" class="cl"/>
+
+<!-- title rules (ragged) -->
+<line x1="32" y1="64" x2="120" y2="64" class="ln"/>
+<line x1="32" y1="71" x2="94" y2="71" class="ln"/>
+
+<!-- two progress rows (equal h=4, equal 6px gap pattern) -->
+<rect x="32" y="86" width="91" height="4" rx="2" class="fll"/>
+<rect x="32" y="86" width="60" height="4" rx="2" class="cl a-bar"/>
+<line x1="32" y1="96" x2="123" y2="96" class="hl"/>
+<rect x="32" y="102" width="91" height="4" rx="2" class="fll"/>
+<rect x="32" y="102" width="30" height="4" rx="2" class="fl"/>
+
+<!-- sparkline / trend with hairline baseline grid -->
+<line x1="32" y1="118" x2="123" y2="118" class="hl da"/>
+<line x1="32" y1="130" x2="123" y2="130" class="hl da"/>
+<polyline points="32,140 47,134 62,142 77,130 92,136 107,124 123,118" class="lc a-line" fill="none"/>
+<circle cx="123" cy="118" r="2.2" class="ol a-end"/>
+<line x1="32" y1="146" x2="123" y2="146" class="hl"/>
+
+<!-- slide counter dots (6) -->
+<circle cx="48" cy="156" r="2.2" class="sl"/>
+<circle cx="60" cy="156" r="2" class="fl"/>
+<circle cx="72" cy="156" r="2" class="fl"/>
+<circle cx="84" cy="156" r="2" class="fl"/>
+<circle cx="96" cy="156" r="2" class="fl"/>
+<circle cx="108" cy="156" r="2" class="fl"/>
+<circle cx="48" cy="156" r="2.4" class="cl a-pager"/>
+</g>
+</svg>

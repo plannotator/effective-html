@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 202" width="165" height="202" role="img" aria-label="Animated abstract feature-flag editor: a column of rows each with a pill toggle switch and a text label, one row flagged in clay, above a small diff panel">
+  <style>
+    svg{stroke-linejoin:round}
+    .bg{fill:#F0EEE6}
+    .frame{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .wh{fill:#FFFFFF;stroke:#9C9B93;stroke-width:1.4}
+    .whh{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .oa{fill:#E3DACC;stroke:#B7AE9D;stroke-width:1.2}
+    .sl{fill:#141413}
+    .cl{fill:#D97757}
+    .ol{fill:#788C5D}
+    .fl{fill:#D1CFC5}
+    .fll{fill:#E6E3DA}
+    .st{fill:none;stroke:#87867F;stroke-width:1.4}
+    .stt{fill:none;stroke:#6F6E68;stroke-width:2}
+    .hl{fill:none;stroke:#D1CFC5;stroke-width:1}
+    .ln{fill:none;stroke:#9C9B93;stroke-width:1.3;stroke-linecap:round}
+    .lnf{fill:none;stroke:#CFCDC3;stroke-width:1.1;stroke-linecap:round}
+    .lc{fill:none;stroke:#D97757;stroke-width:1.5;stroke-linecap:round}
+    .da{stroke-dasharray:3 3}
+  </style>
+  <style>
+    /* Toggles flip ON: knob springs left->right, tint pill fades IN over white. Rest (anim off)=all ON/activated/complete. Loop: brief OFF dip then spring back ON. */
+@keyframes a-knob{
+  0%,8%   {transform:translateX(0)}
+  20%     {transform:translateX(-13px)}
+  34%     {transform:translateX(2px) scale(1.06)}
+  44%     {transform:translateX(0)   scale(1)}
+  100%    {transform:translateX(0)   scale(1)}
+}
+@keyframes a-tint{
+  0%,10%  {opacity:1}
+  22%     {opacity:0}
+  40%     {opacity:1}
+  100%    {opacity:1}
+}
+@keyframes a-pop{
+  0%,12%  {opacity:1;transform:scale(1)}
+  20%     {opacity:0;transform:scale(.3)}
+  38%     {opacity:1;transform:scale(1.35)}
+  46%     {opacity:1;transform:scale(1)}
+  100%    {opacity:1;transform:scale(1)}
+}
+@keyframes a-tab{
+  0%,12%  {opacity:1}
+  24%     {opacity:.55}
+  40%,100%{opacity:1}
+}
+
+.a-knob{
+  transform-box:fill-box;transform-origin:center;
+  animation:a-knob 6s cubic-bezier(.34,1.45,.5,1) infinite;
+}
+.a-tint{
+  animation:a-tint 6s ease-in-out infinite;
+}
+.a-pop{
+  transform-box:fill-box;transform-origin:center;
+  animation:a-pop 6s cubic-bezier(.34,1.45,.5,1) infinite;
+}
+.a-tab{
+  animation:a-tab 6s ease-in-out infinite;
+}
+
+/* clay focal leads the cascade */
+.a-d0{animation-delay:0s}
+.a-d1{animation-delay:.5s}
+.a-d2{animation-delay:1s}
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none!important;transition:none!important}
+      [class*="a-"],[id*="a-"]{opacity:1!important;transform:none!important;stroke-dashoffset:0!important;stroke-dasharray:none!important}
+    }
+  </style>
+  <rect class="bg" x="0" y="0" width="165" height="202" rx="6"/>
+
+<!-- header eyebrow + title -->
+<line class="lnf" x1="12" y1="15" x2="34" y2="15"/>
+<line class="ln" x1="12" y1="21" x2="74" y2="21"/>
+<circle class="sl" cx="141" cy="19" r="2"/>
+
+<!-- group panel 1 -->
+<rect class="wh" x="12" y="32" width="141" height="62" rx="5"/>
+<line class="lnf" x1="19" y1="41" x2="41" y2="41"/>
+<line class="hl" x1="12" y1="48" x2="153" y2="48"/>
+<!-- flag row 1 (on) -->
+<line class="ln" x1="19" y1="58" x2="55" y2="58"/>
+<rect class="whh" x="123" y="52.5" width="24" height="11" rx="5.5"/>
+<rect class="oa a-tint a-d1" x="123" y="52.5" width="24" height="11" rx="5.5"/>
+<circle class="sl a-knob a-d1" cx="141.5" cy="58" r="3.5"/>
+<!-- flag row 2 (off) -->
+<line class="ln" x1="19" y1="72" x2="63" y2="72"/>
+<rect class="whh" x="123" y="66.5" width="24" height="11" rx="5.5"/>
+<circle class="fll" cx="128.5" cy="72" r="3.5"/>
+<!-- flag row 3 (on) -->
+<line class="ln" x1="19" y1="86" x2="48" y2="86"/>
+<rect class="whh" x="123" y="80.5" width="24" height="11" rx="5.5"/>
+<rect class="oa a-tint a-d2" x="123" y="80.5" width="24" height="11" rx="5.5"/>
+<circle class="sl a-knob a-d2" cx="141.5" cy="86" r="3.5"/>
+
+<!-- group panel 2 with focal flagged row -->
+<rect class="wh" x="12" y="100" width="141" height="62" rx="5"/>
+<line class="lnf" x1="19" y1="109" x2="38" y2="109"/>
+<line class="hl" x1="12" y1="116" x2="153" y2="116"/>
+<!-- focal flag row (clay tab + clay rule + clay toggle on, leads cascade) -->
+<rect class="cl a-tab a-d0" x="12" y="121" width="2.5" height="10" rx="1.25"/>
+<line class="lc" x1="19" y1="126" x2="57" y2="126"/>
+<rect class="whh" x="123" y="120.5" width="24" height="11" rx="5.5"/>
+<rect class="oa a-tint a-d0" x="123" y="120.5" width="24" height="11" rx="5.5"/>
+<circle class="cl a-knob a-d0" cx="141.5" cy="126" r="3.5"/>
+<circle class="cl a-pop a-d0" cx="141.5" cy="126" r="1.4"/>
+<!-- flag row off -->
+<line class="ln" x1="19" y1="140" x2="52" y2="140"/>
+<rect class="whh" x="123" y="134.5" width="24" height="11" rx="5.5"/>
+<circle class="fll" cx="128.5" cy="140" r="3.5"/>
+<!-- flag row off -->
+<line class="ln" x1="19" y1="154" x2="60" y2="154"/>
+<rect class="whh" x="123" y="148.5" width="24" height="11" rx="5.5"/>
+<circle class="fll" cx="128.5" cy="154" r="3.5"/>
+
+<!-- diff panel -->
+<rect class="wh" x="12" y="168" width="141" height="28" rx="5"/>
+<line class="lnf" x1="19" y1="176" x2="39" y2="176"/>
+<!-- diff lines: minus (grey) + plus (olive) -->
+<rect class="fll" x="19" y="183" width="44" height="2.5" rx="1.25"/>
+<rect class="ol" x="19" y="188.5" width="56" height="2.5" rx="1.25"/>
+<!-- primary action chip -->
+<rect class="wh" x="121" y="181.5" width="26" height="8" rx="3"/>
+<circle class="sl" cx="126" cy="185.5" r="1.5"/>
+</svg>

@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 202" width="165" height="202" role="img" aria-label="Animated abstract code walkthrough: a small node-and-arrow flow diagram above numbered steps with code-line bars">
+  <style>
+    svg{stroke-linejoin:round}
+    .bg{fill:#F0EEE6}
+    .frame{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .wh{fill:#FFFFFF;stroke:#9C9B93;stroke-width:1.4}
+    .whh{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .oa{fill:#E3DACC;stroke:#B7AE9D;stroke-width:1.2}
+    .sl{fill:#141413}
+    .cl{fill:#D97757}
+    .ol{fill:#788C5D}
+    .fl{fill:#D1CFC5}
+    .fll{fill:#E6E3DA}
+    .st{fill:none;stroke:#87867F;stroke-width:1.4}
+    .stt{fill:none;stroke:#6F6E68;stroke-width:2}
+    .hl{fill:none;stroke:#D1CFC5;stroke-width:1}
+    .ln{fill:none;stroke:#9C9B93;stroke-width:1.3;stroke-linecap:round}
+    .lnf{fill:none;stroke:#CFCDC3;stroke-width:1.1;stroke-linecap:round}
+    .lc{fill:none;stroke:#D97757;stroke-width:1.5;stroke-linecap:round}
+    .da{stroke-dasharray:3 3}
+  </style>
+  <style>
+    /* dashed links flow */
+@keyframes a-flow{to{stroke-dashoffset:-24}}
+.a-flow{animation:a-flow 1.4s linear infinite}
+
+/* node highlight pulse (clay glow on the white flow boxes) */
+@keyframes a-nodeglow{
+  0%,100%{stroke:#9C9B93;stroke-width:1.4}
+  50%{stroke:#D97757;stroke-width:2.4}
+}
+.a-node1{animation:a-nodeglow 5s ease-in-out infinite;animation-delay:0s}
+.a-node2{animation:a-nodeglow 5s ease-in-out infinite;animation-delay:1.3s}
+
+/* focal node breathe as token arrives */
+@keyframes a-focal{
+  0%,52%,100%{transform:scale(1)}
+  70%{transform:scale(1.08)}
+  84%{transform:scale(1)}
+}
+.a-focal{animation:a-focal 5s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+
+/* traveling token: dot moving along the L-shaped trace via translate keyframes */
+@keyframes a-token{
+  0%{transform:translate(0,0);opacity:0}
+  3%{opacity:1}
+  /* sit at left node */
+  8%{transform:translate(0,0)}
+  /* travel across top connector to right node */
+  30%{transform:translate(64px,0)}
+  /* pause at right node */
+  37%{transform:translate(64px,0)}
+  /* travel DOWN the right link, following the trace corner */
+  50%{transform:translate(83px,28px)}
+  /* travel along to focal node bottom */
+  64%{transform:translate(41px,42px);opacity:1}
+  /* arrived: fade out at focal */
+  72%{transform:translate(41px,42px);opacity:0}
+  /* hold invisible, then snap (while hidden) back to start */
+  99%{transform:translate(0,0);opacity:0}
+  100%{transform:translate(0,0);opacity:0}
+}
+.a-token{animation:a-token 5s ease-in-out infinite}
+
+/* trace draw-on along the connector route */
+@keyframes a-trace{
+  0%{stroke-dashoffset:170}
+  8%{stroke-dashoffset:170}
+  64%{stroke-dashoffset:0}
+  88%{stroke-dashoffset:0}
+  100%{stroke-dashoffset:170}
+}
+.a-trace{stroke-dasharray:170;animation:a-trace 5s ease-in-out infinite}
+
+/* step badges cascade highlight, in sync with second half of loop */
+@keyframes a-badge{
+  0%,100%{stroke:#D1CFC5;stroke-width:1.2;fill:#FFFFFF}
+  50%{stroke:#D97757;stroke-width:1.8;fill:#FBEDE7}
+}
+.a-b1{animation:a-badge 5s ease-in-out infinite;animation-delay:0s}
+.a-b2{animation:a-badge 5s ease-in-out infinite;animation-delay:.35s}
+.a-b4{animation:a-badge 5s ease-in-out infinite;animation-delay:1.05s}
+
+/* focal step badge (clay) pulse last */
+@keyframes a-b3{
+  0%,100%{transform:scale(1)}
+  70%{transform:scale(1.18)}
+  82%{transform:scale(1)}
+}
+.a-b3{animation:a-b3 5s ease-in-out infinite;animation-delay:.7s;transform-box:fill-box;transform-origin:center}
+
+/* code-line bars on the focal step sweep in */
+@keyframes a-bar{
+  0%,40%{transform:scaleX(0)}
+  60%,100%{transform:scaleX(1)}
+}
+.a-bar1{animation:a-bar 5s ease-in-out infinite;animation-delay:.7s;transform-box:fill-box;transform-origin:left}
+.a-bar2{animation:a-bar 5s ease-in-out infinite;animation-delay:.9s;transform-box:fill-box;transform-origin:left}
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none!important;transition:none!important}
+      [class*="a-"],[id*="a-"]{opacity:1!important;transform:none!important;stroke-dashoffset:0!important;stroke-dasharray:none!important}
+    }
+  </style>
+  <rect x="0" y="0" width="165" height="202" class="bg"/>
+  <rect class="bg" x="12" y="12" width="141" height="74" rx="5"/>
+<!-- Flow diagram: nodes + connectors -->
+<rect class="wh a-node1" x="22" y="25" width="38" height="18" rx="4"/>
+<circle class="sl" cx="27" cy="30" r="0.9"/>
+<line class="lnf" x1="31" y1="30" x2="55" y2="30"/>
+<line class="hl" x1="27" y1="37.5" x2="50" y2="37.5"/>
+<rect class="wh a-node2" x="105" y="25" width="38" height="18" rx="4"/>
+<circle class="sl" cx="110" cy="30" r="0.9"/>
+<line class="lnf" x1="114" y1="30" x2="138" y2="30"/>
+<line class="hl" x1="110" y1="37.5" x2="133" y2="37.5"/>
+<!-- focal trust-boundary node -->
+<rect class="cl a-focal" x="64" y="56" width="37" height="20" rx="4"/>
+<!-- connectors (hairline; one clay-dashed accent) -->
+<line class="hl a-flow da" x1="60" y1="34" x2="105" y2="34"/>
+<path class="hl da" d="M124 43 L124 62 L101 66"/>
+<path class="lc a-flow da" d="M41 43 L41 66 L64 70"/>
+<line class="hl a-flow da" x1="82.5" y1="43" x2="82.5" y2="56"/>
+<!-- animated trace overlay following token route: left node -> top -> right node -> down to focal -->
+<path class="lc a-trace" d="M41 34 L124 34 L124 62 L82.5 76"/>
+<!-- traveling token (helper); starts at left node, follows trace -->
+<circle class="cl a-token" cx="41" cy="34" r="3"/>
+<!-- Walkthrough steps: badges on exact 26px pitch -->
+<!-- step 1 -->
+<circle class="whh a-b1" cx="23" cy="100" r="6"/>
+<line class="fl" x1="36" y1="96" x2="86" y2="96"/>
+<line class="ln" x1="36" y1="102" x2="143" y2="102"/>
+<line class="lnf" x1="36" y1="107" x2="125" y2="107"/>
+<!-- step 2 -->
+<circle class="whh a-b2" cx="23" cy="126" r="6"/>
+<line class="fl" x1="36" y1="122" x2="78" y2="122"/>
+<line class="ln" x1="36" y1="128" x2="143" y2="128"/>
+<line class="lnf" x1="36" y1="133" x2="116" y2="133"/>
+<!-- step 3 = focal / trust boundary -->
+<circle class="cl a-b3" cx="23" cy="152" r="6"/>
+<rect class="oa" x="34" y="142" width="109" height="20" rx="4"/>
+<line class="fl a-bar1" x1="40" y1="149" x2="84" y2="149"/>
+<line class="ln a-bar2" x1="40" y1="155.5" x2="137" y2="155.5"/>
+<!-- step 4 -->
+<circle class="whh a-b4" cx="23" cy="178" r="6"/>
+<line class="fl" x1="36" y1="174" x2="80" y2="174"/>
+<line class="ln" x1="36" y1="180" x2="143" y2="180"/>
+<line class="lnf" x1="36" y1="185" x2="120" y2="185"/>
+</svg>

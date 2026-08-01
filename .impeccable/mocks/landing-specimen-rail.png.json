@@ -1,0 +1,6 @@
+{
+  "name": "Specimen Rail",
+  "mode": "built-in image_gen",
+  "promptFile": "landing-specimen-rail.prompt.txt",
+  "approved": false
+}

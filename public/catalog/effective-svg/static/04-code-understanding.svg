@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 202" width="165" height="202" role="img" aria-label="Abstract code walkthrough: a small node-and-arrow flow diagram above numbered steps with code-line bars">
+  <style>
+    svg{stroke-linejoin:round}
+    .bg{fill:#F0EEE6}
+    .frame{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .wh{fill:#FFFFFF;stroke:#9C9B93;stroke-width:1.4}
+    .whh{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .oa{fill:#E3DACC;stroke:#B7AE9D;stroke-width:1.2}
+    .sl{fill:#141413}
+    .cl{fill:#D97757}
+    .ol{fill:#788C5D}
+    .fl{fill:#D1CFC5}
+    .fll{fill:#E6E3DA}
+    .st{fill:none;stroke:#87867F;stroke-width:1.4}
+    .stt{fill:none;stroke:#6F6E68;stroke-width:2}
+    .hl{fill:none;stroke:#D1CFC5;stroke-width:1}
+    .ln{fill:none;stroke:#9C9B93;stroke-width:1.3;stroke-linecap:round}
+    .lnf{fill:none;stroke:#CFCDC3;stroke-width:1.1;stroke-linecap:round}
+    .lc{fill:none;stroke:#D97757;stroke-width:1.5;stroke-linecap:round}
+    .da{stroke-dasharray:3 3}
+  </style>
+  <rect x="0" y="0" width="165" height="202" class="bg"/>
+  <rect class="bg" x="12" y="12" width="141" height="74" rx="5"/>
+<!-- Flow diagram: nodes + connectors -->
+<rect class="wh" x="22" y="25" width="38" height="18" rx="4"/>
+<circle class="sl" cx="27" cy="30" r="0.9"/>
+<line class="lnf" x1="31" y1="30" x2="55" y2="30"/>
+<line class="hl" x1="27" y1="37.5" x2="50" y2="37.5"/>
+<rect class="wh" x="105" y="25" width="38" height="18" rx="4"/>
+<circle class="sl" cx="110" cy="30" r="0.9"/>
+<line class="lnf" x1="114" y1="30" x2="138" y2="30"/>
+<line class="hl" x1="110" y1="37.5" x2="133" y2="37.5"/>
+<!-- focal trust-boundary node -->
+<rect class="cl" x="64" y="56" width="37" height="20" rx="4"/>
+<!-- connectors (hairline; one clay-dashed accent) -->
+<line class="hl" x1="60" y1="34" x2="105" y2="34"/>
+<path class="hl da" d="M124 43 L124 62 L101 66"/>
+<path class="lc da" d="M41 43 L41 66 L64 70"/>
+<line class="hl" x1="82.5" y1="43" x2="82.5" y2="56"/>
+<!-- Walkthrough steps: badges on exact 26px pitch -->
+<!-- step 1 -->
+<circle class="whh" cx="23" cy="100" r="6"/>
+<line class="fl" x1="36" y1="96" x2="86" y2="96"/>
+<line class="ln" x1="36" y1="102" x2="143" y2="102"/>
+<line class="lnf" x1="36" y1="107" x2="125" y2="107"/>
+<!-- step 2 -->
+<circle class="whh" cx="23" cy="126" r="6"/>
+<line class="fl" x1="36" y1="122" x2="78" y2="122"/>
+<line class="ln" x1="36" y1="128" x2="143" y2="128"/>
+<line class="lnf" x1="36" y1="133" x2="116" y2="133"/>
+<!-- step 3 = focal / trust boundary -->
+<circle class="cl" cx="23" cy="152" r="6"/>
+<rect class="oa" x="34" y="142" width="109" height="20" rx="4"/>
+<line class="fl" x1="40" y1="149" x2="84" y2="149"/>
+<line class="ln" x1="40" y1="155.5" x2="137" y2="155.5"/>
+<!-- step 4 -->
+<circle class="whh" cx="23" cy="178" r="6"/>
+<line class="fl" x1="36" y1="174" x2="80" y2="174"/>
+<line class="ln" x1="36" y1="180" x2="143" y2="180"/>
+<line class="lnf" x1="36" y1="185" x2="120" y2="185"/>
+</svg>

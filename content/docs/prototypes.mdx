@@ -1,0 +1,57 @@
+---
+title: Prototypes
+description: Test a credible flow and the states that could change the decision.
+---
+
+A prototype is useful when static appearance cannot answer the question.
+
+<GuideChapterEvidence chapter="prototypes" />
+
+## Build the narrowest credible flow
+
+Choose one path that represents the product decision. Give it realistic inputs,
+feedback, and transitions. Avoid building unrelated screens simply to make the
+artifact feel complete.
+
+## Include the relevant states
+
+The important states depend on the flow, but commonly include:
+
+- loading or pending work;
+- empty content;
+- validation failure;
+- recoverable error;
+- disabled controls;
+- successful completion;
+- keyboard focus and navigation.
+
+Implement states because they affect the judgment, not to satisfy a checklist
+detached from the product.
+
+## Preserve the product boundary
+
+A prototype should make clear what it is demonstrating and what remains
+illustrative. It should not imply a backend, permission model, or capability
+that has not been established.
+
+## Verify it as an interface
+
+Test the prototype at desktop and mobile sizes. Use the keyboard. Confirm
+labels, focus, contrast, and recovery. A broken demonstration creates false
+confidence.
+
+<GuideHandoff
+  artifactHref="/examples/release-readiness/prototype.html"
+  artifactLabel="Open the live prototype"
+  artifactDescription="Exercise the complete flow outside the embedded evidence frame."
+  sourceHref="https://github.com/plannotator/effective-html/tree/main/examples/release-readiness"
+  skillHref="https://github.com/plannotator/effective-html/blob/main/skills/html-prototype/SKILL.md"
+  skillLabel="Use the prototype skill"
+  skillDescription="Build one credible path and the states that can change the decision."
+/>
+
+<GuideNext
+  href="/docs/diagrams"
+  title="Make relationships visible"
+  description="Choose a diagram when geometry carries the hard part of the explanation."
+/>

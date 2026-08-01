@@ -1,0 +1,204 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 202" width="165" height="202" role="img" aria-label="Animated abstract illustration of a research feature explainer: a left navigation rail beside a document with a highlighted summary card, numbered expandable steps, and a tabbed code panel">
+  <style>
+    svg{stroke-linejoin:round}
+    .bg{fill:#F0EEE6}
+    .frame{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .wh{fill:#FFFFFF;stroke:#9C9B93;stroke-width:1.4}
+    .whh{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .oa{fill:#E3DACC;stroke:#B7AE9D;stroke-width:1.2}
+    .sl{fill:#141413}
+    .cl{fill:#D97757}
+    .ol{fill:#788C5D}
+    .fl{fill:#D1CFC5}
+    .fll{fill:#E6E3DA}
+    .st{fill:none;stroke:#87867F;stroke-width:1.4}
+    .stt{fill:none;stroke:#6F6E68;stroke-width:2}
+    .hl{fill:none;stroke:#D1CFC5;stroke-width:1}
+    .ln{fill:none;stroke:#9C9B93;stroke-width:1.3;stroke-linecap:round}
+    .lnf{fill:none;stroke:#CFCDC3;stroke-width:1.1;stroke-linecap:round}
+    .lc{fill:none;stroke:#D97757;stroke-width:1.5;stroke-linecap:round}
+    .da{stroke-dasharray:3 3}
+  </style>
+  <style>
+    /* ---- sidebar clay selector sweeps down ---- */
+@keyframes a-sweep{
+  0%,6%   {transform:translateY(0);opacity:0}
+  12%,28% {transform:translateY(0);opacity:1}
+  42%,58% {transform:translateY(42px);opacity:1}
+  72%,90% {transform:translateY(108px);opacity:1}
+  96%,100%{transform:translateY(108px);opacity:0}
+}
+.a-sweep{
+  transform-box:fill-box;transform-origin:center;
+  animation:a-sweep 5.5s cubic-bezier(.65,0,.35,1) infinite;
+}
+
+/* ---- content lines: hold finished, erase, write back in, hold ---- */
+/* seamless: 0% and 100% are both fully drawn (offset:0) */
+@keyframes a-write{
+  0%,8%   {stroke-dashoffset:0}      /* finished doc holds */
+  9%      {stroke-dashoffset:var(--len)} /* quick erase */
+  10%     {stroke-dashoffset:var(--len)} /* wait for stagger */
+  30%     {stroke-dashoffset:0}      /* written in */
+  100%    {stroke-dashoffset:0}      /* hold finished */
+}
+.a-w{
+  stroke-dasharray:var(--len);
+  stroke-dashoffset:0; /* complete at rest (animations off) */
+  animation:a-write 5.5s cubic-bezier(.5,0,.2,1) infinite;
+}
+/* card lines (early) */
+.a-w1{--len:73;animation-delay:.0s}
+.a-w2{--len:69;animation-delay:.45s}
+.a-w3{--len:51;animation-delay:.9s}
+/* code lines (later, via larger delay so they read as a second pass) */
+.a-c1{--len:25;animation-delay:1.6s}
+.a-c2{--len:41;animation-delay:1.9s}
+.a-c3{--len:27;animation-delay:2.2s}
+.a-c4{--len:51;animation-delay:2.5s}
+
+/* heading bar grows in */
+@keyframes a-grow{
+  0%      {transform:scaleX(1)}
+  6%      {transform:scaleX(0)}
+  18%,100%{transform:scaleX(1)}
+}
+.a-grow{transform-box:fill-box;transform-origin:left center;
+  animation:a-grow 5.5s cubic-bezier(.5,0,.2,1) infinite}
+
+/* ---- step rows cascade: circle pop + label slide ---- */
+@keyframes a-step{
+  0%      {transform:scale(1);opacity:1}
+  8%      {transform:scale(.4);opacity:0}
+  22%     {transform:scale(1.25);opacity:1}
+  30%,100%{transform:scale(1);opacity:1}
+}
+.a-dot{transform-box:fill-box;transform-origin:center;
+  animation:a-step 5.5s cubic-bezier(.34,1.56,.64,1) infinite}
+.a-d2{animation-delay:.35s}
+.a-d3{animation-delay:.7s}
+
+@keyframes a-rowline{
+  0%      {transform:translateX(0);opacity:1}
+  8%      {transform:translateX(-6px);opacity:0}
+  30%,100%{transform:translateX(0);opacity:1}
+}
+.a-row{transform-box:fill-box;transform-origin:left center;
+  animation:a-rowline 5.5s cubic-bezier(.5,0,.2,1) infinite}
+.a-r2{animation-delay:.35s}
+.a-r3{animation-delay:.7s}
+
+/* active row tint pulses to lead the eye */
+@keyframes a-tint{
+  0%,18%  {opacity:0}
+  32%,72% {opacity:1}
+  90%,100%{opacity:0}
+}
+.a-tint{opacity:0;animation:a-tint 5.5s ease-in-out infinite}
+
+/* ---- code-tab active underline draw ---- */
+@keyframes a-tabline{
+  0%      {transform:scaleX(1)}
+  48%     {transform:scaleX(0)}
+  64%,100%{transform:scaleX(1)}
+}
+.a-tabline{transform-box:fill-box;transform-origin:left center;
+  animation:a-tabline 5.5s cubic-bezier(.5,0,.2,1) infinite}
+
+/* typing caret blink during code-write window only, hidden at rest */
+@keyframes a-caret{
+  0%,42%    {opacity:0}
+  48%,52%   {opacity:1}
+  58%,62%   {opacity:0}
+  68%,72%   {opacity:1}
+  78%,100%  {opacity:0}
+}
+.a-caret{opacity:0;animation:a-caret 5.5s steps(1,end) infinite}
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none!important;transition:none!important}
+      [class*="a-"],[id*="a-"]{opacity:1!important;transform:none!important;stroke-dashoffset:0!important;stroke-dasharray:none!important}
+    }
+  </style>
+  <rect class="bg" x="6" y="6" width="153" height="190" rx="6"/>
+
+<!-- left nav rail -->
+<rect class="whh" x="12" y="12" width="34" height="178" rx="4.5"/>
+
+<!-- clay selector that sweeps down the rail -->
+<rect class="a-sweep cl" x="15" y="40" width="2.4" height="26" rx="1.2" opacity="0"/>
+
+<line class="ln" x1="18" y1="22" x2="34" y2="22"/>
+<rect class="sl" x="18" y="30" width="2" height="7" rx="1"/>
+<line class="lnf" x1="24" y1="33.5" x2="40" y2="33.5"/>
+<rect class="cl" x="18" y="42" width="2" height="22" rx="1"/>
+<line class="ln" x1="24" y1="46" x2="40" y2="46"/>
+<line class="lnf" x1="27" y1="52" x2="38" y2="52"/>
+<line class="lnf" x1="27" y1="58" x2="38" y2="58"/>
+<line class="lnf" x1="27" y1="64" x2="36" y2="64"/>
+<line class="ln" x1="24" y1="72" x2="40" y2="72"/>
+<line class="lnf" x1="24" y1="78" x2="37" y2="78"/>
+<!-- files-read block -->
+<line class="hl da" x1="16" y1="90" x2="42" y2="90"/>
+<line class="lnf" x1="18" y1="98" x2="33" y2="98"/>
+<rect class="fll" x="18" y="105" width="22" height="2" rx="1"/>
+<rect class="fll" x="18" y="111" width="19" height="2" rx="1"/>
+<rect class="fll" x="18" y="117" width="22" height="2" rx="1"/>
+<rect class="fll" x="18" y="123" width="16" height="2" rx="1"/>
+<line class="hl" x1="16" y1="132" x2="42" y2="132"/>
+<rect class="fll" x="18" y="139" width="20" height="2" rx="1"/>
+<rect class="fll" x="18" y="145" width="22" height="2" rx="1"/>
+<rect class="fll" x="18" y="151" width="17" height="2" rx="1"/>
+
+<!-- main page surface -->
+<rect class="frame" x="52" y="12" width="101" height="178" rx="5"/>
+
+<!-- eyebrow + heading -->
+<rect class="cl" x="59" y="20" width="14" height="2.5" rx="1.25"/>
+<rect class="a-grow fl" x="59" y="28" width="54" height="5" rx="2"/>
+<line class="lnf" x1="59" y1="39" x2="120" y2="39"/>
+
+<!-- TL;DR card with clay left edge -->
+<rect class="wh" x="59" y="46" width="87" height="25" rx="4.5"/>
+<rect class="cl" x="59" y="46" width="2.5" height="25" rx="1.25"/>
+<line class="a-w a-w1 ln" x1="67" y1="54" x2="140" y2="54"/>
+<line class="a-w a-w2 ln" x1="67" y1="60" x2="136" y2="60"/>
+<line class="a-w a-w3 lnf" x1="67" y1="66" x2="118" y2="66"/>
+
+<!-- numbered step rows -->
+<rect class="oa" x="59" y="79" width="87" height="12" rx="3.5"/>
+<circle class="a-dot st" cx="66" cy="85" r="2.6"/>
+<rect class="a-dot sl" x="65.2" y="84.2" width="1.6" height="1.6" rx="0.8"/>
+<line class="a-row ln" x1="73" y1="85" x2="126" y2="85"/>
+<rect class="fll" x="131" y="83.5" width="9" height="3" rx="1.5"/>
+
+<rect class="whh" x="59" y="95" width="87" height="12" rx="3.5"/>
+<rect class="a-tint oa" x="59" y="95" width="87" height="12" rx="3.5"/>
+<circle class="a-dot a-d2 hl" cx="66" cy="101" r="2.6"/>
+<line class="a-row a-r2 lnf" x1="73" y1="101" x2="124" y2="101"/>
+<rect class="fll" x="131" y="99.5" width="9" height="3" rx="1.5"/>
+
+<rect class="whh" x="59" y="111" width="87" height="12" rx="3.5"/>
+<circle class="a-dot a-d3 hl" cx="66" cy="117" r="2.6"/>
+<line class="a-row a-r3 lnf" x1="73" y1="117" x2="120" y2="117"/>
+<rect class="fll" x="131" y="115.5" width="9" height="3" rx="1.5"/>
+
+<!-- tabbed code panel -->
+<rect class="wh" x="59" y="131" width="87" height="49" rx="4.5"/>
+<line class="hl" x1="59" y1="143" x2="146" y2="143"/>
+<!-- window-dot triad -->
+<circle class="hl" cx="65" cy="137" r="1.1"/>
+<circle class="hl" cx="69" cy="137" r="1.1"/>
+<circle class="hl" cx="73" cy="137" r="1.1"/>
+<!-- tab labels -->
+<line class="ln" x1="92" y1="137" x2="104" y2="137"/>
+<line class="lnf" x1="110" y1="137" x2="120" y2="137"/>
+<!-- active-tab underline -->
+<rect class="a-tabline cl" x="92" y="141.5" width="12" height="1.5" rx="0.75"/>
+<!-- code lines -->
+<line class="a-w a-c1 lnf" x1="65" y1="152" x2="90" y2="152"/>
+<line class="a-w a-c2 lnf" x1="65" y1="159" x2="106" y2="159"/>
+<line class="a-w a-c3 ln" x1="71" y1="166" x2="98" y2="166"/>
+<line class="a-w a-c4 lnf" x1="71" y1="173" x2="122" y2="173"/>
+<!-- typing caret -->
+<rect class="a-caret cl" x="124" y="170.5" width="1.4" height="5" rx="0.7"/>
+</svg>

@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Deployment dashboard · Effective HTML interface study</title>
+    <style>
+      :root { color-scheme: light; --ink:#1d1d1f; --muted:#666; --line:#e4e4e4; --soft:#fafafa; --green:#067a46; --blue:#0672ce; }
+      * { box-sizing: border-box; }
+      body { margin:0; color:var(--ink); background:#fff; font:14px/1.45 Arial, Helvetica, sans-serif; }
+      button { font:inherit; }
+      button:focus-visible { outline:2px solid var(--blue); outline-offset:2px; }
+      svg { display:block; }
+      .icon { width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+      .visually-hidden { position:absolute; width:1px; height:1px; padding:0; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+      .shell { min-height:100vh; }
+      .topbar { height:64px; border-bottom:1px solid var(--line); display:flex; align-items:center; padding:0 28px; gap:20px; }
+      .brand-mark { display:grid; grid-template-columns:repeat(2,8px); grid-template-rows:repeat(2,8px); gap:3px; }
+      .brand-mark span { display:block; border-radius:2px; background:#111; }
+      .brand-mark span:nth-child(2) { background:#7e7e7e; }
+      .brand-mark span:nth-child(3) { grid-column:2; background:#d6d6d6; }
+      .crumbs { display:flex; align-items:center; gap:9px; font-weight:600; }
+      .crumbs span { color:#999; font-weight:400; }
+      .top-actions { margin-left:auto; display:flex; align-items:center; gap:10px; }
+      .avatar { display:grid; place-items:center; width:28px; height:28px; border-radius:50%; color:#fff; background:#111; font-size:11px; }
+      .ghost, .primary { border:1px solid var(--line); border-radius:7px; padding:7px 12px; background:#fff; cursor:pointer; }
+      .primary { background:#111; color:#fff; border-color:#111; }
+      .project-head { max-width:1160px; margin:auto; padding:36px 28px 0; }
+      .project-line { display:flex; align-items:center; gap:14px; }
+      .project-icon { width:42px; height:42px; border:1px solid var(--line); border-radius:9px; display:grid; place-items:center; background:var(--soft); }
+      .project-icon .brand-mark { transform:scale(.72); }
+      h1 { margin:0; font-size:24px; letter-spacing:-.03em; }
+      .project-line p { margin:2px 0 0; color:var(--muted); }
+      .tabs { display:flex; gap:28px; margin-top:32px; }
+      .tabs span { color:#666; padding:0 0 13px; }
+      .tabs span.active { color:#111; border-bottom:2px solid #111; }
+      .rule { border-top:1px solid var(--line); }
+      main { max-width:1160px; margin:0 auto; padding:32px 28px 80px; }
+      .title-row { display:flex; align-items:flex-start; justify-content:space-between; gap:20px; }
+      h2 { font-size:20px; margin:0 0 5px; letter-spacing:-.025em; }
+      .title-row p { margin:0; color:var(--muted); }
+      .filters { display:flex; flex-wrap:wrap; gap:8px; margin:26px 0 20px; }
+      .filters button { padding:7px 12px; border:1px solid var(--line); background:#fff; border-radius:7px; color:#666; cursor:pointer; }
+      .filters button[aria-pressed="true"] { background:#111; border-color:#111; color:#fff; }
+      .filter-spacer { flex:1; }
+      .search { display:inline-flex; min-width:210px; align-items:center; gap:8px; padding:7px 12px; border:1px solid var(--line); border-radius:7px; background:#fff; color:#666 !important; text-align:left; }
+      .search .icon { width:14px; height:14px; }
+      .deployment-list { border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+      .deployment { border-bottom:1px solid var(--line); }
+      .deployment:last-child { border-bottom:0; }
+      .deployment-summary { width:100%; display:grid; grid-template-columns:minmax(260px, 1.5fr) minmax(170px,.8fr) minmax(150px,.65fr) 28px; align-items:center; gap:20px; border:0; padding:19px 20px; background:#fff; text-align:left; cursor:pointer; }
+      .deployment-summary:hover { background:#fcfcfc; }
+      .status-line { display:flex; gap:12px; align-items:flex-start; }
+      .status { width:20px; height:20px; flex:0 0 auto; display:grid; place-items:center; color:white; border-radius:50%; background:var(--green); margin-top:1px; }
+      .status .icon { width:12px; height:12px; stroke-width:2.4; }
+      .status.building { background:#111; animation:pulse 1.5s ease-in-out infinite; }
+      .status.building::before { width:6px; height:6px; border-radius:50%; background:#fff; content:""; }
+      .status.cancelled { background:#999; }
+      .deployment strong { display:block; font-size:14px; }
+      .deployment small { display:block; color:var(--muted); margin-top:3px; }
+      .commit { overflow:hidden; }
+      .commit strong, .commit small { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+      .environment { display:flex; flex-direction:column; align-items:flex-start; gap:4px; }
+      .pill { display:inline-flex; border:1px solid var(--line); background:#fafafa; padding:2px 7px; border-radius:999px; color:#555; font-size:11px; }
+      .pill.production { color:var(--green); border-color:#bce6cf; background:#f1fbf5; }
+      .chevron { color:#666; transition:transform .18s ease; }
+      .deployment.is-open .chevron { transform:rotate(180deg); }
+      .details { display:none; padding:0 20px 22px 52px; background:#fcfcfc; border-top:1px solid #eee; }
+      .deployment.is-open .details { display:grid; grid-template-columns:1.05fr .95fr; gap:28px; }
+      .detail-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; padding-top:20px; }
+      .detail-cell { padding:12px; background:#fff; border:1px solid var(--line); border-radius:7px; }
+      .detail-cell span { display:block; color:#777; font-size:11px; margin-bottom:5px; }
+      .logs { margin-top:20px; padding:14px 16px; border-radius:7px; background:#111; color:#ddd; font:12px/1.65 ui-monospace, SFMono-Regular, Menlo, monospace; }
+      .log-line { display:flex; align-items:center; gap:8px; }
+      .log-line .icon { width:13px; height:13px; flex:0 0 auto; color:#7ee2a8; }
+      .log-line.pending .icon, .log-line.cancelled .icon { color:#cfcfcf; }
+      .detail-actions { display:flex; align-items:flex-end; justify-content:flex-end; gap:8px; padding-top:20px; }
+      .empty { display:none; padding:55px 20px; text-align:center; color:#666; border:1px solid var(--line); border-radius:10px; }
+      .study-note { max-width:1160px; margin:0 auto; padding:0 28px 24px; color:#5f5f5f; font-size:11px; }
+      .toast { position:fixed; right:24px; bottom:24px; padding:11px 14px; color:#fff; background:#111; border-radius:7px; box-shadow:0 10px 30px #0003; opacity:0; transform:translateY(8px); pointer-events:none; transition:.2s ease; }
+      .toast.show { opacity:1; transform:none; }
+      @keyframes pulse { 50% { opacity:.35; } }
+      @media (max-width:760px) {
+        .topbar { padding:0 18px; }
+        .top-actions .ghost { display:none; }
+        .project-head, main, .study-note { padding-left:18px; padding-right:18px; }
+        .tabs { gap:20px; overflow:auto; }
+        .title-row { display:block; }
+        .title-row .primary { margin-top:18px; }
+        .filter-spacer, .search { display:none; }
+        .deployment-summary { grid-template-columns:1fr 22px; gap:10px; padding:16px; }
+        .commit, .environment { grid-column:1; padding-left:32px; }
+        .chevron { grid-column:2; grid-row:1; }
+        .deployment.is-open .details { grid-template-columns:1fr; padding:0 16px 18px 48px; }
+        .detail-grid { grid-template-columns:1fr; }
+        .detail-actions { justify-content:flex-start; padding-top:0; }
+      }
+      @media (prefers-reduced-motion:reduce) { *, *::before, *::after { animation:none!important; transition:none!important; } }
+    </style>
+  </head>
+  <body>
+    <!--
+      THESIS: A deployment screen works best as a chronological ledger with expandable evidence; it refuses summary-card dashboard theater.
+      OWN-WORLD: Operational white, black type, hairline structure, status green, and monospaced build evidence form a restrained deployment ledger.
+      STORY: A developer filters environments, opens a build, reads its evidence, and takes a clear deployment action using synthetic project data.
+      FIRST VIEWPORT: Project context and environment filters sit above one dominant chronological ledger with the latest production build expanded.
+      FORM: Familiar Vercel-like deployment ledger, user-pinned competitor study. FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md.
+    -->
+    <svg class="visually-hidden" aria-hidden="true">
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+      <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+      <symbol id="i-loader" viewBox="0 0 24 24"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></symbol>
+    </svg>
+    <div class="shell">
+      <header class="topbar">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <div class="crumbs">northstar <span>/</span> atlas-web</div>
+        <div class="top-actions">
+          <button class="ghost" type="button" id="feedback">Feedback</button>
+          <span class="avatar">AR</span>
+        </div>
+      </header>
+
+      <section class="project-head">
+        <div class="project-line">
+          <span class="project-icon" aria-hidden="true"><span class="brand-mark"><span></span><span></span><span></span></span></span>
+          <div><h1>atlas-web</h1><p>Customer workspace · Next.js</p></div>
+        </div>
+        <nav class="tabs" aria-label="Project navigation">
+          <span>Overview</span><span class="active" aria-current="page">Deployments</span><span>Analytics</span><span>Logs</span><span>Settings</span>
+        </nav>
+      </section>
+      <div class="rule"></div>
+
+      <main>
+        <div class="title-row">
+          <div><h2>Deployments</h2><p>Every build for production and preview environments.</p></div>
+          <button class="primary" type="button" id="redeploy">Create deployment</button>
+        </div>
+
+        <div class="filters" role="group" aria-label="Filter deployments">
+          <button type="button" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" data-filter="production" aria-pressed="false">Production</button>
+          <button type="button" data-filter="preview" aria-pressed="false">Preview</button>
+          <div class="filter-spacer"></div>
+          <span class="search"><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>Filter by branch or commit</span>
+        </div>
+
+        <section class="deployment-list" aria-label="Recent deployments">
+          <article class="deployment is-open" data-environment="production">
+            <button class="deployment-summary" type="button" aria-expanded="true">
+              <span class="status-line"><span class="status"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span><strong>atlas-web-9r2m1.northstar.app</strong><small>Ready · 4m 18s ago</small></span></span>
+              <span class="commit"><strong>Make command menu context-aware</strong><small>main · c841b9a · Alex Rivera</small></span>
+              <span class="environment"><span class="pill production">Production</span><small>42s build</small></span>
+              <svg class="icon chevron" aria-hidden="true"><use href="#i-chevron"/></svg>
+            </button>
+            <div class="details">
+              <div>
+                <div class="detail-grid">
+                  <div class="detail-cell"><span>Domains</span><strong>atlas.northstar.app</strong></div>
+                  <div class="detail-cell"><span>Region</span><strong>Washington, D.C.</strong></div>
+                  <div class="detail-cell"><span>Source</span><strong>main / c841b9a</strong></div>
+                </div>
+                <div class="logs"><span class="log-line"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Compiled successfully</span><span class="log-line"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Generated 18 static routes</span><span class="log-line"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Deployment ready</span></div>
+              </div>
+              <div class="detail-actions"><button class="ghost" type="button">View build logs</button><button class="primary promote" type="button">Visit</button></div>
+            </div>
+          </article>
+
+          <article class="deployment" data-environment="preview">
+            <button class="deployment-summary" type="button" aria-expanded="false">
+              <span class="status-line"><span class="status building" aria-hidden="true"></span><span><strong>atlas-web-git-filter-redesign.northstar.app</strong><small>Building · started 19s ago</small></span></span>
+              <span class="commit"><strong>Refine saved-view filters</strong><small>filter-redesign · 3fc09e1 · Sam Lee</small></span>
+              <span class="environment"><span class="pill">Preview</span><small>In progress</small></span>
+              <svg class="icon chevron" aria-hidden="true"><use href="#i-chevron"/></svg>
+            </button>
+            <div class="details"><div><div class="detail-grid"><div class="detail-cell"><span>Branch</span><strong>filter-redesign</strong></div><div class="detail-cell"><span>Region</span><strong>Washington, D.C.</strong></div><div class="detail-cell"><span>Framework</span><strong>Next.js</strong></div></div><div class="logs"><span class="log-line"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Dependencies restored</span><span class="log-line pending"><svg class="icon" aria-hidden="true"><use href="#i-loader"/></svg>Compiling application</span><span class="log-line pending"><svg class="icon" aria-hidden="true"><use href="#i-loader"/></svg>Uploading build outputs</span></div></div><div class="detail-actions"><button class="ghost" type="button">Cancel</button></div></div>
+          </article>
+
+          <article class="deployment" data-environment="preview">
+            <button class="deployment-summary" type="button" aria-expanded="false">
+              <span class="status-line"><span class="status"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span><strong>atlas-web-git-billing-empty-state.northstar.app</strong><small>Ready · 38m ago</small></span></span>
+              <span class="commit"><strong>Add billing empty state</strong><small>billing-empty-state · b74dd2c · Mina Park</small></span>
+              <span class="environment"><span class="pill">Preview</span><small>37s build</small></span>
+              <svg class="icon chevron" aria-hidden="true"><use href="#i-chevron"/></svg>
+            </button>
+            <div class="details"><div><div class="detail-grid"><div class="detail-cell"><span>Branch</span><strong>billing-empty-state</strong></div><div class="detail-cell"><span>Checks</span><strong>5 passed</strong></div><div class="detail-cell"><span>Source</span><strong>b74dd2c</strong></div></div><div class="logs"><span class="log-line"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Compiled successfully</span><span class="log-line"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Checks passed</span><span class="log-line"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Preview ready</span></div></div><div class="detail-actions"><button class="ghost" type="button">View logs</button><button class="primary promote" type="button">Promote</button></div></div>
+          </article>
+
+          <article class="deployment" data-environment="production">
+            <button class="deployment-summary" type="button" aria-expanded="false">
+              <span class="status-line"><span class="status cancelled"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></span><span><strong>atlas-web-7k4q8.northstar.app</strong><small>Canceled · yesterday</small></span></span>
+              <span class="commit"><strong>Upgrade search index adapter</strong><small>main · 77a2d90 · Build Bot</small></span>
+              <span class="environment"><span class="pill production">Production</span><small>Stopped at 21s</small></span>
+              <svg class="icon chevron" aria-hidden="true"><use href="#i-chevron"/></svg>
+            </button>
+            <div class="details"><div><div class="detail-grid"><div class="detail-cell"><span>Cause</span><strong>Superseded</strong></div><div class="detail-cell"><span>Branch</span><strong>main</strong></div><div class="detail-cell"><span>Source</span><strong>77a2d90</strong></div></div><div class="logs"><span class="log-line"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Dependencies restored</span><span class="log-line cancelled"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>Build canceled by newer commit</span></div></div><div class="detail-actions"><button class="ghost" type="button">View logs</button></div></div>
+          </article>
+        </section>
+        <div class="empty">No deployments match this environment.</div>
+      </main>
+      <p class="study-note">Interface study using synthetic project data. Unaffiliated with Vercel.</p>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script>
+      const toast = document.querySelector('#toast');
+      function say(message) { toast.textContent = message; toast.classList.add('show'); window.setTimeout(() => toast.classList.remove('show'), 1800); }
+      document.querySelectorAll('.deployment-summary').forEach((button) => button.addEventListener('click', () => {
+        const row = button.closest('.deployment');
+        const open = row.classList.toggle('is-open');
+        button.setAttribute('aria-expanded', String(open));
+      }));
+      document.querySelectorAll('[data-filter]').forEach((button) => button.addEventListener('click', () => {
+        const filter = button.dataset.filter;
+        document.querySelectorAll('[data-filter]').forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+        let visible = 0;
+        document.querySelectorAll('.deployment').forEach((row) => { const show = filter === 'all' || row.dataset.environment === filter; row.hidden = !show; if (show) visible += 1; });
+        document.querySelector('.deployment-list').hidden = visible === 0;
+        document.querySelector('.empty').style.display = visible === 0 ? 'block' : 'none';
+      }));
+      document.querySelector('#redeploy').addEventListener('click', () => say('Synthetic deployment queued'));
+      document.querySelector('#feedback').addEventListener('click', () => say('Feedback panel opened'));
+      document.querySelectorAll('.promote').forEach((button) => button.addEventListener('click', (event) => { event.stopPropagation(); say(button.textContent === 'Visit' ? 'Opening production deployment' : 'Preview promoted to production'); }));
+      document.querySelectorAll('.detail-actions .ghost').forEach((button) => button.addEventListener('click', () => say(button.textContent === 'Cancel' ? 'Synthetic build canceled' : 'Build logs opened')));
+    </script>
+  </body>
+</html>

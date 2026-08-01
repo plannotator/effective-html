@@ -1,0 +1,993 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Atlas Mobile release-readiness wireframes</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #ffffff;
+        --wash: #f4f4f2;
+        --ink: #171717;
+        --muted: #666662;
+        --line: #9b9b95;
+        --line-light: #d5d5d0;
+        --space: clamp(18px, 3vw, 34px);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        min-width: 320px;
+        background: var(--wash);
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        color: var(--ink);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 15px;
+        line-height: 1.45;
+      }
+
+      button,
+      input,
+      textarea {
+        font: inherit;
+      }
+
+      button:focus-visible,
+      a:focus-visible,
+      input:focus-visible,
+      textarea:focus-visible {
+        outline: 3px solid #111111;
+        outline-offset: 3px;
+      }
+
+      .page {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 104px;
+      }
+
+      .wire-note {
+        display: inline-block;
+        margin: 0 0 12px;
+        padding: 4px 7px;
+        border: 1px dashed var(--line);
+        color: var(--muted);
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 11px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .page-header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 28px;
+        margin-bottom: 20px;
+        padding: 20px;
+        border: 1px solid var(--ink);
+        background: var(--paper);
+      }
+
+      .page-header h1 {
+        margin: 0;
+        font-size: clamp(25px, 4vw, 42px);
+        letter-spacing: -0.035em;
+        line-height: 1.02;
+      }
+
+      .page-header p {
+        max-width: 66ch;
+        margin: 8px 0 0;
+        color: var(--muted);
+      }
+
+      .direction-meta {
+        flex: 0 0 250px;
+        padding-left: 18px;
+        border-left: 1px solid var(--line);
+      }
+
+      .direction-meta strong,
+      .direction-meta span {
+        display: block;
+      }
+
+      .direction-meta span {
+        margin-top: 5px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .product-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        min-height: 54px;
+        padding: 10px 16px;
+        border: 1px solid var(--ink);
+        background: var(--paper);
+      }
+
+      .product-id {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+      }
+
+      .mark {
+        display: grid;
+        width: 28px;
+        height: 28px;
+        place-items: center;
+        border: 1px solid var(--ink);
+        font-size: 11px;
+      }
+
+      .meta-line {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 8px 18px;
+        color: var(--muted);
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 12px;
+      }
+
+      .status-flag {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        font-weight: 700;
+      }
+
+      .status-flag::before {
+        width: 8px;
+        height: 8px;
+        border: 2px solid currentColor;
+        border-radius: 50%;
+        content: "";
+      }
+
+      .panel {
+        border: 1px solid var(--ink);
+        background: var(--paper);
+      }
+
+      .panel-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .panel-head h2,
+      .panel-head h3 {
+        margin: 0;
+        font-size: 17px;
+      }
+
+      .panel-head span {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .panel-body {
+        padding: 16px;
+      }
+
+      .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        border: 1px solid var(--ink);
+        background: var(--paper);
+      }
+
+      .summary-item {
+        min-width: 0;
+        padding: 15px 16px;
+        border-right: 1px solid var(--line);
+      }
+
+      .summary-item:last-child {
+        border-right: 0;
+      }
+
+      .summary-item span,
+      .summary-item strong {
+        display: block;
+      }
+
+      .summary-item span {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .summary-item strong {
+        margin-top: 5px;
+        font-size: 20px;
+      }
+
+      .check-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .check {
+        display: grid;
+        grid-template-columns: 24px minmax(0, 1fr) auto;
+        gap: 12px;
+        align-items: start;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--line-light);
+      }
+
+      .check:first-child {
+        padding-top: 0;
+      }
+
+      .check:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
+
+      .check-index {
+        display: grid;
+        width: 24px;
+        height: 24px;
+        place-items: center;
+        border: 1px solid var(--ink);
+        font-size: 11px;
+        font-weight: 700;
+      }
+
+      .check-copy strong,
+      .check-copy span {
+        display: block;
+      }
+
+      .check-copy span {
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .check-state {
+        border: 1px solid var(--ink);
+        padding: 3px 7px;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .check-state.fail {
+        border-style: double;
+        border-width: 3px;
+      }
+
+      .decision {
+        padding: 18px;
+        border: 3px double var(--ink);
+      }
+
+      .decision h2 {
+        margin: 0;
+        font-size: 24px;
+      }
+
+      .decision p {
+        margin: 8px 0 0;
+        color: var(--muted);
+      }
+
+      .button-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 18px;
+      }
+
+      .wire-button {
+        display: inline-flex;
+        min-height: 40px;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 12px;
+        border: 1px solid var(--ink);
+        border-radius: 0;
+        background: var(--paper);
+        color: var(--ink);
+        cursor: default;
+      }
+
+      button.wire-button {
+        cursor: pointer;
+      }
+
+      .wire-button.primary {
+        background: var(--ink);
+        color: var(--paper);
+      }
+
+      .wire-button.disabled,
+      .wire-button:disabled {
+        border-color: var(--line);
+        color: var(--muted);
+        background: var(--wash);
+      }
+
+      button.wire-button:disabled {
+        cursor: default;
+      }
+
+      .note {
+        padding: 12px 0;
+        border-bottom: 1px solid var(--line-light);
+      }
+
+      .note:last-child {
+        border-bottom: 0;
+      }
+
+      .note strong,
+      .note span {
+        display: block;
+      }
+
+      .note span {
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .direction-one .content-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.65fr) minmax(280px, 0.8fr);
+        gap: 16px;
+        margin-top: 16px;
+      }
+
+      .direction-one .main-stack,
+      .direction-one .side-stack {
+        display: grid;
+        gap: 16px;
+        align-content: start;
+      }
+
+      .direction-two .ledger {
+        margin-top: 16px;
+        border: 1px solid var(--ink);
+        background: var(--paper);
+        overflow-x: auto;
+      }
+
+      .ledger table {
+        width: 100%;
+        min-width: 780px;
+        border-collapse: collapse;
+      }
+
+      .ledger th,
+      .ledger td {
+        padding: 13px 14px;
+        border-right: 1px solid var(--line-light);
+        border-bottom: 1px solid var(--line-light);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .ledger th:last-child,
+      .ledger td:last-child {
+        border-right: 0;
+      }
+
+      .ledger tr:last-child td {
+        border-bottom: 0;
+      }
+
+      .ledger th {
+        background: var(--wash);
+        font-size: 12px;
+        text-transform: uppercase;
+      }
+
+      .ledger td small {
+        display: block;
+        margin-top: 4px;
+        color: var(--muted);
+      }
+
+      .ledger-foot {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-top: 16px;
+      }
+
+      .direction-three .gate-layout {
+        display: grid;
+        grid-template-columns: 210px minmax(0, 1fr);
+        gap: 16px;
+        margin-top: 16px;
+      }
+
+      .step-nav {
+        margin: 0;
+        padding: 0;
+        border: 1px solid var(--ink);
+        background: var(--paper);
+        list-style: none;
+      }
+
+      .step-nav li {
+        display: grid;
+        grid-template-columns: 25px 1fr;
+        gap: 10px;
+        align-items: center;
+        padding: 13px;
+        border-bottom: 1px solid var(--line-light);
+      }
+
+      .step-nav li:last-child {
+        border-bottom: 0;
+      }
+
+      .step-nav li[aria-current="step"] {
+        border-left: 4px solid var(--ink);
+        padding-left: 9px;
+        font-weight: 700;
+      }
+
+      .step-number {
+        display: grid;
+        width: 25px;
+        height: 25px;
+        place-items: center;
+        border: 1px solid var(--ink);
+        font-size: 11px;
+      }
+
+      .gate-card {
+        border: 1px solid var(--ink);
+        background: var(--paper);
+      }
+
+      .gate-intro {
+        padding: 20px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .gate-intro h2 {
+        margin: 0;
+        font-size: clamp(24px, 4vw, 38px);
+      }
+
+      .gate-intro p {
+        max-width: 65ch;
+        margin: 8px 0 0;
+        color: var(--muted);
+      }
+
+      .gate-detail {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        padding: 20px;
+      }
+
+      .field {
+        min-width: 0;
+        padding: 14px;
+        border: 1px dashed var(--line);
+      }
+
+      .field strong,
+      .field span {
+        display: block;
+      }
+
+      .field span {
+        margin-top: 5px;
+        color: var(--muted);
+        overflow-wrap: anywhere;
+      }
+
+      .gate-actions {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 16px 20px;
+        border-top: 1px solid var(--line);
+      }
+
+      .proto-picker {
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2147483647;
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        padding: 4px;
+        border-radius: 999px;
+        background: rgba(10, 10, 10, 0.82);
+        -webkit-backdrop-filter: blur(12px) saturate(1.4);
+        backdrop-filter: blur(12px) saturate(1.4);
+        box-shadow:
+          0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+          0 8px 24px rgba(0, 0, 0, 0.24),
+          0 2px 6px rgba(0, 0, 0, 0.12);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 13px;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+
+      .proto-picker-highlight {
+        position: absolute;
+        top: 4px;
+        left: 0;
+        height: 28px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.12);
+        will-change: transform;
+      }
+
+      .proto-picker[data-ready] .proto-picker-highlight {
+        transition:
+          transform 250ms cubic-bezier(0.23, 1, 0.32, 1),
+          width 250ms cubic-bezier(0.23, 1, 0.32, 1);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .proto-picker[data-ready] .proto-picker-highlight { transition: none; }
+      }
+
+      .proto-picker-item {
+        position: relative;
+        display: flex;
+        align-items: center;
+        height: 28px;
+        padding: 0 12px;
+        border: 0;
+        border-radius: 999px;
+        background: transparent;
+        color: rgba(255, 255, 255, 0.55);
+        font: inherit;
+        cursor: pointer;
+        transition: color 150ms ease-out;
+      }
+
+      .proto-picker-item:hover {
+        color: rgba(255, 255, 255, 0.85);
+      }
+
+      .proto-picker-item:active {
+        transform: scale(0.97);
+      }
+
+      .proto-picker-item:focus-visible {
+        outline: 2px solid rgba(255, 255, 255, 0.4);
+        outline-offset: 2px;
+      }
+
+      .proto-picker-item[data-active] {
+        color: #fff;
+      }
+
+      .proto-picker-divider {
+        width: 1px;
+        height: 16px;
+        margin: 0 4px;
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      .proto-picker-replay {
+        padding: 0 10px;
+        font-size: 14px;
+      }
+
+      .proto-picker[data-position="top"] {
+        bottom: auto;
+        top: 24px;
+      }
+
+      @media (max-width: 760px) {
+        .page {
+          width: min(100% - 20px, 620px);
+          padding-top: 10px;
+        }
+
+        .page-header {
+          display: block;
+          padding: 16px;
+        }
+
+        .direction-meta {
+          margin-top: 16px;
+          padding: 12px 0 0;
+          border-top: 1px solid var(--line);
+          border-left: 0;
+        }
+
+        .product-bar {
+          display: block;
+        }
+
+        .meta-line {
+          justify-content: flex-start;
+          margin-top: 12px;
+        }
+
+        .summary-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .summary-item {
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .summary-item:last-child {
+          border-bottom: 0;
+        }
+
+        .direction-one .content-grid,
+        .ledger-foot,
+        .direction-three .gate-layout,
+        .gate-detail {
+          grid-template-columns: 1fr;
+        }
+
+        .check {
+          grid-template-columns: 24px minmax(0, 1fr);
+        }
+
+        .check-state {
+          grid-column: 2;
+          width: max-content;
+        }
+
+        .gate-actions {
+          flex-direction: column-reverse;
+        }
+
+        .wire-button {
+          width: 100%;
+        }
+
+        .proto-picker {
+          max-width: calc(100vw - 20px);
+          overflow-x: auto;
+        }
+
+        .proto-picker-item {
+          flex: 0 0 auto;
+          padding: 0 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="stage" aria-live="polite"></div>
+
+    <nav class="proto-picker" aria-label="Prototype variants">
+      <span class="proto-picker-highlight" aria-hidden="true"></span>
+      <button class="proto-picker-item" data-active aria-current="true">Decision first</button>
+      <button class="proto-picker-item">Evidence ledger</button>
+      <button class="proto-picker-item">Guided gate</button>
+    </nav>
+
+    <script>
+      const releaseBar = `
+        <div class="product-bar">
+          <div class="product-id">
+            <span class="mark" aria-hidden="true">AM</span>
+            <span>Atlas Mobile / Release 4.8</span>
+          </div>
+          <div class="meta-line">
+            <span>RC 4.8.0-rc.3</span>
+            <span>commit 8f31d2a</span>
+            <span>owner Maya Chen</span>
+          </div>
+        </div>
+      `;
+
+      const checks = `
+        <ol class="check-list">
+          <li class="check">
+            <span class="check-index">1</span>
+            <span class="check-copy"><strong>Android smoke test</strong><span>Pixel 9 · Android 16 · 42 cases passed</span></span>
+            <span class="check-state">Pass</span>
+          </li>
+          <li class="check">
+            <span class="check-index">2</span>
+            <span class="check-copy"><strong>iOS smoke test</strong><span>iPhone 16 · iOS 19 · checkout froze after Apple Pay</span></span>
+            <span class="check-state fail">Fail</span>
+          </li>
+          <li class="check">
+            <span class="check-index">3</span>
+            <span class="check-copy"><strong>API compatibility</strong><span>Contract suite · 186 checks passed</span></span>
+            <span class="check-state">Pass</span>
+          </li>
+          <li class="check">
+            <span class="check-index">4</span>
+            <span class="check-copy"><strong>Privacy review</strong><span>Approved by Nia Wallace · July 29</span></span>
+            <span class="check-state">Pass</span>
+          </li>
+        </ol>
+      `;
+
+      const header = (name, tradeoff) => `
+        <header class="page-header">
+          <div>
+            <span class="wire-note">Structure review · behavior and visual design deferred</span>
+            <h1>Can Atlas Mobile 4.8 ship?</h1>
+            <p>Review required checks, supporting evidence, open risks, and the release decision.</p>
+          </div>
+          <div class="direction-meta">
+            <strong>${name}</strong>
+            <span>${tradeoff}</span>
+          </div>
+        </header>
+      `;
+
+      let guidedStep = 3;
+      let guidedRerunRecorded = false;
+
+      function guidedGateContent() {
+        const views = {
+          2: {
+            note: "Step 2 of 6 · passing result",
+            title: "Review the Android smoke test",
+            description: "All required checkout cases passed on a Pixel 9 running Android 16.",
+            fields: [
+              ["Test run", "android-smoke-7742"],
+              ["Result", "42 passed · 0 failed"],
+              ["Coverage", "Sign in, browse, checkout, receipt"],
+              ["Evidence", "Build log, device video, transaction trace"],
+              ["Reviewer note", "No Android blocker found."],
+              ["Decision impact", "Android is ready for the release decision."]
+            ],
+            actions: '<button type="button" class="wire-button" data-gate-step="3">Return to iOS</button>'
+          },
+          3: {
+            note: guidedRerunRecorded ? "Step 3 of 6 · rerun recorded" : "Step 3 of 6 · blocking result",
+            title: "Review the iOS smoke test",
+            description: guidedRerunRecorded
+              ? "A passing rerun was recorded on the same device. Review the new evidence before continuing."
+              : "The checkout flow froze after Apple Pay confirmation on an iPhone 16 running iOS 19.",
+            fields: guidedRerunRecorded
+              ? [
+                  ["Test run", "ios-smoke-9874"],
+                  ["Result", "42 passed · 0 failed"],
+                  ["Rerun", "Same iPhone 16 · iOS 19"],
+                  ["Evidence", "Device video, Xcode log, transaction trace"],
+                  ["Reviewer note", "Passing rerun recorded after clearing the test account."],
+                  ["Decision impact", "The iOS blocker is cleared. Remaining review steps still apply."]
+                ]
+              : [
+                  ["Test run", "ios-smoke-9831"],
+                  ["Result", "41 passed · 1 failed"],
+                  ["Failure", "Checkout completion timeout after payment sheet closes"],
+                  ["Evidence", "Device video, Xcode log, transaction trace"],
+                  ["Reviewer note", "Reproduce on the same device before changing the release decision."],
+                  ["Decision impact", "Production release remains blocked."]
+                ],
+            actions: `
+              <button type="button" class="wire-button" data-gate-step="2">Back to Android</button>
+              <div class="button-row" style="margin:0">
+                <button type="button" class="wire-button primary" data-gate-rerun ${guidedRerunRecorded ? "disabled" : ""}>${guidedRerunRecorded ? "Rerun recorded" : "Record rerun"}</button>
+                <button type="button" class="wire-button" data-gate-step="4">Continue to API</button>
+              </div>
+            `
+          },
+          4: {
+            note: "Step 4 of 6 · passing result",
+            title: "Review API compatibility",
+            description: "The mobile release remains compatible with the current production API contract.",
+            fields: [
+              ["Test run", "contract-suite-186"],
+              ["Result", "186 passed · 0 failed"],
+              ["API version", "2026-07-15"],
+              ["Evidence", "Contract report, schema diff"],
+              ["Reviewer note", "No breaking response changes found."],
+              ["Decision impact", "API compatibility is ready for the release decision."]
+            ],
+            actions: '<button type="button" class="wire-button" data-gate-step="3">Return to iOS</button>'
+          }
+        };
+        const view = views[guidedStep] || views[3];
+
+        return `
+          <div class="gate-intro">
+            <span class="wire-note">${view.note}</span>
+            <h2 id="gate-title" tabindex="-1">${view.title}</h2>
+            <p>${view.description}</p>
+          </div>
+          <div class="gate-detail">
+            ${view.fields.map(([label, value]) => `<div class="field"><strong>${label}</strong><span>${value}</span></div>`).join("")}
+          </div>
+          <div class="gate-actions">${view.actions}</div>
+        `;
+      }
+
+      const variants = [
+        () => `
+          <main class="page direction-one">
+            ${header("Decision first", "Keeps the verdict and next action visible while evidence remains one scan away.")}
+            ${releaseBar}
+            <div class="content-grid">
+              <div class="main-stack">
+                <section class="summary-grid" aria-label="Release summary">
+                  <div class="summary-item"><span>Required checks</span><strong>3 of 4 passed</strong></div>
+                  <div class="summary-item"><span>Open risks</span><strong>1 blocking</strong></div>
+                  <div class="summary-item"><span>Last activity</span><strong>18 min ago</strong></div>
+                </section>
+                <section class="panel">
+                  <div class="panel-head"><h2>Required checks</h2><span>All checks remain visible</span></div>
+                  <div class="panel-body">${checks}</div>
+                </section>
+              </div>
+              <aside class="side-stack">
+                <section class="decision">
+                  <span class="status-flag">Blocked</span>
+                  <h2>Rerun iOS smoke test</h2>
+                  <p>The failed checkout case must pass before the production action becomes available.</p>
+                  <div class="button-row">
+                    <span class="wire-button primary">Record rerun</span>
+                    <span class="wire-button disabled">Release to production</span>
+                  </div>
+                </section>
+                <section class="panel">
+                  <div class="panel-head"><h2>Reviewer notes</h2><span>2 notes</span></div>
+                  <div class="panel-body">
+                    <div class="note"><strong>Apple Pay failure looks isolated</strong><span>Jon Bell · 10:42</span></div>
+                    <div class="note"><strong>Rollback package verified</strong><span>Maya Chen · 10:31</span></div>
+                  </div>
+                </section>
+              </aside>
+            </div>
+          </main>
+        `,
+        () => `
+          <main class="page direction-two">
+            ${header("Evidence ledger", "Optimizes for dense comparison and an auditable release record.")}
+            ${releaseBar}
+            <section class="summary-grid" aria-label="Release summary" style="margin-top:16px">
+              <div class="summary-item"><span>Decision</span><strong>Blocked</strong></div>
+              <div class="summary-item"><span>Required checks</span><strong>3 of 4 passed</strong></div>
+              <div class="summary-item"><span>Blocking item</span><strong>iOS checkout</strong></div>
+            </section>
+            <section class="ledger" aria-labelledby="ledger-title">
+              <div class="panel-head"><h2 id="ledger-title">Release evidence ledger</h2><span>Revision 8f31d2a</span></div>
+              <table>
+                <thead><tr><th>Check</th><th>Result</th><th>Evidence</th><th>Reviewer</th><th>Recorded</th></tr></thead>
+                <tbody>
+                  <tr><td>Android smoke test</td><td><span class="check-state">Pass</span></td><td>Pixel 9 · Android 16<small>42 cases passed</small></td><td>Buildkite</td><td>10:36</td></tr>
+                  <tr><td>iOS smoke test</td><td><span class="check-state fail">Fail</span></td><td>Checkout froze after Apple Pay<small>Video and device log attached</small></td><td>Jon Bell</td><td>10:42</td></tr>
+                  <tr><td>API compatibility</td><td><span class="check-state">Pass</span></td><td>Contract suite<small>186 checks passed</small></td><td>Buildkite</td><td>10:18</td></tr>
+                  <tr><td>Privacy review</td><td><span class="check-state">Pass</span></td><td>Review PRV-219<small>No new data collection</small></td><td>Nia Wallace</td><td>09:55</td></tr>
+                </tbody>
+              </table>
+            </section>
+            <div class="ledger-foot">
+              <section class="panel">
+                <div class="panel-head"><h2>Reviewer notes</h2><span>2 notes</span></div>
+                <div class="panel-body">
+                  <div class="note"><strong>Apple Pay failure looks isolated</strong><span>Retest on the same device before release.</span></div>
+                  <div class="note"><strong>Rollback package verified</strong><span>Artifact 4.7.2 remains available.</span></div>
+                </div>
+              </section>
+              <section class="decision">
+                <span class="status-flag">Blocked</span>
+                <h2>One result needs new evidence</h2>
+                <p>Record a passing iOS smoke-test rerun to continue.</p>
+                <div class="button-row">
+                  <span class="wire-button primary">Record rerun</span>
+                  <span class="wire-button disabled">Release to production</span>
+                </div>
+              </section>
+            </div>
+          </main>
+        `,
+        () => `
+          <main class="page direction-three">
+            ${header("Guided gate", "Reduces scan density by guiding the reviewer through one release gate at a time.")}
+            ${releaseBar}
+            <div class="gate-layout">
+              <ol class="step-nav" aria-label="Release review steps">
+                ${["Identity", "Android", "iOS", "API", "Privacy", "Decision"].map((label, index) => {
+                  const step = index + 1;
+                  return `<li ${step === guidedStep ? 'aria-current="step"' : ""}><span class="step-number">${step}</span><span>${label}</span></li>`;
+                }).join("")}
+              </ol>
+              <section class="gate-card" aria-labelledby="gate-title">${guidedGateContent()}</section>
+            </div>
+          </main>
+        `
+      ];
+
+      const stage = document.getElementById('stage');
+      const picker = document.querySelector('.proto-picker');
+      const highlight = picker.querySelector('.proto-picker-highlight');
+      const items = [...picker.querySelectorAll('.proto-picker-item:not(.proto-picker-replay)')];
+      const replay = picker.querySelector('.proto-picker-replay');
+      let current = 0;
+
+      function moveHighlight() {
+        const el = items[current];
+        highlight.style.width = el.offsetWidth + 'px';
+        highlight.style.transform = `translateX(${el.offsetLeft}px)`;
+      }
+
+      function mount(i, focusSelector) {
+        stage.innerHTML = '';
+        requestAnimationFrame(() => {
+          stage.innerHTML = variants[i]();
+          if (focusSelector) stage.querySelector(focusSelector)?.focus();
+        });
+      }
+
+      function setActive(i) {
+        const next = Number.isInteger(i) && i >= 0 && i < variants.length ? i : 0;
+        current = next;
+        items.forEach((el, j) => {
+          el.toggleAttribute('data-active', j === next);
+          if (j === next) el.setAttribute('aria-current', 'true');
+          else el.removeAttribute('aria-current');
+        });
+        moveHighlight();
+        const url = new URL(location);
+        url.searchParams.set('v', next + 1);
+        history.replaceState(null, '', url);
+        mount(next);
+      }
+
+      items.forEach((el, i) => el.addEventListener('click', () => setActive(i)));
+      replay?.addEventListener('click', () => mount(current));
+      window.addEventListener('resize', moveHighlight);
+
+      stage.addEventListener('click', (event) => {
+        const stepButton = event.target.closest('[data-gate-step]');
+        const rerunButton = event.target.closest('[data-gate-rerun]');
+        if (current !== 2 || (!stepButton && !rerunButton)) return;
+
+        if (stepButton) guidedStep = Number(stepButton.dataset.gateStep);
+        if (rerunButton) guidedRerunRecorded = true;
+        mount(current, '#gate-title');
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName) || e.target.isContentEditable) return;
+        if (e.metaKey || e.ctrlKey || e.altKey) return;
+        const num = parseInt(e.key, 10);
+        if (num >= 1 && num <= variants.length) setActive(num - 1);
+        else if (e.key === 'ArrowRight') setActive((current + 1) % variants.length);
+        else if (e.key === 'ArrowLeft') setActive((current - 1 + variants.length) % variants.length);
+        else if (e.key === 'r' || e.key === 'R') mount(current);
+      });
+
+      const requestedVariant = new URLSearchParams(location.search).get('v');
+      const initialVariant = /^[1-3]$/.test(requestedVariant || '') ? Number(requestedVariant) - 1 : 0;
+      setActive(initialVariant);
+      requestAnimationFrame(() => requestAnimationFrame(() => picker.setAttribute('data-ready', '')));
+    </script>
+  </body>
+</html>

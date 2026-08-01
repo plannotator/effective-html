@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 202" width="165" height="202" role="img" aria-label="Abstract prompt tuner: a template editor with highlighted slot tokens above a stack of three live-preview sample cards">
+  <style>
+    svg{stroke-linejoin:round}
+    .bg{fill:#F0EEE6}
+    .frame{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .wh{fill:#FFFFFF;stroke:#9C9B93;stroke-width:1.4}
+    .whh{fill:#FFFFFF;stroke:#D1CFC5;stroke-width:1.2}
+    .oa{fill:#E3DACC;stroke:#B7AE9D;stroke-width:1.2}
+    .sl{fill:#141413}
+    .cl{fill:#D97757}
+    .ol{fill:#788C5D}
+    .fl{fill:#D1CFC5}
+    .fll{fill:#E6E3DA}
+    .st{fill:none;stroke:#87867F;stroke-width:1.4}
+    .stt{fill:none;stroke:#6F6E68;stroke-width:2}
+    .hl{fill:none;stroke:#D1CFC5;stroke-width:1}
+    .ln{fill:none;stroke:#9C9B93;stroke-width:1.3;stroke-linecap:round}
+    .lnf{fill:none;stroke:#CFCDC3;stroke-width:1.1;stroke-linecap:round}
+    .lc{fill:none;stroke:#D97757;stroke-width:1.5;stroke-linecap:round}
+    .da{stroke-dasharray:3 3}
+  </style>
+  <rect x="0" y="0" width="165" height="202" class="bg"/>
+
+<!-- toolbar: pill button + hint -->
+<rect x="12" y="12" width="30" height="9" rx="3" class="wh"/>
+<rect x="15.5" y="15" width="2.5" height="3" rx="1" class="sl"/>
+<line x1="21" y1="16.5" x2="38" y2="16.5" class="lnf"/>
+<line x1="120" y1="14.5" x2="153" y2="14.5" class="hl"/>
+<line x1="120" y1="18.5" x2="146" y2="18.5" class="hl"/>
+
+<!-- EDITOR PANEL (template with slots) -->
+<rect x="12" y="29" width="141" height="71" rx="5" class="wh"/>
+<!-- editor header bar -->
+<line x1="12" y1="42" x2="153" y2="42" class="hl"/>
+<circle cx="18" cy="35.5" r="1.4" class="sl"/>
+<circle cx="23" cy="35.5" r="1.4" class="fll"/>
+<circle cx="28" cy="35.5" r="1.4" class="fll"/>
+<rect x="132" y="33" width="16" height="5" rx="2.5" class="fll"/>
+
+<!-- mono template lines with inline slot tokens -->
+<line x1="18" y1="51" x2="90" y2="51" class="ln"/>
+<rect x="94" y="48" width="22" height="6" rx="2.5" class="cl"/>
+
+<line x1="18" y1="60" x2="40" y2="60" class="ln"/>
+<rect x="44" y="57" width="19" height="6" rx="2.5" class="oa"/>
+<line x1="67" y1="60" x2="98" y2="60" class="ln"/>
+
+<line x1="18" y1="69" x2="57" y2="69" class="ln"/>
+<rect x="61" y="66" width="26" height="6" rx="2.5" class="cl"/>
+<line x1="91" y1="69" x2="109" y2="69" class="ln"/>
+
+<line x1="18" y1="78" x2="80" y2="78" class="lnf"/>
+
+<!-- legend: slot chips row -->
+<line x1="12" y1="86" x2="153" y2="86" class="hl"/>
+<rect x="18" y="91" width="24" height="6" rx="2.5" class="oa"/>
+<rect x="46" y="91" width="20" height="6" rx="2.5" class="oa"/>
+<rect x="70" y="91" width="28" height="6" rx="2.5" class="oa"/>
+<rect x="102" y="91" width="18" height="6" rx="2.5" class="oa"/>
+
+<!-- PREVIEW STACK: 3 sample cards (height 26, gap 6, rhythm) -->
+<!-- card 1 -->
+<rect x="12" y="108" width="141" height="26" rx="4" class="whh"/>
+<line x1="12" y1="120" x2="153" y2="120" class="hl"/>
+<line x1="17" y1="114.5" x2="33" y2="114.5" class="ln"/>
+<rect x="137" y="112" width="11" height="5" rx="2.5" class="fll"/>
+<line x1="17" y1="125.5" x2="148" y2="125.5" class="lnf"/>
+<line x1="17" y1="130" x2="98" y2="130" class="lnf"/>
+
+<!-- card 2 -->
+<rect x="12" y="140" width="141" height="26" rx="4" class="whh"/>
+<line x1="12" y1="152" x2="153" y2="152" class="hl"/>
+<line x1="17" y1="146.5" x2="36" y2="146.5" class="ln"/>
+<rect x="137" y="144" width="11" height="5" rx="2.5" class="fll"/>
+<line x1="17" y1="157.5" x2="148" y2="157.5" class="lnf"/>
+<line x1="17" y1="162" x2="90" y2="162" class="lnf"/>
+
+<!-- card 3 (studio plan = olive accent) -->
+<rect x="12" y="172" width="141" height="26" rx="4" class="wh"/>
+<line x1="12" y1="184" x2="153" y2="184" class="hl"/>
+<line x1="17" y1="178.5" x2="31" y2="178.5" class="ln"/>
+<rect x="137" y="176" width="11" height="5" rx="2.5" class="ol"/>
+<line x1="17" y1="189.5" x2="148" y2="189.5" class="lnf"/>
+<line x1="17" y1="194" x2="106" y2="194" class="lnf"/>
+</svg>

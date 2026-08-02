@@ -4,8 +4,22 @@
 
 # Effective HTML
 
-Six skills for creating useful, self-contained HTML artifacts, from creative direction and low-fidelity wireframes to working interactive prototypes.
+Effective HTML is a field guide and reference collection for creating useful,
+self-contained HTML artifacts with agents.
 
+## Fat artifacts + fat context
+
+A **fat artifact** carries the working detail: structure, visuals, states,
+interactions, annotations, and evidence. **Fat context** gives the agent the
+source material it needs to understand the real problem: the brief, code,
+constraints, examples, and accepted decisions. The prompt and skills can stay
+thin because the context and the artifact do the work.
+
+> [!NOTE]
+> You can use this repo without installing anything. Treat it as a reference
+> first and an installable skill collection second. Read the patterns, borrow
+> what fits, and ask your agent for the artifact directly. Install a skill only
+> when you want a recurring workflow or shared defaults.
 
 https://github.com/user-attachments/assets/24306977-7f30-44c9-9bff-55f901d557b0
 
@@ -18,10 +32,9 @@ https://github.com/user-attachments/assets/24306977-7f30-44c9-9bff-55f901d557b0
 Render and annotate local HTML with <a href="https://github.com/backnotprop/plannotator">Plannotator</a>.
 </p>
 
-## Choose a skill
+## Skill references
 
-HTML skills for pragmatic visual artifacts. 
-
+The repo includes six optional skills for pragmatic visual artifacts.
 
 | Skill | Use it for |
 | --- | --- |
@@ -37,7 +50,8 @@ Visit: <a href="https://www.effectivehtml.com/">Effective HTML Website/Guide</a>
 
 ## Install
 
-Install the collection:
+Install the collection when you want these references available to your agent as
+reusable workflows:
 
 ```bash
 npx skills add plannotator/effective-html

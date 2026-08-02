@@ -66,6 +66,9 @@ function FolioSpecimen({
   animated: boolean;
 }) {
   const svg = animated ? artifact.animatedSvg : artifact.staticSvg;
+  const sourceUrl = animated
+    ? artifact.animatedSourceUrl
+    : artifact.staticSourceUrl;
 
   return (
     <article className={styles.specimen}>
@@ -90,11 +93,11 @@ function FolioSpecimen({
         <p>{artifact.description}</p>
         <div className={styles.specimenLinks}>
           <a href={artifact.htmlUrl} target="_blank" rel="noreferrer">
-            HTML
+            Original HTML
             <ArrowUpRight aria-hidden="true" />
           </a>
-          <a href={svg} target="_blank" rel="noreferrer">
-            SVG
+          <a href={sourceUrl} target="_blank" rel="noreferrer">
+            Effective SVG
             <ArrowUpRight aria-hidden="true" />
           </a>
         </div>

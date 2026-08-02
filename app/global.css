@@ -1547,6 +1547,22 @@ strong,
   min-height: 2.75rem;
 }
 
+.catalog-footer .footer-references {
+  grid-column: 1 / -1;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(243, 230, 210, 0.16);
+}
+
+.catalog-footer .footer-references > span {
+  color: var(--paper-bright);
+  font-size: 0.65rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .catalog-footer a:hover {
   color: var(--paper-bright);
 }

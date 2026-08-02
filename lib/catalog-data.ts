@@ -29,6 +29,8 @@ export type CatalogArtifact = {
   resourceLabel?: string;
   staticSvg: string;
   animatedSvg: string;
+  staticSourceUrl: string;
+  animatedSourceUrl: string;
   keywords: string[];
 };
 
@@ -158,6 +160,8 @@ export const catalogCategories: CatalogCategory[] = [
 const svgPaths = (file: string) => ({
   staticSvg: `/catalog/effective-svg/static/${file}.svg`,
   animatedSvg: `/catalog/effective-svg/animated/${file}.svg`,
+  staticSourceUrl: `https://github.com/plannotator/effective-svg/blob/main/svg/${file}.svg`,
+  animatedSourceUrl: `https://github.com/plannotator/effective-svg/blob/main/svg-animated/${file}.svg`,
 });
 
 export const catalogArtifacts: CatalogArtifact[] = [

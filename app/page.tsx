@@ -1,4 +1,5 @@
 import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 import { SpecimenStack } from "@/components/specimen-stack";
 import {
   ArrowRight,
@@ -176,19 +177,7 @@ export default function HomePage() {
 
       </main>
 
-      <footer className="catalog-footer">
-        <div>
-          <strong>Effective HTML</strong>
-          <span>by Plannotator</span>
-        </div>
-        <p>Useful artifacts for developers working with agents.</p>
-        <nav aria-label="Footer navigation">
-          <Link href="/catalog">Catalog</Link>
-          <Link href="/docs">Guide</Link>
-          <Link href="/examples">Examples</Link>
-          <a href="https://github.com/plannotator/effective-html">GitHub</a>
-        </nav>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

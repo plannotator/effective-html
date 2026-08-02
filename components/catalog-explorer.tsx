@@ -87,6 +87,9 @@ function ArtifactSpecimen({
 }) {
   const animated = previewMode === "animated";
   const activeSvg = animated ? artifact.animatedSvg : artifact.staticSvg;
+  const activeSourceUrl = animated
+    ? artifact.animatedSourceUrl
+    : artifact.staticSourceUrl;
 
   return (
     <article className={styles.specimen}>
@@ -115,11 +118,11 @@ function ArtifactSpecimen({
       <div className={styles.specimenControls}>
         <div className={styles.specimenActions}>
           <a href={artifact.htmlUrl} target="_blank" rel="noreferrer">
-            HTML
+            Original HTML
             <ExternalLink aria-hidden="true" />
           </a>
-          <a href={activeSvg} target="_blank" rel="noreferrer">
-            SVG
+          <a href={activeSourceUrl} target="_blank" rel="noreferrer">
+            Effective SVG
             <ExternalLink aria-hidden="true" />
           </a>
           {artifact.resourceUrl && artifact.resourceLabel && (

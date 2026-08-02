@@ -1,5 +1,6 @@
 import { CatalogExplorer } from "@/components/catalog-explorer";
 import styles from "@/components/catalog-explorer.module.css";
+import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import {
   catalogArtifacts,
@@ -9,7 +10,6 @@ import {
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Catalog",
@@ -175,19 +175,7 @@ export default function CatalogPage() {
       </section>
       </main>
 
-      <footer className="catalog-footer">
-        <div>
-          <strong>Effective HTML</strong>
-          <span>by Plannotator</span>
-        </div>
-        <p>Useful artifacts for developers working with agents.</p>
-        <nav aria-label="Footer navigation">
-          <Link href="/catalog">Catalog</Link>
-          <Link href="/docs">Guide</Link>
-          <Link href="/examples">Examples</Link>
-          <a href="https://github.com/plannotator/effective-html">GitHub</a>
-        </nav>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

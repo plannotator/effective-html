@@ -1,3 +1,4 @@
+import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ArrowUpRight } from "lucide-react";
 import type { Metadata } from "next";
@@ -83,6 +84,7 @@ export default function ExamplesPage() {
         </article>
       </section>
       </main>
+      <SiteFooter />
     </div>
   );
 }

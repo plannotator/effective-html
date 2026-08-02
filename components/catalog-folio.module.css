@@ -381,6 +381,7 @@
 
 .specimenLinks {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.8rem;
   margin-top: auto;
   padding-top: 0.7rem;

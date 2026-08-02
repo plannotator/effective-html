@@ -103,7 +103,15 @@ examples/
     ├── wireframe.html
     ├── prototype.html
     └── screenshots/
+
+site/
+├── app/          # Next.js routes
+├── content/docs/ # Fumadocs guide
+└── public/       # Deployed catalog artifacts
 ```
+
+The installable skills and their examples stay at the repository root. The
+website is isolated under `site/` and deployed from that directory.
 
 This project was inspired by Thariq Shihipar's [The unreasonable effectiveness of HTML](https://thariqs.github.io/html-effectiveness).
 

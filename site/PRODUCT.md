@@ -10,9 +10,9 @@ web
 
 - Fumadocs with Fumadocs MDX.
 - Next.js App Router.
-- Vercel as the conventional production deployment target.
-- The application lives in the Effective HTML repository alongside the skills
-  and examples it documents.
+- Vercel deploys the self-contained application from the repository's `site/`
+  directory.
+- The skills and their source examples remain at the repository root.
 
 ## Users
 
@@ -85,7 +85,7 @@ and custom interfaces that it teaches people to create.
 - Product name: **Effective HTML**.
 - The existing attribution is **by Plannotator**.
 - The approved Working Atlas direction in `design.md` is binding.
-- Approved assets include `assets/effective-html-banner.png` and
+- Approved assets include `public/brand/effective-html-banner.png` and
   `art/brand-concepts/working-atlas-v1-refined.png`.
 - The site should feel practitioner-led, tactile, graphic, technically calm,
   and generous with examples.
@@ -96,12 +96,12 @@ and custom interfaces that it teaches people to create.
 
 ## Evidence on Hand
 
-- `README.md` describes the five Effective HTML skills and their intended uses.
-- `skills/` contains the current wireframe, prototype, plan, diagram, and broad
+- `../README.md` describes the five Effective HTML skills and their intended uses.
+- `../skills/` contains the current wireframe, prototype, plan, diagram, and broad
   HTML guidance.
-- `examples/release-readiness/` contains standalone wireframe and prototype
+- `../examples/release-readiness/` contains standalone wireframe and prototype
   examples with desktop and mobile screenshots.
-- `assets/effective-html-banner.png` is the current repository banner.
+- `public/brand/effective-html-banner.png` is the deployed site banner.
 - `art/brand-concepts/working-atlas-v1-refined.png` is the approved site concept
   plate.
 - `/Users/ramos/oss/effective-svg/svg/` and

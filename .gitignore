@@ -1,15 +1,20 @@
 # dependencies
 /node_modules
+/site/node_modules
 
 # Next.js
 /.next
 /out
+/site/.next
+/site/out
 
 # Fumadocs
 /.source
+/site/.source
 
 # production
 /build
+/site/build
 
 # local
 .DS_Store
@@ -18,10 +23,11 @@
 
 # Vercel
 .vercel
+/site/.vercel
 
 # local visual review material
 /art/banner-candidates/
-/.impeccable/screenshots/
+/site/.impeccable/screenshots/
 
 # TypeScript
 *.tsbuildinfo

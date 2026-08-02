@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Examples",
   description:
-    "Inspect Effective HTML wireframes and prototypes built from the same product brief.",
+    "Open the release-readiness wireframe and prototype as standalone HTML files.",
 };
 
 export default function ExamplesPage() {
@@ -20,11 +20,11 @@ export default function ExamplesPage() {
       <main id="main-content" tabIndex={-1}>
       <section className="examples-hero">
         <div className="examples-hero-copy">
-          <h1>Examples you can inspect, not just admire.</h1>
+          <h1>Release-readiness examples</h1>
           <p>
-            The same release-readiness brief becomes two different artifacts.
-            The wireframe supports structural judgment. The prototype supports
-            behavioral judgment.
+            Open the wireframe to inspect hierarchy, content, and responsive
+            structure. Open the prototype to test the release flow and its
+            states.
           </p>
         </div>
       </section>

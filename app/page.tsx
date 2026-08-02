@@ -8,7 +8,6 @@ import {
   MousePointerClick,
   Network,
 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 
 const artifactLinks = [
@@ -175,45 +174,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="catalog-paper example-story">
-        <div className="example-heading">
-          <h2>One brief. Two different decisions.</h2>
-          <p>
-            The release-readiness example moves from structural exploration to
-            working interaction without confusing the purpose of either stage.
-          </p>
-        </div>
-        <div className="example-visuals">
-          <Link
-            className="example-shot example-shot-wireframe"
-            href="/examples#wireframe"
-          >
-            <Image
-              src="/examples/release-readiness/wireframe-desktop.png"
-              alt="Low-fidelity release readiness wireframe"
-              width={1440}
-              height={1000}
-            />
-            <span>Wireframe — decide what belongs</span>
-          </Link>
-          <Link
-            className="example-shot example-shot-prototype"
-            href="/examples#prototype"
-          >
-            <Image
-              src="/examples/release-readiness/prototype-desktop.png"
-              alt="Interactive release readiness prototype"
-              width={1440}
-              height={1428}
-            />
-            <span>Prototype — test how it behaves</span>
-          </Link>
-        </div>
-        <Link className="button button-ink" href="/examples">
-          Open the examples
-          <ArrowUpRight aria-hidden="true" />
-        </Link>
-      </section>
       </main>
 
       <footer className="catalog-footer">

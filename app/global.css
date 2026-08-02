@@ -1162,8 +1162,7 @@ strong,
   z-index: 3;
 }
 
-.section-heading h2,
-.example-heading h2 {
+.section-heading h2 {
   max-width: 15ch;
   margin: 0;
   font-size: clamp(3.4rem, 6.3vw, 6rem);
@@ -1173,8 +1172,7 @@ strong,
   text-wrap: balance;
 }
 
-.section-heading p,
-.example-heading p {
+.section-heading p {
   max-width: 36rem;
   margin: 0 0 0.45rem;
   color: #554f47;
@@ -1507,61 +1505,6 @@ strong,
   line-height: 1.55;
 }
 
-.example-story {
-  padding: clamp(6rem, 10vw, 10rem) max(2rem, calc((100vw - var(--content-max)) / 2));
-}
-
-.example-heading {
-  display: grid;
-  position: relative;
-  z-index: 3;
-  grid-template-columns: minmax(0, 1.1fr) minmax(20rem, 0.9fr);
-  gap: 4rem;
-  align-items: end;
-}
-
-.example-visuals {
-  display: grid;
-  position: relative;
-  z-index: 3;
-  grid-template-columns: 0.85fr 1.15fr;
-  gap: 2.5rem;
-  align-items: end;
-  margin: 5rem 0 3rem;
-}
-
-.example-shot {
-  display: block;
-  padding: 0.8rem 0.8rem 1.15rem;
-  border: 1px solid var(--ink);
-  border-radius: 0.45rem;
-  background: var(--paper-bright);
-  box-shadow: 0 18px 34px rgba(20, 20, 19, 0.2);
-}
-
-.example-shot img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border: 1px solid rgba(20, 20, 19, 0.35);
-}
-
-.example-shot span {
-  display: block;
-  margin: 0.85rem 0.15rem 0;
-  font-family: "Inter Tight Variable", sans-serif;
-  font-size: 0.85rem;
-  font-weight: 680;
-}
-
-.example-shot-wireframe {
-  transform: rotate(-2deg);
-}
-
-.example-shot-prototype {
-  transform: rotate(1.25deg);
-}
-
 .catalog-footer {
   display: grid;
   grid-template-columns: 1fr 1fr auto;
@@ -1882,8 +1825,7 @@ strong,
     right: 6%;
   }
 
-  .section-heading,
-  .example-heading {
+  .section-heading {
     grid-template-columns: 1fr;
     gap: 1.75rem;
   }
@@ -2008,14 +1950,12 @@ strong,
   }
 
   .artifact-catalog,
-  .why-html,
-  .example-story {
+  .why-html {
     padding-right: 1rem;
     padding-left: 1rem;
   }
 
   .section-heading h2,
-  .example-heading h2,
   .why-statement h2 {
     font-size: 3.2rem;
   }
@@ -2055,17 +1995,6 @@ strong,
 
   .why-uses > div {
     padding-left: 3.5rem;
-  }
-
-  .example-visuals {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    margin-top: 3.5rem;
-  }
-
-  .example-shot-wireframe,
-  .example-shot-prototype {
-    transform: none;
   }
 
   .catalog-footer {

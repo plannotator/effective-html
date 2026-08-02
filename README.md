@@ -29,17 +29,6 @@ Render and annotate local HTML with <a href="https://github.com/backnotprop/plan
 | [`html-plan`](skills/html-plan/SKILL.md) | Plans, roadmaps, rollouts, and implementation sequences that preserve source commitments |
 | [`html-diagram`](skills/html-diagram/SKILL.md) | Architecture, sequence, process, state, hierarchy, timeline, and system diagrams |
 
-## One brief, two stages
-
-The [release-readiness example](examples/release-readiness/README.md) carries the same product brief from structural exploration to working interaction. Both artifacts are standalone HTML files that open without build tooling.
-
-| Wireframe | Prototype |
-| --- | --- |
-| [![Low-fidelity release wireframe](examples/release-readiness/screenshots/wireframe-desktop.png)](examples/release-readiness/wireframe.html) | [![Interactive release prototype](examples/release-readiness/screenshots/prototype-desktop.png)](examples/release-readiness/prototype.html) |
-| Decide what belongs on the screen and compare structural directions. | Test the blocked-to-ready flow, feedback, recovery, and product boundary. |
-
-Read the canonical Plannotator guide, [HTML wireframes and prototypes for coding agents](https://docs.plannotator.ai/learn/code-context/html-wireframes-and-prototypes-for-coding-agents), for the review questions that belong at each stage.
-
 ## Install
 
 Install the collection:

@@ -99,8 +99,8 @@ and custom interfaces that it teaches people to create.
 - `README.md` describes the five Effective HTML skills and their intended uses.
 - `skills/` contains the current wireframe, prototype, plan, diagram, and broad
   HTML guidance.
-- `examples/release-readiness/` carries one brief from structural wireframe to
-  interactive prototype with desktop and mobile screenshots.
+- `examples/release-readiness/` contains standalone wireframe and prototype
+  examples with desktop and mobile screenshots.
 - `assets/effective-html-banner.png` is the current repository banner.
 - `art/brand-concepts/working-atlas-v1-refined.png` is the approved site concept
   plate.

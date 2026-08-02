@@ -25,6 +25,8 @@ export type CatalogArtifact = {
   title: string;
   description: string;
   htmlUrl: string;
+  resourceUrl?: string;
+  resourceLabel?: string;
   staticSvg: string;
   animatedSvg: string;
   keywords: string[];
@@ -312,6 +314,8 @@ export const catalogArtifacts: CatalogArtifact[] = [
       "Turn source material into a short browser-native presentation with a real sequence and no export step.",
     htmlUrl:
       "https://thariqs.github.io/html-effectiveness/09-slide-deck.html",
+    resourceUrl: "https://github.com/zarazhangrui/frontend-slides",
+    resourceLabel: "Frontend Slides",
     ...svgPaths("09-slide-deck"),
     keywords: ["slides", "deck", "presentation", "keyboard"],
   },

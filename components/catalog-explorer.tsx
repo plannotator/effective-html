@@ -122,6 +122,12 @@ function ArtifactSpecimen({
             SVG
             <ExternalLink aria-hidden="true" />
           </a>
+          {artifact.resourceUrl && artifact.resourceLabel && (
+            <a href={artifact.resourceUrl} target="_blank" rel="noreferrer">
+              {artifact.resourceLabel}
+              <ExternalLink aria-hidden="true" />
+            </a>
+          )}
         </div>
       </div>
     </article>

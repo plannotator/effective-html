@@ -379,6 +379,8 @@ export function GuideHandoff({
   skillHref,
   artifactLabel = "Open the artifact catalog",
   artifactDescription = "Compare the real rendered work.",
+  sourceLabel = "Inspect the source",
+  sourceDescription = "See the brief, states, and implementation.",
   skillLabel = "Use the HTML skill",
   skillDescription = "Route a real task to the right artifact.",
 }: {
@@ -387,6 +389,8 @@ export function GuideHandoff({
   skillHref: string;
   artifactLabel?: string;
   artifactDescription?: string;
+  sourceLabel?: string;
+  sourceDescription?: string;
   skillLabel?: string;
   skillDescription?: string;
 }) {
@@ -398,8 +402,8 @@ export function GuideHandoff({
       icon: ArrowUpRight,
     },
     {
-      label: "Inspect the source",
-      description: "See the brief, states, and implementation.",
+      label: sourceLabel,
+      description: sourceDescription,
       href: sourceHref,
       icon: FileCode2,
     },

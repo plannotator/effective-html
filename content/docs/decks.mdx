@@ -1,0 +1,60 @@
+---
+title: Decks
+description: Build a browser-native presentation whose sequence carries the story.
+---
+
+A deck is useful when the order and pace of the explanation matter. HTML makes
+the presentation directly inspectable, interactive, and shareable without
+turning it into a long scrolling page.
+
+## Give each slide one job
+
+Write the sequence before styling it. Each slide should introduce one idea,
+comparison, transition, or piece of evidence. Remove slides that merely repeat
+the speaker, and split slides that ask the audience to parse several arguments
+at once.
+
+## Use a fixed stage
+
+Choose one presentation canvas, usually 16:9, and scale that stage to the
+available viewport. Test the smallest display on which the deck must remain
+readable. Treat the slide as a composition rather than a responsive webpage
+whose elements continuously reflow.
+
+## Keep navigation dependable
+
+Support visible controls and familiar keys. Arrow keys should move through the
+sequence; progress and the current position should remain clear. Preserve
+focus, provide a reduced-motion path, and make full-screen mode optional rather
+than required.
+
+## Use motion to reveal structure
+
+Animation should clarify sequence, comparison, or change. Prefer a few staged
+reveals over constant movement. The deck must still communicate when motion is
+disabled or when it is exported as static pages.
+
+## Package the presentation as an artifact
+
+Keep the deck easy to open and share. A self-contained HTML file is often the
+simplest boundary. If it depends on local media, keep the folder portable and
+make the entry point obvious. Verify keyboard navigation, overflow, external
+links, and static export before presenting.
+
+<GuideHandoff
+  artifactHref="https://thariqs.github.io/html-effectiveness/09-slide-deck.html"
+  artifactLabel="Open the slide-deck example"
+  artifactDescription="Inspect a concise browser-native presentation from The unreasonable effectiveness of HTML."
+  sourceHref="https://github.com/zarazhangrui/frontend-slides"
+  sourceLabel="Study Frontend Slides"
+  sourceDescription="See a complete agent workflow for style discovery, navigation, animation, and export."
+  skillHref="https://github.com/zarazhangrui/frontend-slides/blob/main/SKILL.md"
+  skillLabel="Read the deck skill"
+  skillDescription="Use its implementation rules when a presentation needs more than a one-off example."
+/>
+
+<GuideNext
+  href="/docs/plans"
+  title="Keep implementation work source-grounded"
+  description="Use HTML for a plan only when spatial or interactive structure adds leverage."
+/>

@@ -1,12 +1,40 @@
 ---
 title: Why HTML?
-description: Use HTML when the medium makes the decision easier to understand.
+description: Use visible structure when dense prose makes agent work harder to understand.
 ---
 
-Markdown is excellent for linear explanation. HTML becomes more useful when
-space, comparison, state, or participation carry part of the meaning.
+Effective HTML helps people understand and participate in agent work. That
+includes developers reviewing code and non-technical collaborators responding
+to a plan, prototype, report, diagram, or explainer.
+
+Markdown remains useful for linear explanation, short plans, and source-grounded
+lists. The problem is not Markdown. The problem is asking dense prose to carry
+information that would be clearer through space, comparison, state, or
+interaction.
 
 <GuideChapterEvidence chapter="why-html" />
+
+## Put the detail in the artifact
+
+Give the agent the relevant source context and name the decision a person needs
+to make. Keep the prompt direct. Let the artifact carry the working detail
+through realistic content, visible relationships, annotations, controls, and
+states.
+
+The skills in this repository teach recurring patterns and provide useful
+defaults. They are optional. Once you recognize what a useful artifact looks
+like, a direct request may be enough. Add a skill when repetition or consistency
+justifies one.
+
+## Use less prose when structure can explain
+
+Agents can produce more written material than people will read. A well-structured
+visual can communicate hierarchy, alternatives, state, and relationships
+without requiring someone to parse a long document first.
+
+This is often useful when technical teams share work with non-technical
+collaborators. A wireframe, diagram, or working prototype gives everyone the
+same thing to point at, question, and revise.
 
 ## HTML can show the thing
 
@@ -41,9 +69,9 @@ redirect.
 ## Keep Markdown when it is enough
 
 Prefer Markdown for a linear plan, short explanation, or source-grounded list
-of commitments unless visual or interactive structure adds meaningful
-leverage. HTML is not the default. It is a medium chosen for a particular kind
-of understanding.
+of commitments unless visual or interactive structure makes the work easier to
+understand. Choose HTML for the decisions it can expose, not because every
+agent output needs a webpage.
 
 <GuideHandoff
   artifactHref="/examples"

@@ -11,6 +11,11 @@ Turn source material into a plan people can inspect and act on. Preserve the use
 
 Read the conversation, project instructions, and supplied plan before designing. Match an existing design language when one is present. Otherwise derive a quiet, workmanlike direction from the audience and subject.
 
+When [`design-artifact`](../design-artifact/SKILL.md) is available, read its
+fundamentals to make that direction intentional. Keep this skill's traceability
+and source-preservation rules authoritative; creative direction must not
+inflate the plan into a dashboard or campaign page.
+
 Decide what the plan actually needs:
 
 - phases or sequence;

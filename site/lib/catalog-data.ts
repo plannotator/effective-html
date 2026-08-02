@@ -527,6 +527,15 @@ export const catalogSkills: CatalogSkill[] = [
     color: "cobalt",
   },
   {
+    id: "design-artifact",
+    title: "Design artifact",
+    description:
+      "Subject-specific creative direction for reports, plans, diagrams, decks, mockups, prototypes, and tools.",
+    guideUrl: "/docs/designing-artifacts",
+    sourceUrl: `${repoSource}/design-artifact/SKILL.md`,
+    color: "green",
+  },
+  {
     id: "html-wireframe",
     title: "HTML wireframe",
     description:

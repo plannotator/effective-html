@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/site-header";
 import {
   catalogArtifacts,
   catalogCategories,
+  catalogSkills,
   nativeExamples,
 } from "@/lib/catalog-data";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
@@ -67,8 +68,9 @@ export default function CatalogPage() {
           <div className={styles.heroTitle}>
             <h1>Catalog</h1>
             <p>
-              The work itself: twenty HTML references, forty SVG renderings,
-              five skills, and six native artifacts you can open and inspect.
+              The work itself: twenty HTML references, forty SVG renderings,{" "}
+              {catalogSkills.length} skills, and six native artifacts you can
+              open and inspect.
             </p>
             <a href="#catalog-collection">
               Browse the collection

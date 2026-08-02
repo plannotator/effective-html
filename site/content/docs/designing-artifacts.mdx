@@ -1,0 +1,106 @@
+---
+title: Designing artifacts
+description: Give any HTML artifact a visual direction rooted in its subject rather than a static template.
+---
+
+You can make an effective HTML artifact without installing a skill. When you do
+want reusable creative-direction guidance, use
+[`design-artifact`](https://github.com/plannotator/effective-html/blob/main/skills/design-artifact/SKILL.md)
+alongside the artifact workflow.
+
+The skill does not decide whether the work should be a wireframe, prototype,
+plan, diagram, deck, report, or tool. It decides how the chosen form should feel:
+its visual register, palette, type, composition, theming, and amount of
+expressive treatment.
+
+## Compose skills instead of stacking rules
+
+Let one skill own the artifact's form and let `design-artifact` supply creative
+direction:
+
+- `html` routes a broad request and provides the shared build contract.
+- `html-wireframe` keeps structural exploration visibly low fidelity.
+- `html-prototype` owns mockup fidelity, working states, and interaction.
+- `html-plan` protects source commitments and traceability.
+- `html-diagram` chooses the visual model and rendering method.
+- `design-artifact` shapes the visual identity without overriding those
+  boundaries.
+
+This keeps the instructions thin. The brief, project context, and artifact
+itself still carry the substance.
+
+## Start with authority, not inspiration
+
+Read the user's instructions and accepted decisions first. Then inspect the
+project's design system, tokens, components, screenshots, and nearby artifacts.
+Only after those sources should the agent use its own design judgment.
+
+References are evidence about intent, constraints, and technique. They are not a
+palette, card system, or layout to copy into every new artifact.
+
+## Choose the register
+
+Match the amount of treatment to the work:
+
+- **Workmanlike** for plans, operational reports, briefs, and many tools.
+- **Editorial** for explainers, research stories, launches, and decks that need
+  a stronger point of view.
+- **Expressive** when the visual or interactive premise is part of the subject
+  itself.
+
+Every register deserves careful hierarchy and spacing. Not every artifact needs
+a hero, custom type, animation, or a dense interface.
+
+## Write a short design plan
+
+Before coding, decide:
+
+1. The visual premise and why it belongs to this subject.
+2. The color roles, including neutrals and semantic status colors.
+3. The type roles the content actually needs.
+4. The organizing layout and reading path.
+5. The one place, if any, where interaction or motion carries meaning.
+
+The number of colors, typefaces, columns, and components follows the idea. The
+skill deliberately avoids a fixed theme or component recipe.
+
+## Build, inspect, and revise
+
+Use realistic content from the first draft. Open the result at wide and narrow
+sizes, operate the important controls, and check focus, reduced motion, contrast,
+overflow, and failure states.
+
+Before handoff, ask whether the same visual idea would fit a neighboring topic
+just as well. If it would, the direction is still generic. Revise the
+composition, type, color, imagery, or interaction until it belongs to the brief.
+
+## Inspiration and adaptation
+
+Effective HTML's `design-artifact` skill is a portable, single-file
+interpretation of the artifact-design approach popularized through Claude and
+Claude Code. It was specifically inspired by Anthropic's official
+[`web-artifacts-builder`](https://github.com/anthropics/skills/blob/main/skills/web-artifacts-builder/SKILL.md)
+skill.
+
+Anthropic's skill provides a toolchain for elaborate React artifacts. This
+adaptation focuses on creative direction that can compose with any Effective
+HTML artifact, including quiet plans, wireframes, diagrams, and standalone
+documents. It is maintained by Plannotator and is not an Anthropic skill.
+
+<GuideHandoff
+  artifactHref="/catalog?collection=skills#catalog-collection"
+  artifactLabel="Browse the skill collection"
+  artifactDescription="Compare the generic design layer with the artifact specialists."
+  sourceHref="https://github.com/anthropics/skills/blob/main/skills/web-artifacts-builder/SKILL.md"
+  sourceLabel="Read Anthropic's artifact skill"
+  sourceDescription="See the Claude artifact workflow that inspired this portable adaptation."
+  skillHref="https://github.com/plannotator/effective-html/blob/main/skills/design-artifact/SKILL.md"
+  skillLabel="Use design-artifact"
+  skillDescription="Apply subject-specific creative direction to any HTML artifact."
+/>
+
+<GuideNext
+  href="/docs/choosing-fidelity"
+  title="Choose the lowest useful fidelity"
+  description="Let the decision determine how resolved the artifact should become."
+/>

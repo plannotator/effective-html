@@ -56,7 +56,7 @@ const collectionOptions: Array<{
     label: "Hi-fi mockups",
     count: highFidelityMockups.length,
   },
-  { id: "skills", label: "Skills", count: 5 },
+  { id: "skills", label: "Skills", count: catalogSkills.length },
 ];
 
 const totalEntryCount = collectionOptions[0].count;

@@ -3,7 +3,7 @@
   "owner": {
     "name": "plannotator"
   },
-  "description": "Focused skills for self-contained HTML artifacts, wireframes, interactive prototypes, plans, and diagrams.",
+  "description": "Creative direction and focused skills for self-contained HTML artifacts, wireframes, interactive prototypes, plans, and diagrams.",
   "plugins": [
     {
       "name": "plannotator-effective-html",
@@ -11,11 +11,11 @@
         "source": "github",
         "repo": "plannotator/effective-html"
       },
-      "description": "Create HTML wireframes, styled mockups, interactive prototypes, plans, diagrams, and general standalone artifacts.",
+      "description": "Give standalone HTML artifacts a subject-specific visual direction, then create wireframes, styled mockups, interactive prototypes, plans, diagrams, and general artifacts.",
       "homepage": "https://github.com/plannotator/effective-html",
       "repository": "https://github.com/plannotator/effective-html",
       "license": "MIT",
-      "keywords": ["html", "wireframe", "prototype", "prototyping", "diagram", "plan", "html-artifacts", "agent-skills", "claude-code", "codex"],
+      "keywords": ["html", "design", "creative-direction", "wireframe", "prototype", "prototyping", "diagram", "plan", "html-artifacts", "agent-skills", "claude-code", "codex"],
       "category": "productivity"
     }
   ]

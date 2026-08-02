@@ -4,7 +4,7 @@
 
 # Effective HTML
 
-Five focused skills for creating useful, self-contained HTML artifacts, from low-fidelity wireframes to working interactive prototypes.
+Six skills for creating useful, self-contained HTML artifacts, from creative direction and low-fidelity wireframes to working interactive prototypes.
 
 
 https://github.com/user-attachments/assets/24306977-7f30-44c9-9bff-55f901d557b0
@@ -26,6 +26,7 @@ HTML skills for pragmatic visual artifacts.
 | Skill | Use it for |
 | --- | --- |
 | [`html`](skills/html/SKILL.md) | Broad HTML requests, mixed artifacts, reports, explainers, presentations, landing pages, tools, and routing to a specialist |
+| [`design-artifact`](skills/design-artifact/SKILL.md) | Subject-specific creative direction for any HTML artifact without imposing a reusable house style |
 | [`html-wireframe`](skills/html-wireframe/SKILL.md) | Low-fidelity layout directions that test content, hierarchy, navigation, flows, and responsive structure |
 | [`html-prototype`](skills/html-prototype/SKILL.md) | Working prototypes with realistic states, interaction, keyboard support, and responsive behavior |
 | [`html-plan`](skills/html-plan/SKILL.md) | Plans, roadmaps, rollouts, and implementation sequences that preserve source commitments |
@@ -46,6 +47,7 @@ List or install individual skills:
 
 ```bash
 npx skills add plannotator/effective-html --list
+npx skills add plannotator/effective-html --skill design-artifact
 npx skills add plannotator/effective-html --skill html-wireframe
 npx skills add plannotator/effective-html --skill html-prototype
 ```
@@ -56,9 +58,11 @@ Invoke a skill directly:
 Use $html-wireframe to explore three responsive layouts for this checkout brief.
 
 Use $html-prototype to make the checkout flow work, including validation, loading, failure, success, keyboard, and mobile states.
+
+Use $design-artifact with $html-diagram to give this architecture explainer a visual direction rooted in the system it describes.
 ```
 
-Only `$html` is eligible for implicit invocation. Call a specialist directly when you know the artifact type, or use `$html` to route a broad request. Each specialist remains independently usable when invoked directly.
+`$html` can route a broad request, while `$design-artifact` can supply creative direction across artifact types. Call a specialist directly when you know the artifact type. Each specialist remains independently usable when invoked directly.
 
 ### Claude Code plugin
 
@@ -79,13 +83,14 @@ codex plugin add plannotator-effective-html@effective-html
 The skills separate creative freedom from reliability:
 
 - Visual direction comes from the conversation, project, audience, and subject.
+- `design-artifact` provides a reusable design process without prescribing a reusable look.
 - Wireframes stay intentionally unfinished so reviewers focus on structure.
 - Prototypes implement one credible flow and its relevant states.
 - Plans preserve source commitments.
 - Diagrams choose a visual model and rendering method that fit the relationship being explained.
 - Every artifact is responsive, accessible, self-contained, and verified in a browser.
 
-Detailed guidance lives only where it is needed. The broad `html` skill keeps shared references for creative direction, documents, interfaces, diagrams, charts, and data. The specialist skills remain concise and independently usable.
+Detailed guidance lives only where it is needed. The broad `html` skill routes the work, `design-artifact` supplies optional creative direction, and specialist skills own fidelity and behavior. Each skill remains independently usable.
 
 ## Repository shape
 
@@ -95,6 +100,7 @@ skills/
 │   ├── SKILL.md
 │   ├── agents/openai.yaml
 │   └── references/
+├── design-artifact/
 ├── html-wireframe/
 ├── html-prototype/
 ├── html-plan/

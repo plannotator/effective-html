@@ -30,6 +30,10 @@ Use real labels and representative content. Low fidelity is not permission to us
 
 ## Explore structure before style
 
+When [`design-artifact`](../design-artifact/SKILL.md) is available, read it for
+subject-specific composition and hierarchy guidance without importing editorial
+polish. This skill's low-fidelity contract remains authoritative.
+
 When the layout is still unsettled, create two or three meaningfully different directions. Vary product decisions such as:
 
 - navigation model;

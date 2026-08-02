@@ -4,9 +4,10 @@
   "groupings": [
     {
       "title": "Effective HTML",
-      "description": "Focused skills for self-contained HTML artifacts, wireframes, prototypes, plans, and diagrams.",
+      "description": "Creative direction and focused workflows for self-contained HTML artifacts, wireframes, prototypes, plans, and diagrams.",
       "skills": [
         "html",
+        "design-artifact",
         "html-wireframe",
         "html-prototype",
         "html-diagram",

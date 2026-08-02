@@ -97,8 +97,8 @@ and custom interfaces that it teaches people to create.
 ## Evidence on Hand
 
 - `../README.md` describes the five Effective HTML skills and their intended uses.
-- `../skills/` contains the current wireframe, prototype, plan, diagram, and broad
-  HTML guidance.
+- `../skills/` contains the current creative-direction, wireframe, prototype,
+  plan, diagram, and broad HTML guidance.
 - `../examples/release-readiness/` contains standalone wireframe and prototype
   examples with desktop and mobile screenshots.
 - `public/brand/effective-html-banner.png` is the deployed site banner.

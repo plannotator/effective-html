@@ -1,0 +1,7 @@
+interface:
+  display_name: "Design Artifact"
+  short_description: "Creative direction for distinctive HTML artifacts"
+  default_prompt: "Use $design-artifact to give this HTML artifact a subject-specific visual direction."
+
+policy:
+  allow_implicit_invocation: true

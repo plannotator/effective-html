@@ -544,17 +544,11 @@
 
 .specimenMeta {
   display: flex;
-  justify-content: space-between;
   gap: 0.8rem;
   padding: 0.65rem 0.8rem;
   border-bottom: 1px solid rgba(20, 20, 19, 0.24);
   font-size: 0.6rem;
   font-weight: 670;
-}
-
-.specimenMeta span:last-child {
-  color: var(--muted);
-  text-align: right;
 }
 
 .specimenPreview {
@@ -717,10 +711,6 @@
   grid-column: 1 / -1;
   padding: 0.45rem 0.6rem;
   font-size: 0.52rem;
-}
-
-.catalogResults[data-view="compact"] .specimenMeta span:last-child {
-  display: none;
 }
 
 .catalogResults[data-view="compact"] .specimenPreview {

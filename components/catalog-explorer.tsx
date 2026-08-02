@@ -92,7 +92,6 @@ function ArtifactSpecimen({
     <article className={styles.specimen}>
       <div className={styles.specimenMeta}>
         <span>{String(artifact.order).padStart(2, "0")}</span>
-        <span>Reference by Thariq Shihipar</span>
       </div>
       <a
         className={styles.specimenPreview}

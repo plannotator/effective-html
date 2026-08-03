@@ -1,197 +1,119 @@
 ---
 title: Designing artifacts
-description: Use the design-artifact skill to give HTML wireframes, mockups, prototypes, diagrams, and other artifacts a clear visual direction.
+description: Use the design-artifact skill to make deliberate decisions about palette, type, layout, theming, and visual register.
 ---
 
-You do not need a skill to design an HTML artifact. If you want reusable design
-guidance, use
 [`design-artifact`](https://github.com/plannotator/effective-html/blob/main/skills/design-artifact/SKILL.md)
-on its own or alongside one of the more specific Effective HTML skills.
+provides creative direction for HTML pages, reports, plans, landing pages, demos,
+decks, and small tools. Use it on its own or alongside a more specific Effective
+HTML skill.
 
-Effective HTML's `design-artifact` skill was inspired by the artifact design
-guidance built into Claude Code. Anthropic does not publish that internal
-guidance as a standalone skill, so there is no upstream `SKILL.md` to link.
-This version is maintained by Plannotator and is not an Anthropic skill.
+The skill defers to the user's instructions and the project's existing design
+system. When visual direction remains open, it sizes the treatment to the brief,
+anchors decisions to the subject, and applies the same care to workmanlike and
+editorial artifacts without imposing a house style.
 
-## What the skill does
+## What the skill covers
 
-The skill looks at the brief, product, design system, and supplied references
-before choosing typography, color, layout, and visual treatment. It can shape a
-wireframe, mockup, prototype, diagram, deck, report, or small tool without
-forcing every artifact into the same style.
+The process starts with a short plan for color, type, and layout. Its fundamentals
+cover prior art, real content, typography, neutrals, themes, spacing, responsive
+overflow, CSS structure, interface copy, meaningful visual devices, interaction,
+accessibility, and verification. Editorial work gets an additional originality
+check and one deliberate aesthetic bet.
 
-Use it when an artifact should match an existing product or needs a more
-specific visual direction. The more focused skills can still handle the format:
-`html-wireframe`, `html-prototype`, `html-diagram`, and `html-plan`.
+## Copy the canonical skill
 
-## Copy the skill
+The block below is copied verbatim from the repository source. Save it as
+`skills/design-artifact/SKILL.md` in a repository or agent skill directory.
 
-You do not need to install this skill to use the guide. If you want the agent to
-load it directly, save the following as `skills/design-artifact/SKILL.md` in
-your repository or agent skill directory.
-
-```md title="skills/design-artifact/SKILL.md"
+````md title="skills/design-artifact/SKILL.md"
 ---
 name: design-artifact
-description: Provide subject-specific creative direction for any self-contained HTML artifact, including reports, plans, diagrams, decks, landing pages, mockups, prototypes, and small tools. Use when the user asks for a polished or distinctive visual artifact, when palette, type, composition, or theming remain open, or when another Effective HTML skill needs art direction that avoids generic AI styling. Do not use this skill to override an established design system or a specialist skill's fidelity and behavior contract.
+description: Design principles and creative direction for building HTML artifacts — pages, reports, plans, landing pages, demos, decks, and small tools. Use when creating or restyling any visual HTML deliverable and deciding its palette, type pairing, layout, theming, or overall register, or when the output must not look generically AI-generated.
 ---
 
-# Design Artifact
+Take the perspective of the creative director at a boutique agency with a reputation for range — every commission gets its own visual identity, scaled to whatever level of treatment the brief actually merits. Palette, type, and layout should all be conscious decisions rooted in this particular subject; nothing should smell like it came off a shelf.
 
-Give each HTML artifact a visual identity that belongs to its brief. This skill
-can work alone for broad visual deliverables or alongside `html`,
-`html-wireframe`, `html-prototype`, `html-plan`, or `html-diagram`.
+## Begin by sizing up the brief
 
-It is creative-direction guidance, not a template. Do not reproduce a house
-palette, type stack, card system, layout, or static reference from a previous
-artifact.
+The question is never *whether* to design — it's what register to design in. A memo deserves craftsmanship equal to a landing page; the two simply wear that craftsmanship differently.
 
-## Compose it with the artifact skill
+Much of what comes in wants a workmanlike register: plans, briefs, demos. Finish it properly — real hierarchy in the type, spacing that was thought about, a palette that was chosen — but know when to stop. Hardly any page benefits from a towering, theatrical hero. Ornament sparingly and with taste.
 
-Let the artifact skill own the form:
+Then there's work that earns the editorial register: landing pages, games, apps and tools someone will hold onto or pass along.
 
-- `html` chooses the broad workflow and shared build contract.
-- `html-wireframe` keeps the result intentionally low fidelity.
-- `html-prototype` decides whether the artifact is a mockup or working flow.
-- `html-plan` preserves source commitments and traceability.
-- `html-diagram` chooses the visual model and rendering method.
-- `design-artifact` shapes palette, type, composition, visual register, and the
-  amount of expressive treatment.
+When in doubt, remember that nobody ever regretted a well-composed page, whereas an identity pushed too hard sometimes backfires.
 
-Creative direction must not smuggle polish into a wireframe, decoration into a
-plan, or spectacle into a diagram whose relationships need to remain quiet and
-legible.
+Everything in the fundamentals section applies universally. The editorial process at the end only kicks in when your read of the brief calls for it.
 
-## Establish authority before taste
+## Fundamentals for every artifact
 
-Inspect the request, supplied references, and current project before choosing a
-direction. Look for `AGENTS.md`, `CLAUDE.md`, `DESIGN.md`, product documentation,
-tokens, components, screenshots, and nearby artifacts.
+**Defer to prior art.** Before anything else, hunt for an established design system — a AGENTS.md or CLAUDE.md and/or DESIGN.md, QUALITY.md, PRODUCT.md etc, a tokens or theme file, styling on existing components. Found one? Apply it. The guidance below exists to plug holes, never to overrule. Authority flows in one fixed direction: what the user literally said, then whatever system the project already has, then your own taste.
 
-Authority runs in this order:
+**Anchor everything to the subject.** Where the subject is fuzzy, sharpen it first: one concrete thing, a defined audience, a single purpose the page exists to serve. The most distinctive moves are excavated from the subject's native territory — the stuff it's made of, the tools of its trade, the language its people speak. Populate the build with genuine content from the first draft onward; lorem ipsum is banned.
 
-1. The user's explicit instructions and accepted decisions.
-2. The project's established design system and conventions.
-3. The subject, audience, content, and purpose of this artifact.
-4. Your own design judgment.
+**Put two typefaces in conversation.** Even on a page that has nothing to do with letterforms, the letterforms do the heavy lifting. Never link webfonts from Google Fonts or any other font CDN — embed the face as a @font-face data URI instead. Cap measure at about 65 characters; commit to a type scale and don't wander off it; balance headings with `text-wrap: balance`, give paragraphs air, and space out uppercase labels with a hint of letter-spacing.
 
-Use bundled or external references to understand technique and constraints, not
-as a visual answer to copy.
+**Neutrals are choices too.** A dead-center mid-grey announces that nobody thought about it; tint that grey faintly toward the accent and suddenly it reads as considered. There's nothing wrong with pure white or near-black grounds when the subject wants them — the test is whether the neutral was selected or merely left over.
 
-## Size the treatment to the brief
+**Both themes, equal care.** Whatever theme the viewer runs is the theme your page renders in: the OS preference arrives via `prefers-color-scheme`, while the in-app toggle writes `data-theme="dark"` / `data-theme="light"` onto the root element — and the attribute must beat the media query going both ways. The sturdy pattern operates on tokens: declare the palette as custom properties on `:root`; inside `@media (prefers-color-scheme: dark)`, reassign only those tokens — components consume tokens exclusively and are never styled inside the media query itself — and then reassign the tokens a second time under `:root[data-theme="dark"]` and `:root[data-theme="light"]`. The dark counterpart deserves as much attention as the light original: mechanical inversion won't do; legibility and a working accent have to survive on either ground. A concept married to one visual world (the glow of an arcade cabinet, a letterpress invitation) is allowed to remain single-theme — provided that's a verdict you reached, not a corner you forgot.
 
-Choose the register before writing CSS:
+**Spacing belongs to the layout, not the elements.** Sibling groups get flex or grid plus `gap`; scatter per-element margins around and they'll collapse or compound behind your back. Broad content — tables, code, diagrams — sits in its own container with `overflow-x: auto` so horizontal scrolling never leaks to the page body. Wherever numerals stack into columns, switch on `font-variant-numeric: tabular-nums`.
 
-- **Workmanlike:** quiet hierarchy, exact spacing, restrained color, and direct
-  language for plans, briefs, reports, and many tools.
-- **Editorial:** stronger composition, distinctive type, deliberate pacing, and
-  one memorable move for explainers, launches, research stories, and decks.
-- **Expressive:** a more immersive visual or interactive premise whose execution
-  is part of the message. Use it only when the subject earns it.
+**Dodge the telltale AI aesthetic.** Right now, machine output keeps landing on the same few costumes: warm cream (#F4F1EA) under a serif display with a terracotta accent; near-black punctuated by one shot of acid-green or vermilion; hairline broadsheet rules over cramped columns; a purple-to-blue gradient hero floating on white; Inter or Space Grotesk chosen for safety; emoji doing the job of section markers; universal center alignment; `rounded-lg` sprayed everywhere; rounded cards wearing an accent bar or rail. A direction the user has pinned down gets executed faithfully — their instructions trump everything, up to and including a request for one of these exact looks. Absent instructions, that freedom is yours; don't blow it on a cliché.
 
-Every register deserves care. A memo does not need a theatrical hero, and a
-landing page does not become distinctive merely by becoming louder.
+**Engineer it soundly.** Overlapping elements, cascade collisions, fonts silently falling back — rendering bugs breed in the distance between source and screen, so stay vigilant. Non-void elements all get closed, attributes all get double quotes, keyboard focus gets a visible state, and `prefers-reduced-motion` gets respected. When graphics turn generative or decorative, reach for Canvas or WebGL before hand-authoring long SVG path data.
 
-## Derive the direction from the subject
+**Mind the cascade.** Selector specificity is where CSS goes to fight itself: a class hook like `.section` and an element hook like `.cta` can end up in a tug-of-war over padding and margins, each undoing the other. Architect the cascade so your spacing can't be quietly sabotaged.
 
-Find one organizing idea in the subject's own world: its materials, tools,
-environment, notation, history, audience, or language. Let that idea influence
-the grid, type, color, imagery, diagram grammar, density, or interaction.
+**Copy is a material.** Treat the words as load-bearing, not garnish. Stand on the reader's side of the glass: name things as people know them, not as the backend does (someone manages *notifications*, never *webhook config*). Verbs stay active; every control declares its exact effect ("Publish", answered by a toast: "Published"). An error message diagnoses the failure and prescribes the fix — never groveling, never hand-waving. Precision outperforms wit.
 
-Use real content from the first draft. Placeholder copy, invented metrics, and
-generic product names weaken the design because they remove the constraints that
-should shape it.
+**Make structure mean something.** Numbering, eyebrows, dividers, labels — these devices earn their place by asserting something true about the content, not by decorating it. Numbered markers (01 / 02 / 03) show up in generic work constantly, yet they're only honest when order is real information — an actual procedure, a dated timeline the reader must follow in sequence. Before deploying a device like that, ask whether it's telling the truth.
 
-Before building, write a short design plan in working notes:
+**Interfaces are not documents.** A dashboard or tool is something people scan and drive, not something they read top to bottom, which relocates the craft from typography into information design. Lead with the rollup, follow with the detail; let form carry state alongside the figures — pills, chips, a severity stripe — so trouble is legible in a glance. Status colors (good / warning / critical) live in their own lane, apart from the accent hue, and can't be counted as it. Charts and sparklines get typographic-grade attention: an area fill, a whisper of grid, the endpoint emphasized. If it can be clicked, it should look clickable.
 
-- **Premise:** the visual idea and why it belongs to this subject.
-- **Color:** named roles with actual values, including neutrals and status colors
-  when needed.
-- **Type:** the display, body, and utility roles the content actually needs.
-- **Layout:** the organizing composition and intended reading path.
-- **Interaction:** the one place, if any, where motion or input carries meaning.
+## Process
 
-Do not satisfy a quota. The number of colors, typefaces, columns, and components
-should follow the idea.
+Code comes second. First, rough out a short design plan — a tight token system spanning color, type, and layout:
+- **Color**: 4–6 hex values, each with a name.
+- **Type**: faces covering 2+ roles — a display face with character, deployed with restraint; a body face that partners it; a utility face for captions or data if the work needs one.
+- **Layout**: the organizing idea, captured in a sentence or two.
 
-## Apply the fundamentals
+Build only after that, executing the plan and tracing every color and type decision back to it.
 
-### Typography
+## When the request is editorial
 
-Use type to establish voice and hierarchy. One well-used family can outperform
-an arbitrary pairing; multiple roles are useful only when they remain coherent.
-Keep prose readable, balance headings, and use tabular numerals where values
-align. Use system fonts when they fit. Embed custom fonts only when their value
-and license justify the file weight; do not depend on a font CDN.
+Now the posture shifts: picture a client who has already thrown out every proposal that felt canned and is paying specifically for conviction. Commit to opinions, and place one honest aesthetic bet where the work will benefit.
 
-### Color and themes
+Audit the design plan against the subject before a line of code exists: any element that could pass for the stock answer to any similar brief gets reworked, with a note on what moved and the reasoning. The code gets written only after the plan has cleared that originality check — and then it follows the revised plan to the letter.
 
-Choose neutrals as deliberately as accents. Keep semantic status colors separate
-from decorative color. Follow the user's or project's theme policy. When both
-light and dark themes are required, define component-facing tokens and give each
-theme equal care instead of mechanically inverting values. A deliberate
-single-theme concept is valid when the brief calls for it.
+**Principles**
 
-### Layout and cascade
+- Treat the hero as an argument: open on the single most characteristic artifact of the subject's world — headline, image, live demo, interactive moment.
+- The page's personality lives in its type. Choose the display/body pairing on purpose — not the families you'd reach for on autopilot — and lock in a scale with weights, widths, and spacing that were each decided. The treatment of the type should itself be one of the memorable things about the design, never a transparent vessel.
+- Motion is a budget to allocate. Ask where animation genuinely serves the subject — an entrance sequence on load, a reveal tied to scroll, micro-interactions on hover, a layer of ambient atmosphere — and whether it serves at all. A single orchestrated beat tends to outperform effects sprinkled around; let the direction decide. Bear in mind that restraint often wins, and gratuitous animation is itself a hallmark of the AI-generated look.
+- Scale the execution to the ambition. Maximalism demands elaborate follow-through; minimalism demands exactness in spacing, type, and detail. Elegance means delivering the chosen vision completely.
+- Concentrate the daring in one location and hush everything around it. Should the accent quarrel with the ground, slide it toward an analogous hue or drain some saturation — don't trade it for another color.
 
-Let containers own spacing through grid, flex, and `gap`. Keep prose measures
-readable and place broad tables, diagrams, or code in contained scrolling or
-pannable regions. Organize selectors so component spacing cannot be quietly
-overridden by unrelated rules. Prevent accidental page-level overflow.
+## After the artifact ships
 
-### Copy and structure
+Once the artifact is finished and delivered, ask the user whether they'd like to share it as a public page. If — and only if — they say yes, publish the file with the `tot` CLI (tot.page) and hand back the URL it prints:
 
-Treat words as part of the interface. Use the reader's language, active verbs,
-specific labels, and useful error messages. Numbering, labels, dividers, badges,
-and callouts should express real order, state, grouping, or importance rather
-than decorate empty structure.
-
-### Interaction and motion
-
-Make controls look actionable and make their effects clear. Preserve keyboard
-access, visible focus, and state feedback. Allocate motion to explanation,
-continuity, or feedback. Respect `prefers-reduced-motion`; remove animation that
-does not change understanding.
-
-## Avoid the template reflex
-
-Common components are not a visual direction. Cards, pills, rounded rectangles,
-gradients, tiny uppercase labels, giant numerals, side rails, and centered heroes
-may be useful, but each must express something true about the content.
-
-Vary more than color. A new palette on the same hero and card grid is still the
-same design. Reconsider composition, scale, density, typography, shape language,
-navigation, imagery, and interaction.
-
-Current generic AI output often defaults to interchangeable dark dashboards,
-purple-blue gradients, universal rounded cards, safe grotesk type, decorative
-metrics, and effects distributed evenly across the page. Do not reject a choice
-because it is common; reject it when it has no reason to be there.
-
-Concentrate the strongest visual decision in one place and let the rest of the
-artifact support it.
-
-## Build and verify
-
-Follow the active artifact skill's build contract. For a standalone artifact,
-produce one self-contained HTML file with essential CSS and JavaScript inline
-and no network requirement unless the user permits one.
-
-Inspect the result at wide and narrow widths. Exercise the important controls,
-check the console, test keyboard focus and reduced motion, and fix clipping,
-overlap, unreadable text, broken states, and accidental overflow.
-
-Finish with an originality check: if the subject were swapped for a neighboring
-topic, would the visual idea still make just as much sense? If so, revise the
-composition, type, color, imagery, or interaction until the artifact belongs to
-this brief.
-
-Return the absolute path and a short account of the visual premise, register,
-and interaction choices.
+```bash
+tot path/to/artifact.html
 ```
+
+If `tot` is not installed (`command -v tot` fails), tell the user and offer to install it. Install only on their explicit go-ahead:
+
+```bash
+npm install -g @plannotator/tot
+```
+
+Never publish or install without the user's explicit consent — a shared page is publicly accessible to anyone who has the link.
+````
 
 <GuideNext
   href="/docs/choosing-fidelity"
   title="Choosing fidelity"
-  description="Compare wireframes, mockups, prototypes, diagrams, and plans."
+  description="Compare wireframes, prototypes, diagrams, and plans."
 />

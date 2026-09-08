@@ -8,8 +8,8 @@
     {
       "name": "plannotator-effective-html",
       "source": {
-        "source": "github",
-        "repo": "plannotator/effective-html"
+        "source": "url",
+        "url": "https://github.com/plannotator/effective-html.git"
       },
       "description": "Give standalone HTML artifacts a subject-specific visual direction, then create wireframes, styled mockups, interactive prototypes, plans, diagrams, and general artifacts.",
       "homepage": "https://github.com/plannotator/effective-html",

@@ -1,6 +1,7 @@
 # Validation record
 
-Validated July 29, 2026, on macOS with Google Chrome.
+The example and clean-invocation checks were run July 29, 2026, on macOS
+with Google Chrome. Packaging was rechecked September 14, 2026.
 
 ## Repository example
 
@@ -37,6 +38,9 @@ The screenshots in this directory were captured from the validated source. The p
 
 Each skill was invoked in an isolated agent context with the product brief embedded in the prompt. The agents were instructed not to inspect the repository examples or screenshots, and all generated files were written outside the repository.
 
+This suite covered the five workflow skills present on July 29. `design-artifact`,
+which was added later, was not part of the clean-invocation suite.
+
 | Skill | Result |
 | --- | --- |
 | `html` | Routed a structural review request to `html-wireframe` by reading the sibling skill, then completed the artifact without inspecting repository examples |
@@ -47,11 +51,13 @@ Each skill was invoked in an isolated agent context with the product brief embed
 
 ## Packaging
 
-- All five skills pass the platform skill validator.
-- Only `html` allows implicit invocation. The four direct-invocation specialists remain independently usable.
-- The repository passes strict Vercel, Claude, and Codex skill-format validation.
+- Claude Code 2.1.270's native marketplace validator passes.
+- The current `skills` CLI discovers all six skills.
+- `html` and `design-artifact` allow implicit invocation in their Codex metadata.
+  The four workflow specialists remain direct-invocation skills and can be used
+  independently.
 - Every JSON manifest parses.
-- Claude Code's native marketplace validator passes.
-- The current `skills` CLI discovers all five entries.
-- A clean local install copied all five skills and the shared `html` references into temporary Claude Code and Codex project directories.
+- The July clean-install check copied the five workflow skills and the shared
+  `html` references into temporary Claude Code and Codex project directories.
+- Site lint, typecheck, audit, and production build pass.
 - `git diff --check` passes.

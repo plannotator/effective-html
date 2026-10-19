@@ -47,6 +47,15 @@ The repo includes seven optional skills for pragmatic visual artifacts.
 
 Practical guide: [HTML Wireframes and Prototypes for Coding Agents](https://docs.plannotator.ai/learn/code-context/html-wireframes-and-prototypes-for-coding-agents).
 
+### Before/after example
+
+A plain weekly ops page, before and after the `html` and `design-artifact` skills (a dispatch-board redesign: cool steel neutrals, amber only for actions, separate status colors):
+
+- Before: https://skill-fixture-before.theroost.dev
+- After: https://effective-html-after.theroost.dev
+
+Illustrative, community-contributed example; not an official demo or benchmark.
+
 ## Install
 
 Install the collection when you want these references available to your agent as

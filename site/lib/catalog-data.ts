@@ -681,6 +681,15 @@ export const catalogSkills: CatalogSkill[] = [
     color: "coral",
   },
   {
+    id: "one-pager",
+    title: "One-pager",
+    description:
+      "Make a one-pager: one HTML page that shares an idea with teammates early, or recaps work for them, with big pictures and little words.",
+    guideUrl: "/docs/one-pager",
+    sourceUrl: `${repoSource}/one-pager/SKILL.md`,
+    color: "lilac",
+  },
+  {
     id: "design-artifact",
     title: "Design artifact",
     description:

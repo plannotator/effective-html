@@ -1,0 +1,7 @@
+interface:
+  display_name: "One-pager"
+  short_description: "One HTML page to share an idea or recap work"
+  default_prompt: "Use $one-pager to make one HTML page that shares an idea with teammates early, or recaps work for them, with big pictures and little words."
+
+policy:
+  allow_implicit_invocation: false

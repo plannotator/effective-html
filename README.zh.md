@@ -35,7 +35,7 @@ https://github.com/user-attachments/assets/24306977-7f30-44c9-9bff-55f901d557b0
 | --- | --- |
 | [`html`](skills/html/SKILL.md) | 处理范围较广的 HTML 请求、混合型成果、报告、说明文档、演示文稿、落地页和工具，并在需要时转交给专用技能 |
 | [`big-pics-little-words`](skills/big-pics-little-words/SKILL.md) | 用大幅视觉元素和精简文字在 HTML 中解释当前主题，同时保留关键细节；复制自 [bro](https://github.com/backnotprop/bro/blob/main/skills/big-pics-little-words/SKILL.md) |
-| [`one-pager`](skills/one-pager/SKILL.md) | 制作单页：一个 HTML 页面，用大幅图片和精简文字，尽早与队友分享想法，或为他们回顾已完成的工作；同一技能也收录于 [bro](https://github.com/backnotprop/bro) |
+| [`one-pager`](skills/one-pager/SKILL.md) | 制作单页：一个 HTML 页面，用大幅图片和精简文字，尽早与队友分享想法，或为他们回顾已完成的工作；复制自 [bro](https://github.com/backnotprop/bro/blob/main/skills/one-pager/SKILL.md) |
 | [`design-artifact`](skills/design-artifact/SKILL.md) | 为任何 HTML 成果提供贴合主题的创意方向，同时避免套用固定的视觉风格 |
 | [`html-wireframe`](skills/html-wireframe/SKILL.md) | 用低保真布局方案测试内容、层级、导航、流程和响应式结构 |
 | [`html-prototype`](skills/html-prototype/SKILL.md) | 创建包含真实状态、交互、键盘支持和响应式行为的可用原型 |

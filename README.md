@@ -39,7 +39,7 @@ The repo includes eight optional skills for pragmatic visual artifacts.
 | --- | --- |
 | [`html`](skills/html/SKILL.md) | Broad HTML requests, mixed artifacts, reports, explainers, presentations, landing pages, tools, and routing to a specialist |
 | [`big-pics-little-words`](skills/big-pics-little-words/SKILL.md) | Explain the current subject in HTML with large visuals and minimal text while preserving key details; copied from [bro](https://github.com/backnotprop/bro/blob/main/skills/big-pics-little-words/SKILL.md) |
-| [`one-pager`](skills/one-pager/SKILL.md) | Make a one-pager: one HTML page that shares an idea with teammates early, or recaps work for them, with big pictures and little words; the same skill is in [bro](https://github.com/backnotprop/bro) |
+| [`one-pager`](skills/one-pager/SKILL.md) | Make a one-pager: one HTML page that shares an idea with teammates early, or recaps work for them, with big pictures and little words; copied from [bro](https://github.com/backnotprop/bro/blob/main/skills/one-pager/SKILL.md) |
 | [`design-artifact`](skills/design-artifact/SKILL.md) | Subject-specific creative direction for any HTML artifact without imposing a reusable house style |
 | [`html-wireframe`](skills/html-wireframe/SKILL.md) | Low-fidelity layout directions that test content, hierarchy, navigation, flows, and responsive structure |
 | [`html-prototype`](skills/html-prototype/SKILL.md) | Working prototypes with realistic states, interaction, keyboard support, and responsive behavior |

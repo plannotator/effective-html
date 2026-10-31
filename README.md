@@ -33,12 +33,13 @@ Render and annotate local HTML with <a href="https://github.com/backnotprop/plan
 
 ## Skill references
 
-The repo includes seven optional skills for pragmatic visual artifacts.
+The repo includes eight optional skills for pragmatic visual artifacts.
 
 | Skill | Use it for |
 | --- | --- |
 | [`html`](skills/html/SKILL.md) | Broad HTML requests, mixed artifacts, reports, explainers, presentations, landing pages, tools, and routing to a specialist |
 | [`big-pics-little-words`](skills/big-pics-little-words/SKILL.md) | Explain the current subject in HTML with large visuals and minimal text while preserving key details; copied from [bro](https://github.com/backnotprop/bro/blob/main/skills/big-pics-little-words/SKILL.md) |
+| [`one-pager`](skills/one-pager/SKILL.md) | Make a one-pager: one HTML page that shares an idea with teammates early, or recaps work for them, with big pictures and little words; the same skill is in [bro](https://github.com/backnotprop/bro) |
 | [`design-artifact`](skills/design-artifact/SKILL.md) | Subject-specific creative direction for any HTML artifact without imposing a reusable house style |
 | [`html-wireframe`](skills/html-wireframe/SKILL.md) | Low-fidelity layout directions that test content, hierarchy, navigation, flows, and responsive structure |
 | [`html-prototype`](skills/html-prototype/SKILL.md) | Working prototypes with realistic states, interaction, keyboard support, and responsive behavior |
@@ -61,6 +62,7 @@ List or install individual skills:
 ```bash
 npx skills add plannotator/effective-html --list
 npx skills add plannotator/effective-html --skill big-pics-little-words
+npx skills add plannotator/effective-html --skill one-pager
 npx skills add plannotator/effective-html --skill design-artifact
 npx skills add plannotator/effective-html --skill html-wireframe
 npx skills add plannotator/effective-html --skill html-prototype

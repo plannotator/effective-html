@@ -4,7 +4,7 @@
 
 # Effective HTML
 
-[English](README.md)
+[English](README.md) | [日本語](README.ja.md)
 
 一组用于创建实用、自包含 HTML 成果的专用智能体技能，覆盖从低保真线框图到可交互原型。
 

@@ -4,7 +4,7 @@
 
 # Effective HTML
 
-[简体中文](README.zh.md)
+[简体中文](README.zh.md) | [日本語](README.ja.md)
 
 Focused agent skills for creating useful, self-contained HTML artifacts, from low-fidelity wireframes to working interactive prototypes.
 

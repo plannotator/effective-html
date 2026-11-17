@@ -96,6 +96,9 @@ The skills separate creative freedom from reliability:
 
 Detailed guidance lives only where it is needed. The broad `html` skill routes the work, `design-artifact` supplies optional creative direction, and specialist skills own fidelity and behavior. Each skill remains independently usable.
 
+For a worked one-pager with public research, inline citations, and a visible
+reference section, see the [research one-pager example](examples/research-one-pager/README.md).
+
 This project was inspired by Thariq Shihipar's [The unreasonable effectiveness of HTML](https://thariqs.github.io/html-effectiveness).
 
 <p align="center">

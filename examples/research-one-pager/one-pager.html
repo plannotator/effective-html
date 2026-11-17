@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A brief that survives forwarding</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --paper: #f5f8fa;
+      --ink: #182c3a;
+      --muted: #415d70;
+      --accent: #155d83;
+      --rule: #a7becb;
+      --wash: #e1edf3;
+      font-family: system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.55;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #152632;
+        --ink: #e4eff5;
+        --muted: #b7cfde;
+        --accent: #8dcef2;
+        --rule: #587586;
+        --wash: #233e4f;
+      }
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    main { max-width: 66rem; margin: auto; padding: 3rem 2rem; }
+    h1, h2, p, figure { margin: 0; }
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.12; max-width: 20ch; text-wrap: balance; }
+    h2 { font-size: 1.2rem; line-height: 1.3; }
+    p { max-width: 65ch; }
+    a { color: var(--accent); text-underline-offset: .2em; }
+    a:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+    code, .eyebrow { font-family: ui-monospace, monospace; }
+    code { overflow-wrap: anywhere; }
+    .eyebrow { color: var(--muted); font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; }
+    header, .recommendation, .facts, .fact, .references { display: grid; gap: 1rem; }
+    header { padding-bottom: 2rem; }
+    .recommendation { border-block: 2px solid var(--rule); padding: 1.5rem 0; }
+    .recommendation p { font-size: 1.15rem; }
+    figure { padding: 2rem 0; }
+    .trail { display: flex; align-items: center; gap: 1rem; padding: 1rem; background: var(--wash); }
+    .trail span { flex: 1; }
+    .trail b { display: block; }
+    .trail i { font-style: normal; color: var(--accent); }
+    figcaption { color: var(--muted); font-size: .9rem; padding-top: .6rem; }
+    .facts { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; }
+    .fact { align-content: start; }
+    .citation { white-space: nowrap; }
+    details { padding: 1rem; margin-top: 2rem; background: var(--wash); }
+    summary { cursor: pointer; font-weight: 650; }
+    details p { padding-top: .75rem; }
+    .references { border-top: 2px solid var(--rule); margin-top: 2rem; padding-top: 1.5rem; }
+    ol { margin: 0; padding-left: 1.5rem; display: grid; gap: .75rem; }
+    li { padding-left: .25rem; }
+    li:target { outline: 2px solid var(--accent); outline-offset: 4px; }
+    .source-url { display: block; font-size: .85rem; overflow-wrap: anywhere; }
+    .note { font-size: .85rem; color: var(--muted); }
+    @media (max-width: 40rem) {
+      main { padding: 2rem 1.25rem; }
+      .facts { grid-template-columns: 1fr; gap: 1.5rem; }
+      .trail { flex-direction: column; align-items: stretch; }
+      .trail i { transform: rotate(90deg); align-self: center; }
+    }
+    @media print {
+      :root { font-size: 11pt; color-scheme: light; --paper: #fff; --ink: #182c3a; --muted: #415d70; --accent: #155d83; --rule: #a7becb; --wash: #e1edf3; }
+      main { max-width: none; padding: 0; }
+      h1 { font-size: 2rem; max-width: none; }
+      header, figure { padding-bottom: 1rem; }
+      .facts { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+      .trail { flex-direction: row; }
+      .trail i { transform: none; }
+      details { display: none; }
+      .fact, li { break-inside: avoid; }
+      a { color: var(--ink); }
+      li:target, a:focus-visible, summary:focus-visible { outline: none; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">Research one-pager · Native HTML</p>
+      <h1>A brief that survives forwarding</h1>
+      <p>What can a single HTML brief do without JavaScript?</p>
+    </header>
+
+    <section class="recommendation" aria-labelledby="recommendation-title">
+      <h2 id="recommendation-title">Recommendation</h2>
+      <p>Keep the finding and its sources in the page. Use native links,
+        a disclosure for optional explanation, and print styles for sharing.</p>
+      <p class="note">An editorial recommendation based on the documented facts below.</p>
+    </section>
+
+    <figure>
+      <div class="trail">
+        <span><b>Public documentation</b>Exact URL in research notes</span>
+        <i aria-hidden="true">→</i>
+        <span><b>Supported fact</b>Inline citation beside the claim</span>
+        <i aria-hidden="true">→</i>
+        <span><b>Visible reference</b>Full URL travels with the page</span>
+      </div>
+      <figcaption>The evidence trail used in this brief.</figcaption>
+    </figure>
+
+    <section class="facts" aria-label="Three documented capabilities">
+      <article class="fact">
+        <h2>Link to the evidence</h2>
+        <p>An anchor with an <code>href</code> can link to another page or a
+          location within this document. <a class="citation" href="#ref-1" aria-label="Reference 1: Hyperlinks">[1]</a></p>
+      </article>
+      <article class="fact">
+        <h2>Let readers open detail</h2>
+        <p><code>details</code> provides a disclosure; its <code>summary</code>
+          labels the content readers can expand or collapse.
+          <a class="citation" href="#ref-2" aria-label="Reference 2: Disclosure">[2]</a></p>
+      </article>
+      <article class="fact">
+        <h2>Give print its own layout</h2>
+        <p>A CSS <code>@media print</code> rule can change styles when printing
+          to paper or PDF. <a class="citation" href="#ref-3" aria-label="Reference 3: Print styles">[3]</a></p>
+      </article>
+    </section>
+
+    <details>
+      <summary>Try the optional explanation</summary>
+      <p>This disclosure works without a script. The finding and all references
+        remain outside it, so collapsing this detail does not hide the evidence.</p>
+    </details>
+
+    <section class="references" aria-labelledby="references-title">
+      <h2 id="references-title">References</h2>
+      <ol>
+        <li id="ref-1"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a">MDN — <code>&lt;a&gt;</code>: The Anchor element<span class="source-url">https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a</span></a></li>
+        <li id="ref-2"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details">MDN — <code>&lt;details&gt;</code>: The Details disclosure element<span class="source-url">https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details</span></a></li>
+        <li id="ref-3"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Media_queries/Printing">MDN — Printing<span class="source-url">https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Media_queries/Printing</span></a></li>
+      </ol>
+      <p class="note">Public source notes checked November 17, 2026. The page renders
+        offline; opening an external reference needs a connection.</p>
+    </section>
+  </main>
+</body>
+</html>

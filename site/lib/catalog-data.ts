@@ -726,6 +726,15 @@ export const catalogSkills: CatalogSkill[] = [
     color: "pink",
   },
   {
+    id: "diagram",
+    title: "Plannotator diagram",
+    description:
+      "Create an editable architecture diagram with source references and render it to SVG.",
+    guideUrl: "/docs/diagrams#editable-plannotator-diagrams",
+    sourceUrl: `${repoSource}/diagram/SKILL.md`,
+    color: "coral",
+  },
+  {
     id: "html-diagram",
     title: "HTML diagram",
     description:

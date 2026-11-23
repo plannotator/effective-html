@@ -25,6 +25,14 @@ Use a small set of shapes, lines, colors, and labels consistently. Keep dense
 explanation outside the diagram, and check that labels and paths remain legible
 at the size people will actually view it.
 
+## Editable Plannotator diagrams
+
+Invoke `/diagram` to create a `.diagram.json` source and render it to SVG.
+The source keeps stable IDs for individual parts and can carry references to the
+files behind them. Use the renderer bundled with a diagram-capable Plannotator
+release or the standalone `@plannotator/diagrams` package. During the package
+preview, install its release candidate tarball in the project you render from.
+
 <GuideHandoff
   artifactHref="/catalog/featured/workspaces-architecture.html"
   artifactLabel="Open the request-path explorer"

@@ -33,7 +33,7 @@ Render and annotate local HTML with <a href="https://github.com/backnotprop/plan
 
 ## Skill references
 
-The repo includes eight optional skills for pragmatic visual artifacts.
+The repo includes nine optional skills for pragmatic visual artifacts.
 
 | Skill | Use it for |
 | --- | --- |
@@ -44,6 +44,7 @@ The repo includes eight optional skills for pragmatic visual artifacts.
 | [`html-wireframe`](skills/html-wireframe/SKILL.md) | Low-fidelity layout directions that test content, hierarchy, navigation, flows, and responsive structure |
 | [`html-prototype`](skills/html-prototype/SKILL.md) | Working prototypes with realistic states, interaction, keyboard support, and responsive behavior |
 | [`html-plan`](skills/html-plan/SKILL.md) | Plans, roadmaps, rollouts, and implementation sequences that preserve source commitments |
+| [`diagram`](skills/diagram/SKILL.md) | Create an editable Plannotator architecture or flow diagram with source references and render it to SVG |
 | [`html-diagram`](skills/html-diagram/SKILL.md) | Architecture, sequence, process, state, hierarchy, timeline, and system diagrams |
 
 Practical guide: [HTML Wireframes and Prototypes for Coding Agents](https://docs.plannotator.ai/learn/code-context/html-wireframes-and-prototypes-for-coding-agents).
@@ -63,10 +64,16 @@ List or install individual skills:
 npx skills add plannotator/effective-html --list
 npx skills add plannotator/effective-html --skill big-pics-little-words
 npx skills add plannotator/effective-html --skill one-pager
+npx skills add plannotator/effective-html --skill diagram
 npx skills add plannotator/effective-html --skill design-artifact
 npx skills add plannotator/effective-html --skill html-wireframe
 npx skills add plannotator/effective-html --skill html-prototype
 ```
+
+`diagram` needs a diagram-capable Plannotator release or the standalone
+`@plannotator/diagrams` renderer. During the preview, install the renderer's
+candidate npm tarball locally to use its `plannotator-diagrams` executable.
+The authoring instructions mirror `apps/skills/core/diagram/SKILL.md` in Plannotator.
 
 ### Claude Code plugin
 

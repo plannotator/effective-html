@@ -29,7 +29,7 @@ https://github.com/user-attachments/assets/24306977-7f30-44c9-9bff-55f901d557b0
 
 ## 技能参考
 
-本仓库包含八个可选技能，用于创建实用的视觉成果。
+本仓库包含九个可选技能，用于创建实用的视觉成果。
 
 | 技能 | 适用场景 |
 | --- | --- |
@@ -40,6 +40,7 @@ https://github.com/user-attachments/assets/24306977-7f30-44c9-9bff-55f901d557b0
 | [`html-wireframe`](skills/html-wireframe/SKILL.md) | 用低保真布局方案测试内容、层级、导航、流程和响应式结构 |
 | [`html-prototype`](skills/html-prototype/SKILL.md) | 创建包含真实状态、交互、键盘支持和响应式行为的可用原型 |
 | [`html-plan`](skills/html-plan/SKILL.md) | 创建计划、路线图、发布安排和实施步骤，同时保留源材料中的既定要求 |
+| [`diagram`](skills/diagram/SKILL.md) | 创建带有来源引用的可编辑 Plannotator 图表，并将其渲染为 SVG |
 | [`html-diagram`](skills/html-diagram/SKILL.md) | 创建架构图、时序图、流程图、状态图、层级图、时间线图和系统图 |
 
 实用指南：[面向编程智能体的 HTML 线框图和原型](https://docs.plannotator.ai/learn/code-context/html-wireframes-and-prototypes-for-coding-agents)。
@@ -58,10 +59,16 @@ npx skills add plannotator/effective-html
 npx skills add plannotator/effective-html --list
 npx skills add plannotator/effective-html --skill big-pics-little-words
 npx skills add plannotator/effective-html --skill one-pager
+npx skills add plannotator/effective-html --skill diagram
 npx skills add plannotator/effective-html --skill design-artifact
 npx skills add plannotator/effective-html --skill html-wireframe
 npx skills add plannotator/effective-html --skill html-prototype
 ```
+
+`diagram` 需要支持该图表格式的 Plannotator 版本或独立的
+`@plannotator/diagrams` 渲染器。预览期间，请在项目中安装候选版本的 npm
+压缩包，然后使用其中的 `plannotator-diagrams` 命令。技能说明与 Plannotator
+中的 `apps/skills/core/diagram/SKILL.md` 保持一致。
 
 ### Claude Code 插件
 

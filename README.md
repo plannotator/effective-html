@@ -44,7 +44,7 @@ The repo includes nine optional skills for pragmatic visual artifacts.
 | [`html-wireframe`](skills/html-wireframe/SKILL.md) | Low-fidelity layout directions that test content, hierarchy, navigation, flows, and responsive structure |
 | [`html-prototype`](skills/html-prototype/SKILL.md) | Working prototypes with realistic states, interaction, keyboard support, and responsive behavior |
 | [`html-plan`](skills/html-plan/SKILL.md) | Plans, roadmaps, rollouts, and implementation sequences that preserve source commitments |
-| [`diagram`](skills/diagram/SKILL.md) | Create an editable Plannotator architecture or flow diagram with source references and render it to SVG |
+| [`diagram`](skills/diagram/SKILL.md) | Create an editable Plannotator diagram with source references and render it to SVG |
 | [`html-diagram`](skills/html-diagram/SKILL.md) | Architecture, sequence, process, state, hierarchy, timeline, and system diagrams |
 
 Practical guide: [HTML Wireframes and Prototypes for Coding Agents](https://docs.plannotator.ai/learn/code-context/html-wireframes-and-prototypes-for-coding-agents).

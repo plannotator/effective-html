@@ -40,7 +40,7 @@ https://github.com/user-attachments/assets/24306977-7f30-44c9-9bff-55f901d557b0
 | [`html-wireframe`](skills/html-wireframe/SKILL.md) | 用低保真布局方案测试内容、层级、导航、流程和响应式结构 |
 | [`html-prototype`](skills/html-prototype/SKILL.md) | 创建包含真实状态、交互、键盘支持和响应式行为的可用原型 |
 | [`html-plan`](skills/html-plan/SKILL.md) | 创建计划、路线图、发布安排和实施步骤，同时保留源材料中的既定要求 |
-| [`diagram`](skills/diagram/SKILL.md) | 创建带有来源引用的可编辑 Plannotator 架构图或流程图，并将其渲染为 SVG |
+| [`diagram`](skills/diagram/SKILL.md) | 创建带有来源引用的可编辑 Plannotator 图表，并将其渲染为 SVG |
 | [`html-diagram`](skills/html-diagram/SKILL.md) | 创建架构图、时序图、流程图、状态图、层级图、时间线图和系统图 |
 
 实用指南：[面向编程智能体的 HTML 线框图和原型](https://docs.plannotator.ai/learn/code-context/html-wireframes-and-prototypes-for-coding-agents)。
